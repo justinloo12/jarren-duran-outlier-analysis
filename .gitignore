@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+
+# Secrets / local config
+.env
+.claude/settings.local.json
+
+# Failed-scrape artifact (Spotrac browser-block error page, unused by the pipeline)
+spotrac_of.html
