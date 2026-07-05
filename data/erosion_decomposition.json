@@ -1,0 +1,197 @@
+{
+  "seasons": {
+    "2024": {
+      "season": 2024,
+      "bat": {
+        "n_swings": 1228,
+        "avg_mph": 72.72182410423453,
+        "p90_mph": 78.9,
+        "fast_swing_pct": 0.33876221498371334,
+        "swing_length_ft": 7.468894192521879,
+        "attack_angle_deg": 3.176289927004614
+      },
+      "whiff_fastball": {
+        "rate": 0.1732484076433121,
+        "n": 785
+      },
+      "chase_fastball": {
+        "rate": 0.21220159151193635,
+        "n": 754
+      },
+      "whiff_breaking": {
+        "rate": 0.29876543209876544,
+        "n": 405
+      },
+      "chase_breaking": {
+        "rate": 0.37844036697247707,
+        "n": 436
+      },
+      "whiff_offspeed": {
+        "rate": 0.23204419889502761,
+        "n": 181
+      },
+      "chase_offspeed": {
+        "rate": 0.3273542600896861,
+        "n": 223
+      },
+      "whiff_fb95": {
+        "rate": 0.15808823529411764,
+        "n": 272
+      },
+      "z_contact": {
+        "rate": 0.8738461538461538,
+        "n": 975
+      },
+      "chase_brk_down_away": {
+        "rate": 0.47101449275362317,
+        "n": 138
+      },
+      "swing_chase_zone": {
+        "rate": 0.2559241706161137,
+        "n": 633
+      },
+      "chase_all": {
+        "rate": 0.2814710042432815,
+        "n": 1414
+      },
+      "whiff_all": {
+        "rate": 0.21849963583394028,
+        "n": 1373
+      }
+    },
+    "2025": {
+      "season": 2025,
+      "bat": {
+        "n_swings": 1174,
+        "avg_mph": 73.95434412265757,
+        "p90_mph": 79.57000000000001,
+        "fast_swing_pct": 0.44718909710391824,
+        "swing_length_ft": 7.394098088113051,
+        "attack_angle_deg": 4.858819378339137
+      },
+      "whiff_fastball": {
+        "rate": 0.20088626292466766,
+        "n": 677
+      },
+      "chase_fastball": {
+        "rate": 0.265527950310559,
+        "n": 644
+      },
+      "whiff_breaking": {
+        "rate": 0.3333333333333333,
+        "n": 357
+      },
+      "chase_breaking": {
+        "rate": 0.3472222222222222,
+        "n": 432
+      },
+      "whiff_offspeed": {
+        "rate": 0.3399014778325123,
+        "n": 203
+      },
+      "chase_offspeed": {
+        "rate": 0.3694029850746269,
+        "n": 268
+      },
+      "whiff_fb95": {
+        "rate": 0.1946564885496183,
+        "n": 262
+      },
+      "z_contact": {
+        "rate": 0.8691931540342298,
+        "n": 818
+      },
+      "chase_brk_down_away": {
+        "rate": 0.384,
+        "n": 125
+      },
+      "swing_chase_zone": {
+        "rate": 0.29133858267716534,
+        "n": 635
+      },
+      "chase_all": {
+        "rate": 0.3111111111111111,
+        "n": 1350
+      },
+      "whiff_all": {
+        "rate": 0.2617124394184168,
+        "n": 1238
+      }
+    },
+    "2026": {
+      "season": 2026,
+      "bat": {
+        "n_swings": 602,
+        "avg_mph": 74.48870431893687,
+        "p90_mph": 79.6,
+        "fast_swing_pct": 0.4850498338870432,
+        "swing_length_ft": 7.520926517571885,
+        "attack_angle_deg": 5.830971753251105
+      },
+      "whiff_fastball": {
+        "rate": 0.2727272727272727,
+        "n": 330
+      },
+      "chase_fastball": {
+        "rate": 0.3170731707317073,
+        "n": 328
+      },
+      "whiff_breaking": {
+        "rate": 0.42105263157894735,
+        "n": 190
+      },
+      "chase_breaking": {
+        "rate": 0.3923444976076555,
+        "n": 209
+      },
+      "whiff_offspeed": {
+        "rate": 0.33043478260869563,
+        "n": 115
+      },
+      "chase_offspeed": {
+        "rate": 0.40298507462686567,
+        "n": 134
+      },
+      "whiff_fb95": {
+        "rate": 0.2896551724137931,
+        "n": 145
+      },
+      "z_contact": {
+        "rate": 0.8354430379746836,
+        "n": 395
+      },
+      "chase_brk_down_away": {
+        "rate": 0.3709677419354839,
+        "n": 62
+      },
+      "swing_chase_zone": {
+        "rate": 0.4,
+        "n": 320
+      },
+      "chase_all": {
+        "rate": 0.35767511177347244,
+        "n": 671
+      },
+      "whiff_all": {
+        "rate": 0.32755905511811023,
+        "n": 635
+      }
+    }
+  },
+  "bat_speed_baseline_2024_25": 73.33808411344606,
+  "verdict": {
+    "label": "approach",
+    "bat_speed_delta_mph": 1.1506202054908101,
+    "chase_delta": 0.04656400066236133,
+    "whiff_hard_fb_delta": 0.09499868386417482,
+    "zcontact_delta": -0.033750116059546253,
+    "selling_out": true
+  },
+  "reweight": {
+    "p_healthy": 0.6909,
+    "p_erosion": 0.4708,
+    "w_healthy": 0.6,
+    "p_agnostic_5050": 0.58085,
+    "p_reweighted": 0.60286
+  }
+}
