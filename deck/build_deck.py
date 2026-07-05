@@ -23,7 +23,8 @@ BG = "F4F5F7"; WHITE = "FFFFFF"; GREEN = "2E7D32"; GOLD = "B7892F"; LINE = "D7DA
 HEAD = "Cambria"; BODY = "Calibri"
 
 W, H = 13.333, 7.5
-ASPECT = {"01": 1.60, "04": 1.60, "07": 10/5.8, "08": 10/6.4}
+ASPECT = {"01": 1.60, "04": 1.60, "07": 10/5.8, "08": 10/6.4,
+          "09": 1504/649}
 
 
 def C(hexs):
@@ -264,6 +265,37 @@ for head, col, body in rows:
 txt(s, tx, yy + 0.05, 5.0, 0.6, [[("Selling now cashes the slump. Value hinges "
     "on the rebound.", {"italic": True, "bold": True, "size": 13,
     "color": RED})]], line_spacing=1.05)
+footer(s)
+
+# ---------------------------------------------------------------- 5b REBOUND SIM
+s = new()
+eyebrow(s, "The rebound math")
+title(s, "10,000 simulations: the rebound is likely — unless the erosion is real")
+image(s, "09", 0.4, 1.7, 8.3, 4.1, "09_rebound_probability.png")
+tx = 9.0
+txt(s, tx, 1.8, 3.7, 0.35, [[("P(REST-OF-SEASON wRC+ ≥ 100)",
+    {"size": 11.5, "bold": True, "color": MUTED})]], space_after=0)
+txt(s, tx, 2.15, 3.7, 0.85, [
+    [("69%", {"size": 34, "bold": True, "font": HEAD, "color": GREEN}),
+     ("  healthy prior", {"size": 12.5, "color": MUTED})],
+    [("47%", {"size": 34, "bold": True, "font": HEAD, "color": RED}),
+     ("  erosion-blended", {"size": 12.5, "color": MUTED})],
+], space_after=2, line_spacing=1.0)
+txt(s, tx, 3.85, 3.7, 0.35, [[("EXPECTED OFFSEASON TRADE VALUE",
+    {"size": 11.5, "bold": True, "color": MUTED})]], space_after=0)
+txt(s, tx, 4.2, 3.7, 0.8, [
+    [("$22M", {"size": 24, "bold": True, "font": HEAD, "color": NAVY}),
+     (" vs ", {"size": 13, "color": MUTED}),
+     ("$18M", {"size": 24, "bold": True, "font": HEAD, "color": NAVY})],
+    [("either way, well above the ~$10M a July sale fetches",
+      {"size": 11.5, "color": MUTED})],
+], space_after=2, line_spacing=1.05)
+txt(s, 0.62, 6.15, 12.1, 0.7, [[("The honest line: ", {"size": 13.5,
+    "bold": True, "color": RED}),
+    ("the 22-point probability gap is the price of the worse chase / whiff / "
+     "hard-hit rates. Hold-through-2026 survives the erosion stress test — "
+     "but with less confidence in the rebound narrative itself.",
+     {"size": 13.5, "color": INK})]], line_spacing=1.12)
 footer(s)
 
 # ---------------------------------------------------------------- 6 AGE CURVE

@@ -15,7 +15,7 @@ from src import config as C
 from src import fetch_fangraphs, fetch_statcast, fetch_milb
 from src import fetch_cohort
 from src import (statcast_metrics, analysis, age_curve, viz, memo, comps,
-                 outfield_plan, trade_targets, rebound_sim)
+                 outfield_plan, trade_targets, rebound_sim, web_deck)
 
 
 def fetch():
@@ -59,6 +59,8 @@ def main():
     rebound_sim.run()
     print("== Decision memo ==")  # last: embeds the rebound-sim results
     memo.run()
+    print("== Web case page ==")  # editorial long-read, figures embedded
+    web_deck.run()
 
     print(f"\nDone. Data -> {C.DATA_DIR}\nFigures -> {C.FIG_DIR}\n"
           f"Memo -> {C.OUT_DIR / 'decision_memo.md'}")
