@@ -122,6 +122,28 @@ Rest-of-season (303 PA at his current pace) simulated from a true-talent prior b
 
 > **Read:** if the 2023–25 player is intact, a league-average-or-better second half is a 69% bet; if the process erosion is ~40% real it is a coin flip (47%) — that 22-point gap is what the eroded chase/whiff/hard-hit rates cost. Either way the full-season line likely stays under 90 wRC+ (the first-half hole is too deep), and either way waiting beats selling at today's ~$10M nadir — so the sim supports hold-through-2026, while lowering confidence in the rebound narrative itself.
 
+## 9. Is the 2026 erosion physical or approach? The bat-tracking answer
+
+Statcast has measured bat speed directly since 2024 — the one clean physical read on a 29-year-old's bat. Full decomposition in `outputs/erosion_decomposition.md` / `figures/10_erosion_decomposition.png`.
+
+| Season | Avg bat speed | Fast-swing% | Whiff% vs ≥95 FB | Chase% | In-zone contact% |
+|--------|--------------:|------------:|-----------------:|-------:|-----------------:|
+| 2024 | 72.7 mph | 33.9% | 15.8% | 28.1% | 87.4% |
+| 2025 | 74.0 mph | 44.7% | 19.5% | 31.1% | 86.9% |
+| 2026 | 74.5 mph | 48.5% | 29.0% | 35.8% | 83.5% |
+
+> **Verdict: approach, not physical — and this is the tiebreaker the whole erosion question needed.** His bat speed is *up* +1.2 mph vs his 2024–25 average (fast-swing rate 34% → 49%), while his swing got longer and steeper and every *decision* metric worsened — whiffs up even against premium velocity he demonstrably still catches up to, chase up mostly on fastballs and offspeed, breaking-ball chase actually stable. That is a hitter **selling out**, not a hitter slowing down. Approach is fixable (his own 2022→23 chase overhaul proves it in-house); a dying bat is not. This tilts the §8 scenarios toward the healthy prior — a 60/40 weighting puts the blended P(rest-of-season wRC+ ≥ 100) at **60%**.
+
+## 10. Does the luck thesis hold historically? A 2016–25 backtest
+
+The rebound model assumes wOBA-under-xwOBA gaps close. Testing that on every hitter since 2016 with ≥250 PA by June 30 and a midseason gap ≥20 points below xwOBA (n = 322 player-seasons; details in `outputs/luck_gap_backtest.md`):
+- Mean rest-of-season recovery: **+19 points of wOBA**; 54% closed at least half the gap.
+- The median cohort hitter's second half landed 12 pts from his midseason *xwOBA* but +20 pts above his midseason wOBA — the second half tracks the process stat.
+- Horse race on all 1358 qualified first halves: corr(ROS wOBA, midseason xwOBA) = **0.445** vs corr with midseason wOBA = 0.365 — **the x-stat wins.**
+- Duran's −25-pt gap is more negative than 82% of all qualified first halves, but *within* the unlucky cohort he is a typical member (77th percentile), not an outlier.
+
+> **Read:** history sides with the x-stat, which is the §8 model's core mechanism — the 69% healthy-prior scenario gains external validity. The honest limit: the backtest regresses the luck around *whatever the current process is*; it cannot say whether the process itself recovers — that is §9's question, and §9 answers 'approach, so plausibly yes.'
+
 ## Verdict — with explicit confidence
 
 **Is 2024 statistically distinguishable as an outlier from 2025–26 and from what came before?**
@@ -143,6 +165,10 @@ Rest-of-season (303 PA at his current pace) simulated from a true-talent prior b
 - **Roster role:** a valuable everyday, speed/defense-supported above-average regular — worth keeping at a fair (non-2024) price, not a cornerstone to extend at star money.
 - **What would move the estimate:** a 2026 second-half BABIP rebound (confirms bad luck → hold), or chase/whiff staying elevated into a full 2027 sample (confirms decline → sell). Track **xwOBA, chase%, whiff%** — not batting average.
 - **Quantified (§8):** the rebound Monte Carlo puts a league-average-or-better rest of season at **69%** (healthy prior) vs **47%** (erosion-blended), and expected offseason trade value at $22M vs $18M — both above the ~$10M a July sale fetches. Hold-through-2026 survives the erosion stress test.
+
+## Pre-registered predictions — this analysis grades itself
+
+Everything above is a forecast, and forecasts are cheap unless they can be wrong. The falsifiable version of this memo is frozen, dated 2026-07-04, in **`outputs/predictions.json`**: the full rest-of-season wRC+ quantiles from both rebound scenarios, the P(wRC+ ≥ 100) calls (69% healthy / 47% eroded / 60% blended per the §9 verdict), the valuation call (hold now, deal in the offseason at $18–22M vs ~$10M today), and the physical-vs-approach verdict itself. After the season, `python3 -m src.grade_predictions` pulls the actual rest-of-season line and scores every claim — Brier scores on the probability calls, coverage on the quantile bands — with the conversion frozen so there is no room to move the goalposts. **The grade runs in October whether it is flattering or not.**
 
 ---
 *Method:* rate stats tested with two-proportion z-tests on their natural denominators (BIP, out-of-zone pitches, swings, in-zone swings); xBABIP/xwOBA from Statcast estimated stats, with luck components measured against Duran's own career wOBA−xwOBA gap (Statcast xstats ignore sprint speed, so fast players chronically out-hit them as a skill); BsR/Def/Fld/Spd from FanGraphs. Aging curve is an empirical delta-method curve from 2021–26 FanGraphs data (survivorship-biased toward smaller declines, i.e. conservative). Roughly a dozen significance tests are reported without family-wise correction; isolated p≈.03–.05 results are directional, and n = 6 seasons (2026 partial). Figures in `figures/`, source data in `data/`.

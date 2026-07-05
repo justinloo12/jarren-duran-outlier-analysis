@@ -15,12 +15,12 @@
 
 | Team | 2026 W-L | Win% | Team OF wRC+ | OF WAR | Fit |
 |------|:--------:|-----:|------------:|-------:|:---:|
-| Phillies | 49-39 | 0.557 | 86 | 1.1 | ★ strong |
-| Rays | 52-33 | 0.612 | 90 | 3.4 | ★ strong |
+| Phillies | 50-39 | 0.562 | 86 | 1.1 | ★ strong |
+| Rays | 52-34 | 0.605 | 90 | 3.4 | ★ strong |
 | Marlins | 47-42 | 0.528 | 98 | 2.6 | good |
-| Astros | 43-47 | 0.478 | 77 | 1.5 | good |
-| Guardians | 47-42 | 0.528 | 88 | 3.2 | good |
-| White Sox | 45-42 | 0.517 | 100 | 3.5 | marginal |
+| Astros | 44-47 | 0.484 | 77 | 1.5 | good |
+| Guardians | 47-43 | 0.522 | 88 | 3.2 | good |
+| White Sox | 46-42 | 0.523 | 100 | 3.5 | marginal |
 | Blue Jays | 42-47 | 0.472 | 100 | 2.3 | marginal |
 | Padres | 43-44 | 0.494 | 90 | 3.0 | marginal |
 

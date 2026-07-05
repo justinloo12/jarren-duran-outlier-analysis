@@ -24,7 +24,7 @@ HEAD = "Cambria"; BODY = "Calibri"
 
 W, H = 13.333, 7.5
 ASPECT = {"01": 1.60, "04": 1.60, "07": 10/5.8, "08": 10/6.4,
-          "09": 1504/649}
+          "09": 1504/649, "10": 2087/679}
 
 
 def C(hexs):
@@ -296,6 +296,32 @@ txt(s, 0.62, 6.15, 12.1, 0.7, [[("The honest line: ", {"size": 13.5,
      "hard-hit rates. Hold-through-2026 survives the erosion stress test — "
      "but with less confidence in the rebound narrative itself.",
      {"size": 13.5, "color": INK})]], line_spacing=1.12)
+footer(s)
+
+# ------------------------------------------------------- 5c EROSION VERDICT
+s = new()
+eyebrow(s, "The tiebreaker")
+title(s, "The bat speed says it's the approach — not the body")
+image(s, "10", 0.5, 1.7, 12.33, 3.2, "10_erosion_decomposition.png")
+cards = [("74.5 mph", "avg bat speed, 2026 — UP from 72.7 in '24", GREEN,
+          "A declining hitter swings slower. Duran is swinging harder, "
+          "longer and steeper — pressing, not fading."),
+         ("29% whiff vs 95+", "up from 16% in '24 — but not bat-death", RED,
+          "Whiffs on a rising bat speed = selling out. The chase leak is "
+          "velo/offspeed; breaking-ball chase actually improved."),
+         ("60 / 40", "re-weighted scenario odds → 60% rebound", NAVY,
+          "Approach is fixable (see his own 2022→23 chase overhaul); the "
+          "tools a buyer prices are intact.")]
+cw, gap = 3.83, 0.31
+for i, (big, lab, col, body) in enumerate(cards):
+    x = 0.62 + i * (cw + gap)
+    card(s, x, 5.05, cw, 1.85)
+    txt(s, x + 0.26, 5.2, cw - 0.5, 0.5, [[(big, {"size": 21, "bold": True,
+        "font": HEAD, "color": col}),
+        ("  " + lab, {"size": 10.5, "color": MUTED})]], space_after=0,
+        line_spacing=1.0)
+    txt(s, x + 0.26, 5.78, cw - 0.5, 1.0, [[(body, {"size": 10.8,
+        "color": INK})]], line_spacing=1.07)
 footer(s)
 
 # ---------------------------------------------------------------- 6 AGE CURVE

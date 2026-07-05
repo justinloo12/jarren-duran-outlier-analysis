@@ -15,7 +15,8 @@ from src import config as C
 from src import fetch_fangraphs, fetch_statcast, fetch_milb
 from src import fetch_cohort
 from src import (statcast_metrics, analysis, age_curve, viz, memo, comps,
-                 outfield_plan, trade_targets, rebound_sim, web_deck)
+                 outfield_plan, trade_targets, rebound_sim, erosion,
+                 luck_backtest, preregister, web_deck)
 
 
 def fetch():
@@ -57,6 +58,12 @@ def main():
     trade_targets.run()
     print("== Rebound-probability simulation ==")
     rebound_sim.run()
+    print("== Erosion decomposition (physical vs approach) ==")
+    erosion.run()
+    print("== Historical luck-gap backtest ==")  # cached Savant pulls
+    luck_backtest.run(fetch=not args.no_fetch)
+    print("== Pre-registered predictions ==")
+    preregister.run()
     print("== Decision memo ==")  # last: embeds the rebound-sim results
     memo.run()
     print("== Web case page ==")  # editorial long-read, figures embedded

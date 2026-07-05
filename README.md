@@ -28,6 +28,26 @@ process erosion (chase/whiff/hard-hit) is blended in at 40%, that drops to a
 beats selling at today's ~$10M nadir, so **hold-through-2026 survives the
 erosion stress test** — with lower confidence in the rebound itself.
 
+Two deeper cuts then interrogate that erosion caveat directly. A
+**pitch-level erosion decomposition**
+([`src/erosion.py`](src/erosion.py) →
+[`outputs/erosion_decomposition.md`](outputs/erosion_decomposition.md)) uses
+Statcast bat tracking as the physical-vs-approach tiebreaker: **Duran's bat
+speed is UP** (72.7 → 74.0 → 74.5 mph, fast-swing rate 34% → 45% → 49%), his
+swing is longer and steeper, and the whiff/chase leak concentrates on
+velocity and offspeed while breaking-ball chase actually improved — the
+signature of a hitter *selling out*, not a slowing bat. **Verdict: approach,
+not physical** — which re-weights the scenarios ~60/40 toward the healthy
+prior (blended P ≈ 60%). And a **historical luck-gap backtest**
+([`src/luck_backtest.py`](src/luck_backtest.py) →
+[`outputs/luck_gap_backtest.md`](outputs/luck_gap_backtest.md)) validates the
+model's core assumption on 2016–25 league history: among 322 hitters who sat
+≥20 wOBA points under their xwOBA at midseason, the mean second-half recovery
+was **+19 points**, 54% closed at least half the gap, and rest-of-season wOBA
+correlates with midseason **xwOBA (.445) better than with midseason wOBA
+(.365)** — the x-stat wins. Duran's −24-point gap is more extreme than 82% of
+all qualified first halves but *typical within* the unlucky cohort.
+
 ## Quick start
 
 ```bash
@@ -40,9 +60,32 @@ python run_all.py --fetch-only # only refresh raw data
 python -m unittest discover tests   # offline unit tests (also run in CI)
 ```
 
-Outputs land in `data/` (CSVs + JSON), `figures/` (9 PNGs), and
-`outputs/` (decision memo + peer/salary, outfield-plan, trade-target and
-rebound-probability memos).
+Outputs land in `data/` (CSVs + JSON), `figures/` (11 PNGs), and
+`outputs/` (decision memo + peer/salary, outfield-plan, trade-target,
+rebound-probability, erosion-decomposition and luck-backtest memos, plus
+the frozen `predictions.json`).
+
+## Pre-registered predictions — the analysis grades itself
+
+Forecasts are cheap unless they can be wrong, so every falsifiable call is
+**frozen, dated 2026-07-04, in
+[`outputs/predictions.json`](outputs/predictions.json)**: the full
+rest-of-season wRC+ quantile distributions from *both* rebound scenarios,
+P(ROS wRC+ ≥ 100) = 69% (healthy) / 47% (eroded) / 60% (blended per the
+erosion verdict), the valuation call (**do not sell at the deadline; deal in
+the offseason at $18–22M** vs ~$10M today), and the approach-not-physical
+verdict itself — along with the exact wOBA→wRC+ conversion needed to grade
+them, so the goalposts cannot move. After the season ends:
+
+```bash
+python -m src.grade_predictions   # October: pulls the actual ROS line and
+                                  # scores everything (Brier + quantile coverage)
+```
+
+The grading rubric is deliberately simple and documented in the JSON: Brier
+scores on the probability calls (0.25 = coin flip), 50%/90% interval coverage
+on the quantile bands, and the frozen criteria for hand-grading the
+valuation and erosion calls. The grade runs whether it is flattering or not.
 
 ## What it does
 
@@ -109,6 +152,23 @@ rebound-probability memos).
    47%) quantifies how much the documented erosion matters. Ties into the
    $8M/WAR surplus framework: expected value now vs deadline vs offseason
    under both scenarios.
+10. **Erosion decomposition** ([`src/erosion.py`](src/erosion.py) →
+    [`outputs/erosion_decomposition.md`](outputs/erosion_decomposition.md),
+    figure 10, §9 of the memo): bat tracking (avg/fast-swing bat speed,
+    swing length, attack angle, 2024→26), whiff/chase by pitch type,
+    whiff vs ≥95 mph, Savant-style attack zones, breaking-ball
+    down-and-away chase — reduced to a unit-tested physical-vs-approach
+    verdict that re-weights the rebound scenarios.
+11. **Luck-gap backtest** ([`src/luck_backtest.py`](src/luck_backtest.py) →
+    [`outputs/luck_gap_backtest.md`](outputs/luck_gap_backtest.md), figure
+    11, §10 of the memo): 2016–25 (June 30 split, via the Savant grouped
+    search CSV, cached under `data/luck_backtest/`), cohort recovery stats,
+    the xwOBA-vs-wOBA horse race, and Duran's percentile in the gap
+    distribution.
+12. **Pre-registration + grader** ([`src/preregister.py`](src/preregister.py)
+    → [`outputs/predictions.json`](outputs/predictions.json);
+    [`src/grade_predictions.py`](src/grade_predictions.py)) — see the
+    section above.
 
 A capstone narrative ties it all together in
 [`outputs/CASE_STUDY.md`](outputs/CASE_STUDY.md), and a 10-slide presentation
@@ -162,8 +222,12 @@ src/
   outfield_plan.py     # surplus-value model + figure 07 + jam-fix plan memo
   trade_targets.py     # trade value + fit-ranked partners + figure 08 + memo
   rebound_sim.py       # rebound Monte Carlo + figure 09 + rebound memo
+  erosion.py           # bat-tracking decomposition + figure 10 + verdict
+  luck_backtest.py     # 2016-25 luck-gap backtest + figure 11 + memo
+  preregister.py       # freezes outputs/predictions.json (dated 2026-07-04)
+  grade_predictions.py # October: grades every frozen call (Brier + coverage)
   viz.py               # figures 01-04
-  memo.py              # decision memo generator (incl. rebound section)
+  memo.py              # decision memo generator (incl. §8-10 + prereg note)
 run_all.py             # orchestrator
 data/  figures/  outputs/
 ```
@@ -180,6 +244,10 @@ data/  figures/  outputs/
 8. `08_trade_fit_targets.png` — trade partners by contention × outfield need.
 9. `09_rebound_probability.png` — simulated rest-of-2026 wRC+ distributions,
    healthy prior vs. erosion scenario, P(wRC+≥100) annotated.
+10. `10_erosion_decomposition.png` — bat speed / fast-swing trend, whiff by
+    pitch type (incl. ≥95 mph), chase by pitch type, 2024–26.
+11. `11_luck_gap_backtest.png` — midseason luck gap vs. rest-of-season
+    recovery, 2016–25, unlucky cohort highlighted, Duran marked.
 
 *Data via [pybaseball](https://github.com/jldbc/pybaseball) (Statcast/Baseball
 Savant), the FanGraphs API, and the MLB Stats API. For research/education.*

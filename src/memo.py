@@ -18,7 +18,11 @@ def _load():
     age = json.load(open(C.DATA_DIR / "age_curve.json"))
     reb_p = C.DATA_DIR / "rebound_sim.json"
     reb = json.load(open(reb_p)) if reb_p.exists() else None
-    return res, age, reb
+    ero_p = C.DATA_DIR / "erosion_decomposition.json"
+    ero = json.load(open(ero_p)) if ero_p.exists() else None
+    bt_p = C.DATA_DIR / "luck_backtest.json"
+    bt = json.load(open(bt_p)) if bt_p.exists() else None
+    return res, age, reb, ero, bt
 
 
 def pct(x, d=1):
@@ -59,7 +63,7 @@ def _g(d, k):
     return None if d is None else d.get(k)
 
 
-def build(res, age, reb=None) -> str:
+def build(res, age, reb=None, ero=None, bt=None) -> str:
     S = res["seasons"]
     s24 = S.get(str(C.OUTLIER_SEASON), {})
     s25 = S.get("2025", {})
@@ -374,6 +378,91 @@ def build(res, age, reb=None) -> str:
           f"supports hold-through-2026, while lowering confidence in the "
           f"rebound narrative itself.\n")
 
+    # ---- strand 9: erosion decomposition (physical vs approach) ----------
+    if ero:
+        rows = ero["seasons"]
+        r24, r25, r26 = rows["2024"], rows["2025"], rows["2026"]
+        v = ero["verdict"]
+        rw = ero.get("reweight")
+        A("## 9. Is the 2026 erosion physical or approach? The bat-tracking "
+          "answer\n")
+        A("Statcast has measured bat speed directly since 2024 — the one "
+          "clean physical read on a 29-year-old's bat. Full decomposition "
+          "in `outputs/erosion_decomposition.md` / "
+          "`figures/10_erosion_decomposition.png`.\n")
+        A("| Season | Avg bat speed | Fast-swing% | Whiff% vs ≥95 FB | "
+          "Chase% | In-zone contact% |")
+        A("|--------|--------------:|------------:|-----------------:|"
+          "-------:|-----------------:|")
+        for key, r in (("2024", r24), ("2025", r25), ("2026", r26)):
+            A(f"| {key} | {r['bat']['avg_mph']:.1f} mph | "
+              f"{pct(r['bat']['fast_swing_pct'])} | "
+              f"{pct(r['whiff_fb95']['rate'])} | "
+              f"{pct(r['chase_all']['rate'])} | "
+              f"{pct(r['z_contact']['rate'])} |")
+        if v["label"] == "approach":
+            A(f"\n> **Verdict: approach, not physical — and this is the "
+              f"tiebreaker the whole erosion question needed.** His bat "
+              f"speed is *up* {v['bat_speed_delta_mph']:+.1f} mph vs his "
+              f"2024–25 average (fast-swing rate "
+              f"{pct(r24['bat']['fast_swing_pct'],0)} → "
+              f"{pct(r26['bat']['fast_swing_pct'],0)}), while his swing got "
+              f"longer and steeper and every *decision* metric worsened — "
+              f"whiffs up even against premium velocity he demonstrably "
+              f"still catches up to, chase up mostly on fastballs and "
+              f"offspeed, breaking-ball chase actually stable. That is a "
+              f"hitter **selling out**, not a hitter slowing down. Approach "
+              f"is fixable (his own 2022→23 chase overhaul proves it "
+              f"in-house); a dying bat is not. This tilts the §8 scenarios "
+              f"toward the healthy prior"
+              + (f" — a 60/40 weighting puts the blended P(rest-of-season "
+                 f"wRC+ ≥ 100) at **{rw['p_reweighted']:.0%}**"
+                 if rw else "") + ".\n")
+        elif v["label"] == "physical":
+            A(f"\n> **Verdict: physical.** Bat speed is down "
+              f"{v['bat_speed_delta_mph']:+.1f} mph — a real bat-slowing "
+              f"signal that the erosion scenario prices correctly. The "
+              f"buy-low thesis takes a genuine hit here; weight the "
+              f"erosion scenario.\n")
+        else:
+            A(f"\n> **Verdict: mixed/ambiguous** (bat speed "
+              f"{v['bat_speed_delta_mph']:+.1f} mph, chase "
+              f"{v['chase_delta']*100:+.1f} pts) — keep the two §8 "
+              f"scenarios at equal weight.\n")
+
+    # ---- strand 10: historical luck-gap backtest ---------------------------
+    if bt:
+        st, pl, d = bt["cohort"], bt["pool"], bt["duran"]
+        A("## 10. Does the luck thesis hold historically? A 2016–25 "
+          "backtest\n")
+        A(f"The rebound model assumes wOBA-under-xwOBA gaps close. Testing "
+          f"that on every hitter since 2016 with ≥250 PA by June 30 and a "
+          f"midseason gap ≥20 points below xwOBA (n = {st['n']} "
+          f"player-seasons; details in `outputs/luck_gap_backtest.md`):")
+        A(f"- Mean rest-of-season recovery: "
+          f"**{st['mean_recovery']*1000:+.0f} points of wOBA**; "
+          f"{st['pct_closed_half']:.0%} closed at least half the gap.")
+        A(f"- The median cohort hitter's second half landed "
+          f"{abs(st['median_ros_minus_h1_xwoba'])*1000:.0f} pts from his "
+          f"midseason *xwOBA* but {st['median_recovery']*1000:+.0f} pts "
+          f"above his midseason wOBA — the second half tracks the process "
+          f"stat.")
+        A(f"- Horse race on all {pl['n']} qualified first halves: "
+          f"corr(ROS wOBA, midseason xwOBA) = "
+          f"**{pl['corr_ros_with_h1_xwoba']:.3f}** vs corr with midseason "
+          f"wOBA = {pl['corr_ros_with_h1_woba']:.3f} — **the x-stat "
+          f"wins.**")
+        A(f"- Duran's −{abs(d['gap'])*1000:.0f}-pt gap is more negative "
+          f"than {(1-d['pctile_all_h1']):.0%} of all qualified first "
+          f"halves, but *within* the unlucky cohort he is a typical member "
+          f"({d['pctile_in_cohort']*100:.0f}th percentile), not an outlier.")
+        A(f"\n> **Read:** history sides with the x-stat, which is the §8 "
+          f"model's core mechanism — the 69% healthy-prior scenario gains "
+          f"external validity. The honest limit: the backtest regresses "
+          f"the luck around *whatever the current process is*; it cannot "
+          f"say whether the process itself recovers — that is §9's "
+          f"question, and §9 answers 'approach, so plausibly yes.'\n")
+
     # ---- verdict ---------------------------------------------------------
     A("## Verdict — with explicit confidence\n")
     A("**Is 2024 statistically distinguishable as an outlier from 2025–26 and "
@@ -433,6 +522,21 @@ def build(res, age, reb=None) -> str:
           f"Hold-through-2026 survives the erosion stress test.")
     A("")
 
+    # ---- pre-registered predictions ---------------------------------------
+    A("## Pre-registered predictions — this analysis grades itself\n")
+    A("Everything above is a forecast, and forecasts are cheap unless they "
+      "can be wrong. The falsifiable version of this memo is frozen, dated "
+      "2026-07-04, in **`outputs/predictions.json`**: the full rest-of-"
+      "season wRC+ quantiles from both rebound scenarios, the P(wRC+ ≥ 100) "
+      "calls (69% healthy / 47% eroded / 60% blended per the §9 verdict), "
+      "the valuation call (hold now, deal in the offseason at $18–22M vs "
+      "~$10M today), and the physical-vs-approach verdict itself. After the "
+      "season, `python3 -m src.grade_predictions` pulls the actual "
+      "rest-of-season line and scores every claim — Brier scores on the "
+      "probability calls, coverage on the quantile bands — with the "
+      "conversion frozen so there is no room to move the goalposts. **The "
+      "grade runs in October whether it is flattering or not.**\n")
+
     A("---\n*Method:* rate stats tested with two-proportion z-tests on their "
       "natural denominators (BIP, out-of-zone pitches, swings, in-zone swings); "
       "xBABIP/xwOBA from Statcast estimated stats, with luck components "
@@ -448,8 +552,8 @@ def build(res, age, reb=None) -> str:
 
 
 def run():
-    res, age, reb = _load()
-    md = build(res, age, reb)
+    res, age, reb, ero, bt = _load()
+    md = build(res, age, reb, ero, bt)
     out = C.OUT_DIR / "decision_memo.md"
     out.write_text(md)
     print(f"  [memo] wrote {out}")

@@ -92,6 +92,12 @@ def build_html() -> str:
         "sim": _img64("09_rebound_probability.png",
                       "Monte Carlo rest-of-season wRC+ distributions, "
                       "healthy prior vs erosion-blended"),
+        "ero": _img64("10_erosion_decomposition.png",
+                      "Bat speed trend plus whiff and chase rates by pitch "
+                      "type, 2024-2026"),
+        "bt": _img64("11_luck_gap_backtest.png",
+                     "Historical midseason luck gaps vs rest-of-season "
+                     "recovery, 2016-2025, with Duran marked"),
     }
 
     html = f"""<!DOCTYPE html>
@@ -173,6 +179,9 @@ def build_html() -> str:
   .closer p {{ color:#b4c1d4; font-size:16.5px; }}
   .closer .aside {{ color:#8496b1; border-top:1px solid rgba(255,255,255,.14);
     padding-top:24px; margin-top:44px; }}
+  .closer .aside + .aside {{ border-top:0; padding-top:0; margin-top:16px; }}
+  code {{ font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;
+    background:rgba(127,140,160,.16); padding:1px 5px; border-radius:3px; }}
   footer {{ max-width:760px; margin:0 auto; padding:34px 24px 60px;
     font-size:13.5px; color:var(--faint); line-height:1.7; }}
 </style></head><body>
@@ -301,7 +310,47 @@ def build_html() -> str:
 <hr class="rule">
 
 <section>
-  <div class="slug">05 &mdash; The Rebound Simulation</div>
+  <div class="slug">05 &mdash; The Tiebreaker</div>
+  <h2>The bat speed says it's the approach, not the body</h2>
+  <p>Is that erosion physical &mdash; a 29-year-old's bat slowing down,
+  which doesn't come back &mdash; or approach, which can? Since 2024,
+  Statcast has measured bat speed directly on every competitive swing,
+  which turns this from a debate into a measurement.</p>
+  <div class="bignum"><div class="n">72.7 &rarr; 74.0 &rarr; 74.5 mph</div>
+  <div class="c">Average bat speed, 2024 &rarr; 2025 &rarr; 2026. His
+  fast-swing rate (&ge;75 mph) has climbed 34% &rarr; 45% &rarr; 49%. The
+  bat is not slowing &mdash; it is speeding up.</div></div>
+  <p>Put the decomposition together and a coherent picture emerges. His
+  whiff rate is up everywhere &mdash; even against &ge;95&nbsp;mph
+  fastballs (15.8% &rarr; <span class="neg">29.0%</span>), the classic
+  bat-death tell &mdash; yet the one direct physical measurement got
+  <i>better</i>, and his swing got longer (7.47 &rarr; 7.52&nbsp;ft) and
+  steeper (3.2&deg; &rarr; 5.8&deg;). Rising whiffs on a rising bat speed
+  is not a slowing bat; it is a hitter <b>selling out</b> &mdash; max
+  intent, less bat control. The chase leak agrees: it is concentrated on
+  fastballs (21.2% &rarr; 31.7%) and offspeed (32.7% &rarr; 40.3%), while
+  chase on breaking balls down-and-away has actually <i>improved</i>. He
+  is not getting fooled by spin; he is starting the A-swing early and
+  expanding against velocity.</p>
+  {figs['ero']}
+  <p><b>Verdict: approach, not physical</b> &mdash; and that re-weights
+  everything downstream. Approach problems are fixable; his own
+  2022&rarr;23 chase overhaul is the in-house proof. The tools a buyer
+  would be pricing &mdash; bat speed, foot speed, defense &mdash; are
+  intact. Weighting the two simulation scenarios 60/40 toward the healthy
+  prior (instead of an agnostic coin flip) puts the blended rebound
+  probability at <b>60%</b>.</p>
+  <p class="aside">The honest caveat: &ldquo;approach&rdquo; does not mean
+  &ldquo;automatically fixed.&rdquo; Someone still has to dial the intent
+  back, and half a season of habit is real. But if the bat speed had been
+  <i>down</i> a full tick, this would be a different article &mdash; and a
+  sell recommendation.</p>
+</section>
+
+<hr class="rule">
+
+<section>
+  <div class="slug">06 &mdash; The Rebound Simulation</div>
   <h2>Two priors, 10,000 seasons, one honest gap</h2>
   <p>To turn the luck-vs-erosion argument into a number, a Monte Carlo
   simulates his remaining 303 plate appearances 10,000 times under two
@@ -336,7 +385,43 @@ def build_html() -> str:
 <hr class="rule">
 
 <section>
-  <div class="slug">06 &mdash; What He's Worth</div>
+  <div class="slug">07 &mdash; The Backtest</div>
+  <h2>Do gaps like his actually close? Ten seasons say yes</h2>
+  <p>The simulation's core assumption &mdash; that a wOBA sitting well
+  below xwOBA regresses upward &mdash; is testable on league history, so
+  we tested it rather than asserting it. For every season since 2016
+  (2020 excluded), take each hitter with 250+ plate appearances by June 30
+  whose wOBA sat at least 20 points below his xwOBA &mdash; Duran's exact
+  predicament &mdash; and watch his second half. That cohort is <b>322
+  player-seasons</b>.</p>
+  <div class="bignum"><div class="n">+19 pts</div>
+  <div class="c">Mean rest-of-season wOBA recovery for the unlucky cohort.
+  54% closed at least half their gap; the median second half landed 12
+  points from the midseason <i>xwOBA</i> but 20 points above the unlucky
+  wOBA.</div></div>
+  <p>The horse race is the cleanest version of the question: across all
+  1,358 qualified first halves, rest-of-season wOBA correlates with
+  midseason <b>xwOBA at .445</b> versus midseason wOBA at just .365.
+  <b>The x-stat wins</b> &mdash; second halves track the process, not the
+  results. That is precisely the mechanism the 69% scenario runs on, now
+  with ten years of external validity behind it.</p>
+  {figs['bt']}
+  <p>Where does Duran sit? His &minus;24-point gap is more negative than
+  82% of all qualified first halves since 2016 &mdash; but <i>within</i>
+  the unlucky cohort he is a typical member, not an outlier. History has
+  seen his situation 322 times and the average outcome was a meaningful
+  second-half rebound.</p>
+  <p class="aside">Stated limits: the backtest regresses the luck around
+  whatever the current process is &mdash; it cannot promise the process
+  itself recovers (that is Section 05's question). And hitters must log
+  100+ second-half PA to be graded, so benched slumpers drop out, which
+  flatters the recovery numbers modestly.</p>
+</section>
+
+<hr class="rule">
+
+<section>
+  <div class="slug">08 &mdash; What He's Worth</div>
   <h2>The same player, three different prices</h2>
   <p>Duran is on a one-year, <b>$7.7M</b> deal and arbitration-controllable
   through 2028 &mdash; exactly the profile a contender pays prospects for.
@@ -366,7 +451,7 @@ def build_html() -> str:
 <hr class="rule">
 
 <section>
-  <div class="slug">07 &mdash; The Outfield Context</div>
+  <div class="slug">09 &mdash; The Outfield Context</div>
   <h2>Five bats, four spots &mdash; and he's the movable one</h2>
   <p>This is not a player decision in isolation. Boston has <b>five bats for
   four spots</b>: Roman Anthony ($2.6M, 8yr/$130M extension), Ceddanne
@@ -395,15 +480,17 @@ def build_html() -> str:
 </div>
 
 <div class="closer"><div class="closer-inner">
-  <div class="slug">08 &mdash; Bottom Line</div>
+  <div class="slug">10 &mdash; Bottom Line</div>
   <h3>2024 was the lucky top of a real plateau, not a mirage.</h3>
   <p>Its process &mdash; the swing decisions, the contact quality &mdash;
   was legitimate and continuous with 2023 and 2025. Anchoring his value to
   it overpays.</p>
   <h3>2026 is the unlucky bottom, sitting on real erosion.</h3>
-  <p>A &minus;72-point BABIP gap will regress upward; the worse chase, whiff
-  and hard-hit rates may not. The line is worse than the player, and the
-  player is worse than he was.</p>
+  <p>A &minus;72-point BABIP gap will regress upward &mdash; ten seasons of
+  league history say gaps like his close. The worse chase and whiff rates
+  are real, but the bat tracking says they are approach, not a slowing bat:
+  the line is worse than the player, and the player is pressing, not
+  fading.</p>
   <h3>Hold through 2026. Deal him in the offseason.</h3>
   <p>Both scenarios price a winter trade ($22M / $18M) above the July nadir
   (~$10M). Value him off 2025 &mdash; an above-average, speed-and-defense
@@ -414,6 +501,13 @@ def build_html() -> str:
   chase and whiff &mdash; not batting average. A second-half BABIP rebound
   confirms the hold; chase and whiff staying elevated into 2027 says take a
   good deadline offer and move on.</p>
+  <p class="aside">And this analysis grades itself: every falsifiable claim
+  above &mdash; both rebound distributions, the probability calls (69% /
+  47% / 60% blended), the $18&ndash;22M offseason valuation, the
+  approach-not-physical verdict &mdash; was frozen on July 4, 2026 in
+  <code>outputs/predictions.json</code>. In October,
+  <code>src/grade_predictions.py</code> pulls the actual second half and
+  scores every line, flattering or not.</p>
 </div></div>
 
 <footer>Jarren Duran outlier analysis &middot; built from a reproducible,
