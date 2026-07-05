@@ -14,10 +14,10 @@ Five bats for four spots (three OF + DH): **Roman Anthony, Ceddanne Rafaela, Wil
 |--------|-----|--------:|--------:|------:|---------------:|:-------------:|---------|
 | Roman Anthony | LF/CF | 3.8 | 8 | $2.6M | $+27.8M | 140→92 | KEEP — cornerstone |
 | Ceddanne Rafaela | CF/SS | 3.2 | 6 | $2.0M | $+23.6M | 91→110 | KEEP — premium glove |
-| Wilyer Abreu | RF | 2.8 | 4 | $0.8M | $+21.6M | 110→107 | KEEP — cheap surplus |
-| Jarren Duran | LF/CF | 2.6 | 3 | $7.7M | $+13.1M | 111→61 | TRADE — the movable piece |
-| Nate Eaton | 4th OF | 0.7 | 4 | $0.8M | $+4.8M | 102→109 | DEPTH |
-| Masataka Yoshida | DH | 0.3 | 2 | $18.6M | $-16.2M | 88→90 | ABSORB / salary-dump |
+| Wilyer Abreu | RF | 2.8 | 4 | $0.8M | $+21.6M | 110→108 | KEEP — cheap surplus |
+| Jarren Duran | LF/CF | 2.6 | 3 | $7.7M | $+13.1M | 111→59 | TRADE — the movable piece |
+| Nate Eaton | 4th OF | 0.7 | 4 | $0.8M | $+4.8M | 102→75 | DEPTH |
+| Masataka Yoshida | DH | 0.3 | 2 | $18.6M | $-16.2M | 88→91 | ABSORB / salary-dump |
 
 *Surplus = proj. true-talent WAR × $8M − 2026 salary (annual; multiply by control years for total). Illustrative, not a precise valuation.*
 

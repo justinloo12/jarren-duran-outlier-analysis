@@ -15,14 +15,14 @@
 
 | Team | 2026 W-L | Win% | Team OF wRC+ | OF WAR | Fit |
 |------|:--------:|-----:|------------:|-------:|:---:|
-| Phillies | 49-39 | 0.557 | 88 | 1.4 | ★ strong |
-| Rays | 51-33 | 0.607 | 90 | 3.3 | ★ strong |
-| Marlins | 46-42 | 0.523 | 95 | 2.1 | good |
-| Reds | 40-46 | 0.465 | 88 | 1.0 | good |
-| Astros | 43-46 | 0.483 | 77 | 1.5 | good |
-| Guardians | 46-42 | 0.523 | 88 | 3.0 | good |
-| Padres | 43-42 | 0.506 | 90 | 2.8 | marginal |
-| White Sox | 45-41 | 0.523 | 100 | 3.5 | marginal |
+| Phillies | 49-39 | 0.557 | 86 | 1.1 | ★ strong |
+| Rays | 52-33 | 0.612 | 90 | 3.4 | ★ strong |
+| Marlins | 47-42 | 0.528 | 98 | 2.6 | good |
+| Astros | 43-47 | 0.478 | 77 | 1.5 | good |
+| Guardians | 47-42 | 0.528 | 88 | 3.2 | good |
+| White Sox | 45-42 | 0.517 | 100 | 3.5 | marginal |
+| Blue Jays | 42-47 | 0.472 | 100 | 2.3 | marginal |
+| Padres | 43-44 | 0.494 | 90 | 3.0 | marginal |
 
 *Fit score rewards winning % and penalizes existing OF production; a low team OF wRC+ = more need for a bat like Duran's.*
 
