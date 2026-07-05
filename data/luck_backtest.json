@@ -1,0 +1,42 @@
+{
+  "config": {
+    "seasons": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "min_h1_pa": 250,
+    "min_ros_pa": 100,
+    "gap_max": -0.02
+  },
+  "cohort": {
+    "n": 322,
+    "mean_recovery": 0.01931366459627329,
+    "median_recovery": 0.01999999999999999,
+    "mean_ros_minus_h1_xwoba": -0.014397515527950312,
+    "median_ros_minus_h1_xwoba": -0.01200000000000001,
+    "pct_closed_half": 0.5403726708074534,
+    "pct_any_improvement": 0.6801242236024845,
+    "corr_ros_with_h1_xwoba": 0.4526614545611879,
+    "corr_ros_with_h1_woba": 0.4430393366628546
+  },
+  "pool": {
+    "n": 1358,
+    "corr_ros_with_h1_xwoba": 0.4453910860699392,
+    "corr_ros_with_h1_woba": 0.36450166780509635
+  },
+  "duran": {
+    "h1_woba": 0.2626145396664825,
+    "h1_xwoba": 0.2872097499251014,
+    "gap": -0.024595210258618883,
+    "pctile_all_h1": 0.18335787923416788,
+    "pctile_in_cohort": 0.7732919254658385,
+    "implied_ros_woba_mean_closure": 0.2819282042627558
+  }
+}
