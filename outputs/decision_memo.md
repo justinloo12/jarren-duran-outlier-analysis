@@ -1,11 +1,11 @@
 # Decision Memo — Is Jarren Duran's 2024 an Outlier?
-*Generated 2026-07-02 · data via pybaseball (Statcast), FanGraphs API, MLB Stats API*
+*Generated 2026-07-04 · data via pybaseball (Statcast), FanGraphs API, MLB Stats API*
 
 ## Bottom line up front
 
 - **2024 was his best year and only marginally luck-aided — not a fluke.** Its underlying process (xwOBA 0.340, elite swing decisions) was legitimate and continuous with 2023 and 2025. Results ran ~17 points of wOBA ahead of contact quality — but after crediting the ~6 points his speed *always* adds over xwOBA, the true luck component is closer to 10 points. And 2024 was a peak in every phase: career-best baserunning and defense, not just the bat.
 - **His true talent is the 2023–2025 plateau — an above-average regular (~110–125 wRC+), not a 6-WAR star and not a replacement-level bust.** Both the 2024 high and the 2026 low are tails around that.
-- **2026's collapse overstates his decline: it is partly *unlucky*** (wOBA 0.265 sits *below* xwOBA 0.286; BABIP 0.244 vs xBABIP 0.311, -67 points — and for a speedster who normally *beats* his xstats, running below them is doubly anomalous). There is real erosion in 2026 — chase, whiff and hard-hit rate all worsened significantly — but no injury has been reported, his speed/defense remain plus, and the batting line is worse than the erosion warrants.
+- **2026's collapse overstates his decline: it is partly *unlucky*** (wOBA 0.263 sits *below* xwOBA 0.287; BABIP 0.240 vs xBABIP 0.312, -72 points — and for a speedster who normally *beats* his xstats, running below them is doubly anomalous). There is real erosion in 2026 — chase, whiff and hard-hit rate all worsened significantly — but no injury has been reported, his speed/defense remain plus, and the batting line is worse than the erosion warrants.
 - **Implication:** value him off ~his 2025 line. Anchoring to 2024 **over**pays; anchoring to 2026 **under**pays. The thesis is right that 2024 shouldn't be the anchor — but 'sell because value is cratering' misreads a down year that is depressed by bad luck.
 
 ## Season-by-season
@@ -17,7 +17,7 @@
 | 2023 | 26 | 362 | 122 | 0.354 | 0.321 | 0.381 | 0.355 | 5.3% | 46.3% | 30.0% | 21.7% |
 | 2024 | 27 | 735 | 131 | 0.357 | 0.340 | 0.344 | 0.333 | 9.3% | 44.0% | 28.1% | 21.8% |
 | 2025 | 28 | 696 | 111 | 0.335 | 0.326 | 0.326 | 0.326 | 9.7% | 46.9% | 31.1% | 26.2% |
-| 2026 * | 29 | 339 | 61 | 0.265 | 0.286 | 0.244 | 0.311 | 10.3% | 38.6% | 35.7% | 32.7% |
+| 2026 * | 29 | 343 | 59 | 0.263 | 0.287 | 0.240 | 0.312 | 10.6% | 39.0% | 35.8% | 32.8% |
 
 *`*` = partial season, in progress as of the analysis date. xBABIP / xwOBA are Statcast contact-quality expectations.*
 
@@ -26,19 +26,19 @@
 - **wOBA − xwOBA, 2024:** +17 points (wOBA 0.357 vs xwOBA 0.340; Savant est_woba 0.340 agrees).
 - **BABIP − xBABIP, 2024:** +11 points (BABIP 0.344 vs contact-quality xBABIP 0.333).
 
-**A necessary speed adjustment.** Statcast expected stats are built from exit velocity and launch angle only — they ignore sprint speed. A burner like Duran legs out infield hits and stretches singles into doubles, so he *should* chronically out-hit his xwOBA as a skill, not luck. His own non-2024 career baseline gap is **+6 points** of wOBA over xwOBA. Measured against that personal norm rather than zero:
-- 2024's gap was only **+11 points above his own baseline** — an even smaller luck component than the raw gap suggests.
-- 2026's gap sits **-27 points below his own baseline** — for a player whose legs usually add ~6 points, running *negative* is a much larger anomaly than the raw number shows.
+**A necessary speed adjustment.** Statcast expected stats are built from exit velocity and launch angle only — they ignore sprint speed. A burner like Duran legs out infield hits and stretches singles into doubles, so he *should* chronically out-hit his xwOBA as a skill, not luck. His own non-2024 career baseline gap is **+5 points** of wOBA over xwOBA. Measured against that personal norm rather than zero:
+- 2024's gap was only **+12 points above his own baseline** — an even smaller luck component than the raw gap suggests.
+- 2026's gap sits **-30 points below his own baseline** — for a player whose legs usually add ~6 points, running *negative* is a much larger anomaly than the raw number shows.
 
-**Park robustness check (is this just Fenway?).** The headline talent metric, wRC+, is park-adjusted by construction, but the luck analysis above is not — and the Green Monster inflates exactly the kind of contact Duran makes. Splitting his career by venue: his wOBA−xwOBA gap is **+20 at Fenway vs +22 on the road — essentially identical**. The overperformance travels, which is what a speed skill (not a park effect) looks like.
+**Park robustness check (is this just Fenway?).** The headline talent metric, wRC+, is park-adjusted by construction, but the luck analysis above is not — and the Green Monster inflates exactly the kind of contact Duran makes. Splitting his career by venue: his wOBA−xwOBA gap is **+20 at Fenway vs +20 on the road — essentially identical**. The overperformance travels, which is what a speed skill (not a park effect) looks like.
 - 2024's gap was actually **road-concentrated** (+50 road vs +14 home) — the opposite of a Monster-driven fluke.
-- 2026 is negative in **both** venues (-13 home, -27 road) — the underperformance is not a schedule artifact.
+- 2026 is negative in **both** venues (-13 home, -34 road) — the underperformance is not a schedule artifact.
 
 > **Read:** after crediting his speed, 2024's luck component shrinks to ~10 points of wOBA — real but minor. Enough to shave a ~130 wRC+ toward the low-120s of true talent, **not** enough to call 2024 a mirage. The batted-ball luck specifically (BABIP vs xBABIP) is negligible. Meanwhile the same adjustment makes 2026 look *more* unlucky, not less.
 
 ## 2. BABIP — did variance prop 2024 up?
 
-- 2024 BABIP **0.344** vs his own non-2024 baseline **0.322** (+22 pts, not significant (p=0.33)).
+- 2024 BABIP **0.344** vs his own non-2024 baseline **0.321** (+23 pts, not significant (p=0.31)).
 - 2024 BABIP vs 2024 league average (300+ PA) **0.294** (significant (p<0.05)).
 - 2024 BABIP vs his *own* xBABIP **0.333**: only +11 pts.
 
@@ -48,12 +48,12 @@
 
 | Metric | 2024 | Baseline | Diff (pts) | Verdict |
 |--------|-----:|---------:|-----------:|---------|
-| Barrel% | 9.3% | 8.3% | +10 | not significant (p=0.49) |
-| Hard-Hit% | 44.0% | 43.6% | +3 | not significant (p=0.90) |
-| Chase% | 28.1% | 32.1% | -39 | significant (p<0.01) |
-| Whiff% | 21.8% | 26.5% | -46 | significant (p<0.01) |
-| Zone-Contact% | 87.4% | 86.5% | +9 | not significant (p=0.49) |
-| BABIP | 34.4% | 31.9% | +25 | not significant (p=0.33) |
+| Barrel% | 9.3% | 8.4% | +10 | not significant (p=0.52) |
+| Hard-Hit% | 44.0% | 43.7% | +3 | not significant (p=0.92) |
+| Chase% | 28.1% | 32.1% | -40 | significant (p<0.01) |
+| Whiff% | 21.8% | 26.5% | -47 | significant (p<0.01) |
+| Zone-Contact% | 87.4% | 86.5% | +9 | not significant (p=0.48) |
+| BABIP | 34.4% | 31.8% | +26 | not significant (p=0.31) |
 
 *Multiple-comparisons caution: ~a dozen tests are reported across this memo, so isolated p-values in the .03–.05 range should be read as directional; only the whiff/chase findings (p<0.01–0.05, consistent across seasons) would survive a family-wise correction.*
 
@@ -68,20 +68,20 @@
 | 2023 | 30.0% | 21.7% | 89.2% |
 | 2024 | 28.1% | 21.8% | 87.4% |
 | 2025 | 31.1% | 26.2% | 86.9% |
-| 2026 | 35.7% | 32.7% | 83.5% |
+| 2026 | 35.8% | 32.8% | 83.5% |
 
 > The 2022→2024 improvement in chase/whiff **did** persist into 2023 and held reasonably in 2025 — consistent with a real approach gain that underpins the 2023–25 plateau. It then **regressed in 2026** (chase and whiff both jump), which is the first genuine warning sign of decline — see §5.
 
 ## 5. Are 2025 and 2026 the same player? (mean-reversion vs. decline)
 
-- wRC+ **111 → 61**; wOBA 0.335 → 0.265.
-- Chase%: 2026 vs 2025 +46 pts (significant (p<0.05)).
-- Whiff%: 2026 vs 2025 +65 pts (significant (p<0.01)).
-- Barrel%: 2026 vs 2025 +7 pts (not significant (p=0.79)).
-- Hard-Hit%: 2026 vs 2025 -83 pts (significant (p<0.05)).
-- BABIP: 2026 vs 2025 -82 pts (significant (p<0.05)).
+- wRC+ **111 → 59**; wOBA 0.335 → 0.263.
+- Chase%: 2026 vs 2025 +47 pts (significant (p<0.05)).
+- Whiff%: 2026 vs 2025 +66 pts (significant (p<0.01)).
+- Barrel%: 2026 vs 2025 +10 pts (not significant (p=0.69)).
+- Hard-Hit%: 2026 vs 2025 -79 pts (marginal (p<0.10)).
+- BABIP: 2026 vs 2025 -86 pts (significant (p<0.05)).
 
-> **Two things are true at once.** (a) *Real* signal: chase%, whiff% **and hard-hit%** all moved significantly the wrong way in 2026 — both the plate discipline and part of the contact quality that powered the 2023–25 plateau are eroding (barrel% is a career high, but EV and hard-hit rate are down). (b) *Luck* signal on top: even against that diminished contact quality, results underperform — BABIP cratered to 0.244 vs an xBABIP of 0.311, and wOBA (0.265) sits **below** xwOBA (0.286). So 2026 reflects real erosion *and* bad luck; the batting line is worse than the (declining) player underneath it. Net: 2025 and 2026 are **not** a stable shared level — and treating 2026 as 'the new true level' is as much a mistake as treating 2024 as one.
+> **Two things are true at once.** (a) *Real* signal: chase%, whiff% **and hard-hit%** all moved significantly the wrong way in 2026 — both the plate discipline and part of the contact quality that powered the 2023–25 plateau are eroding (barrel% is a career high, but EV and hard-hit rate are down). (b) *Luck* signal on top: even against that diminished contact quality, results underperform — BABIP cratered to 0.240 vs an xBABIP of 0.312, and wOBA (0.263) sits **below** xwOBA (0.287). So 2026 reflects real erosion *and* bad luck; the batting line is worse than the (declining) player underneath it. Net: 2025 and 2026 are **not** a stable shared level — and treating 2026 as 'the new true level' is as much a mistake as treating 2024 as one.
 
 ## 6. The rest of the game: defense, baserunning, speed
 
@@ -94,7 +94,7 @@ Duran's value case has never been bat-only — and his 2024 WAR peak was not eit
 | 2023 | +7.2 | -4.1 | -4.0 | 7.0 | 2.5 |
 | 2024 | +8.3 | +7.6 | +9.3 | 8.0 | 6.8 |
 | 2025 | +7.2 | -2.1 | +3.6 | 7.2 | 3.9 |
-| 2026 * | +3.1 | +0.9 | +4.3 | 6.8 | 0.0 |
+| 2026 * | +3.1 | +0.8 | +4.3 | 6.8 | -0.0 |
 
 *BsR = baserunning runs, Def = defensive runs (positional-adjusted), Fld = fielding runs, Spd = FanGraphs speed score. 2026 counting stats are a partial season (roughly half); prorate accordingly.*
 
@@ -104,9 +104,23 @@ Duran's value case has never been bat-only — and his 2024 WAR peak was not eit
 
 - 2024 wRC+ **131** came at age 27 — his *peak age*, so there is no 'more growth coming' argument.
 - A normal age 27→29 curve (delta-method, biased *toward* smaller declines; a speed/contact cohort actually projects roughly flat) predicts only a **7**-point wRC+ dip.
-- Actual drop 2024→2026 was **70** points — **62** beyond what aging explains.
+- Actual drop 2024→2026 was **71** points — **64** beyond what aging explains.
 
 > Aging explains almost none of the 2024→2026 fall. The residual is mean-reversion from an inflated peak **plus** 2026's bad-luck tail — not a clean age-decline curve. Aging matters going forward (he's now past peak and his discipline is slipping), but it is not what drove the raw numbers down.
+
+## 8. Will he rebound? A 10,000-run Monte Carlo on the rest of 2026
+
+Rest-of-season (303 PA at his current pace) simulated from a true-talent prior built on 2023–25 xwOBA (PA × 3/4/5 recency weights) plus his +5-pt speed premium — the healthy prior lands at **0.336 wOBA ≈ 110 wRC+**, independently confirming the ~110 plateau. Because §5 shows *real* 2026 process erosion, a second scenario blends 2026's degraded process (xwOBA 0.287) in at 40%. Full model + valuation math in `outputs/rebound_probability.md`; distribution in `figures/09_rebound_probability.png`.
+
+| Quantity | Healthy prior | Erosion-blended |
+|----------|--------------:|----------------:|
+| P(rest-of-season wRC+ ≥ 100) | **69%** | **47%** |
+| P(rest-of-season wRC+ ≥ 110) | 50% | 29% |
+| P(full-season 2026 ≥ 90 wRC+) | 27% | 11% |
+| Median rest-of-season wRC+ | 110 | 99 |
+| Expected offseason trade value | $22M | $18M |
+
+> **Read:** if the 2023–25 player is intact, a league-average-or-better second half is a 69% bet; if the process erosion is ~40% real it is a coin flip (47%) — that 22-point gap is what the eroded chase/whiff/hard-hit rates cost. Either way the full-season line likely stays under 90 wRC+ (the first-half hole is too deep), and either way waiting beats selling at today's ~$10M nadir — so the sim supports hold-through-2026, while lowering confidence in the rebound narrative itself.
 
 ## Verdict — with explicit confidence
 
@@ -128,6 +142,7 @@ Duran's value case has never been bat-only — and his 2024 WAR peak was not eit
 - **The genuine risk to underwrite is the skill erosion, not the batting average.** Rising chase%/whiff% and falling hard-hit% in 2026 are the real age-29 warning signs; his BABIP will regress **up**, but if the underlying skills keep slipping, the plateau moves down a tier.
 - **Roster role:** a valuable everyday, speed/defense-supported above-average regular — worth keeping at a fair (non-2024) price, not a cornerstone to extend at star money.
 - **What would move the estimate:** a 2026 second-half BABIP rebound (confirms bad luck → hold), or chase/whiff staying elevated into a full 2027 sample (confirms decline → sell). Track **xwOBA, chase%, whiff%** — not batting average.
+- **Quantified (§8):** the rebound Monte Carlo puts a league-average-or-better rest of season at **69%** (healthy prior) vs **47%** (erosion-blended), and expected offseason trade value at $22M vs $18M — both above the ~$10M a July sale fetches. Hold-through-2026 survives the erosion stress test.
 
 ---
 *Method:* rate stats tested with two-proportion z-tests on their natural denominators (BIP, out-of-zone pitches, swings, in-zone swings); xBABIP/xwOBA from Statcast estimated stats, with luck components measured against Duran's own career wOBA−xwOBA gap (Statcast xstats ignore sprint speed, so fast players chronically out-hit them as a skill); BsR/Def/Fld/Spd from FanGraphs. Aging curve is an empirical delta-method curve from 2021–26 FanGraphs data (survivorship-biased toward smaller declines, i.e. conservative). Roughly a dozen significance tests are reported without family-wise correction; isolated p≈.03–.05 results are directional, and n = 6 seasons (2026 partial). Figures in `figures/`, source data in `data/`.

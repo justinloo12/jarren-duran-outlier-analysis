@@ -15,7 +15,7 @@ from src import config as C
 from src import fetch_fangraphs, fetch_statcast, fetch_milb
 from src import fetch_cohort
 from src import (statcast_metrics, analysis, age_curve, viz, memo, comps,
-                 outfield_plan, trade_targets)
+                 outfield_plan, trade_targets, rebound_sim)
 
 
 def fetch():
@@ -49,14 +49,16 @@ def main():
     age_curve.run()
     print("== Visualizations ==")
     viz.run()
-    print("== Decision memo ==")
-    memo.run()
     print("== Peer & salary comparison ==")
     comps.run()
     print("== Outfield-jam plan ==")
     outfield_plan.run()
     print("== Trade value & best-fit partners ==")
     trade_targets.run()
+    print("== Rebound-probability simulation ==")
+    rebound_sim.run()
+    print("== Decision memo ==")  # last: embeds the rebound-sim results
+    memo.run()
 
     print(f"\nDone. Data -> {C.DATA_DIR}\nFigures -> {C.FIG_DIR}\n"
           f"Memo -> {C.OUT_DIR / 'decision_memo.md'}")

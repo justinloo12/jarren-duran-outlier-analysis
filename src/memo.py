@@ -16,7 +16,9 @@ from . import config as C
 def _load():
     res = json.load(open(C.DATA_DIR / "analysis_results.json"))
     age = json.load(open(C.DATA_DIR / "age_curve.json"))
-    return res, age
+    reb_p = C.DATA_DIR / "rebound_sim.json"
+    reb = json.load(open(reb_p)) if reb_p.exists() else None
+    return res, age, reb
 
 
 def pct(x, d=1):
@@ -57,7 +59,7 @@ def _g(d, k):
     return None if d is None else d.get(k)
 
 
-def build(res, age) -> str:
+def build(res, age, reb=None) -> str:
     S = res["seasons"]
     s24 = S.get(str(C.OUTLIER_SEASON), {})
     s25 = S.get("2025", {})
@@ -326,6 +328,52 @@ def build(res, age) -> str:
       "peak and his discipline is slipping), but it is not what drove the raw "
       "numbers down.\n")
 
+    # ---- strand 8: rebound Monte Carlo ------------------------------------
+    if reb:
+        h = reb["scenarios"]["healthy"]
+        e = reb["scenarios"]["erosion"]
+        pr = reb["prior"]
+        ri = reb["inputs"]
+        va = reb["value_anchors_musd"]
+        A("## 8. Will he rebound? A 10,000-run Monte Carlo on the rest of "
+          "2026\n")
+        A(f"Rest-of-season ({ri['n_remaining_pa']} PA at his current pace) "
+          f"simulated from a true-talent prior built on 2023–25 xwOBA "
+          f"(PA × 3/4/5 recency weights) plus his "
+          f"+{pr['speed_premium']*1000:.0f}-pt speed premium — the healthy "
+          f"prior lands at **{pr['mu_healthy']:.3f} wOBA ≈ "
+          f"{h['prior_mu_wrcplus']:.0f} wRC+**, independently confirming the "
+          f"~110 plateau. Because §5 shows *real* 2026 process erosion, a "
+          f"second scenario blends 2026's degraded process (xwOBA "
+          f"{ri['x_2026']:.3f}) in at {int(pr['erosion_weight']*100)}%. Full "
+          f"model + valuation math in `outputs/rebound_probability.md`; "
+          f"distribution in `figures/09_rebound_probability.png`.\n")
+        A("| Quantity | Healthy prior | Erosion-blended |")
+        A("|----------|--------------:|----------------:|")
+        A(f"| P(rest-of-season wRC+ ≥ 100) | "
+          f"**{h['p_ros_wrcplus_100']:.0%}** | "
+          f"**{e['p_ros_wrcplus_100']:.0%}** |")
+        A(f"| P(rest-of-season wRC+ ≥ 110) | {h['p_ros_wrcplus_110']:.0%} | "
+          f"{e['p_ros_wrcplus_110']:.0%} |")
+        A(f"| P(full-season 2026 ≥ 90 wRC+) | {h['p_full_wrcplus_90']:.0%} | "
+          f"{e['p_full_wrcplus_90']:.0%} |")
+        A(f"| Median rest-of-season wRC+ | {h['median_ros_wrcplus']:.0f} | "
+          f"{e['median_ros_wrcplus']:.0f} |")
+        A(f"| Expected offseason trade value | "
+          f"${h['value_timing_musd']['offseason']:.0f}M | "
+          f"${e['value_timing_musd']['offseason']:.0f}M |")
+        A(f"\n> **Read:** if the 2023–25 player is intact, a league-average-"
+          f"or-better second half is a {h['p_ros_wrcplus_100']:.0%} bet; if "
+          f"the process erosion is ~{int(pr['erosion_weight']*100)}% real it "
+          f"is a coin flip ({e['p_ros_wrcplus_100']:.0%}) — that "
+          f"{(h['p_ros_wrcplus_100']-e['p_ros_wrcplus_100'])*100:.0f}-point "
+          f"gap is what the eroded chase/whiff/hard-hit rates cost. Either "
+          f"way the full-season line likely stays under 90 wRC+ (the "
+          f"first-half hole is too deep), and either way waiting beats "
+          f"selling at today's ~${va['nadir']:.0f}M nadir — so the sim "
+          f"supports hold-through-2026, while lowering confidence in the "
+          f"rebound narrative itself.\n")
+
     # ---- verdict ---------------------------------------------------------
     A("## Verdict — with explicit confidence\n")
     A("**Is 2024 statistically distinguishable as an outlier from 2025–26 and "
@@ -371,7 +419,19 @@ def build(res, age) -> str:
     A("- **What would move the estimate:** a 2026 second-half BABIP rebound "
       "(confirms bad luck → hold), or chase/whiff staying elevated into a full "
       "2027 sample (confirms decline → sell). Track **xwOBA, chase%, whiff%** — "
-      "not batting average.\n")
+      "not batting average.")
+    if reb:
+        h = reb["scenarios"]["healthy"]
+        e = reb["scenarios"]["erosion"]
+        A(f"- **Quantified (§8):** the rebound Monte Carlo puts a league-"
+          f"average-or-better rest of season at "
+          f"**{h['p_ros_wrcplus_100']:.0%}** (healthy prior) vs "
+          f"**{e['p_ros_wrcplus_100']:.0%}** (erosion-blended), and expected "
+          f"offseason trade value at ${h['value_timing_musd']['offseason']:.0f}M "
+          f"vs ${e['value_timing_musd']['offseason']:.0f}M — both above the "
+          f"~${reb['value_anchors_musd']['nadir']:.0f}M a July sale fetches. "
+          f"Hold-through-2026 survives the erosion stress test.")
+    A("")
 
     A("---\n*Method:* rate stats tested with two-proportion z-tests on their "
       "natural denominators (BIP, out-of-zone pitches, swings, in-zone swings); "
@@ -388,8 +448,8 @@ def build(res, age) -> str:
 
 
 def run():
-    res, age = _load()
-    md = build(res, age)
+    res, age, reb = _load()
+    md = build(res, age, reb)
     out = C.OUT_DIR / "decision_memo.md"
     out.write_text(md)
     print(f"  [memo] wrote {out}")

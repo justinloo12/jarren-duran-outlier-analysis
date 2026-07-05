@@ -1,0 +1,87 @@
+{
+  "inputs": {
+    "xwoba": {
+      "2023": 0.3213809977666913,
+      "2024": 0.3395408880515176,
+      "2025": 0.3257216196211557
+    },
+    "pa": {
+      "2023": 362.0,
+      "2024": 735.0,
+      "2025": 696.0
+    },
+    "speed_premium": 0.005359361346788428,
+    "x_2026": 0.2872097499251014,
+    "pa_2026": 343.0,
+    "woba_2026": 0.2626145396664825,
+    "wrcplus_2026": 59.47893059403327,
+    "games_played": 86,
+    "n_remaining_pa": 303,
+    "conv": {
+      "slope": 671.4550166044216,
+      "intercept": -113.12294405716767,
+      "offset": -2.2144629490847123
+    }
+  },
+  "prior": {
+    "mu_xwoba": 0.3305064229586611,
+    "n_eff": 1737.9244863964464,
+    "seasons": [
+      2023,
+      2024,
+      2025
+    ],
+    "speed_premium": 0.005359361346788428,
+    "mu_healthy": 0.33586578430544956,
+    "mu_eroded": 0.31854711509202566,
+    "erosion_weight": 0.4,
+    "sigma_talent": 0.015111203658332671,
+    "talent_drift_sd": 0.01
+  },
+  "sim": {
+    "n_sims": 10000,
+    "seed": 680776
+  },
+  "value_anchors_musd": {
+    "nadir": 9.620000000000001,
+    "rebound": 27.900000000000002
+  },
+  "scenarios": {
+    "healthy": {
+      "name": "healthy",
+      "prior_mu_woba": 0.33586578430544956,
+      "prior_sigma": 0.015111203658332671,
+      "prior_mu_wrcplus": 110.18135877142035,
+      "p_ros_wrcplus_100": 0.6909,
+      "p_ros_wrcplus_110": 0.5022,
+      "p_full_wrcplus_90": 0.2681,
+      "median_ros_woba": 0.3357735103061328,
+      "median_ros_wrcplus": 110.11940093167694,
+      "median_full_woba": 0.29692904137517295,
+      "median_full_wrcplus": 84.03708740064938,
+      "value_timing_musd": {
+        "now": 9.620000000000001,
+        "deadline": 15.934826000000001,
+        "offseason": 22.249652
+      }
+    },
+    "erosion": {
+      "name": "erosion",
+      "prior_mu_woba": 0.31854711509202566,
+      "prior_sigma": 0.015111203658332671,
+      "prior_mu_wrcplus": 98.55265144715432,
+      "p_ros_wrcplus_100": 0.4708,
+      "p_ros_wrcplus_110": 0.2875,
+      "p_full_wrcplus_90": 0.1133,
+      "median_ros_woba": 0.31848239758462427,
+      "median_ros_wrcplus": 98.50919655214751,
+      "median_full_woba": 0.28881881358164807,
+      "median_full_wrcplus": 78.5914342628825,
+      "value_timing_musd": {
+        "now": 9.620000000000001,
+        "deadline": 13.923112000000003,
+        "offseason": 18.226224000000002
+      }
+    }
+  }
+}
