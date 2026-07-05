@@ -1,0 +1,79 @@
+{
+  "frozen": "2026-07-04",
+  "generated": "2026-07-04",
+  "player": "Jarren Duran",
+  "mlbam": 680776,
+  "definition": {
+    "graded_quantity": "Duran's rest-of-2026 wRC+ (regular-season games on/after the freeze date), computed as ROS wOBA from pitch-level Statcast (sum woba_value / sum woba_denom) mapped through the frozen conversion below",
+    "conversion_wrcplus_eq": "wRC+ = slope * wOBA + intercept + offset",
+    "conversion": {
+      "slope": 671.4550166044216,
+      "intercept": -113.12294405716767,
+      "offset": -2.2144629490847123
+    },
+    "n_remaining_pa_at_freeze": 303,
+    "min_ros_pa_to_grade": 100
+  },
+  "predictions": {
+    "scenarios": {
+      "healthy": {
+        "ros_wrcplus_quantiles": {
+          "q05": 76.1586196883538,
+          "q10": 83.75167726962779,
+          "q25": 96.41944248414313,
+          "q50": 110.11940093167694,
+          "q75": 123.87444642867916,
+          "q90": 136.33289005013756,
+          "q95": 143.3387431631833
+        },
+        "p_ros_wrcplus_ge_100": 0.6909,
+        "p_ros_wrcplus_ge_110": 0.5022,
+        "median_ros_woba": 0.3357735103061328
+      },
+      "erosion": {
+        "ros_wrcplus_quantiles": {
+          "q05": 64.87565718287178,
+          "q10": 72.4081332433878,
+          "q25": 84.95974722509999,
+          "q50": 98.50919655214751,
+          "q75": 112.09910570581637,
+          "q90": 124.37375756589944,
+          "q95": 131.37008207863835
+        },
+        "p_ros_wrcplus_ge_100": 0.4708,
+        "p_ros_wrcplus_ge_110": 0.2875,
+        "median_ros_woba": 0.31848239758462427
+      }
+    },
+    "scenario_weighting": {
+      "w_healthy": 0.6,
+      "rationale": "erosion-decomposition verdict (bat speed intact -> approach) up-weights the healthy prior from an agnostic 50/50",
+      "p_blend_ros_wrcplus_ge_100": 0.60286,
+      "binary_call_ros_wrcplus_ge_100": true
+    },
+    "valuation": {
+      "call": "do NOT sell at the 2026 deadline; deal in the offseason",
+      "offseason_value_range_musd": [
+        18.0,
+        22.0
+      ],
+      "sell_now_value_musd": 10.0,
+      "grading_note": "graded qualitatively in October: was he traded before the deadline (call fails if the return was clearly below the range)? If dealt in the offseason, does the return grade within/above 18-22 $M surplus (~a 50-FV prospect package)?"
+    },
+    "erosion_verdict": {
+      "label": "approach",
+      "bat_speed_delta_mph": 1.1506202054908101,
+      "claim": "2026's decline is approach (intent/selectivity), not physical: bat speed is up vs 2024-25, whiff and chase erosion should be fixable; graded TRUE if his 2026 final avg bat speed stays within 1 mph of 2025 AND ROS chase improves vs H1"
+    },
+    "backtest_context": {
+      "cohort_mean_recovery_pts": 19.3,
+      "pct_closed_half": 0.5403726708074534,
+      "duran_gap_pctile_all": 0.18335787923416788
+    }
+  },
+  "grading": {
+    "how": "python3 -m src.grade_predictions (after the 2026 regular season)",
+    "binary": "Brier score on each P(ROS wRC+ >= 100) plus the blended call",
+    "quantiles": "coverage: does actual ROS wRC+ fall inside each scenario's 50% (q25-q75) and 90% (q05-q95) intervals?"
+  }
+}
