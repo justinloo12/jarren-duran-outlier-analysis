@@ -12,12 +12,21 @@ well supported.** His 2024 *process* (xwOBA .340, career-best swing decisions)
 was legitimate and continuous with 2023 and 2025, and his 2024 BABIP is **not**
 significantly above his own history. The truer story: **2023–2025 is an
 above-average true-talent plateau (~110–125 wRC+); 2024 is the lucky top and
-2026 is an *unlucky* bottom** (2026 wOBA .265 sits *below* its xwOBA .286, BABIP
-.244 vs xBABIP .311 — doubly anomalous for a speedster who normally *beats*
-his xstats by ~6 points via infield hits). His speed, baserunning and defense
+2026 is an *unlucky* bottom** (2026 wOBA .263 sits *below* its xwOBA .287, BABIP
+.240 vs xBABIP .312 — doubly anomalous for a speedster who normally *beats*
+his xstats by ~5–6 points via infield hits). His speed, baserunning and defense
 remain plus in 2026; the slump is entirely the bat, with no injury reported.
 So anchoring value to 2024 overpays, but selling on 2026
 underpays — this is closer to a hold/buy-low than a sell.
+
+A 10,000-run **rebound Monte Carlo** ([`src/rebound_sim.py`](src/rebound_sim.py)
+→ [`outputs/rebound_probability.md`](outputs/rebound_probability.md)) puts
+numbers on that call: if the 2023–25 talent is intact, the rest of 2026 comes
+in at league average or better **69%** of the time — but if 2026's real
+process erosion (chase/whiff/hard-hit) is blended in at 40%, that drops to a
+**47%** coin flip. Either way, expected offseason trade value ($22M / $18M)
+beats selling at today's ~$10M nadir, so **hold-through-2026 survives the
+erosion stress test** — with lower confidence in the rebound itself.
 
 ## Quick start
 
@@ -27,10 +36,13 @@ pip install -r requirements.txt
 python run_all.py              # full run: pull data -> analyze -> figures -> memo
 python run_all.py --no-fetch   # reuse cached CSVs, just re-analyze
 python run_all.py --fetch-only # only refresh raw data
+
+python -m unittest discover tests   # offline unit tests (also run in CI)
 ```
 
-Outputs land in `data/` (CSVs + JSON), `figures/` (4 PNGs), and
-`outputs/decision_memo.md`.
+Outputs land in `data/` (CSVs + JSON), `figures/` (9 PNGs), and
+`outputs/` (decision memo + peer/salary, outfield-plan, trade-target and
+rebound-probability memos).
 
 ## What it does
 
@@ -85,6 +97,18 @@ Outputs land in `data/` (CSVs + JSON), `figures/` (4 PNGs), and
    ~$28M / 50-FV after a rebound) and ranks trade partners by fit = 2026
    contention (MLB Stats API standings) × outfield need (FanGraphs team OF
    production). Top fits: **Phillies, Rays, Marlins, Guardians**.
+9. **Rebound-probability Monte Carlo** ([`src/rebound_sim.py`](src/rebound_sim.py)
+   → [`outputs/rebound_probability.md`](outputs/rebound_probability.md) and
+   §8 of the decision memo): 10,000 seeded, deterministic sims of Duran's
+   remaining ~300 PA. True-talent prior = 2023–25 xwOBA (PA × 3/4/5 recency
+   weights) + his speed premium; talent uncertainty + binomial-approximation
+   sampling noise at the remaining-PA count; wOBA→wRC+ via a PA-weighted
+   league fit plus his park offset. Run twice: the **healthy prior**
+   (no-injury, no-skill-cliff) and an **erosion scenario** blending 2026's
+   degraded process at 40% — the gap between them (P(ROS wRC+≥100): 69% vs
+   47%) quantifies how much the documented erosion matters. Ties into the
+   $8M/WAR surplus framework: expected value now vs deadline vs offseason
+   under both scenarios.
 
 A capstone narrative ties it all together in
 [`outputs/CASE_STUDY.md`](outputs/CASE_STUDY.md), and a 10-slide presentation
@@ -137,8 +161,9 @@ src/
   comps.py             # peer/salary comparison + figures 05-06 + peer memo
   outfield_plan.py     # surplus-value model + figure 07 + jam-fix plan memo
   trade_targets.py     # trade value + fit-ranked partners + figure 08 + memo
+  rebound_sim.py       # rebound Monte Carlo + figure 09 + rebound memo
   viz.py               # figures 01-04
-  memo.py              # decision memo generator
+  memo.py              # decision memo generator (incl. rebound section)
 run_all.py             # orchestrator
 data/  figures/  outputs/
 ```
@@ -153,6 +178,8 @@ data/  figures/  outputs/
 6. `06_salary_vs_output_scatter.png` — OF salary vs. 2026 output, Duran located.
 7. `07_outfield_plan.png` — surplus value by player, keep/trade/absorb verdicts.
 8. `08_trade_fit_targets.png` — trade partners by contention × outfield need.
+9. `09_rebound_probability.png` — simulated rest-of-2026 wRC+ distributions,
+   healthy prior vs. erosion scenario, P(wRC+≥100) annotated.
 
 *Data via [pybaseball](https://github.com/jldbc/pybaseball) (Statcast/Baseball
 Savant), the FanGraphs API, and the MLB Stats API. For research/education.*
