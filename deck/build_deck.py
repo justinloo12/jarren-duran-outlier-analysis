@@ -204,9 +204,9 @@ rules = [("Hold Duran", RED,
          ("Keep the vets", NAVY,
           "Gray, Chapman, Contreras are playoff innings now. Sell branch "
           "reopens only if the gap blows out by Aug 1."),
-         ("Add at the holes", GREEN,
-          "A controllable infield bat, a reliever, and a catcher upgrade — "
-          "targeted, no rental splurges (see the audit).")]
+         ("Add without disturbing the room", GREEN,
+          "A reliever, a catcher, an infield bat — paid for in prospects "
+          "before big-leaguers, filling empty spots, not hot ones.")]
 yy = 1.95
 for head, col, body in rules:
     dot(s, tx, yy + 0.04, 0.16, fill=col)
@@ -414,20 +414,24 @@ footer(s)
 # ---------------------------------------------------------- 6c MOCK TRADES
 s = new()
 eyebrow(s, "The menu")
-title(s, "Four trades that fit — arms out, bats and leverage in")
+title(s, "Four trades that fit — ranked by what they cost the room")
 trades = [
-    ("1 · The big swing", "SS Zach Neto (LAA)", RED,
-     "For Tolle + Early + a 45 FV. Controlled through 2029; ~$80M of value "
-     "each way. Painful, franchise-window correct."),
-    ("2 · The stabilizer", "2B Luis Arraez (SFG)", NAVY,
-     "For Brayan Bello. Pure rental; Arraez takes 2B, Mayer slides to SS. "
-     "Zero prospect cost — the most odds-proportionate move."),
-    ("3 · The pen fix", "RHP Luke Weaver (NYM)", GREEN,
-     "For a 45 FV + 40 FV. Elite relief year, signed through '27. The "
-     "highest-probability marginal win on the board."),
-    ("4 · The catcher fix", "C Shea Langeliers (ATH)", GOLD,
-     "For Bennett + a 45 FV. 120+ wRC+ catcher controlled through 2028; "
-     "the A's always need cheap innings.")]
+    ("1 · The pen fix · zero disruption", "RHP Luke Weaver (NYM)", GREEN,
+     "For a 45 FV + 40 FV — prospects only, nobody loses a job or an "
+     "inning. Elite relief year, signed through '27. The highest-"
+     "probability marginal win on the board."),
+    ("2 · The catcher fix · low", "C Shea Langeliers (ATH)", GOLD,
+     "For Bennett + a 45 FV. Bennett is the 8th starter on a 5-slot "
+     "staff; catcher is the one spot with no hot incumbent. Controlled "
+     "through 2028."),
+    ("3 · The stabilizer · moderate", "2B Luis Arraez (SFG)", NAVY,
+     "For Brayan Bello — the first deal that touches the active roster. "
+     "Zero prospect cost; Arraez fills a patchwork platoon spot, not a "
+     "hot regular's."),
+    ("4 · The big swing · high — wait?", "SS Zach Neto (LAA)", RED,
+     "For Tolle + Early + a 45 FV: two arms out of a winning rotation "
+     "mid-streak. Franchise-window correct — and still there in the "
+     "winter. Controlled through 2029.")]
 cw, ch = 5.86, 2.12
 pos = [(0.62, 1.85), (0.62 + cw + 0.33, 1.85),
        (0.62, 1.85 + ch + 0.28), (0.62 + cw + 0.33, 1.85 + ch + 0.28)]

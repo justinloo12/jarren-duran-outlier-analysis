@@ -455,7 +455,12 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
           "is worth real assets — the fire-sale case is dead, and even the "
           "sell-the-vets hedge should wait. But buy like the math, not like "
           "a panic: targeted, controllable additions at the actual holes, "
-          "not rental splurges. The decision tree by asset:\n")
+          "not rental splurges. And one constraint sits over every deal: "
+          "**don't disturb the room.** A 13-game streak is the sound of a "
+          "clubhouse that works, and chemistry is a real asset that never "
+          "shows up in a WAR column — so additions should cost prospects "
+          "before they cost big-leaguers, and fill empty spots before "
+          "occupied ones. The decision tree by asset:\n")
     else:
         A(f"**{v['call']}.** With ~{v['odds']*100:.0f}% odds, splurging on "
           "rentals would be malpractice — but so would a fire sale of a "
@@ -471,8 +476,9 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
     if v["odds"] >= 0.40:
         A("- **Keep the expiring veterans** (Gray, Chapman, Contreras were "
           "the winter's reported trade names) — they are playoff innings "
-          "and playoff at-bats now. The sell branch reopens only if the "
-          "gap blows out before August 1.")
+          "and playoff at-bats now, and the veteran spine of the room that "
+          "just won 13 straight. The sell branch reopens only if the gap "
+          "blows out before August 1.")
     else:
         A("- **The only sell-now inventory is the expiring veterans** (Gray, "
           "Chapman, Contreras have been the reported names) — and only if "

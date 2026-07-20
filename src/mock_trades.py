@@ -84,33 +84,57 @@ def build() -> str:
       f"({_bat_line(bats['Bobby Witt Jr.'])}) and De La Cruz "
       f"({_bat_line(bats['Elly De La Cruz'])}) top the seller SS list but "
       "are franchise players — named for completeness, not available.\n")
+    A("**The chemistry constraint.** A team that just won 13 straight has "
+      "a room that is working, and disruption is a real cost even though it "
+      "never shows up in a WAR column. So every deal below is priced on two "
+      "ledgers — surplus value *and* clubhouse cost — and the menu is "
+      "**ranked by how little it disturbs the roster**: prospects out "
+      "before big-leaguers, open spots filled before occupied ones, and no "
+      "deal that demotes anyone driving the streak.\n")
     A("These four trades are a **menu, not a plan** — Early and Bennett "
       "each appear in more than one package, and Boston can realistically "
       "afford about two of these deals.\n")
 
     # ---- Trade 1 ----------------------------------------------------------
-    A("## Trade 1 — The big swing: a real shortstop\n")
-    A("> **Red Sox get:** SS Zach Neto "
-      f"({_bat_line(bats['Zach Neto'])}; $4.15M, arbitration-controlled "
-      "through 2029)")
-    A("> **Angels get:** LHP Payton Tolle "
-      f"({_arm_line(arms['Payton Tolle'])}), RHP Connelly Early "
-      f"({_arm_line(arms['Connelly Early'])}), plus a 45 FV lottery arm\n")
-    A("**The math.** Neto projects as a ~3.5-WAR shortstop with 3.5 cheap "
-      "years of control after 2026 — roughly **$75–90M of surplus value**. "
-      "Tolle is a breakout 23-year-old lefty (top-100 type, ~$45–55M), "
-      "Early a controllable mid-rotation arm (~$20M), plus ~$9M in FV: the "
-      "package lands in the same band. LA declined to extend Neto and is "
-      "10.5 out — this is exactly when a rebuilding club cashes a "
-      "26-and-under core piece for three arms.")
-    A("**Why Boston says yes anyway:** it hurts, but it converts two of "
-      "eight starters into the roster's only true external hole, and Neto "
-      "arrives controlled through the entire Anthony/Rafaela/Abreu window. "
-      "**Why they might not:** if the org believes Mayer is the shortstop, "
-      "this is paying retail for a redundancy.\n")
+    A("## Trade 1 — The pen fix: the zero-disruption add\n")
+    A("> **Red Sox get:** RHP Luke Weaver "
+      f"({_arm_line(arms['Luke Weaver'])}; signed through 2027, ~$12.5M "
+      "owed next year)")
+    A("> **Mets get:** a 45 FV bat plus a 40 FV arm (~$13M of prospect "
+      "value)\n")
+    A("**The math.** Weaver is having an elite relief season on a selling "
+      "Mets club that reporting already lists as motivated to move him. A "
+      "year-and-a-half of a 2.5-FIP reliever is worth ~$15–18M against "
+      "~$18M of salary — the prospect price is real but mid-tier, not "
+      "painful. Cheaper alternative from the same pool: KC's Daniel Lynch "
+      f"IV ({_arm_line(arms['Daniel Lynch IV'])}) for a 40 FV flier.")
+    A("**Clubhouse cost: none.** The package is entirely minor-leaguers — "
+      "nobody in the major-league room loses a job, a role, or an inning; "
+      "the bullpen simply gets deeper for the stretch run. And it lands at "
+      "the roster's quiet weakness: the pen's ERA is masking a worse FIP "
+      "and bottom-half reliever WAR. In a race decided by 2–3 wins, this "
+      "is the highest-probability marginal win at the lowest human cost.\n")
 
     # ---- Trade 2 ----------------------------------------------------------
-    A("## Trade 2 — The stabilizer: rental bat for a buy-low arm\n")
+    A("## Trade 2 — The quiet three-season fix: a controllable catcher\n")
+    A("> **Red Sox get:** C Shea Langeliers "
+      f"({_bat_line(bats['Shea Langeliers'])}; $5.25M, controlled through "
+      "2028)")
+    A("> **Athletics get:** LHP Jake Bennett "
+      f"({_arm_line(arms['Jake Bennett'])}) plus a 45 FV prospect\n")
+    A("**The math.** Langeliers at ~2.5 WAR/yr with 2.5 cheap years ≈ "
+      "**$35–45M surplus**. Bennett (~$25M as a controllable mid-rotation "
+      "lefty) plus a 45 FV (~$9M) matches. The A's perpetually need cheap "
+      "innings; Boston turns a season-long leak — with no internal help "
+      "coming — into a plus for three seasons.")
+    A("**Clubhouse cost: low.** Bennett is the eighth starter on a "
+      "five-slot staff once Crochet and Sandoval return — surplus by "
+      "definition — and catcher is the one lineup spot where no incumbent "
+      "has claimed the job. An upgrade there reshuffles nobody who is "
+      "driving the streak.\n")
+
+    # ---- Trade 3 ----------------------------------------------------------
+    A("## Trade 3 — The stabilizer: rental bat for a buy-low arm\n")
     A("> **Red Sox get:** 2B Luis Arraez "
       f"({_bat_line(bats['Luis Arraez'])}; 1yr/$12M, free agent after "
       "2026 — a pure rental)")
@@ -124,40 +148,38 @@ def build() -> str:
       "can afford to wait on. Near-even swap.")
     A("**The fit.** Arraez takes second while the Cheng/Monasterio "
       "platoon bridges short until Mayer (10-day IL) returns — turning two "
-      "patchwork infield spots into one. No prospect cost at all — the "
-      "cleanest add on the board.\n")
-
-    # ---- Trade 3 ----------------------------------------------------------
-    A("## Trade 3 — The pen fix\n")
-    A("> **Red Sox get:** RHP Luke Weaver "
-      f"({_arm_line(arms['Luke Weaver'])}; signed through 2027, ~$12.5M "
-      "owed next year)")
-    A("> **Mets get:** a 45 FV bat plus a 40 FV arm (~$13M of prospect "
-      "value)\n")
-    A("**The math.** Weaver is having an elite relief season on a selling "
-      "Mets club that reporting already lists as motivated to move him. A "
-      "year-and-a-half of a 2.5-FIP reliever is worth ~$15–18M against "
-      "~$18M of salary — the prospect price is real but mid-tier, not "
-      "painful. Cheaper alternative from the same pool: KC's Daniel Lynch "
-      f"IV ({_arm_line(arms['Daniel Lynch IV'])}) for a 40 FV flier.")
-    A("**Why this one matters most:** Boston's bullpen ERA is masking a "
-      "worse FIP and bottom-half reliever WAR. In a race decided by 2–3 "
-      "wins, the reliever is the highest-probability marginal win on the "
-      "board.\n")
+      "patchwork infield spots into one. No prospect cost at all.")
+    A("**Clubhouse cost: moderate — the first deal that touches the "
+      "room.** Bello leaves the active roster mid-streak, but he sits "
+      "outside the playoff rotation once Crochet and Sandoval are back, "
+      "and Arraez fills a spot currently held by a patchwork platoon, not "
+      "a hot regular. An add, not a reshuffle.\n")
 
     # ---- Trade 4 ----------------------------------------------------------
-    A("## Trade 4 — The quiet three-season fix: a controllable catcher\n")
-    A("> **Red Sox get:** C Shea Langeliers "
-      f"({_bat_line(bats['Shea Langeliers'])}; $5.25M, controlled through "
-      "2028)")
-    A("> **Athletics get:** LHP Jake Bennett "
-      f"({_arm_line(arms['Jake Bennett'])}) plus a 45 FV prospect\n")
-    A("**The math.** Langeliers at ~2.5 WAR/yr with 2.5 cheap years ≈ "
-      "**$35–45M surplus**. Bennett (~$25M as a controllable mid-rotation "
-      "lefty) plus a 45 FV (~$9M) matches. The A's perpetually need cheap "
-      "innings; Boston turns a season-long leak — with no internal help "
-      "coming — into a plus for three seasons, at a position where the "
-      "self-healing ones into a plus for three seasons.\n")
+    A("## Trade 4 — The big swing: a real shortstop, at a real cost\n")
+    A("> **Red Sox get:** SS Zach Neto "
+      f"({_bat_line(bats['Zach Neto'])}; $4.15M, arbitration-controlled "
+      "through 2029)")
+    A("> **Angels get:** LHP Payton Tolle "
+      f"({_arm_line(arms['Payton Tolle'])}), RHP Connelly Early "
+      f"({_arm_line(arms['Connelly Early'])}), plus a 45 FV lottery arm\n")
+    A("**The math.** Neto projects as a ~3.5-WAR shortstop with 3.5 cheap "
+      "years of control after 2026 — roughly **$75–90M of surplus value**. "
+      "Tolle is a breakout 23-year-old lefty (top-100 type, ~$45–55M), "
+      "Early a controllable mid-rotation arm (~$20M), plus ~$9M in FV: the "
+      "package lands in the same band. LA declined to extend Neto and is "
+      "10.5 out — this is exactly when a rebuilding club cashes a "
+      "26-and-under core piece for three arms.")
+    A("**Clubhouse cost: high — the only deal on the menu that "
+      "disturbs a winning room.** Tolle and Early are two arms out of the "
+      "active rotation in the middle of the streak. The surplus-value math "
+      "says yes; the chemistry ledger is the honest argument for waiting "
+      "until winter. **Why Boston might do it anyway:** it converts two of "
+      "eight starters into the roster's only true external hole, and Neto "
+      "arrives controlled through the entire Anthony/Rafaela/Abreu window. "
+      "**Why they might not:** if the org believes Mayer is the shortstop, "
+      "this is paying retail for a redundancy — and paying it in "
+      "clubhouse disruption too.\n")
 
     # ---- Sell branch ------------------------------------------------------
     A("## The contingency — if the gap is 6+ by August 1\n")
@@ -170,7 +192,9 @@ def build() -> str:
       "for a 40+ FV flier.\n")
     A("Selling the rentals is the *only* sell branch — the audit gives no "
       "case for moving Contreras, Duran, or any controllable starter at "
-      "this deadline.\n")
+      "this deadline. The chemistry ledger doubles the point: trading your "
+      "best hitter out of a clubhouse three weeks removed from a 13-game "
+      "streak isn't a hedge, it's a message — and rooms hear it.\n")
 
     A("---\n*Contracts: Neto $4.15M arb-controlled through 2029 (avoided "
       "arbitration Jan 2026); Arraez 1yr/$12M (SF, Feb 2026); Weaver "
@@ -185,21 +209,29 @@ def article_section(md: str) -> str:
     """Compact version of the trades for ARTICLE.md."""
     L = []
     A = L.append
-    A("\n## Four trades that actually fit\n")
-    A("Working the seller list against Boston's one real surplus — eight "
-      "starters for five slots — produces a menu (full value math in the "
-      "mock-trades memo):\n")
-    A("1. **The big swing:** Payton Tolle + Connelly Early + a lottery arm "
-      "to the Angels for SS Zach Neto (controlled through 2029). Painful, "
-      "franchise-window correct.")
-    A("2. **The stabilizer:** Brayan Bello to the Giants for rental Luis "
-      "Arraez — Arraez takes second, Mayer slides to short, zero prospect "
-      "cost. The move most proportionate to the odds — upgrade without betting the future.")
-    A("3. **The pen fix:** a 45 FV + 40 FV package to the selling Mets for "
-      "Luke Weaver (elite relief season, signed through 2027) — the "
-      "highest-probability marginal win available.")
-    A("4. **The opportunist:** Jake Bennett + a 45 FV to the A's for C Shea "
-      "Langeliers (controlled through 2028).")
+    A("\n## Four trades that fit — ranked by what they cost the room\n")
+    A("A team that just won 13 straight has a clubhouse that is working, "
+      "so disruption gets priced like a cost. Working the seller list "
+      "against Boston's one real surplus — eight starters for five slots — "
+      "produces a menu, ordered from least to most disturbance (full value "
+      "math in the mock-trades memo):\n")
+    A("1. **The pen fix (zero disruption):** a 45 FV + 40 FV prospect "
+      "package to the selling Mets for Luke Weaver (elite relief season, "
+      "signed through 2027). Nobody in the room loses a job or an inning — "
+      "and it's the highest-probability marginal win available.")
+    A("2. **The quiet fix (low):** Jake Bennett + a 45 FV to the A's for C "
+      "Shea Langeliers (controlled through 2028). Bennett is the eighth "
+      "starter on a five-slot staff; catcher is the one spot with no "
+      "incumbent playing well.")
+    A("3. **The stabilizer (moderate):** Brayan Bello to the Giants for "
+      "rental Luis Arraez — zero prospect cost, and Arraez fills a "
+      "patchwork platoon spot rather than displacing a hot regular. The "
+      "first deal that subtracts from the active roster.")
+    A("4. **The big swing (high — probably wait):** Payton Tolle + "
+      "Connelly Early + a lottery arm to the Angels for SS Zach Neto "
+      "(controlled through 2029). Franchise-window correct on paper — but "
+      "it pulls two arms out of a winning rotation mid-streak, and the "
+      "same trade will still be there in the winter.")
     A("\nAnd the contingency: if the gap hits six games by August 1, the "
       "sell list is Gray and Chapman — the rentals — and stops there.\n")
     return "\n".join(L)
@@ -216,7 +248,7 @@ def run():
         s = art.read_text()
         marker = "## The left fielder: the whole season in one player"
         section = article_section(s)
-        if "## Four trades that actually fit" not in s and marker in s:
+        if "## Four trades that fit" not in s and marker in s:
             s = s.replace(marker, section.strip() + "\n\n" + marker)
             art.write_text(s)
             print("  [trades] appended trades section to ARTICLE.md")
