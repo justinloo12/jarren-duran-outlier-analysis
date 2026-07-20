@@ -17,14 +17,18 @@ ROOT = Path(__file__).resolve().parent.parent
 FIG = ROOT / "figures"
 OUT = ROOT / "outputs" / "Red_Sox_Outfield_Strategy.pptx"
 
-# palette
-NAVY = "0C2340"; RED = "BD3039"; INK = "20232A"; MUTED = "6B7280"
-BG = "F4F5F7"; WHITE = "FFFFFF"; GREEN = "2E7D32"; GOLD = "B7892F"; LINE = "D7DAE0"
-HEAD = "Cambria"; BODY = "Calibri"
+# palette — dark "night game" broadcast theme
+BG = "0B1220"          # page
+PANEL = "121E33"       # cards
+PANEL2 = "1A2740"      # emphasis card
+NAVY = "EAF0F8"        # primary display text (was navy-on-light)
+RED = "E8615A"; GREEN = "58C08D"; GOLD = "E3B14E"
+INK = "D9E1EF"; MUTED = "93A0B6"; WHITE = "F4F7FC"; LINE = "26334E"
+HEAD = "Arial"; BODY = "Arial"; MONO = "Courier New"
 
 W, H = 13.333, 7.5
 ASPECT = {"01": 1.60, "04": 1.60, "07": 10/5.8, "08": 10/6.4,
-          "09": 1504/649, "10": 2087/679}
+          "09": 1504/649, "10": 2087/679, "12": 1.62, "13": 1.68}
 
 
 def C(hexs):
@@ -58,7 +62,7 @@ def txt(slide, x, y, w, h, runs, size=16, color=INK, bold=False, font=BODY,
     return tb
 
 
-def card(slide, x, y, w, h, fill=WHITE, line=LINE, radius=0.08):
+def card(slide, x, y, w, h, fill=PANEL, line=LINE, radius=0.06):
     sh = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
                                 In(x), In(y), In(w), In(h))
     sh.fill.solid(); sh.fill.fore_color.rgb = C(fill)
@@ -74,15 +78,21 @@ def card(slide, x, y, w, h, fill=WHITE, line=LINE, radius=0.08):
     return sh
 
 
-def dot(slide, x, y, d, fill=RED, text=None, tcolor=WHITE, size=15):
-    sh = slide.shapes.add_shape(MSO_SHAPE.OVAL, In(x), In(y), In(d), In(d))
+def dot(slide, x, y, d, fill=RED, text=None, tcolor="0B1220", size=15):
+    """Square scoreboard tag (replaces the old circle motif)."""
+    sh = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                In(x), In(y), In(d), In(d))
     sh.fill.solid(); sh.fill.fore_color.rgb = C(fill); sh.line.fill.background()
     sh.shadow.inherit = False
+    try:
+        sh.adjustments[0] = 0.18
+    except Exception:
+        pass
     if text is not None:
         tf = sh.text_frame; tf.word_wrap = False
         p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
         r = p.add_run(); r.text = text
-        r.font.size = Pt(size); r.font.bold = True; r.font.name = HEAD
+        r.font.size = Pt(size); r.font.bold = True; r.font.name = MONO
         r.font.color.rgb = C(tcolor)
     return sh
 
@@ -93,13 +103,17 @@ def image(slide, key, x, y, max_w, max_h, name):
     if hh > max_h:
         hh = max_h; w = hh * a
     ix = x + (max_w - w) / 2
-    slide.shapes.add_picture(str(FIG / name), In(ix), In(y), In(w), In(hh))
+    src = FIG / "dark" / name
+    if not src.exists():
+        src = FIG / name
+    slide.shapes.add_picture(str(src), In(ix), In(y), In(w), In(hh))
     return ix, y, w, hh
 
 
 def eyebrow(slide, text, x=0.62, y=0.42, color=RED):
-    txt(slide, x, y, 11, 0.3, [[(text.upper(), {"color": color, "bold": True,
-        "size": 12.5, "font": BODY})]], space_after=0)
+    txt(slide, x, y, 11, 0.3, [[("// " + text.upper(),
+        {"color": color, "bold": True, "size": 12, "font": MONO})]],
+        space_after=0)
 
 
 def title(slide, text, x=0.62, y=0.72, w=12.1, size=30, color=NAVY):
@@ -108,11 +122,12 @@ def title(slide, text, x=0.62, y=0.72, w=12.1, size=30, color=NAVY):
 
 
 def footer(slide, dark=False):
-    c = "9AA3B2" if dark else MUTED
+    c = "5E6B84"
     txt(slide, 0.62, 7.12, 12.1, 0.3,
-        [[("Boston Red Sox · Outfield Strategy", {"color": c, "size": 9}),
-          ("      Analysis: Statcast / FanGraphs / MLB Stats API · salary Spotrac · July 2026",
-           {"color": c, "size": 9})]], space_after=0)
+        [[("BOS // OUTFIELD STRATEGY", {"color": RED, "size": 8,
+           "font": MONO, "bold": True}),
+          ("   STATCAST / FANGRAPHS / MLB STATS API / SPOTRAC · JULY 2026",
+           {"color": c, "size": 8, "font": MONO})]], space_after=0)
 
 
 def bg(slide, color):
@@ -130,7 +145,7 @@ def new(color=BG):
 
 
 # ---------------------------------------------------------------- 1 TITLE
-s = new(NAVY)
+s = new("0E1830")
 dot(s, 0.62, 0.62, 0.34, fill=RED)
 txt(s, 1.05, 0.6, 10, 0.4, [[("BOSTON RED SOX  ·  ROSTER STRATEGY",
     {"color": "C9D2E3", "bold": True, "size": 13})]], space_after=0)
@@ -140,9 +155,9 @@ txt(s, 0.62, 2.15, 12.1, 2.0, [
     [("into an Asset", {"size": 46, "bold": True, "font": HEAD, "color": RED})],
 ], space_after=2, line_spacing=1.0)
 txt(s, 0.62, 4.35, 11.6, 1.0, [[(
-    "Five bats for four spots. The pitching is carrying the team — so the fix "
-    "isn't to buy arms, it's to convert a redundant outfield into the offense "
-    "and youth the roster actually needs.",
+    "Five bats for four spots, a playoff spot in hand, and a deadline plan "
+    "the data actually supports: buy targeted, hold Duran at his nadir, and "
+    "decide his future in the winter.",
     {"size": 17, "color": "D3D9E6"})]], line_spacing=1.12)
 txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
     {"color": "8C97AC", "size": 12, "italic": True})]], space_after=0)
@@ -150,10 +165,10 @@ txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
 # ---------------------------------------------------------------- 2 SITUATION
 s = new()
 eyebrow(s, "The setup")
-title(s, "A down year for the bats — but a rare surplus in the grass")
-stats = [("~70", "win pace in 2026 (37-48)", "the offense, not the pitching, is the drag"),
-         ("Top-10", "starting rotation", "8th in WAR, 9th in ERA (3.76) — a strength"),
-         ("5 → 4", "OF/DH for four spots", "the one area of genuine roster depth")]
+title(s, "The record is finally catching up to the ballclub")
+stats = [("75%", "playoff odds", "10,000 sims — a playoff team, not a corpse (fig. 12)"),
+         ("+45", "run differential", "a Pythagorean .553 team wearing a .510 record"),
+         ("WC3", "spot currently held", "after a 13-game winning streak")]
 cw, gap = 3.83, 0.31
 for i, (big, lab, sub) in enumerate(stats):
     x = 0.62 + i * (cw + gap)
@@ -165,15 +180,42 @@ for i, (big, lab, sub) in enumerate(stats):
     txt(s, x + 0.3, 3.66, cw - 0.55, 0.7, [[(sub, {"size": 12.5,
         "color": MUTED})]], line_spacing=1.05)
 txt(s, 0.62, 4.75, 12.1, 1.4, [
-    [("The Sox aren't buying their way to a 2026 title. ",
+    [("A month ago the easy take was sell. ",
       {"bold": True, "color": INK, "size": 15}),
-     ("They're setting up 2027 around a strong rotation and a cheap young "
-      "outfield core. Right now the jam is even ",
+     ("But the record was lying — the run differential said so all along, "
+      "and the streak is the correction arriving. The outfield jam, still ",
       {"color": INK, "size": 15}),
      ("masked by Roman Anthony's injury", {"bold": True, "color": RED, "size": 15}),
-     (" (60-day IL) — which makes it a 2027 problem to solve this winter, not a "
-      "deadline scramble.", {"color": INK, "size": 15})],
+     (", is now a buyer's depth chart: the surplus funds the deadline instead "
+      "of a teardown.", {"color": INK, "size": 15})],
 ], line_spacing=1.2)
+footer(s)
+
+# ------------------------------------------------------------ 2b THE RACE
+s = new()
+eyebrow(s, "The verdict")
+title(s, "BUY — but buy like the math, not like a panic")
+image(s, "12", 0.4, 1.7, 8.0, 4.6, "12_playoff_race.png")
+tx = 8.75
+rules = [("Hold Duran", RED,
+          "Value at its nadir; his July contact (~.35 xwOBA) is already "
+          "surging. Re-price in winter."),
+         ("Keep the vets", NAVY,
+          "Gray, Chapman, Contreras are playoff innings now. Sell branch "
+          "reopens only if the gap blows out by Aug 1."),
+         ("Add at the holes", GREEN,
+          "A controllable infield bat, a reliever, and a catcher upgrade — "
+          "targeted, no rental splurges (see the audit).")]
+yy = 1.95
+for head, col, body in rules:
+    dot(s, tx, yy + 0.04, 0.16, fill=col)
+    txt(s, tx + 0.32, yy, 4.1, 1.3, [[(head, {"bold": True, "size": 14.5,
+        "color": NAVY})], [(body, {"size": 12, "color": MUTED})]],
+        line_spacing=1.08, space_after=2)
+    yy += 1.45
+txt(s, tx, yy + 0.02, 4.1, 0.6, [[("The team is its left fielder: process "
+    "better than results.", {"italic": True, "bold": True, "size": 12.5,
+    "color": RED})]], line_spacing=1.05)
 footer(s)
 
 # ---------------------------------------------------------------- 3 KEEP CORE
@@ -214,16 +256,18 @@ eyebrow(s, "Move")
 title(s, "The two that don't fit: a redundant bat and a dead contract")
 cw = 5.86
 data = [(0.62, "Jarren Duran", "LF/CF · 29 · $7.7M", RED,
-         [("Movable piece.", "Controllable through 2028; above-average at true "
-           "talent (~110 wRC+). Redundant behind the core and the priciest of "
-           "the young group."),
-          ("The asset to sell.", "The one everyday, controllable OF a "
-           "contender will pay real prospects for.")]),
+         [("Movable piece — later.", "Controllable through 2028; above-average "
+           "at true talent (~110 wRC+). Redundant behind the core and the "
+           "priciest of the young group."),
+          ("Hold at the deadline.", "Value at its nadir; xstats say the "
+           "market under-prices him. Re-price in winter, after the rebound "
+           "shows (or doesn't).")]),
         (0.62 + cw + 0.33, "Masataka Yoshida", "DH · 32 · $18.6M", MUTED,
          [("Dead money.", "$18.6M through 2027 for a DH-only, below-average "
            "bat. Negative trade value."),
-          ("Absorb, don't chase.", "Let it expire as a platoon DH, or move "
-           "only in a partial salary-dump. Don't pay to escape it.")])]
+          ("Absorb, don't chase.", "Now platooning with Romy Gonzalez — "
+           "as prescribed. Let it expire; move only in a partial "
+           "salary-dump.")])]
 for x, nm, meta, accent, rows in data:
     card(s, x, 1.95, cw, 3.95)
     txt(s, x + 0.32, 2.22, cw - 0.6, 0.5, [[(nm, {"size": 21, "bold": True,
@@ -247,23 +291,26 @@ ix, iy, iw, ih = image(s, "01", 0.5, 1.75, 6.9, 4.55,
                        "01_babip_vs_league.png")
 tx = 7.7
 rows = [("2024 was earned, not a fluke", RED,
-         "His BABIP (.344) sat close to his contact-quality xBABIP (.333); "
-         "xwOBA .340 was legit. A good year, only modestly lucky."),
+         "BABIP .344 vs xBABIP .333; xwOBA .340 legit. Credit his speed's "
+         "usual edge over xstats and the true luck is only +5 to +14 pts."),
         ("2026 is the real anomaly — downward", NAVY,
-         "wOBA .265 sits BELOW its xwOBA .286; BABIP .244 vs .311 expected. "
-         "Real skill erosion, but the line is worse than the player."),
+         "wOBA .263 BELOW its .293 xwOBA — 34 to 43 pts under his own "
+         "norm; BABIP .238 vs .309 expected. Erosion real, luck worse."),
+        ("It isn't Fenway — and the legs are fine", GOLD,
+         "Career gap +19 home / +19 road: identical — the skill travels. "
+         "Speed, baserunning and fielding all still plus. No injury."),
         ("True talent ≈ his 2025 (~110 wRC+)", GREEN,
-         "An above-average regular. Both the 2024 high and 2026 low are tails "
-         "around that.")]
-yy = 1.95
+         "An above-average regular. The 2024 high and 2026 low are tails "
+         "around that plateau.")]
+yy = 1.82
 for head, col, body in rows:
     dot(s, tx, yy + 0.04, 0.16, fill=col)
-    txt(s, tx + 0.32, yy, 5.0, 1.3, [[(head, {"bold": True, "size": 14.5,
-        "color": NAVY})], [(body, {"size": 12.8, "color": MUTED})]],
-        line_spacing=1.08, space_after=2)
-    yy += 1.38
-txt(s, tx, yy + 0.05, 5.0, 0.6, [[("Selling now cashes the slump. Value hinges "
-    "on the rebound.", {"italic": True, "bold": True, "size": 13,
+    txt(s, tx + 0.32, yy, 5.0, 1.2, [[(head, {"bold": True, "size": 13.5,
+        "color": NAVY})], [(body, {"size": 11.6, "color": MUTED})]],
+        line_spacing=1.07, space_after=2)
+    yy += 1.16
+txt(s, tx, yy + 0.03, 5.0, 0.6, [[("Selling now cashes the slump. Value "
+    "hinges on the rebound.", {"italic": True, "bold": True, "size": 12.5,
     "color": RED})]], line_spacing=1.05)
 footer(s)
 
@@ -336,14 +383,77 @@ txt(s, 0.62, 6.35, 12.1, 0.7, [[("2024 → 2026 wRC+ fell ~70 points; a normal "
     line_spacing=1.1)
 footer(s)
 
+# ------------------------------------------------------- 6b POSITIONAL AUDIT
+s = new()
+eyebrow(s, "If they buy — where?")
+title(s, "The roster's biggest hole is the Duran slump itself")
+image(s, "13", 0.4, 1.7, 8.0, 4.6, "13_positional_audit.png")
+tx = 8.75
+finds = [("LF −31: internal fix", RED,
+          "Duran's regression — now sheltered by a Jahmai Jones platoon — "
+          "plus Anthony's eventual return. Free."),
+         ("SS −18: the true target", NAVY,
+          "One controllable infield stabilizer is the only lineup trade "
+          "that fits the odds."),
+         ("Bullpen: quiet weakness", GOLD,
+          "ERA top-10 but FIP and reliever WAR rank far worse — it will "
+          "regress without help."),
+         ("The Contreras twist", GREEN,
+          "The winter's reported sell candidate is now their best hitter. "
+          "Moving him would be surrender priced as prudence.")]
+yy = 1.9
+for head, col, body in finds:
+    dot(s, tx, yy + 0.04, 0.16, fill=col)
+    txt(s, tx + 0.32, yy, 4.1, 1.2, [[(head, {"bold": True, "size": 13.5,
+        "color": NAVY})], [(body, {"size": 11.6, "color": MUTED})]],
+        line_spacing=1.07, space_after=2)
+    yy += 1.22
+footer(s)
+
+# ---------------------------------------------------------- 6c MOCK TRADES
+s = new()
+eyebrow(s, "The menu")
+title(s, "Four trades that fit — arms out, bats and leverage in")
+trades = [
+    ("1 · The big swing", "SS Zach Neto (LAA)", RED,
+     "For Tolle + Early + a 45 FV. Controlled through 2029; ~$80M of value "
+     "each way. Painful, franchise-window correct."),
+    ("2 · The stabilizer", "2B Luis Arraez (SFG)", NAVY,
+     "For Brayan Bello. Pure rental; Arraez takes 2B, Mayer slides to SS. "
+     "Zero prospect cost — the most odds-proportionate move."),
+    ("3 · The pen fix", "RHP Luke Weaver (NYM)", GREEN,
+     "For a 45 FV + 40 FV. Elite relief year, signed through '27. The "
+     "highest-probability marginal win on the board."),
+    ("4 · The catcher fix", "C Shea Langeliers (ATH)", GOLD,
+     "For Bennett + a 45 FV. 120+ wRC+ catcher controlled through 2028; "
+     "the A's always need cheap innings.")]
+cw, ch = 5.86, 2.12
+pos = [(0.62, 1.85), (0.62 + cw + 0.33, 1.85),
+       (0.62, 1.85 + ch + 0.28), (0.62 + cw + 0.33, 1.85 + ch + 0.28)]
+for (lab, get, col, body), (x, y) in zip(trades, pos):
+    card(s, x, y, cw, ch)
+    txt(s, x + 0.28, y + 0.18, cw - 0.55, 0.32, [[(lab.upper(),
+        {"size": 11, "bold": True, "color": col})]], space_after=0)
+    txt(s, x + 0.28, y + 0.5, cw - 0.55, 0.4, [[(get, {"size": 16.5,
+        "bold": True, "font": HEAD, "color": NAVY})]], space_after=0)
+    txt(s, x + 0.28, y + 0.95, cw - 0.55, 1.05, [[(body, {"size": 11.6,
+        "color": MUTED})]], line_spacing=1.1)
+txt(s, 0.62, 6.45, 12.1, 0.5, [[("A menu, not a plan — Boston can afford "
+    "about two. ", {"bold": True, "size": 12.5, "color": INK}),
+    ("Full value math and verified contracts in the mock-trades memo. "
+     "Hypotheticals, not reporting.", {"size": 12.5, "color": MUTED})]],
+    space_after=0)
+footer(s)
+
 # ---------------------------------------------------------------- 7 WHAT TO GET
 s = new()
-eyebrow(s, "What to get back")
+eyebrow(s, "The winter plan")
 title(s, "Pitching is the strength — spend the surplus on offense")
-txt(s, 0.62, 1.72, 12.1, 0.7, [[("With a top-10 rotation (3.76 ERA) already "
-    "carrying the club, trading bats for arms is backwards. Convert the "
-    "outfield surplus into what's thin:", {"size": 14.5, "color": INK})]],
-    line_spacing=1.12)
+txt(s, 0.62, 1.72, 12.1, 0.7, [[("If winter comes and Duran's rebound has "
+    "shown up, this is what a deal should return. With a top-6 rotation "
+    "(3.65 ERA) carrying the club, trading bats for arms is backwards — "
+    "convert the outfield surplus into what's thin:",
+    {"size": 14.5, "color": INK})]], line_spacing=1.12)
 needs = [("Controllable bats", GREEN,
           "Young, cost-controlled position players to fix an inconsistent "
           "lineup and lengthen it around the core."),
@@ -376,10 +486,10 @@ image(s, "08", 0.4, 1.6, 8.2, 4.7, "08_trade_fit_targets.png")
 tx = 8.95
 txt(s, tx, 1.85, 4.0, 0.5, [[("Best-fit buyers", {"size": 15, "bold": True,
     "font": HEAD, "color": NAVY})]], space_after=0)
-for i, (t, d) in enumerate([("Phillies", "contender, 88 OF wRC+"),
-                            ("Rays", ".602, weak OF"),
-                            ("Marlins", "in the hunt, thin OF"),
-                            ("Guardians", "contender, OF need")]):
+for i, (t, d) in enumerate([("Phillies", ".557, 84 OF wRC+"),
+                            ("Rays", ".596, 88 OF wRC+"),
+                            ("Cardinals", ".526, OF need"),
+                            ("Astros", "fringe, weakest OF")]):
     yy = 2.4 + i * 0.62
     dot(s, tx, yy + 0.03, 0.14, fill=RED)
     txt(s, tx + 0.28, yy, 3.9, 0.5, [[(t + "  ", {"bold": True, "size": 14,
@@ -394,15 +504,17 @@ footer(s)
 # ---------------------------------------------------------------- 9 PLAN
 s = new()
 eyebrow(s, "The sequence")
-title(s, "Solve it this winter, from a position of strength")
-steps = [("1", "Hold through 2026", "No contention urgency and Anthony hurt — "
-          "keep Duran's bat, let his value rebound off an unlucky first half."),
-         ("2", "Deal Duran in the offseason", "Anthony's healthy (jam returns), "
-          "value restored. Trade him — plus Yoshida money — for controllable "
-          "bats, not arms."),
-         ("3", "Run it back in 2027", "OF = Anthony / Rafaela / Abreu; strong "
-          "rotation intact; DH opens after 2027. A cheaper, younger, more "
-          "balanced roster.")]
+title(s, "Buy now, decide on Duran in the winter")
+steps = [("1", "At the deadline: buy targeted", "A controllable infield bat "
+          "and a reliever, funded from the pitching surplus. Keep the vets — "
+          "they're playoff innings now."),
+         ("2", "Hold Duran through August", "His value is at its nadir and "
+          "his July contact quality (~.35 xwOBA) is already surging. "
+          "Selling now cashes the slump."),
+         ("3", "Winter: re-price, then choose", "Anthony healthy, jam "
+          "returns. Rebound confirmed → extend or trade at full price, plus "
+          "Yoshida money. Erosion persists → sell at market. Either way, "
+          "the 2027 OF is Anthony / Rafaela / Abreu.")]
 yy = 1.95
 for num, head, body in steps:
     dot(s, 0.7, yy + 0.02, 0.5, fill=RED, text=num, size=18)
@@ -410,7 +522,7 @@ for num, head, body in steps:
         "color": NAVY})], [(body, {"size": 13.5, "color": MUTED})]],
         line_spacing=1.08, space_after=2)
     yy += 1.28
-card(s, 8.55, 1.95, 4.15, 3.65, fill="0C2340", line=None)
+card(s, 8.55, 1.95, 4.15, 3.65, fill=PANEL2, line=None)
 txt(s, 8.85, 2.2, 3.6, 0.4, [[("THE RETURN", {"size": 12.5, "bold": True,
     "color": "C9D2E3"})]], space_after=0)
 txt(s, 8.85, 2.72, 3.6, 1.0, [
@@ -427,17 +539,18 @@ txt(s, 8.85, 5.05, 3.6, 0.5, [[("One grade of return = the reason to wait.",
 footer(s)
 
 # ---------------------------------------------------------------- 10 CLOSER
-s = new(NAVY)
+s = new("0E1830")
 dot(s, 0.62, 0.7, 0.34, fill=RED)
 txt(s, 1.05, 0.68, 10, 0.4, [[("BOTTOM LINE", {"color": "C9D2E3",
     "bold": True, "size": 13})]], space_after=0)
-lines = [("Keep the strength.", "A top-10 rotation and a cheap, young OF core "
-          "are the foundation — don't trade into them."),
-         ("Cash the surplus, not the slump.", "Move Duran this winter after a "
-          "value rebound, for bats and youth — sell the 2025 player, not the "
-          "unlucky 2026 one."),
-         ("Quarantine the dead money.", "Absorb Yoshida; free the 2027 payroll "
-          "and the DH slot.")]
+lines = [("Play the hand.", "75% playoff odds, +45 run differential, a wild card in hand — "
+          "buy targeted (a shortstop, a reliever), keep the vets, and let "
+          "the record keep catching up to the process."),
+         ("Cash the surplus, not the slump.", "Hold Duran through the "
+          "deadline; re-price him in winter — extend or trade the 2025 "
+          "player, never the unlucky 2026 one."),
+         ("Quarantine the dead money.", "Absorb Yoshida; free the 2027 "
+          "payroll and the DH slot.")]
 yy = 1.95
 for head, body in lines:
     dot(s, 0.7, yy + 0.06, 0.18, fill=RED)

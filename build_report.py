@@ -37,20 +37,21 @@ FIGS = [
      "1 · BABIP by season vs. league average",
      "How often Duran's balls in play fell for hits each year (bars), versus "
      "the league average (grey line) and versus what his own contact quality "
-     "'deserved' (green, xBABIP). <b>2024's .344 sits close to his xBABIP "
-     "(.333) — largely earned, not lucky.</b> The real outlier is 2026: a .244 "
-     "mark far below the .311 his contact supports — bad luck stacked on a "
-     "smaller, real decline."),
+     "'deserved' (green, xBABIP). <b>2024's mark sits right on his xBABIP — "
+     "largely earned, not lucky.</b> The real outlier is 2026: a BABIP "
+     "running ~70 points below what his contact quality supports — bad luck "
+     "stacked on a smaller, real decline. Exact values are on the chart."),
     ("02_woba_vs_xwoba.png",
      "2 · Results vs. contact quality (wOBA vs. xwOBA)",
      "Actual offensive output (red) against what his contact quality predicts "
      "(navy). One key adjustment: these expected stats ignore sprint speed, "
-     "and a burner like Duran <i>always</i> beats them a little (~+6 points "
-     "in his other seasons) by legging out hits. Against his own norm, "
-     "<b>2024's gap (+17 raw) is only ~+11 points of true luck — modest</b>, "
-     "and smaller than 2023's. In 2026 the lines flip: his results run "
-     "<i>below</i> his contact quality (−27 vs. his norm) — for a speedster, "
-     "a strong sign of bad luck, not just lost skill."),
+     "and a burner like Duran beats them in most seasons (+3 to +13 points, "
+     "depending which years you average) by legging out hits. Against his "
+     "own norm, <b>2024's gap (+17 raw) is only +5 to +14 points of true "
+     "luck — modest</b>, and smaller than 2023's. In 2026 the lines flip: "
+     "his results run far <i>below</i> his contact quality (34–43 points "
+     "under his norm) — for a speedster, a strong sign of bad luck, not "
+     "just lost skill."),
     ("03_plate_discipline_trend.png",
      "3 · Swing decisions & contact",
      "Chase% (swings at balls outside the zone), whiff%, and zone-contact% "
@@ -89,10 +90,29 @@ FIGS = [
      "8 · Best-fit trade partners",
      "Teams plotted by winning % (up) and outfield production (right = "
      "stronger OF). <b>The best trade partners for Duran are winning teams "
-     "with weak outfields (upper-left): Phillies, Rays, Marlins, "
-     "Guardians</b> — contenders who would pay in young talent for an everyday "
-     "outfielder. (Boston, having a top-10 rotation, should take back bats, "
-     "not arms.)"),
+     "with weak outfields (the shaded upper-left quadrant)</b> — contenders "
+     "who would pay in young talent for an everyday outfielder. (Boston, "
+     "with a top-6 rotation, should take back bats, not arms.)"),
+    ("12_playoff_race.png",
+     "12 · The AL playoff race — should Boston even sell?",
+     "Simulated playoff odds for every AL team still alive (10,000 season "
+     "simulations; talent estimated from regressed run differential). "
+     "<b>Boston's run differential says it is far better than its record — "
+     "and the wild-card race is weak enough that the sim keeps them squarely "
+     "alive.</b> The team, like Duran, was producing worse results than its "
+     "underlying process — and as the results catch up, the case against a "
+     "fire sale (and against trading Duran at his nadir) only strengthens. "
+     "Current record, gap and odds are labeled on the chart."),
+    ("13_positional_audit.png",
+     "13 · Where the roster actually leaks runs",
+     "Boston's production at each position versus the league average at that "
+     "position (PA-weighted wRC+). <b>The biggest hole is left field — the "
+     "Duran slump itself — meaning the best deadline additions are internal "
+     "and free: Duran's regression and Roman Anthony's eventual return.</b> "
+     "Shortstop is the one true external target; the bullpen (whose FIP and "
+     "reliever WAR rank well below its ERA) is the quiet weakness. And the "
+     "awkward twist: Willson Contreras, a reported winter trade candidate, "
+     "is their best hitter. Exact gaps are labeled on the chart."),
 ]
 
 

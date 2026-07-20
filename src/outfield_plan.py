@@ -47,10 +47,11 @@ PLAYERS = [
          note="32, $18.6M through 2027, DH-only, below-average bat. Negative "
               "trade value; move only in a partial salary-dump, else let it "
               "expire as a platoon DH."),
-    dict(name="Nate Eaton", pos="4th OF", proj_war=0.7, control=4,
-         salary=0.76, verdict="DEPTH",
-         note="Cheap, versatile 4th/5th OF; useful bench piece, not a "
-              "blocker."),
+    dict(name="Jahmai Jones", pos="4th OF", proj_war=0.4, control=2,
+         salary=0.75, verdict="DEPTH",
+         note="RHB platoon partner for Duran in LF; acquired from Detroit "
+              "7/14 for a PTBNL. Reclamation bet: .426 wOBA vs LHP in 2025, "
+              ".272 in 2026 (but .327 xwOBA — under-luck, like the team)."),
 ]
 
 VERDICT_COLOR = {
@@ -191,7 +192,7 @@ def memo(df):
     A("| CF | Ceddanne Rafaela | premium glove; SS/util flex |")
     A("| RF | Wilyer Abreu | cheap surplus |")
     A("| DH | Yoshida (final year) → open in 2028 | platoon/absorb |")
-    A("| 4th OF | Nate Eaton / depth | |")
+    A("| 4th OF | Jahmai Jones / depth | |")
     A("| — | **Duran traded** for pitching | value cashed near his 2025 level |")
     A("")
 

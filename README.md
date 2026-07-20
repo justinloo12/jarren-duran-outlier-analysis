@@ -188,13 +188,14 @@ with `python deck/build_deck.py` (needs `python-pptx`).
 - **xBABIP / xwOBA** are Statcast contact-quality expectations
   (`estimated_ba/woba_using_speedangle`). Because they ignore sprint speed —
   and fast players beat them chronically as a skill — luck components are
-  measured against Duran's **own** career wOBA−xwOBA gap (+6 pts), not zero.
+  measured against Duran's **own** career wOBA−xwOBA gap (a +3 to +13 pt
+  range depending on season exclusions), not zero.
 - **Park factors:** wRC+ (used for all talent-level and peer comparisons) is
   park-adjusted by construction. The luck analysis is verified by venue: his
-  career wOBA−xwOBA gap is +20 at Fenway vs +22 on the road — identical — so
+  career wOBA−xwOBA gap is +19 at Fenway vs +19 on the road — identical — so
   the xstat overperformance travels and is not a Green Monster artifact. Raw
-  counting stats do carry a Fenway boost (career home wOBA .350 vs road
-  .325); the trade memo flags this for park translation.
+  counting stats do carry a Fenway boost (his career home wOBA runs ~25
+  points above road); the trade memo flags this for park translation.
 - **Multiple comparisons:** ~a dozen significance tests are reported without
   family-wise correction; isolated p≈.03–.05 results are directional. Only
   the whiff/chase findings would survive a correction.
@@ -221,6 +222,8 @@ src/
   comps.py             # peer/salary comparison + figures 05-06 + peer memo
   outfield_plan.py     # surplus-value model + figure 07 + jam-fix plan memo
   trade_targets.py     # trade value + fit-ranked partners + figure 08 + memo
+  deadline.py          # buy/sell verdict: odds sim + positional audit + figs 09-10 + ARTICLE.md
+  mock_trades.py       # value-checked hypothetical trades (arms for bats)
   rebound_sim.py       # rebound Monte Carlo + figure 09 + rebound memo
   erosion.py           # bat-tracking decomposition + figure 10 + verdict
   luck_backtest.py     # 2016-25 luck-gap backtest + figure 11 + memo
@@ -242,6 +245,8 @@ data/  figures/  outputs/
 6. `06_salary_vs_output_scatter.png` — OF salary vs. 2026 output, Duran located.
 7. `07_outfield_plan.png` — surplus value by player, keep/trade/absorb verdicts.
 8. `08_trade_fit_targets.png` — trade partners by contention × outfield need.
+12. `12_playoff_race.png` — simulated AL playoff odds; the buy/sell context.
+13. `13_positional_audit.png` — BOS wRC+ vs league by position; where to upgrade.
 9. `09_rebound_probability.png` — simulated rest-of-2026 wRC+ distributions,
    healthy prior vs. erosion scenario, P(wRC+≥100) annotated.
 10. `10_erosion_decomposition.png` — bat speed / fast-swing trend, whiff by

@@ -143,8 +143,11 @@ def build(res, age, reb=None, ero=None, bt=None) -> str:
     # ---- strand 1: results vs process (speed-adjusted) -------------------
     sa = res.get("speed_adjusted", {})
     pgap = sa.get("personal_gap_baseline")
+    pgap_hi = sa.get("personal_gap_baseline_ex26")
     x24 = sa.get("gap_2024_excess")
+    x24_lo = sa.get("gap_2024_excess_ex26")
     d26 = sa.get("gap_2026_deficit")
+    d26_hi = sa.get("gap_2026_deficit_ex26")
     A("## 1. Did he hit the ball better in 2024, or did it just fall in?\n")
     A(f"- **wOBA − xwOBA, 2024:** {pts(gap24)} points "
       f"(wOBA {num(rp['woba'])} vs xwOBA {num(rp['xwoba_fg'])}; "
@@ -155,14 +158,15 @@ def build(res, age, reb=None, ero=None, bt=None) -> str:
       "from exit velocity and launch angle only — they ignore sprint speed. A "
       "burner like Duran legs out infield hits and stretches singles into "
       "doubles, so he *should* chronically out-hit his xwOBA as a skill, not "
-      "luck. His own non-2024 career baseline gap is "
-      f"**{pts(pgap)} points** of wOBA over xwOBA. Measured against that "
-      "personal norm rather than zero:")
-    A(f"- 2024's gap was only **{pts(x24)} points above his own baseline** — "
-      "an even smaller luck component than the raw gap suggests.")
-    A(f"- 2026's gap sits **{pts(d26)} points below his own baseline** — for "
-      "a player whose legs usually add ~6 points, running *negative* is a "
-      "much larger anomaly than the raw number shows.")
+      "luck. His non-2024 seasons average "
+      f"**{pts(pgap)} to {pts(pgap_hi)} points** of wOBA over xwOBA "
+      "(the range depends on whether the collapsing 2026 is included in his "
+      "own baseline). Measured against that personal norm rather than zero:")
+    A(f"- 2024's gap was **{pts(x24_lo)} to {pts(x24)} points above his own "
+      "baseline** — under any version, a modest luck component.")
+    A(f"- 2026's gap sits **{pts(d26)} to {pts(d26_hi)} points below his own "
+      "baseline** — for a player whose legs normally add value over xstats, "
+      "running negative is a far larger anomaly than the raw number shows.")
     pk = res.get("park_check", {})
     if pk.get("career"):
         ch, cr = pk["career"]["home"], pk["career"]["road"]

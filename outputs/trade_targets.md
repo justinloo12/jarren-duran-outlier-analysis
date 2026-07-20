@@ -15,14 +15,14 @@
 
 | Team | 2026 W-L | Win% | Team OF wRC+ | OF WAR | Fit |
 |------|:--------:|-----:|------------:|-------:|:---:|
-| Phillies | 50-39 | 0.562 | 86 | 1.1 | ★ strong |
-| Rays | 52-34 | 0.605 | 90 | 3.4 | ★ strong |
-| Marlins | 47-42 | 0.528 | 98 | 2.6 | good |
-| Astros | 44-47 | 0.484 | 77 | 1.5 | good |
-| Guardians | 47-43 | 0.522 | 88 | 3.2 | good |
-| White Sox | 46-42 | 0.523 | 100 | 3.5 | marginal |
-| Blue Jays | 42-47 | 0.472 | 100 | 2.3 | marginal |
-| Padres | 43-44 | 0.494 | 90 | 3.0 | marginal |
+| Phillies | 55-45 | 0.550 | 82 | 0.9 | ★ strong |
+| Rays | 56-42 | 0.571 | 90 | 4.2 | ★ strong |
+| Astros | 47-54 | 0.465 | 76 | 1.4 | good |
+| Cardinals | 51-47 | 0.520 | 99 | 3.4 | good |
+| Blue Jays | 46-53 | 0.465 | 94 | 1.8 | good |
+| Tigers | 46-53 | 0.465 | 97 | 1.9 | marginal |
+| White Sox | 52-46 | 0.531 | 101 | 4.2 | marginal |
+| Padres | 49-50 | 0.495 | 88 | 3.0 | marginal |
 
 *Fit score rewards winning % and penalizes existing OF production; a low team OF wRC+ = more need for a bat like Duran's.*
 
@@ -31,7 +31,7 @@
 These are *archetypes* — plug in the buyer's actual prospects from a current top-30 list. **Because Boston's pitching (a top-10 rotation) is a strength, target controllable *bats* and best-available young talent, not arms** — the offense is the soft spot to fix.
 1. **Phillies:** Duran for a controllable, MLB-ready position player (or a 50-FV hitting prospect) at a lineup spot of need. Boston's cleanest fit if the buyer needs an everyday OF now.
 2. **Rays:** Duran for a 45+-FV bat with upside + a 40-FV flier — swaps a redundant OF for offensive help elsewhere in the lineup.
-3. **Marlins:** salary-relief variant — Boston eats a little of Duran's arb money to upgrade the prospect tier by one grade.
+3. **Astros:** salary-relief variant — Boston eats a little of Duran's arb money to upgrade the prospect tier by one grade.
 
 > **Two-birds option:** package Duran *with* a chunk of the Yoshida money to a DH/OF-needy contender, clearing both the jam and part of the albatross in one deal — though that likely lowers the Duran return.
 

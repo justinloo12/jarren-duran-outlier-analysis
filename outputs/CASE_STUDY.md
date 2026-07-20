@@ -64,12 +64,13 @@ against the headline.
 
 **a) Results outran process in 2024 — but only marginally, once you credit
 his legs.** wOBA .357 vs xwOBA .340 (+17 pts); Savant agrees. But Statcast
-xstats ignore sprint speed, and Duran's own non-2024 baseline is **+6 pts**
-of wOBA over xwOBA (infield hits, stretched doubles — skill, not luck).
-Against that personal norm, 2024's luck component is only **~+11 pts** —
-enough to shave a ~130 wRC+ toward the low-120s, not enough to call it a
-fluke. The same adjustment makes 2026 (raw −21 pts) a **−27-pt anomaly**
-against his own norm — *more* unlucky, not less.
+xstats ignore sprint speed, and Duran's other seasons average **+3 to +13 pts**
+of wOBA over xwOBA (infield hits, stretched doubles — skill, not luck; the
+range depends on whether the collapsing 2026 is included). Against that
+personal norm, 2024's luck component is **+5 to +14 pts** — enough to shave
+a ~130 wRC+ toward the low-120s, not enough to call it a fluke. The same
+adjustment makes 2026 (raw −30 pts) a **34-to-43-pt anomaly** against his
+own norm — *more* unlucky, not less.
 → *[fig 02: wOBA vs xwOBA](../figures/02_woba_vs_xwoba.png)*
 
 **b) The BABIP-luck story — the thesis's core — is weak.**
@@ -124,12 +125,13 @@ weak outfields: **Phillies, Rays, Marlins, Guardians.**
 - **Lower confidence:** whether 2026's discipline erosion is real decline or
   noise (small partial-season sample) — this is the key open question.
 - Luck components are measured against Duran's **own** career wOBA−xwOBA gap
-  (+6 pts), since Statcast xstats ignore sprint speed and fast players beat
+  (+3 to +13 pts depending on exclusions), since Statcast xstats ignore
+  sprint speed and fast players beat
   them chronically as a skill — comparing to zero would overstate 2024's luck
   and understate 2026's.
 - **Park factors:** wRC+ (the headline talent metric) is park-adjusted by
   construction. The luck analysis was additionally verified by venue: his
-  career wOBA−xwOBA gap is +20 at Fenway vs +22 on the road — identical, so
+  career wOBA−xwOBA gap is +19 at Fenway vs +19 on the road — identical, so
   the overperformance is a speed skill, not a Green Monster artifact. 2024's
   gap was road-concentrated (+50 vs +14), the opposite of a park fluke.
 - Roughly a dozen significance tests are reported without family-wise

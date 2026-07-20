@@ -4,20 +4,20 @@
 
 ## vs. league average (2026, 200+ PA)
 
-- League-average OF: **110 wRC+**, 0.333 wOBA. League-average hitter = 100 wRC+.
-- Duran **2025: 111 wRC+** (above average) → **2026: 59 wRC+** (well below average, and below the league-average OF).
+- League-average OF: **109 wRC+**, 0.330 wOBA. League-average hitter = 100 wRC+.
+- Duran **2025: 111 wRC+** (above average) → **2026: 60 wRC+** (well below average, and below the league-average OF).
 - Per the main analysis, his *true talent* (~110 wRC+, his 2025 line) is modestly above league average; 2026 understates him.
 
 ## vs. Red Sox outfielders / DH
 
 | Player | Age | 2025 wRC+ | 2026 wRC+ | 2026 WAR | 2026 salary |
 |--------|----:|----------:|----------:|---------:|------------:|
-| Jarren Duran | 29 | 111 | 59 | -0.0 | $7.7M |
-| Wilyer Abreu | 27 | 110 | 108 | 1.9 | $0.8M |
-| Ceddanne Rafaela | 25 | 91 | 110 | 2.7 | $2.0M |
+| Jarren Duran | 29 | 111 | 60 | 0.1 | $7.7M |
+| Wilyer Abreu | 27 | 110 | 117 | 2.5 | $0.8M |
+| Ceddanne Rafaela | 25 | 91 | 107 | 2.9 | $2.0M |
 | Roman Anthony | 22 | 140 | 92 | 0.3 | $2.6M |
-| Masataka Yoshida | 32 | 88 | 91 | -0.2 | $18.6M |
-| Nate Eaton | 29 | 102 | 75 | 0.0 | $0.8M* |
+| Masataka Yoshida | 32 | 88 | 106 | 0.2 | $18.6M |
+| Nate Eaton | 29 | 102 | 63 | 0.0 | $0.8M* |
 
 > **The roster squeeze is the story.** In 2026 Duran is the Red Sox' **lowest-producing regular outfielder** while carrying its **second-highest OF salary** ($7.7M), behind only the Yoshida albatross ($18.6M). Abreu ($0.8M) and Rafaela ($2.0M) give more production for a fraction of the cost, and Roman Anthony ($130M extension) is the long-term cornerstone. Boston has cheaper, younger, better-or-equal outfielders — so Duran is the movable piece, not a building block.
 
@@ -25,26 +25,26 @@
 
 | Player | 2026 wRC+ | 2026 WAR | 2026 salary | $ / WAR |
 |--------|----------:|---------:|------------:|--------:|
-| Juan Soto | 165 | 2.7 | $61.9M | $22.6M |
+| Juan Soto | 162 | 2.9 | $61.9M | $21.1M |
 | Aaron Judge | 150 | 2.1 | $40.0M | $18.7M |
-| Mike Trout | 140 | 2.5 | $37.1M | $15.1M |
-| Cody Bellinger | 120 | 2.6 | $36.5M | $14.3M |
-| Luis Robert Jr. | 91 | 0.1 | $20.0M | $176.5M |
-| Jung Hoo Lee | 123 | 1.4 | $18.8M | $13.3M |
-| Masataka Yoshida | 91 | -0.2 | $18.6M | — |
-| Byron Buxton | 144 | 2.9 | $15.1M | $5.3M |
-| Teoscar Hernandez | 113 | 1.0 | $14.7M | $14.7M |
-| Daulton Varsho | 105 | 1.3 | $10.8M | $8.0M |
-| Adolis Garcia | 64 | 0.0 | $10.0M | $309.0M |
-| Michael Harris II | 124 | 2.1 | $9.0M | $4.2M |
-| Steven Kwan | 76 | 0.6 | $7.7M | $12.8M |
-| Jarren Duran | 59 | -0.0 | $7.7M | — |
+| Mike Trout | 139 | 2.5 | $37.1M | $14.6M |
+| Cody Bellinger | 116 | 2.6 | $36.5M | $14.1M |
+| Luis Robert Jr. | 91 | 0.1 | $20.0M | $191.4M |
+| Jung Hoo Lee | 112 | 0.9 | $18.8M | $20.1M |
+| Masataka Yoshida | 106 | 0.2 | $18.6M | $82.9M |
+| Byron Buxton | 146 | 2.9 | $15.1M | $5.2M |
+| Teoscar Hernandez | 95 | 0.4 | $14.7M | $35.6M |
+| Daulton Varsho | 92 | 1.0 | $10.8M | $10.4M |
+| Adolis Garcia | 64 | 0.0 | $10.0M | $341.4M |
+| Michael Harris II | 125 | 2.7 | $9.0M | $3.3M |
+| Steven Kwan | 88 | 1.3 | $7.7M | $6.1M |
+| Jarren Duran | 60 | 0.1 | $7.7M | $56.8M |
 | Harrison Bader | 48 | -0.4 | $7.5M | — |
-| Cedric Mullins | 81 | 0.7 | $6.5M | $9.7M |
-| Roman Anthony | 92 | 0.3 | $2.6M | $8.7M |
-| Ceddanne Rafaela | 110 | 2.7 | $2.0M | $0.7M |
-| Wilyer Abreu | 108 | 1.9 | $0.8M | $0.4M |
-| Nate Eaton* | 75 | 0.0 | $0.8M | $41.0M |
+| Cedric Mullins | 74 | 0.6 | $6.5M | $10.3M |
+| Roman Anthony | 92 | 0.3 | $2.6M | $8.8M |
+| Ceddanne Rafaela | 107 | 2.9 | $2.0M | $0.7M |
+| Wilyer Abreu | 117 | 2.5 | $0.8M | $0.3M |
+| Nate Eaton* | 63 | 0.0 | $0.8M | $15.9M |
 
 > On a 2026 snapshot Duran ($7.7M for 61 wRC+, ~0 WAR) is a poor value point — but that is the luck-depressed partial season. The instructive contrast: his own **2025 was elite value** (3.9 WAR at a $3.75M salary, ≈ $1.0M per WAR — better than nearly anyone on this list), and his $7.7M/110-wRC+ *true-talent* season would still be a fair-to-good deal. The overpay risk is not the price; it is the direction of the arrow.
 

@@ -121,77 +121,77 @@
     "2026": {
       "season": 2026,
       "bat": {
-        "n_swings": 602,
-        "avg_mph": 74.48870431893687,
-        "p90_mph": 79.6,
-        "fast_swing_pct": 0.4850498338870432,
-        "swing_length_ft": 7.520926517571885,
-        "attack_angle_deg": 5.830971753251105
+        "n_swings": 679,
+        "avg_mph": 74.37893961708396,
+        "p90_mph": 79.5,
+        "fast_swing_pct": 0.47128129602356406,
+        "swing_length_ft": 7.507932011331445,
+        "attack_angle_deg": 5.568661764610698
       },
       "whiff_fastball": {
-        "rate": 0.2727272727272727,
-        "n": 330
+        "rate": 0.26595744680851063,
+        "n": 376
       },
       "chase_fastball": {
-        "rate": 0.3170731707317073,
-        "n": 328
+        "rate": 0.3078947368421053,
+        "n": 380
       },
       "whiff_breaking": {
-        "rate": 0.42105263157894735,
-        "n": 190
+        "rate": 0.4265402843601896,
+        "n": 211
       },
       "chase_breaking": {
-        "rate": 0.3923444976076555,
-        "n": 209
+        "rate": 0.3817427385892116,
+        "n": 241
       },
       "whiff_offspeed": {
-        "rate": 0.33043478260869563,
-        "n": 115
+        "rate": 0.32558139534883723,
+        "n": 129
       },
       "chase_offspeed": {
-        "rate": 0.40298507462686567,
-        "n": 134
+        "rate": 0.39215686274509803,
+        "n": 153
       },
       "whiff_fb95": {
-        "rate": 0.2896551724137931,
-        "n": 145
+        "rate": 0.2883435582822086,
+        "n": 163
       },
       "z_contact": {
-        "rate": 0.8354430379746836,
-        "n": 395
+        "rate": 0.8366890380313199,
+        "n": 447
       },
       "chase_brk_down_away": {
-        "rate": 0.3709677419354839,
-        "n": 62
+        "rate": 0.33766233766233766,
+        "n": 77
       },
       "swing_chase_zone": {
-        "rate": 0.4,
-        "n": 320
+        "rate": 0.3863013698630137,
+        "n": 365
       },
       "chase_all": {
-        "rate": 0.35767511177347244,
-        "n": 671
+        "rate": 0.3475452196382429,
+        "n": 774
       },
       "whiff_all": {
-        "rate": 0.32755905511811023,
-        "n": 635
+        "rate": 0.3240223463687151,
+        "n": 716
       }
     }
   },
   "bat_speed_baseline_2024_25": 73.33808411344606,
   "verdict": {
     "label": "approach",
-    "bat_speed_delta_mph": 1.1506202054908101,
-    "chase_delta": 0.04656400066236133,
-    "whiff_hard_fb_delta": 0.09499868386417482,
-    "zcontact_delta": -0.033750116059546253,
+    "bat_speed_delta_mph": 1.0408555036379,
+    "chase_delta": 0.0364341085271318,
+    "whiff_hard_fb_delta": 0.09368706973259028,
+    "zcontact_delta": -0.03250411600290992,
     "selling_out": true
   },
   "reweight": {
-    "p_healthy": 0.6909,
-    "p_erosion": 0.4708,
+    "p_healthy": 0.6583,
+    "p_erosion": 0.4807,
     "w_healthy": 0.6,
-    "p_agnostic_5050": 0.58085,
-    "p_reweighted": 0.60286
+    "p_agnostic_5050": 0.5695,
+    "p_reweighted": 0.58726
   }
 }

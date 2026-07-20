@@ -41,6 +41,37 @@ def apply():
     })
 
 
+def apply_dark():
+    """Dark-mode variant for the presentation deck (figures/dark/).
+
+    Call AFTER apply()/imports: overrides the module palette constants (which
+    figure code reads at call time) plus the rcParams surfaces.
+    """
+    import sys
+    m = sys.modules[__name__]
+    m.NAVY = "#8FB4E3"   # primary series -> light steel blue
+    m.RED = "#E8615A"
+    m.GREEN = "#58C08D"
+    m.AMBER = "#E3B14E"
+    m.TEAL = "#5FB6D9"
+    m.GREY = "#55627C"
+    m.MUTED = "#96A2B8"
+    m.TEXT = "#E9EEF6"
+    m.GRID = "#1E2A40"
+    m.SPINE = "#35425C"
+    m.FAINT = "#131E33"
+    surface = "#0F1929"
+    mpl.rcParams.update({
+        "figure.facecolor": surface, "savefig.facecolor": surface,
+        "axes.facecolor": surface,
+        "text.color": m.TEXT, "axes.labelcolor": m.MUTED,
+        "axes.titlecolor": "#F2F5FA",
+        "axes.edgecolor": m.SPINE,
+        "grid.color": m.GRID,
+        "xtick.color": m.MUTED, "ytick.color": m.MUTED,
+    })
+
+
 def style(ax, grid_axis="y"):
     """Despine, soft grid on one axis only, no tick marks."""
     for s in ("top", "right"):

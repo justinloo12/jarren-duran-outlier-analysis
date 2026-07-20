@@ -13,11 +13,11 @@ Five bats for four spots (three OF + DH): **Roman Anthony, Ceddanne Rafaela, Wil
 | Player | Pos | Proj WAR | Ctrl yrs | 2026 $ | Annual surplus | 2025→2026 wRC+ | Verdict |
 |--------|-----|--------:|--------:|------:|---------------:|:-------------:|---------|
 | Roman Anthony | LF/CF | 3.8 | 8 | $2.6M | $+27.8M | 140→92 | KEEP — cornerstone |
-| Ceddanne Rafaela | CF/SS | 3.2 | 6 | $2.0M | $+23.6M | 91→110 | KEEP — premium glove |
-| Wilyer Abreu | RF | 2.8 | 4 | $0.8M | $+21.6M | 110→108 | KEEP — cheap surplus |
-| Jarren Duran | LF/CF | 2.6 | 3 | $7.7M | $+13.1M | 111→59 | TRADE — the movable piece |
-| Nate Eaton | 4th OF | 0.7 | 4 | $0.8M | $+4.8M | 102→75 | DEPTH |
-| Masataka Yoshida | DH | 0.3 | 2 | $18.6M | $-16.2M | 88→91 | ABSORB / salary-dump |
+| Ceddanne Rafaela | CF/SS | 3.2 | 6 | $2.0M | $+23.6M | 91→107 | KEEP — premium glove |
+| Wilyer Abreu | RF | 2.8 | 4 | $0.8M | $+21.6M | 110→117 | KEEP — cheap surplus |
+| Jarren Duran | LF/CF | 2.6 | 3 | $7.7M | $+13.1M | 111→60 | TRADE — the movable piece |
+| Jahmai Jones | 4th OF | 0.4 | 2 | $0.8M | $+2.5M | n/a→n/a | DEPTH |
+| Masataka Yoshida | DH | 0.3 | 2 | $18.6M | $-16.2M | 88→106 | ABSORB / salary-dump |
 
 *Surplus = proj. true-talent WAR × $8M − 2026 salary (annual; multiply by control years for total). Illustrative, not a precise valuation.*
 
@@ -50,7 +50,7 @@ These three are the 2027 outfield. Everything else flexes around them.
 | CF | Ceddanne Rafaela | premium glove; SS/util flex |
 | RF | Wilyer Abreu | cheap surplus |
 | DH | Yoshida (final year) → open in 2028 | platoon/absorb |
-| 4th OF | Nate Eaton / depth | |
+| 4th OF | Jahmai Jones / depth | |
 | — | **Duran traded** for pitching | value cashed near his 2025 level |
 
 ## Risks & honest caveats

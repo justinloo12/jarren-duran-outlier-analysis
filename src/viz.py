@@ -65,9 +65,10 @@ def fig_woba(tbl):
     ax.plot(seasons, woba, "-", color=S.RED, lw=2.6, marker="o", ms=7,
             mfc="white", mec=S.RED, label="wOBA (results)", zorder=4)
     # annotate only the two informative gaps, clear of the lines
-    for s, note, col, dy in [(2024, "+.017  lucky", S.RED, 13),
-                             (2026, "−.021  unlucky", S.NAVY, -17)]:
+    for s, col, dy in [(2024, S.RED, 13), (2026, S.NAVY, -17)]:
         i = list(seasons).index(s)
+        g = woba[i] - xwoba[i]
+        note = (f"{g*1000:+.0f} pts  " + ("lucky" if g > 0 else "unlucky"))
         ax.annotate(note, (s, woba[i]), textcoords="offset points",
                     xytext=(0, dy), ha="center", fontsize=9, color=col,
                     weight="bold")

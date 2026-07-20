@@ -186,12 +186,21 @@ def run(save: bool = True) -> dict:
             weights.append(float(r["PA"]))
     personal_gap = (float(np.average(gaps, weights=weights))
                     if gaps else np.nan)
+    # variant excluding 2026 as well (leave the season under test out)
+    g2, w2 = [], []
+    for _, r in df[df["season"].isin([s for s in C.BASELINE_SEASONS
+                                      if s != 2026])].iterrows():
+        g = _diff(r.get("wOBA"), r.get("xwOBA"))
+        if g is not None and not pd.isna(r.get("PA")):
+            g2.append(g); w2.append(float(r["PA"]))
+    personal_gap_ex26 = (float(np.average(g2, weights=w2)) if g2 else np.nan)
     gap24 = res["results_vs_process"]["woba_minus_xwoba"]
     row26 = df[df["season"] == 2026]
     gap26 = (_diff(row26["wOBA"].iloc[0], row26["xwOBA"].iloc[0])
              if len(row26) else None)
     res["speed_adjusted"] = {
         "personal_gap_baseline": _num(personal_gap),
+        "personal_gap_baseline_ex26": _num(personal_gap_ex26),
         "gap_by_season": {int(r["season"]): _diff(r.get("wOBA"), r.get("xwOBA"))
                           for _, r in df.iterrows()},
         "gap_2024": gap24,
@@ -200,6 +209,12 @@ def run(save: bool = True) -> dict:
         "gap_2026": gap26,
         "gap_2026_deficit": (None if gap26 is None or pd.isna(personal_gap)
                              else gap26 - personal_gap),
+        "gap_2026_deficit_ex26": (None if gap26 is None
+                                  or pd.isna(personal_gap_ex26)
+                                  else gap26 - personal_gap_ex26),
+        "gap_2024_excess_ex26": (None if gap24 is None
+                                 or pd.isna(personal_gap_ex26)
+                                 else gap24 - personal_gap_ex26),
     }
 
     # -- (2c) park robustness: is the xwOBA overperformance a Fenway artifact?
