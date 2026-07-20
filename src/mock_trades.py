@@ -214,7 +214,7 @@ def run():
     art = C.OUT_DIR / "ARTICLE.md"
     if art.exists():
         s = art.read_text()
-        marker = "## What would change my mind"
+        marker = "## The left fielder: the whole season in one player"
         section = article_section(s)
         if "## Four trades that actually fit" not in s and marker in s:
             s = s.replace(marker, section.strip() + "\n\n" + marker)

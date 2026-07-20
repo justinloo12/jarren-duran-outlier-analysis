@@ -147,17 +147,18 @@ def new(color=BG):
 # ---------------------------------------------------------------- 1 TITLE
 s = new("0E1830")
 dot(s, 0.62, 0.62, 0.34, fill=RED)
-txt(s, 1.05, 0.6, 10, 0.4, [[("BOSTON RED SOX  ·  ROSTER STRATEGY",
+txt(s, 1.05, 0.6, 10, 0.4, [[("BOSTON RED SOX  ·  TRADE DEADLINE 2026",
     {"color": "C9D2E3", "bold": True, "size": 13})]], space_after=0)
 txt(s, 0.62, 2.15, 12.1, 2.0, [
-    [("Turning the Outfield Logjam", {"size": 46, "bold": True, "font": HEAD,
+    [("They Won 13 Straight.", {"size": 46, "bold": True, "font": HEAD,
       "color": WHITE})],
-    [("into an Asset", {"size": 46, "bold": True, "font": HEAD, "color": RED})],
+    [("Now Comes the Hard Part", {"size": 46, "bold": True, "font": HEAD,
+      "color": RED})],
 ], space_after=2, line_spacing=1.0)
 txt(s, 0.62, 4.35, 11.6, 1.0, [[(
-    "Five bats for four spots, a playoff spot in hand, and a deadline plan "
-    "the data actually supports: buy targeted, hold Duran at his nadir, and "
-    "decide his future in the winter.",
+    "The hottest team in baseball was supposed to sell. A deadline case "
+    "study: why the run differential saw the streak coming, what Boston "
+    "should buy — and why the left fielder is the whole season in miniature.",
     {"size": 17, "color": "D3D9E6"})]], line_spacing=1.12)
 txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
     {"color": "8C97AC", "size": 12, "italic": True})]], space_after=0)
@@ -165,10 +166,10 @@ txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
 # ---------------------------------------------------------------- 2 SITUATION
 s = new()
 eyebrow(s, "The setup")
-title(s, "The record is finally catching up to the ballclub")
-stats = [("75%", "playoff odds", "10,000 sims — a playoff team, not a corpse (fig. 12)"),
+title(s, "The hottest team in baseball — and the math saw it coming")
+stats = [("W13", "winning streak", "longest run in the majors this season"),
          ("+45", "run differential", "a Pythagorean .553 team wearing a .510 record"),
-         ("WC3", "spot currently held", "after a 13-game winning streak")]
+         ("75%", "playoff odds", "10,000 sims — holding the final wild card (fig. 12)")]
 cw, gap = 3.83, 0.31
 for i, (big, lab, sub) in enumerate(stats):
     x = 0.62 + i * (cw + gap)

@@ -1,34 +1,24 @@
-# The Red Sox Are Their Left Fielder
+# The Red Sox Won 13 Straight. Now Comes the Hard Part
 
-### A deadline case study in results vs. process — and why Boston shouldn't sell the dip
+### A trade-deadline case study: the run differential saw the streak coming — and says buy
 
 *Deadline runway, 2026 · data through 2026-07-19 · full methods, code and figures at the end*
 
 ---
 
-The Red Sox are 50-48. A month ago, well under .500, the easy take wrote itself: sell. But the underlying numbers always said the record was lying — Boston's run differential is **+45**, a Pythagorean .553 team wearing a .510 record — and lately the record has started correcting (they are riding a 13-game winning streak). **Boston currently holds the final wild-card spot**. In 10,000 simulations of the rest of the season, Boston makes the playoffs **75%** of the time.
+The Red Sox are the hottest team in baseball — winners of **13 straight**, the longest run in the majors this season. Three weeks ago they were well under .500 and the easy take wrote itself: sell. Today they are 50-48, and **Boston currently holds the final wild-card spot**.
+
+Here is the part the streak did not change: the math saw it coming. Boston has outscored its opponents by **+45** runs — a Pythagorean .553 team that spent three months wearing a .510 record. Hot streaks are usually where analysis goes to die. This one is different, because it isn't a lucky team getting hot — it's an unlucky team's record catching up to its run differential. In 10,000 simulations of the rest of the season, Boston makes the playoffs **75%** of the time.
 
 ![AL playoff race](figures/12_playoff_race.png)
 
-That's a bona fide playoff team — one the standings have only just begun to reflect. And the roster's biggest open question — what to do with Jarren Duran — turns out to be the same problem in miniature. **The team is its left fielder: the process is better than the results.**
-
-## The Duran file, in four findings
-
-**1. His 2024 breakout was real — a peak in every phase.** The All-Star year (wRC+ 131) came with career-best swing decisions, career-best baserunning (+8.3 runs) and a defensive spike (+7.6). His xwOBA (.340) was legitimate. Results outran contact quality by just 17 points of wOBA — and once you credit the points his speed adds over Statcast expectations in his other seasons (xstats ignore sprint speed), the true luck component lands between 5 and 14 points. 2024 was his peak, mildly gilded — not a mirage.
-
-**2. His 2026 collapse is part erosion, mostly bad luck.** The wRC+ (60) looks like a career ending. But his wOBA (.263) sits *below* his xwOBA (.293) — and for a burner who normally beats his xstats, running negative is a 34-to-43-point anomaly against his own baseline. His BABIP (.244) is 67 points under what his contact quality supports. Real erosion exists — chase, whiff and hard-hit rate all moved the wrong way — but no injury has been reported, and his speed, baserunning and defense remain plus. The legs a buyer would pay for are intact.
-
-**3. It isn't Fenway.** His career wOBA−xwOBA gap is +19 points at home and +19 on the road — essentially identical. The skill travels. 2024's overperformance was actually *road*-concentrated (+50 vs +14), the opposite of a Monster-driven fluke.
-
-**4. His true level is the 2023–25 plateau (~110–120 wRC+).** Aging explains ~7 points of the 70-point fall from 2024; regression from a lucky peak plus a 2026 bad-luck tail explains the rest.
-
-![BABIP by season](figures/01_babip_vs_league.png)
+That's a bona fide playoff team — one the standings have only just begun to reflect. So the deadline question is no longer whether to sell — it's what a team like this should buy. And the roster's biggest open question — what to do with Jarren Duran — turns out to be the whole season in miniature: **the team is its left fielder — the process is better than the results.** We'll get to him. First, the money question.
 
 ## So: buy or sell?
 
 **BUY.** At ~75% odds, a marginal win is worth real assets — the fire-sale case is dead, and even the sell-the-vets hedge should wait. But buy like the math, not like a panic: targeted, controllable additions at the actual holes, not rental splurges. The decision tree by asset:
 
-- **Hold Duran through the deadline.** His trade value sits at its nadir while his underlying profile says the market is under-pricing him. Sophisticated buyers read xstats too — you will not get 2024 prices in August 2026. Revisit in the winter, after the rebound has (or hasn't) shown up on the field.
+- **Hold Duran through the deadline.** His trade value sits at its nadir while his underlying profile says the market is under-pricing him (the full case is a chapter below). Sophisticated buyers read xstats too — you will not get 2024 prices in August 2026. Revisit in the winter, after the rebound has (or hasn't) shown up on the field.
 - **Keep the young outfield** (Anthony, Rafaela, Abreu) and the rotation — they are the 2027 team.
 - **Keep the expiring veterans** (Gray, Chapman, Contreras were the winter's reported trade names) — they are playoff innings and playoff at-bats now. The sell branch reopens only if the gap blows out before August 1.
 - **Absorb Yoshida.** Negative trade value; paying to escape it burns real prospects to save sunk money.
@@ -55,6 +45,22 @@ Working the seller list against Boston's one real surplus — eight starters for
 4. **The opportunist:** Jake Bennett + a 45 FV to the A's for C Shea Langeliers (controlled through 2028).
 
 And the contingency: if the gap hits six games by August 1, the sell list is Gray and Chapman — the rentals — and stops there.
+
+## The left fielder: the whole season in one player
+
+The biggest hole on the roster is the Duran slump — which makes the biggest deadline call a diagnosis, not a trade. The full workup, in four findings:
+
+**1. His 2024 breakout was real — a peak in every phase.** The All-Star year (wRC+ 131) came with career-best swing decisions, career-best baserunning (+8.3 runs) and a defensive spike (+7.6). His xwOBA (.340) was legitimate. Results outran contact quality by just 17 points of wOBA — and once you credit the points his speed adds over Statcast expectations in his other seasons (xstats ignore sprint speed), the true luck component lands between 5 and 14 points. 2024 was his peak, mildly gilded — not a mirage.
+
+**2. His 2026 collapse is part erosion, mostly bad luck.** The wRC+ (60) looks like a career ending. But his wOBA (.263) sits *below* his xwOBA (.293) — and for a burner who normally beats his xstats, running negative is a 34-to-43-point anomaly against his own baseline. His BABIP (.244) is 67 points under what his contact quality supports. Real erosion exists — chase, whiff and hard-hit rate all moved the wrong way — but no injury has been reported, and his speed, baserunning and defense remain plus. The legs a buyer would pay for are intact.
+
+**3. It isn't Fenway.** His career wOBA−xwOBA gap is +19 points at home and +19 on the road — essentially identical. The skill travels. 2024's overperformance was actually *road*-concentrated (+50 vs +14), the opposite of a Monster-driven fluke.
+
+**4. His true level is the 2023–25 plateau (~110–120 wRC+).** Aging explains ~7 points of the 70-point fall from 2024; regression from a lucky peak plus a 2026 bad-luck tail explains the rest.
+
+![BABIP by season](figures/01_babip_vs_league.png)
+
+Which is the same shape as the team's season: results below process, market ready to misprice it. The biggest hole on the roster is the one no trade can fix — and none needs to.
 
 ## What would change my mind
 
