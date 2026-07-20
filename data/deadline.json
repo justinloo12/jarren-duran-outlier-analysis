@@ -3,7 +3,7 @@
   "verdict": {
     "call": "BUY",
     "label": "clear buyer",
-    "odds": 0.7528
+    "odds": 0.7522
   },
   "bos": {
     "W": "50",
@@ -11,7 +11,7 @@
     "run_diff": "45",
     "pythag": 0.5525841658533258,
     "talent": 0.5387462274708716,
-    "playoff_odds": 0.7528,
+    "playoff_odds": 0.7522,
     "wc_gb": "-",
     "streak": "W13"
   }

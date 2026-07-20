@@ -47,4 +47,9 @@ rebound_sim.run()
 erosion.run()
 print("  [dark] 09_rebound_probability, 10_erosion_decomposition")
 
+# 14 battery map (data cached in battery.json by the light run)
+from src import battery  # noqa: E402
+battery.fig_battery(json.load(open(C.DATA_DIR / "battery.json")))
+print("  [dark] 14_battery_map")
+
 print(f"dark figures -> {DARK_DIR}")

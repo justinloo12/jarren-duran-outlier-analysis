@@ -16,7 +16,7 @@ That's a bona fide playoff team — one the standings have only just begun to re
 
 ## So: buy or sell?
 
-**BUY.** At ~75% odds, a marginal win is worth real assets — the fire-sale case is dead, and even the sell-the-vets hedge should wait. But buy like the math, not like a panic: targeted, controllable additions at the actual holes, not rental splurges. And one constraint sits over every deal: **don't disturb the room.** A 13-game streak is the sound of a clubhouse that works, and chemistry is a real asset that never shows up in a WAR column — so additions should cost prospects before they cost big-leaguers, and fill empty spots before occupied ones. The decision tree by asset:
+**BUY.** At ~75% odds, a marginal win is worth real assets — the fire-sale case is dead, and even the sell-the-vets hedge should wait. But buy like the math, not like a panic: targeted, controllable additions at the actual holes, not rental splurges. And one constraint sits over every deal: **don't disturb the room.** A 13-game streak is the sound of a clubhouse that works, and chemistry is a real asset that never shows up in a WAR column — so additions should cost prospects before they cost big-leaguers, and fill empty spots before occupied ones. Which is why the right version of this deadline is deliberately **small**: the roster's biggest upgrades — Anthony, Mayer, Story, Casas, Duran's own regression — are already in-house and free. The decision tree by asset:
 
 - **Hold Duran through the deadline.** His trade value sits at its nadir while his underlying profile says the market is under-pricing him (the full case is a chapter below). Sophisticated buyers read xstats too — you will not get 2024 prices in August 2026. Revisit in the winter, after the rebound has (or hasn't) shown up on the field.
 - **Keep the young outfield** (Anthony, Rafaela, Abreu) and the rotation — they are the 2027 team.
@@ -31,18 +31,21 @@ Auditing every position against league average (PA-weighted wRC+) reorders the s
 
 - **The biggest hole on the roster is left field (-31 wRC+ vs league) — which is the Duran slump itself.** Boston's best deadline additions are internal and nearly free: Duran's batted-ball luck regressing to normal — the club is already sheltering him in a platoon with new right-handed pickup Jahmai Jones — a zero-cost reclamation bet whose elite 2025 line against lefties (.426 wOBA, backed by a .405 xwOBA) collapsed to .272 this year, though even that came with a .327 xwOBA. Boston, fittingly, acquired another hitter running under his contact quality — and Roman Anthony's eventual return, though he is still rehabbing without a firm date. A team that trades for an outfielder here would be buying what it already owns.
 - **Shortstop (-18) is the one true external target — with an asterisk: half the infield is hurt** (Mayer, Story, Kiner-Falefa; Casas at first). A Cheng/Monasterio platoon is bridging short, and Boston's DH fix is already running (Yoshida platooning with Romy Gonzalez). A cheap, controllable infield stabilizer is still the highest-leverage add; the internal returns are the fallback, not the plan.
-- **Catcher (-11) is the sneaky third add.** Narváez/Wong have been below the position's league average all year, and unlike the injury-driven infield holes, no internal help is coming. A controllable upgrade (see the Langeliers trade below) turns a quiet leak into a plus for three seasons.
+- **Catcher (-11) looks like a hole — and is the trap.** The Narváez/Wong bats are below the position's league average, but the battery data says leave the tandem alone: the staff runs a 3.47 RA9 with Wong and 4.17 with Narváez, and the club is quietly running an assignment system — Gray at 1.86 with Wong (4.40 with Narváez), Bennett at 1.12 with Narváez, Bello five runs better with Wong, and the leverage relievers sharper with Narváez (fig. 14). Small, usage-confounded samples — but that is working pitcher-catcher chemistry, and a mid-race catcher trade would rip up every one of those pairings for a bat.
 - **The bullpen is the quiet weakness.** Its ERA ranks 6th, but its FIP ranks 12th and its WAR 14th — the ERA is flattering it. One reliever is the cheapest marginal win at any deadline.
-- **And the awkward one: the reported sell candidate is their best hitter.** Willson Contreras carries a 142 wRC+ at first base. Moving him while - games out of a playoff spot isn't a retool — it's surrender priced as prudence.
+- **And the awkward one: the reported sell candidate is their best hitter.** Willson Contreras carries a 142 wRC+ at first base. Moving him while holding a playoff spot isn't a retool — it's surrender priced as prudence.
 
-## Four trades that fit — ranked by what they cost the room
+![Battery map](figures/14_battery_map.png)
 
-A team that just won 13 straight has a clubhouse that is working, so disruption gets priced like a cost. Working the seller list against Boston's one real surplus — eight starters for five slots — produces a menu, ordered from least to most disturbance (full value math in the mock-trades memo):
+## Three trades that fit — and the one to walk away from
 
-1. **The pen fix (zero disruption):** a 45 FV + 40 FV prospect package to the selling Mets for Luke Weaver (elite relief season, signed through 2027). Nobody in the room loses a job or an inning — and it's the highest-probability marginal win available.
-2. **The quiet fix (low):** Jake Bennett + a 45 FV to the A's for C Shea Langeliers (controlled through 2028). Bennett is the eighth starter on a five-slot staff; catcher is the one spot with no incumbent playing well.
-3. **The stabilizer (moderate):** Brayan Bello to the Giants for rental Luis Arraez — zero prospect cost, and Arraez fills a patchwork platoon spot rather than displacing a hot regular. The first deal that subtracts from the active roster.
-4. **The big swing (high — probably wait):** Payton Tolle + Connelly Early + a lottery arm to the Angels for SS Zach Neto (controlled through 2029). Franchise-window correct on paper — but it pulls two arms out of a winning rotation mid-streak, and the same trade will still be there in the winter.
+A team that just won 13 straight has a clubhouse that is working, so disruption gets priced like a cost — and the honest conclusion is that **the right deadline here is small**. The menu, ordered from least to most disturbance (full value math in the mock-trades memo):
+
+1. **The pen fix (zero disruption — do it):** a 45 FV + 40 FV prospect package to the selling Mets for Luke Weaver (elite relief season, signed through 2027). Nobody in the room loses a job or an inning — and it's the highest-probability marginal win available.
+2. **The stabilizer (moderate — if the price holds):** Brayan Bello to the Giants for rental Luis Arraez — zero prospect cost, and Arraez fills a patchwork platoon spot rather than displacing a hot regular. The first deal that subtracts from the active roster.
+3. **The big swing (high — probably wait):** Payton Tolle + Connelly Early + a lottery arm to the Angels for SS Zach Neto (controlled through 2029). Franchise-window correct on paper — but it pulls two arms out of a winning rotation mid-streak, and the same trade will still be there in the winter.
+
+And the walk-away: the Langeliers catcher "upgrade" that the positional audit seems to demand. The battery map (fig. 14) is the veto — Gray runs a 1.86 RA9 with Wong, Bennett a 1.12 with Narváez, and nearly every Boston arm has a clear preferred catcher. That's a working assignment system in the middle of a streak built on run prevention, and no August bat is worth resetting it.
 
 And the contingency: if the gap hits six games by August 1, the sell list is Gray and Chapman — the rentals — and stops there.
 

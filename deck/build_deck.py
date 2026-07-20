@@ -28,7 +28,8 @@ HEAD = "Arial"; BODY = "Arial"; MONO = "Courier New"
 
 W, H = 13.333, 7.5
 ASPECT = {"01": 1.60, "04": 1.60, "07": 10/5.8, "08": 10/6.4,
-          "09": 1504/649, "10": 2087/679, "12": 1.62, "13": 1.68}
+          "09": 1504/649, "10": 2087/679, "12": 1.62, "13": 1.68,
+          "14": 9/5.4}
 
 
 def C(hexs):
@@ -204,9 +205,10 @@ rules = [("Hold Duran", RED,
          ("Keep the vets", NAVY,
           "Gray, Chapman, Contreras are playoff innings now. Sell branch "
           "reopens only if the gap blows out by Aug 1."),
-         ("Add without disturbing the room", GREEN,
-          "A reliever, a catcher, an infield bat — paid for in prospects "
-          "before big-leaguers, filling empty spots, not hot ones.")]
+         ("Add small, without disturbing the room", GREEN,
+          "A reliever first, maybe an infield bat — prospects before "
+          "big-leaguers, empty spots before hot ones. The catcher "
+          "tandem stays.")]
 yy = 1.95
 for head, col, body in rules:
     dot(s, tx, yy + 0.04, 0.16, fill=col)
@@ -411,27 +413,56 @@ for head, col, body in finds:
     yy += 1.22
 footer(s)
 
+# ---------------------------------------------------------- 6b2 BATTERY MAP
+s = new()
+eyebrow(s, "The chemistry veto")
+title(s, "Two catchers, one assignment system — don't touch it")
+image(s, "14", 0.4, 1.7, 8.0, 4.6, "14_battery_map.png")
+tx = 8.75
+finds = [("The staff works with both", RED,
+          "3.47 RA9 with Wong, 4.17 with Narváez — the run-prevention "
+          "core of the streak."),
+         ("Every arm has a guy", NAVY,
+          "Gray: 1.86 with Wong (4.40 with Narváez). Bennett: 1.12 with "
+          "Narváez. Bello: ~5 runs better with Wong."),
+         ("The pen is paired too", GOLD,
+          "Watson and Morán both run 3+ runs better with Narváez — "
+          "leverage innings aren't assigned at random."),
+         ("So: no catcher trade", GREEN,
+          "The audit sees a below-average bat; the staff sees its "
+          "catchers. Small, usage-confounded samples — but you don't "
+          "reset eight batteries mid-streak for one.")]
+yy = 1.9
+for head, col, body in finds:
+    dot(s, tx, yy + 0.04, 0.16, fill=col)
+    txt(s, tx + 0.32, yy, 4.1, 1.2, [[(head, {"bold": True, "size": 13.5,
+        "color": NAVY})], [(body, {"size": 11.6, "color": MUTED})]],
+        line_spacing=1.07, space_after=2)
+    yy += 1.22
+footer(s)
+
 # ---------------------------------------------------------- 6c MOCK TRADES
 s = new()
 eyebrow(s, "The menu")
-title(s, "Four trades that fit — ranked by what they cost the room")
+title(s, "Three trades that fit — and the walk-away. Keep it small")
 trades = [
-    ("1 · The pen fix · zero disruption", "RHP Luke Weaver (NYM)", GREEN,
+    ("1 · The pen fix · do it", "RHP Luke Weaver (NYM)", GREEN,
      "For a 45 FV + 40 FV — prospects only, nobody loses a job or an "
      "inning. Elite relief year, signed through '27. The highest-"
      "probability marginal win on the board."),
-    ("2 · The catcher fix · low", "C Shea Langeliers (ATH)", GOLD,
-     "For Bennett + a 45 FV. Bennett is the 8th starter on a 5-slot "
-     "staff; catcher is the one spot with no hot incumbent. Controlled "
-     "through 2028."),
-    ("3 · The stabilizer · moderate", "2B Luis Arraez (SFG)", NAVY,
+    ("2 · The stabilizer · if the price holds", "2B Luis Arraez (SFG)",
+     NAVY,
      "For Brayan Bello — the first deal that touches the active roster. "
      "Zero prospect cost; Arraez fills a patchwork platoon spot, not a "
      "hot regular's."),
-    ("4 · The big swing · high — wait?", "SS Zach Neto (LAA)", RED,
+    ("3 · The big swing · probably wait", "SS Zach Neto (LAA)", RED,
      "For Tolle + Early + a 45 FV: two arms out of a winning rotation "
      "mid-streak. Franchise-window correct — and still there in the "
-     "winter. Controlled through 2029.")]
+     "winter. Controlled through 2029."),
+    ("✗ · The walk-away", "C Shea Langeliers (ATH)", GOLD,
+     "The value math worked; the battery map is the veto. No August bat "
+     "is worth resetting eight pitcher-catcher pairings in the middle of "
+     "a streak built on run prevention.")]
 cw, ch = 5.86, 2.12
 pos = [(0.62, 1.85), (0.62 + cw + 0.33, 1.85),
        (0.62, 1.85 + ch + 0.28), (0.62 + cw + 0.33, 1.85 + ch + 0.28)]

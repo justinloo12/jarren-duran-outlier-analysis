@@ -61,7 +61,7 @@ Pitching units: rotation ERA ranks **4th** (3.56) and WAR 6th — a real strengt
 
 | Team | W-L | RD | WC GB | Odds |
 |------|-----|---:|------:|-----:|
-| Yankees | 54-44 | +84 | +4.0 | 98% |
+| Yankees | 55-44 | +85 | +4.5 | 98% |
 | Rays | 56-42 | +14 | - | 95% |
 | White Sox | 52-46 | +45 | - | 86% |
 | Red Sox | 50-48 | +45 | - | 75% |

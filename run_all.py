@@ -16,7 +16,8 @@ from src import fetch_fangraphs, fetch_statcast, fetch_milb
 from src import fetch_cohort
 from src import (statcast_metrics, analysis, age_curve, viz, memo, comps,
                  outfield_plan, trade_targets, rebound_sim, erosion,
-                 luck_backtest, preregister, web_deck, deadline, mock_trades)
+                 luck_backtest, preregister, web_deck, deadline, mock_trades,
+                 battery)
 
 
 def fetch():
@@ -56,6 +57,8 @@ def main():
     outfield_plan.run()
     print("== Trade value & best-fit partners ==")
     trade_targets.run()
+    print("== Catcher-battery analysis ==")
+    battery.run()
     print("== Deadline buy/sell decision ==")
     deadline.run()
     print("== Mock trades ==")

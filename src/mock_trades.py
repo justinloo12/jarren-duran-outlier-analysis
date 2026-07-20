@@ -12,6 +12,7 @@ Writes outputs/mock_trades.md and appends a section to outputs/ARTICLE.md.
 from __future__ import annotations
 
 import datetime as dt
+import json
 
 import pandas as pd
 
@@ -76,9 +77,12 @@ def build() -> str:
               "Brayan Bello", "Sonny Gray"):
         A(f"- **{n}** — {_arm_line(arms[n])}")
     A("\nThe needs, per the positional audit: a **shortstop-adjacent infield "
-      "bat** (the roster's biggest external hole), **bullpen help** (bottom "
-      "half of MLB in reliever WAR), and a **catcher upgrade** — a season-long leak with no internal help "
-      "coming, unlike the injury-driven infield holes. LF and DH fix themselves "
+      "bat** (the roster's biggest external hole) and **bullpen help** "
+      "(bottom half of MLB in reliever WAR). Catcher looks like a third "
+      "need on the audit — the bats are below the position's average — but "
+      "the battery data takes it off the list: the staff is thriving with "
+      "the Narváez/Wong tandem, and nearly every arm has a clear preferred "
+      "battery mate (see the walk-away section below). LF and DH fix themselves "
       "(Duran's regression behind a new Jahmai Jones platoon, Anthony's "
       "eventual return, and the Yoshida/Gonzalez platoon already running). Witt Jr. "
       f"({_bat_line(bats['Bobby Witt Jr.'])}) and De La Cruz "
@@ -91,9 +95,9 @@ def build() -> str:
       "**ranked by how little it disturbs the roster**: prospects out "
       "before big-leaguers, open spots filled before occupied ones, and no "
       "deal that demotes anyone driving the streak.\n")
-    A("These four trades are a **menu, not a plan** — Early and Bennett "
-      "each appear in more than one package, and Boston can realistically "
-      "afford about two of these deals.\n")
+    A("Three live trades and one deliberate pass make the menu — **a menu, "
+      "not a plan**, and the honest read is that Boston only *needs* the "
+      "first one. The right deadline here is small.\n")
 
     # ---- Trade 1 ----------------------------------------------------------
     A("## Trade 1 — The pen fix: the zero-disruption add\n")
@@ -116,25 +120,7 @@ def build() -> str:
       "is the highest-probability marginal win at the lowest human cost.\n")
 
     # ---- Trade 2 ----------------------------------------------------------
-    A("## Trade 2 — The quiet three-season fix: a controllable catcher\n")
-    A("> **Red Sox get:** C Shea Langeliers "
-      f"({_bat_line(bats['Shea Langeliers'])}; $5.25M, controlled through "
-      "2028)")
-    A("> **Athletics get:** LHP Jake Bennett "
-      f"({_arm_line(arms['Jake Bennett'])}) plus a 45 FV prospect\n")
-    A("**The math.** Langeliers at ~2.5 WAR/yr with 2.5 cheap years ≈ "
-      "**$35–45M surplus**. Bennett (~$25M as a controllable mid-rotation "
-      "lefty) plus a 45 FV (~$9M) matches. The A's perpetually need cheap "
-      "innings; Boston turns a season-long leak — with no internal help "
-      "coming — into a plus for three seasons.")
-    A("**Clubhouse cost: low.** Bennett is the eighth starter on a "
-      "five-slot staff once Crochet and Sandoval return — surplus by "
-      "definition — and catcher is the one lineup spot where no incumbent "
-      "has claimed the job. An upgrade there reshuffles nobody who is "
-      "driving the streak.\n")
-
-    # ---- Trade 3 ----------------------------------------------------------
-    A("## Trade 3 — The stabilizer: rental bat for a buy-low arm\n")
+    A("## Trade 2 — The stabilizer: rental bat for a buy-low arm\n")
     A("> **Red Sox get:** 2B Luis Arraez "
       f"({_bat_line(bats['Luis Arraez'])}; 1yr/$12M, free agent after "
       "2026 — a pure rental)")
@@ -155,8 +141,8 @@ def build() -> str:
       "and Arraez fills a spot currently held by a patchwork platoon, not "
       "a hot regular. An add, not a reshuffle.\n")
 
-    # ---- Trade 4 ----------------------------------------------------------
-    A("## Trade 4 — The big swing: a real shortstop, at a real cost\n")
+    # ---- Trade 3 ----------------------------------------------------------
+    A("## Trade 3 — The big swing: a real shortstop, at a real cost\n")
     A("> **Red Sox get:** SS Zach Neto "
       f"({_bat_line(bats['Zach Neto'])}; $4.15M, arbitration-controlled "
       "through 2029)")
@@ -180,6 +166,47 @@ def build() -> str:
       "**Why they might not:** if the org believes Mayer is the shortstop, "
       "this is paying retail for a redundancy — and paying it in "
       "clubhouse disruption too.\n")
+
+    # ---- The walk-away ----------------------------------------------------
+    try:
+        batt = json.load(open(C.DATA_DIR / "battery.json"))
+    except FileNotFoundError:
+        batt = None
+    A("## The walk-away — the catcher \"upgrade\" we're not making\n")
+    A("> **The deal that was on the menu:** C Shea Langeliers "
+      f"({_bat_line(bats['Shea Langeliers'])}; $5.25M, controlled through "
+      "2028) from the A's for LHP Jake Bennett "
+      f"({_arm_line(arms['Jake Bennett'])}) plus a 45 FV prospect\n")
+    A("**The math still works.** Langeliers at ~2.5 WAR/yr with 2.5 cheap "
+      "years ≈ **$35–45M surplus**; Bennett (~$25M as a controllable "
+      "mid-rotation lefty) plus a 45 FV (~$9M) matches. On the value "
+      "ledger alone, this is a fine trade.")
+    if batt:
+        pc, bb = batt["per_catcher"], batt["batteries"]
+
+        def _r(p, c):
+            v = bb.get(p, {}).get(c, {}).get("RA9")
+            return f"{v:.2f}" if v is not None else "—"
+
+        A("**The battery data is why Boston should pass.** The staff runs "
+          f"a {pc['Connor Wong']['RA9']:.2f} RA9 with Wong catching and "
+          f"{pc['Carlos Narváez']['RA9']:.2f} with Narváez — and the "
+          "pairings underneath are the real story: Gray at "
+          f"{_r('Sonny Gray', 'Connor Wong')} with Wong vs "
+          f"{_r('Sonny Gray', 'Carlos Narváez')} with Narváez; Bennett at "
+          f"{_r('Jake Bennett', 'Carlos Narváez')} with Narváez; Bello "
+          "nearly five runs better with Wong; Watson and Morán both "
+          "sharper with Narváez (fig. 14). These are small, "
+          "usage-confounded samples — not a causal framing stat — but "
+          "they show a club deliberately assigning each arm the catcher "
+          "it works best with, in the middle of a streak built on run "
+          "prevention. A new catcher resets every one of those "
+          "relationships in August, in a race, for a bat. Some chemistry "
+          "you can price. This is the kind you don't touch.\n")
+    else:
+        A("**The battery data is why Boston should pass** — the staff has "
+          "settled pitcher-catcher pairings mid-streak, and a new catcher "
+          "resets all of them in August, in a race, for a bat.\n")
 
     # ---- Sell branch ------------------------------------------------------
     A("## The contingency — if the gap is 6+ by August 1\n")
@@ -209,29 +236,39 @@ def article_section(md: str) -> str:
     """Compact version of the trades for ARTICLE.md."""
     L = []
     A = L.append
-    A("\n## Four trades that fit — ranked by what they cost the room\n")
+    A("\n## Three trades that fit — and the one to walk away from\n")
     A("A team that just won 13 straight has a clubhouse that is working, "
-      "so disruption gets priced like a cost. Working the seller list "
-      "against Boston's one real surplus — eight starters for five slots — "
-      "produces a menu, ordered from least to most disturbance (full value "
-      "math in the mock-trades memo):\n")
-    A("1. **The pen fix (zero disruption):** a 45 FV + 40 FV prospect "
-      "package to the selling Mets for Luke Weaver (elite relief season, "
-      "signed through 2027). Nobody in the room loses a job or an inning — "
-      "and it's the highest-probability marginal win available.")
-    A("2. **The quiet fix (low):** Jake Bennett + a 45 FV to the A's for C "
-      "Shea Langeliers (controlled through 2028). Bennett is the eighth "
-      "starter on a five-slot staff; catcher is the one spot with no "
-      "incumbent playing well.")
-    A("3. **The stabilizer (moderate):** Brayan Bello to the Giants for "
-      "rental Luis Arraez — zero prospect cost, and Arraez fills a "
-      "patchwork platoon spot rather than displacing a hot regular. The "
-      "first deal that subtracts from the active roster.")
-    A("4. **The big swing (high — probably wait):** Payton Tolle + "
+      "so disruption gets priced like a cost — and the honest conclusion "
+      "is that **the right deadline here is small**. The menu, ordered "
+      "from least to most disturbance (full value math in the mock-trades "
+      "memo):\n")
+    A("1. **The pen fix (zero disruption — do it):** a 45 FV + 40 FV "
+      "prospect package to the selling Mets for Luke Weaver (elite relief "
+      "season, signed through 2027). Nobody in the room loses a job or an "
+      "inning — and it's the highest-probability marginal win available.")
+    A("2. **The stabilizer (moderate — if the price holds):** Brayan "
+      "Bello to the Giants for rental Luis Arraez — zero prospect cost, "
+      "and Arraez fills a patchwork platoon spot rather than displacing a "
+      "hot regular. The first deal that subtracts from the active roster.")
+    A("3. **The big swing (high — probably wait):** Payton Tolle + "
       "Connelly Early + a lottery arm to the Angels for SS Zach Neto "
       "(controlled through 2029). Franchise-window correct on paper — but "
       "it pulls two arms out of a winning rotation mid-streak, and the "
       "same trade will still be there in the winter.")
+    try:
+        bb = json.load(open(C.DATA_DIR / "battery.json"))["batteries"]
+        gray = bb["Sonny Gray"]["Connor Wong"]["RA9"]
+        benn = bb["Jake Bennett"]["Carlos Narváez"]["RA9"]
+        nums = (f"Gray runs a {gray:.2f} RA9 with Wong, Bennett a "
+                f"{benn:.2f} with Narváez, and nearly every Boston arm "
+                "has a clear preferred catcher")
+    except (FileNotFoundError, KeyError):
+        nums = "nearly every Boston arm has a clear preferred catcher"
+    A("\nAnd the walk-away: the Langeliers catcher \"upgrade\" that the "
+      "positional audit seems to demand. The battery map (fig. 14) is the "
+      f"veto — {nums}. That's a working assignment system in the middle "
+      "of a streak built on run prevention, and no August bat is worth "
+      "resetting it.")
     A("\nAnd the contingency: if the gap hits six games by August 1, the "
       "sell list is Gray and Chapman — the rentals — and stops there.\n")
     return "\n".join(L)
@@ -248,7 +285,7 @@ def run():
         s = art.read_text()
         marker = "## The left fielder: the whole season in one player"
         section = article_section(s)
-        if "## Four trades that fit" not in s and marker in s:
+        if "trades that fit" not in s and marker in s:
             s = s.replace(marker, section.strip() + "\n\n" + marker)
             art.write_text(s)
             print("  [trades] appended trades section to ARTICLE.md")

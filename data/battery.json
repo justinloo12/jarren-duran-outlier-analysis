@@ -1,0 +1,114 @@
+{
+  "per_catcher": {
+    "Carlos Narv\u00e1ez": {
+      "IP": 440.3,
+      "RA9": 4.17,
+      "xwOBA_against": 0.314
+    },
+    "Connor Wong": {
+      "IP": 309.0,
+      "RA9": 3.47,
+      "xwOBA_against": 0.301
+    },
+    "Mickey Gasper": {
+      "IP": 99.3,
+      "RA9": 3.99,
+      "xwOBA_against": 0.291
+    }
+  },
+  "batteries": {
+    "Sonny Gray": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 30.7,
+        "RA9": 4.4
+      },
+      "Connor Wong": {
+        "IP": 63.0,
+        "RA9": 1.86
+      }
+    },
+    "Connelly Early": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 57.3,
+        "RA9": 3.45
+      },
+      "Connor Wong": {
+        "IP": 22.0,
+        "RA9": 3.27
+      },
+      "Mickey Gasper": {
+        "IP": 12.3,
+        "RA9": 2.92
+      }
+    },
+    "Ranger Suarez": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 66.3,
+        "RA9": 3.12
+      },
+      "Connor Wong": {
+        "IP": 12.3,
+        "RA9": 2.92
+      },
+      "Mickey Gasper": {
+        "IP": 11.3,
+        "RA9": 3.18
+      }
+    },
+    "Payton Tolle": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 28.0,
+        "RA9": 3.21
+      },
+      "Connor Wong": {
+        "IP": 30.7,
+        "RA9": 2.93
+      },
+      "Mickey Gasper": {
+        "IP": 23.7,
+        "RA9": 3.42
+      }
+    },
+    "Brayan Bello": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 22.7,
+        "RA9": 9.93
+      },
+      "Connor Wong": {
+        "IP": 34.7,
+        "RA9": 4.93
+      }
+    },
+    "Jake Bennett": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 32.0,
+        "RA9": 1.12
+      },
+      "Mickey Gasper": {
+        "IP": 16.3,
+        "RA9": 3.31
+      }
+    },
+    "Ryan Watson": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 23.3,
+        "RA9": 3.09
+      },
+      "Connor Wong": {
+        "IP": 19.3,
+        "RA9": 6.98
+      }
+    },
+    "Jovani Mor\u00e1n": {
+      "Carlos Narv\u00e1ez": {
+        "IP": 22.3,
+        "RA9": 2.01
+      },
+      "Connor Wong": {
+        "IP": 16.3,
+        "RA9": 3.86
+      }
+    }
+  },
+  "min_outs": 30
+}

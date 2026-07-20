@@ -394,6 +394,10 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
             units: dict = None):
     bos = sim[sim["team"].str.contains("Red Sox")].iloc[0]
     res = json.load(open(C.DATA_DIR / "analysis_results.json"))
+    try:
+        bat = json.load(open(C.DATA_DIR / "battery.json"))
+    except FileNotFoundError:
+        bat = None
     sa = res.get("speed_adjusted", {})
     pk = res.get("park_check", {}).get("career", {})
     s26 = res["seasons"]["2026"]
@@ -460,7 +464,10 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
           "clubhouse that works, and chemistry is a real asset that never "
           "shows up in a WAR column — so additions should cost prospects "
           "before they cost big-leaguers, and fill empty spots before "
-          "occupied ones. The decision tree by asset:\n")
+          "occupied ones. Which is why the right version of this deadline "
+          "is deliberately **small**: the roster's biggest upgrades — "
+          "Anthony, Mayer, Story, Casas, Duran's own regression — are "
+          "already in-house and free. The decision tree by asset:\n")
     else:
         A(f"**{v['call']}.** With ~{v['odds']*100:.0f}% odds, splurging on "
           "rentals would be malpractice — but so would a fire sale of a "
@@ -512,11 +519,34 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
           "(Yoshida platooning with Romy Gonzalez). A cheap, controllable "
           "infield stabilizer is still the highest-leverage add; the "
           "internal returns are the fallback, not the plan.")
-        A(f"- **Catcher ({g.get('C', 0):+d}) is the sneaky third add.** "
-          "Narváez/Wong have been below the position's league average all "
-          "year, and unlike the injury-driven infield holes, no internal "
-          "help is coming. A controllable upgrade (see the Langeliers "
-          "trade below) turns a quiet leak into a plus for three seasons.")
+        if bat:
+            bb = bat["batteries"]
+
+            def _ra9(p, c):
+                v = bb.get(p, {}).get(c, {}).get("RA9")
+                return f"{v:.2f}" if v is not None else "—"
+
+            w9 = bat["per_catcher"]["Connor Wong"]["RA9"]
+            n9 = bat["per_catcher"]["Carlos Narváez"]["RA9"]
+            A(f"- **Catcher ({g.get('C', 0):+d}) looks like a hole — and "
+              "is the trap.** The Narváez/Wong bats are below the "
+              "position's league average, but the battery data says leave "
+              f"the tandem alone: the staff runs a {w9:.2f} RA9 with Wong "
+              f"and {n9:.2f} with Narváez, and the club is quietly running "
+              "an assignment system — Gray at "
+              f"{_ra9('Sonny Gray', 'Connor Wong')} with Wong "
+              f"({_ra9('Sonny Gray', 'Carlos Narváez')} with Narváez), "
+              f"Bennett at {_ra9('Jake Bennett', 'Carlos Narváez')} with "
+              "Narváez, Bello five runs better with Wong, and the leverage "
+              "relievers sharper with Narváez (fig. 14). Small, "
+              "usage-confounded samples — but that is working "
+              "pitcher-catcher chemistry, and a mid-race catcher trade "
+              "would rip up every one of those pairings for a bat.")
+        else:
+            A(f"- **Catcher ({g.get('C', 0):+d}) is the sneaky third "
+              "add.** Narváez/Wong have been below the position's league "
+              "average all year, and unlike the injury-driven infield "
+              "holes, no internal help is coming.")
         A("- **The bullpen is the quiet weakness.** Its ERA ranks "
           f"{units['bullpen_era_rank'][0]}th, but its FIP ranks "
           f"{units['bullpen_fip_rank'][0]}th and its WAR "
@@ -525,8 +555,12 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
         A(f"- **And the awkward one: the reported sell candidate is their "
           f"best hitter.** Willson Contreras carries a "
           f"{int(first_base['bos_wrc'])} wRC+ at first base. Moving him "
-          f"while {bos['wc_gb']} games out of a playoff spot isn't a retool — "
-          "it's surrender priced as prudence.\n")
+          + ("while holding a playoff spot"
+             if str(bos.get("wc_gb", "")).strip() in ("-", "", "0.0")
+             else f"while {bos['wc_gb']} games out of a playoff spot")
+          + " isn't a retool — it's surrender priced as prudence.\n")
+        if bat:
+            A("![Battery map](figures/14_battery_map.png)\n")
 
     A("## The left fielder: the whole season in one player\n")
     A("The biggest hole on the roster is the Duran slump — which makes the "
