@@ -25,6 +25,16 @@ AS_OF = dt.date.today().isoformat()
 FV = {"55 FV": 40, "50 FV": 27, "45+ FV": 15, "45 FV": 9, "40 FV": 4}
 
 
+def _streak_n() -> int:
+    """Length of the season's signature win streak (persisted by
+    deadline.run(), so the number survives the run ending)."""
+    try:
+        return int(json.load(open(C.DATA_DIR / "deadline.json"))
+                   .get("max_win_streak", 13))
+    except (FileNotFoundError, KeyError, ValueError):
+        return 13
+
+
 def _bats(names):
     d = _fg_pull("all", team=0, stats="bat", typ=8)
     for c in ("PA", "wRC+", "WAR", "Age"):
@@ -82,22 +92,24 @@ def build() -> str:
       "need on the audit — the bats are below the position's average — but "
       "the battery data takes it off the list: the staff is thriving with "
       "the Narváez/Wong tandem, and nearly every arm has a clear preferred "
-      "battery mate (see the walk-away section below). LF and DH fix themselves "
-      "(Duran's regression behind a new Jahmai Jones platoon, Anthony's "
-      "eventual return, and the Yoshida/Gonzalez platoon already running). Witt Jr. "
+      "battery mate (see the walk-away section below). LF and DH need no "
+      "outside help either: Duran's regression sits behind a new Jahmai "
+      "Jones platoon with Anthony's return behind that, and at DH "
+      "Yoshida has quietly been an above-average hitter, with Gonzalez "
+      "covering the tougher lefties. Witt Jr. "
       f"({_bat_line(bats['Bobby Witt Jr.'])}) and De La Cruz "
       f"({_bat_line(bats['Elly De La Cruz'])}) top the seller SS list but "
       "are franchise players — named for completeness, not available.\n")
-    A("**The chemistry constraint.** A team that just won 13 straight has "
-      "a room that is working, and disruption is a real cost even though it "
-      "never shows up in a WAR column. So every deal below is priced on two "
-      "ledgers — surplus value *and* clubhouse cost — and the menu is "
-      "**ranked by how little it disturbs the roster**: prospects out "
-      "before big-leaguers, open spots filled before occupied ones, and no "
-      "deal that demotes anyone driving the streak.\n")
-    A("Three live trades and one deliberate pass make the menu — **a menu, "
-      "not a plan**, and the honest read is that Boston only *needs* the "
-      "first one. The right deadline here is small.\n")
+    n_stk = _streak_n()
+    A(f"**The chemistry constraint.** A team that just won {n_stk} straight has "
+      "a clubhouse that works, and disruption is a cost even though it "
+      "never shows up in a WAR column. Every deal below is graded on both "
+      "ledgers, value and disruption, and the menu is **ranked by the "
+      "second**: prospects out before big-leaguers, open spots before "
+      "occupied ones, nobody demoted while the team is winning.\n")
+    A("Three live trades and one deliberate pass make the menu — a menu, "
+      "not a plan. Boston only *needs* the first one. The right deadline "
+      "here is small.\n")
 
     # ---- Trade 1 ----------------------------------------------------------
     A("## Trade 1 — The pen fix: the zero-disruption add\n")
@@ -112,12 +124,13 @@ def build() -> str:
       "~$18M of salary — the prospect price is real but mid-tier, not "
       "painful. Cheaper alternative from the same pool: KC's Daniel Lynch "
       f"IV ({_arm_line(arms['Daniel Lynch IV'])}) for a 40 FV flier.")
-    A("**Clubhouse cost: none.** The package is entirely minor-leaguers — "
-      "nobody in the major-league room loses a job, a role, or an inning; "
-      "the bullpen simply gets deeper for the stretch run. And it lands at "
-      "the roster's quiet weakness: the pen's ERA is masking a worse FIP "
-      "and bottom-half reliever WAR. In a race decided by 2–3 wins, this "
-      "is the highest-probability marginal win at the lowest human cost.\n")
+    A("**Clubhouse cost: none.** The package is entirely minor-leaguers. "
+      "Nobody in the major-league room loses a job, a role, or an inning; "
+      "the bullpen simply gets deeper for the stretch run. It also lands "
+      "at the roster's quiet weakness — the pen's ERA is masking a worse "
+      "FIP and bottom-half reliever WAR. In a race decided by two or "
+      "three wins, this is the surest marginal win on the board and the "
+      "cheapest for the roster.\n")
 
     # ---- Trade 2 ----------------------------------------------------------
     A("## Trade 2 — The stabilizer: rental bat for a buy-low arm\n")
@@ -156,16 +169,16 @@ def build() -> str:
       "package lands in the same band. LA declined to extend Neto and is "
       "10.5 out — this is exactly when a rebuilding club cashes a "
       "26-and-under core piece for three arms.")
-    A("**Clubhouse cost: high — the only deal on the menu that "
-      "disturbs a winning room.** Tolle and Early are two arms out of the "
-      "active rotation in the middle of the streak. The surplus-value math "
-      "says yes; the chemistry ledger is the honest argument for waiting "
-      "until winter. **Why Boston might do it anyway:** it converts two of "
-      "eight starters into the roster's only true external hole, and Neto "
-      "arrives controlled through the entire Anthony/Rafaela/Abreu window. "
-      "**Why they might not:** if the org believes Mayer is the shortstop, "
-      "this is paying retail for a redundancy — and paying it in "
-      "clubhouse disruption too.\n")
+    A("**Clubhouse cost: high — the only deal on the menu that truly "
+      "disturbs a winning roster.** Tolle and Early are two arms out of "
+      "the active rotation in the middle of a race. The surplus-value "
+      "math says yes; the disruption is the argument for waiting until "
+      "winter. **Why Boston might do it anyway:** it converts two of "
+      "eight starters into the roster's only real external hole, and Neto "
+      "arrives controlled through the entire Anthony/Rafaela/Abreu "
+      "window. **Why they might not:** if the org believes Mayer is the "
+      "shortstop, this is paying retail for a redundancy and paying part "
+      "of the bill in disruption.\n")
 
     # ---- The walk-away ----------------------------------------------------
     try:
@@ -199,10 +212,25 @@ def build() -> str:
           "sharper with Narváez (fig. 14). These are small, "
           "usage-confounded samples — not a causal framing stat — but "
           "they show a club deliberately assigning each arm the catcher "
-          "it works best with, in the middle of a streak built on run "
-          "prevention. A new catcher resets every one of those "
-          "relationships in August, in a race, for a bat. Some chemistry "
-          "you can price. This is the kind you don't touch.\n")
+          "it works best with, on a staff that is carrying the season. A "
+          "new catcher resets every one of those relationships in August, "
+          "in a race, for a bat.\n")
+        try:
+            fe = json.load(open(C.DATA_DIR / "battery_model.json"))["fe"]
+            A("**The adjusted model seals it.** Controlling for pitcher, "
+              "opponent and park (fixed-effects OLS, cluster-bootstrapped "
+              "by game), the overall catcher effect is "
+              f"{fe['catcher_effect_wong_minus_narvaez']*1000:+.0f} points "
+              "of wOBA-against toward Wong, 95% CI "
+              f"[{fe['ci95'][0]*1000:+.0f}, {fe['ci95'][1]*1000:+.0f}] — "
+              "statistically indistinguishable from zero. In short, "
+              "there is **no catcher problem**. The position's "
+              "below-average bat never shows up in run prevention, and "
+              "the shrinkage analysis (fig. 15) says most individual "
+              "battery splits are noise around a healthy tandem. That "
+              "leaves nothing for a trade to fix.\n")
+        except FileNotFoundError:
+            pass
     else:
         A("**The battery data is why Boston should pass** — the staff has "
           "settled pitcher-catcher pairings mid-streak, and a new catcher "
@@ -217,11 +245,12 @@ def build() -> str:
     A("> **Aroldis Chapman** "
       f"({_arm_line(arms['Aroldis Chapman'])}; expiring) → any contender "
       "for a 40+ FV flier.\n")
-    A("Selling the rentals is the *only* sell branch — the audit gives no "
+    A("Selling the rentals is the *only* sell branch; the audit gives no "
       "case for moving Contreras, Duran, or any controllable starter at "
-      "this deadline. The chemistry ledger doubles the point: trading your "
-      "best hitter out of a clubhouse three weeks removed from a 13-game "
-      "streak isn't a hedge, it's a message — and rooms hear it.\n")
+      "this deadline. The chemistry ledger doubles the point. Trading "
+      f"your best hitter fresh off a {_streak_n()}-game winning streak would tell "
+      "the clubhouse exactly what the front office thinks of it, and "
+      "that message has a cost of its own.\n")
 
     A("---\n*Contracts: Neto $4.15M arb-controlled through 2029 (avoided "
       "arbitration Jan 2026); Arraez 1yr/$12M (SF, Feb 2026); Weaver "
@@ -237,11 +266,10 @@ def article_section(md: str) -> str:
     L = []
     A = L.append
     A("\n## Three trades that fit — and the one to walk away from\n")
-    A("A team that just won 13 straight has a clubhouse that is working, "
-      "so disruption gets priced like a cost — and the honest conclusion "
-      "is that **the right deadline here is small**. The menu, ordered "
-      "from least to most disturbance (full value math in the mock-trades "
-      "memo):\n")
+    A(f"A team that just won {_streak_n()} straight has a clubhouse that works, so "
+      "disruption is priced like a cost here. The right deadline is "
+      "small. The menu, ordered from least to most disturbance (full "
+      "value math in the mock-trades memo):\n")
     A("1. **The pen fix (zero disruption — do it):** a 45 FV + 40 FV "
       "prospect package to the selling Mets for Luke Weaver (elite relief "
       "season, signed through 2027). Nobody in the room loses a job or an "
@@ -256,19 +284,20 @@ def article_section(md: str) -> str:
       "it pulls two arms out of a winning rotation mid-streak, and the "
       "same trade will still be there in the winter.")
     try:
-        bb = json.load(open(C.DATA_DIR / "battery.json"))["batteries"]
-        gray = bb["Sonny Gray"]["Connor Wong"]["RA9"]
-        benn = bb["Jake Bennett"]["Carlos Narváez"]["RA9"]
-        nums = (f"Gray runs a {gray:.2f} RA9 with Wong, Bennett a "
-                f"{benn:.2f} with Narváez, and nearly every Boston arm "
-                "has a clear preferred catcher")
+        fe = json.load(open(C.DATA_DIR / "battery_model.json"))["fe"]
+        adj = (f"an adjusted model (pitcher, opponent and park controls) "
+               "puts the overall catcher effect at "
+               f"{fe['catcher_effect_wong_minus_narvaez']*1000:+.0f} "
+               "points of wOBA-against with a confidence interval that "
+               "crosses zero")
     except (FileNotFoundError, KeyError):
-        nums = "nearly every Boston arm has a clear preferred catcher"
-    A("\nAnd the walk-away: the Langeliers catcher \"upgrade\" that the "
-      "positional audit seems to demand. The battery map (fig. 14) is the "
-      f"veto — {nums}. That's a working assignment system in the middle "
-      "of a streak built on run prevention, and no August bat is worth "
-      "resetting it.")
+        adj = ("an adjusted model with pitcher, opponent and park "
+               "controls finds no significant catcher effect")
+    A("\nAnd the walk-away: the Langeliers catcher \"upgrade\" the "
+      "positional audit seems to demand. The battery data is the veto. "
+      "Nearly every Boston arm works with a settled catcher (fig. 14), "
+      f"and {adj} — there is no catcher problem to fix (fig. 15). No "
+      "August bat is worth resetting a working staff.")
     A("\nAnd the contingency: if the gap hits six games by August 1, the "
       "sell list is Gray and Chapman — the rentals — and stops there.\n")
     return "\n".join(L)

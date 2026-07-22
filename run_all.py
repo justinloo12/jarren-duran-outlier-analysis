@@ -17,7 +17,7 @@ from src import fetch_cohort
 from src import (statcast_metrics, analysis, age_curve, viz, memo, comps,
                  outfield_plan, trade_targets, rebound_sim, erosion,
                  luck_backtest, preregister, web_deck, deadline, mock_trades,
-                 battery)
+                 battery, battery_model, xcontact)
 
 
 def fetch():
@@ -59,6 +59,10 @@ def main():
     trade_targets.run()
     print("== Catcher-battery analysis ==")
     battery.run()
+    print("== Adjusted battery model (WOWY + FE + shrinkage) ==")
+    battery_model.run()
+    print("== Speed-aware expected-contact model (GBM) ==")
+    xcontact.run()
     print("== Deadline buy/sell decision ==")
     deadline.run()
     print("== Mock trades ==")

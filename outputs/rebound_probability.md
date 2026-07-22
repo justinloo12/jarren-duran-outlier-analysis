@@ -1,31 +1,31 @@
 # Rebound Probability — Monte Carlo on the Rest of 2026
 
-*Generated 2026-07-19 · 10,000 sims, seed 680776 (deterministic) · remaining PA = 253 (64 Red Sox games left × his 387-PA-in-98-games pace).*
+*Generated 2026-07-21 · 10,000 sims, seed 680776 (deterministic) · remaining PA = 251 (63 Red Sox games left × his 395-PA-in-99-games pace).*
 
 ## The model in one paragraph
 
-True talent is drawn from a prior built on 2023–25 xwOBA (weighted by PA × 3/4/5 recency) **plus his speed premium** (+3 pts, his own career wOBA−xwOBA gap — Statcast xstats ignore sprint speed), giving a healthy-prior mean of **0.334 wOBA ≈ 109 wRC+** — independent confirmation of the memo's ~110 wRC+ plateau. Talent uncertainty (σ = 15 pts) combines the prior's estimation error with year-to-year drift; each sim then adds binomial-approximation sampling noise (√(p(1−p)/n) ≈ 30 pts at 253 PA). wOBA→wRC+ uses a PA-weighted league fit plus Duran's own park offset (-2.3).
+True talent is drawn from a prior built on 2023–25 xwOBA (weighted by PA × 3/4/5 recency) **plus his speed premium** (+3 pts, his own career wOBA−xwOBA gap — Statcast xstats ignore sprint speed), giving a healthy-prior mean of **0.333 wOBA ≈ 108 wRC+** — independent confirmation of the memo's ~110 wRC+ plateau. Talent uncertainty (σ = 15 pts) combines the prior's estimation error with year-to-year drift; each sim then adds binomial-approximation sampling noise (√(p(1−p)/n) ≈ 30 pts at 251 PA). wOBA→wRC+ uses a PA-weighted league fit plus Duran's own park offset (-2.2).
 
 ## Two scenarios — the gap IS the erosion question
 
-The healthy prior assumes **no injury and no true skill cliff**. But the decision memo documents real 2026 erosion (chase, whiff, hard-hit all significantly worse). The erosion scenario blends 2026's own degraded process (xwOBA 0.293) into the prior at **40%** weight.
+The healthy prior assumes **no injury and no true skill cliff**. But the decision memo documents real 2026 erosion (chase, whiff, hard-hit all significantly worse). The erosion scenario blends 2026's own degraded process (xwOBA 0.294) into the prior at **40%** weight.
 
 | Quantity | Healthy prior | Erosion-blended |
 |----------|--------------:|----------------:|
-| True-talent prior (wOBA / wRC+) | 0.334 / 109 | 0.319 / 99 |
-| P(rest-of-season wRC+ ≥ 100) | **66%** | **48%** |
-| P(rest-of-season wRC+ ≥ 110) | 48% | 31% |
-| P(full-season 2026 wRC+ ≥ 90) | 13% | 5% |
-| Median rest-of-season (wOBA / wRC+) | 0.334 / 109 | 0.319 / 99 |
-| Median full-season 2026 (wOBA / wRC+) | 0.291 / 80 | 0.285 / 76 |
+| True-talent prior (wOBA / wRC+) | 0.333 / 108 | 0.319 / 99 |
+| P(rest-of-season wRC+ ≥ 100) | **65%** | **48%** |
+| P(rest-of-season wRC+ ≥ 110) | 47% | 30% |
+| P(full-season 2026 wRC+ ≥ 90) | 10% | 4% |
+| Median rest-of-season (wOBA / wRC+) | 0.333 / 108 | 0.319 / 99 |
+| Median full-season 2026 (wOBA / wRC+) | 0.289 / 79 | 0.284 / 75 |
 
 ![Rebound probability](../figures/09_rebound_probability.png)
 
 ## What the gap says
 
-- If the 2023–25 player is intact, a league-average-or-better rest of season is roughly a **66%** proposition — a favorable bet, i.e. the 'hold, he'll rebound' case.
-- If the 2026 process erosion is ~40% real, that drops to **48%** — a coin flip whose median rest-of-season (99 wRC+) is only league-average. The ~18-point probability gap is the price of the eroded chase/whiff/hard-hit rates.
-- **Either way, the full-season 2026 line stays ugly**: even the healthy prior gives only 13% odds of finishing above 90 wRC+ (median ≈ 80). The first-half hole is too deep — so a buyer looking at the season line will still see a down year, which matters for timing below.
+- If the 2023–25 player is intact, a league-average-or-better rest of season is roughly a **65%** proposition — a favorable bet, i.e. the 'hold, he'll rebound' case.
+- If the 2026 process erosion is ~40% real, that drops to **48%** — a coin flip whose median rest-of-season (99 wRC+) is only league-average. The ~17-point probability gap is the price of the eroded chase/whiff/hard-hit rates.
+- **Either way, the full-season 2026 line stays ugly**: even the healthy prior gives only 10% odds of finishing above 90 wRC+ (median ≈ 79). The first-half hole is too deep — so a buyer looking at the season line will still see a down year, which matters for timing below.
 
 ## Valuation timing under the rebound distribution
 
@@ -35,7 +35,7 @@ Anchors from the trade-value model ($8M/WAR): sell-at-the-nadir ≈ **$10M** (�
 |--------|--------------:|----------------:|
 | Sell now (July) | $10M | $10M |
 | Sell at the deadline | $16M | $14M |
-| Sell in the offseason | $22M | $18M |
+| Sell in the offseason | $21M | $18M |
 
 ## Does this support the standing recommendation?
 

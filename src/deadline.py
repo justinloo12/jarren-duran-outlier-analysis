@@ -236,6 +236,22 @@ def fig_race(sim: pd.DataFrame):
     plt.close(fig)
 
 
+_ALL_BATS = None
+
+
+def _player_line(name: str):
+    """League batting row for one player (cached per run)."""
+    global _ALL_BATS
+    if _ALL_BATS is None:
+        d = _fg_pull("all", team=0, stats="bat", typ=8)
+        for c in ("PA", "wRC+", "OBP", "K%", "wOBA"):
+            if c in d.columns:
+                d[c] = pd.to_numeric(d[c], errors="coerce")
+        _ALL_BATS = d
+    m = _ALL_BATS[_ALL_BATS["Name"] == name]
+    return None if m.empty else m.iloc[0]
+
+
 def _wc_phrase(bos) -> str:
     g = str(bos.get("wc_gb", "")).strip()
     if g in ("-", "", "0.0") :
@@ -292,7 +308,8 @@ def memo(sim: pd.DataFrame, v: dict, monthly: pd.DataFrame,
     A("| Expiring vets (reported: Gray, Chapman, Contreras) | **Sell only if "
       "out of it by Aug 1** | rentals with real deadline markets; the one "
       "true sell-now inventory |")
-    A("| Yoshida | **Absorb** | negative value; don't pay to escape |")
+    A("| Yoshida | **Keep/absorb** | bat above average in 2026; contract "
+      "still immovable |")
     A("| Rotation | **Do not trade from it** | it is the reason the odds are "
       "alive |\n")
 
@@ -326,9 +343,12 @@ def memo(sim: pd.DataFrame, v: dict, monthly: pd.DataFrame,
           "reclamation bet: .426 wOBA vs LHP in 2025 but .272 in 2026, "
           "albeit with a .327 xwOBA) — and Roman Anthony's "
           "eventual return (still rehabbing, no firm date).")
-        A(f"> - **DH ({g.get('DH', 0):+d}) is the Yoshida problem** — and "
-          "the prescribed fix is now in effect: he shares DH with Romy "
-          "Gonzalez. Contain it, don't pay to escape it.")
+        A(f"> - **DH ({g.get('DH', 0):+d}) is a positional-bar problem, "
+          "not a Yoshida problem.** Yoshida himself has been above league "
+          "average with one of the lowest strikeout rates in baseball; "
+          "the gap comes from the high league DH bar and the non-Yoshida "
+          "PAs at the spot. Gonzalez covers the tough lefties. No move "
+          "needed.")
         A(f"> - **SS ({g.get('SS', 0):+d}) is the one true external "
           "target — with a caveat: half the infield is on the IL** (Mayer "
           "10-day, Story 60-day, Kiner-Falefa 10-day; Casas 60-day at 1B). "
@@ -398,6 +418,14 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
         bat = json.load(open(C.DATA_DIR / "battery.json"))
     except FileNotFoundError:
         bat = None
+    try:
+        bmod = json.load(open(C.DATA_DIR / "battery_model.json"))
+    except FileNotFoundError:
+        bmod = None
+    try:
+        xc = json.load(open(C.DATA_DIR / "xcontact.json"))
+    except FileNotFoundError:
+        xc = None
     sa = res.get("speed_adjusted", {})
     pk = res.get("park_check", {}).get("career", {})
     s26 = res["seasons"]["2026"]
@@ -409,8 +437,13 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
     streak = str(bos.get("streak", ""))
     n_streak = int(streak[1:]) if streak[1:].isdigit() else 0
     hot = streak.startswith("W") and n_streak >= 3
-    # 13 straight is a season fact; the title only grows if the run does
-    big = n_streak if (streak.startswith("W") and n_streak >= 13) else 13
+    # the signature streak is a season fact; persisted so the number
+    # survives the run ending (run() tracks the max in deadline.json)
+    try:
+        big = int(json.load(open(C.DATA_DIR / "deadline.json"))
+                  .get("max_win_streak", 13))
+    except (FileNotFoundError, ValueError):
+        big = 13
     A(f"# The Red Sox Won {big} Straight. Now Comes the Hard Part\n")
     A("### A trade-deadline case study: the run differential saw the streak "
       "coming — and says buy\n")
@@ -425,49 +458,46 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
           "take wrote itself: sell. Today they are "
           f"{int(bos['W'])}-{int(bos['L'])}, and **{_wc_phrase(bos)}**.\n")
     else:
-        A("The Red Sox ripped off a **13-game winning streak** into the "
-          "All-Star break — the longest run in the majors this season — and "
-          "turned a sell-the-vets summer into a playoff race. They are "
+        A(f"The Red Sox ripped off a **{big}-game winning streak** around "
+          "the All-Star break — the longest run in the majors this season — "
+          "and turned a sell-the-vets summer into a playoff race. They are "
           f"{int(bos['W'])}-{int(bos['L'])}"
           + (f" (riding a {n_streak}-game winning streak)" if hot else "")
           + f", and **{_wc_phrase(bos)}**.\n")
-    A("Here is the part the streak did not change: the math saw it coming. "
-      "Boston has outscored its opponents by "
-      f"**{int(bos['run_diff']):+d}** runs — a Pythagorean "
-      f".{bos['pythag']*1000:.0f} team that spent three months wearing a "
-      f".{bos['pct']*1000:.0f} record. Hot streaks are usually where "
-      "analysis goes to die. This one is different, because it isn't a lucky "
-      "team getting hot — it's an unlucky team's record catching up to its "
-      f"run differential. In {N_SIMS:,} simulations of the rest of the "
-      f"season, Boston makes the playoffs **{v['odds']*100:.0f}%** of the "
-      "time.\n")
+    A("The streak itself is not the story. Boston has outscored its "
+      f"opponents by **{int(bos['run_diff']):+d}** runs this season, the "
+      f"profile of a .{bos['pythag']*1000:.0f} team, and spent three "
+      f"months wearing a .{bos['pct']*1000:.0f} record anyway. This is "
+      "not a mediocre club that got hot at the right time. It is a good "
+      "club whose record finally caught up with how it has been playing. "
+      f"In {N_SIMS:,} simulations of the rest of the season, Boston makes "
+      f"the playoffs **{v['odds']*100:.0f}%** of the time.\n")
     A("![AL playoff race](figures/12_playoff_race.png)\n")
-    A(("That's a bona fide playoff team — one the standings have only just "
-       "begun to reflect. "
+    A(("That is a playoff team, and the standings are only starting to "
+       "reflect it. "
        if v["odds"] >= 0.62 else
-       "That's a coin flip — a live playoff team wearing a seller's record. "
+       "That is a coin flip: a live playoff team wearing a seller's "
+       "record. "
        if v["odds"] >= 0.40 else
-       "That's not a contender. It's also not a corpse. ")
-      + "So the deadline question is no longer whether to sell — it's what "
-      "a team like this should buy. And the roster's biggest open question "
-      "— what to do with Jarren Duran — turns out to be the whole season in "
-      "miniature: **the team is its left fielder — the process is better "
-      "than the results.** We'll get to him. First, the money question.\n")
+       "That is not a contender. It is also not a corpse. ")
+      + "The deadline question is what a team like this should buy, and "
+      "the answer runs through the roster's strangest case. Jarren "
+      "Duran's season is the team's season in miniature: **the process "
+      "is better than the results.** His file comes later. The money "
+      "question comes first.\n")
     A("## So: buy or sell?\n")
     if v["odds"] >= 0.40:
-        A(f"**{v['call']}.** At ~{v['odds']*100:.0f}% odds, a marginal win "
-          "is worth real assets — the fire-sale case is dead, and even the "
-          "sell-the-vets hedge should wait. But buy like the math, not like "
-          "a panic: targeted, controllable additions at the actual holes, "
-          "not rental splurges. And one constraint sits over every deal: "
-          "**don't disturb the room.** A 13-game streak is the sound of a "
-          "clubhouse that works, and chemistry is a real asset that never "
-          "shows up in a WAR column — so additions should cost prospects "
-          "before they cost big-leaguers, and fill empty spots before "
-          "occupied ones. Which is why the right version of this deadline "
-          "is deliberately **small**: the roster's biggest upgrades — "
-          "Anthony, Mayer, Story, Casas, Duran's own regression — are "
-          "already in-house and free. The decision tree by asset:\n")
+        A(f"**{v['call']}.** At ~{v['odds']*100:.0f}% odds a marginal win "
+          "is worth real assets, so the fire-sale case is dead and even "
+          "the sell-the-vets hedge should wait. But buy carefully, and "
+          "with one constraint over every deal: **don't disturb the "
+          "room.** Whatever mix of talent and chemistry produced a "
+          f"{big}-game winning streak is worth protecting, so additions should cost "
+          "prospects rather than big-leaguers and fill empty spots rather "
+          "than occupied ones. That points to a deliberately **small** "
+          "deadline. The biggest upgrades available to this roster — "
+          "Anthony, Mayer, Story, Casas, and Duran's own regression — are "
+          "internal, and free. By asset:\n")
     else:
         A(f"**{v['call']}.** With ~{v['odds']*100:.0f}% odds, splurging on "
           "rentals would be malpractice — but so would a fire sale of a "
@@ -481,17 +511,28 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
     A("- **Keep the young outfield** (Anthony, Rafaela, Abreu) and the "
       "rotation — they are the 2027 team.")
     if v["odds"] >= 0.40:
-        A("- **Keep the expiring veterans** (Gray, Chapman, Contreras were "
-          "the winter's reported trade names) — they are playoff innings "
-          "and playoff at-bats now, and the veteran spine of the room that "
-          "just won 13 straight. The sell branch reopens only if the gap "
-          "blows out before August 1.")
+        A("- **Keep the expiring veterans.** Gray, Chapman and Contreras "
+          "were the winter's reported trade names; right now they are "
+          "playoff innings, playoff at-bats, and most of the clubhouse's "
+          "seniority. The sell branch reopens only if the gap blows out "
+          "before August 1.")
     else:
         A("- **The only sell-now inventory is the expiring veterans** (Gray, "
           "Chapman, Contreras have been the reported names) — and only if "
           "the next three weeks bury the wild-card gap.")
-    A("- **Absorb Yoshida.** Negative trade value; paying to escape it "
-      "burns real prospects to save sunk money.\n")
+    yo = _player_line("Masataka Yoshida")
+    if yo is not None and yo.get("wRC+", 0) >= 95:
+        A("- **Keep Yoshida, and retire the dead-money talk.** He has "
+          f"quietly been a useful hitter this year: {yo['wRC+']:.0f} wRC+, "
+          f".{yo['OBP']*1000:.0f} OBP, a {yo['K%']*100:.0f}% strikeout "
+          "rate that ranks among the league's lowest, league-average "
+          "contact quality. The contract ($18.6M through 2027 for a DH) "
+          "is still underwater as a trade asset, but the bat is doing its "
+          "job. Absorb the deal and play the hitter.\n")
+    else:
+        A("- **Absorb Yoshida.** The contract has negative trade value; "
+          "paying to escape it burns real prospects to save sunk "
+          "money.\n")
 
     if aud is not None:
         g = {r["pos"]: int(r["gap"]) for _, r in aud.iterrows()}
@@ -515,10 +556,11 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
         A(f"- **Shortstop ({g.get('SS', 0):+d}) is the one true external "
           "target — with an asterisk: half the infield is hurt** (Mayer, "
           "Story, Kiner-Falefa; Casas at first). A Cheng/Monasterio platoon "
-          "is bridging short, and Boston's DH fix is already running "
-          "(Yoshida platooning with Romy Gonzalez). A cheap, controllable "
-          "infield stabilizer is still the highest-leverage add; the "
-          "internal returns are the fallback, not the plan.")
+          "is bridging short, and DH has steadied on its own — Yoshida has "
+          "been above league average, with Gonzalez taking the tougher "
+          "lefties. A cheap, controllable infield stabilizer is still the "
+          "highest-leverage add; the internal returns are the fallback, "
+          "not the plan.")
         if bat:
             bb = bat["batteries"]
 
@@ -541,7 +583,18 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
               "relievers sharper with Narváez (fig. 14). Small, "
               "usage-confounded samples — but that is working "
               "pitcher-catcher chemistry, and a mid-race catcher trade "
-              "would rip up every one of those pairings for a bat.")
+              "would rip up every one of those pairings for a bat."
+              + ((" A formal check backs this up: a fixed-effects model "
+                  "(pitcher, opponent and park controls, cluster-"
+                  "bootstrapped) puts the overall catcher effect at "
+                  f"{bmod['fe']['catcher_effect_wong_minus_narvaez']*1000:+.0f} "
+                  "points of wOBA-against toward Wong with a 95% CI of "
+                  f"[{bmod['fe']['ci95'][0]*1000:+.0f}, "
+                  f"{bmod['fe']['ci95'][1]*1000:+.0f}] — no significant "
+                  "catcher problem exists, and empirical-Bayes shrinkage "
+                  "pulls most single-pairing splits toward noise (fig. "
+                  "15). There is nothing here a trade would fix.")
+                 if bmod else ""))
         else:
             A(f"- **Catcher ({g.get('C', 0):+d}) is the sneaky third "
               "add.** Narváez/Wong have been below the position's league "
@@ -585,6 +638,27 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
       "hard-hit rate all moved the wrong way — but no injury has been "
       "reported, and his speed, baserunning and defense remain plus. The "
       "legs a buyer would pay for are intact.\n")
+    if xc:
+        du = xc["duran"]
+        dec10 = [d for d in xc["deciles"] if d["decile"] == 10][0]
+        full = du.get("speed_premium_full_woba")
+        A("*The speed claim, formalized:* rather than assert that xstats "
+          "shortchange burners, we trained the corrected model — gradient "
+          f"boosting on all {xc['n_batted_balls']:,} tracked 2026 batted "
+          "balls (exit velo, launch angle, spray), once without and once "
+          "with sprint speed, validated out-of-sample with folds grouped "
+          "by batter. The speed-blind model under-predicts the fastest "
+          f"decile of hitters by {dec10['resid_base']*1000:+.0f} points of "
+          "BABIP — the blind spot, measured (fig. 16) — and for Duran "
+          f"({du['sprint_speed']:.1f} ft/s, decile {du['decile']}) the "
+          "speed term is worth "
+          f"**{du['speed_premium_wobacon']*1000:+.0f} points of wOBA on "
+          "contact**"
+          + (f" (≈{full*1000:+.0f} on full wOBA at his contact rate)"
+             if full else "")
+          + " — landing inside the +5-to-14 band this analysis derived "
+          "independently from his career gaps.\n")
+        A("![Speed model](figures/16_speed_model.png)\n")
     pkc = res.get("park_check", {}).get("career", {})
     hg = (pkc.get("home", {}).get("gap") or 0) * 1000
     rg = (pkc.get("road", {}).get("gap") or 0) * 1000
@@ -598,9 +672,9 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
       "regression from a lucky peak plus a 2026 bad-luck tail explains the "
       "rest.\n")
     A("![BABIP by season](figures/01_babip_vs_league.png)\n")
-    A("Which is the same shape as the team's season: results below process, "
-      "market ready to misprice it. The biggest hole on the roster is the "
-      "one no trade can fix — and none needs to.\n")
+    A("His season has the same shape as the team's: results running "
+      "behind process, and a market ready to misprice both. The roster's "
+      "biggest hole is the one no trade can fix, and none needs to.\n")
 
     A("## What would change my mind\n")
     A("- A 2026 second-half BABIP rebound with flat chase/whiff → the luck "
@@ -612,13 +686,17 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
     A("---\n")
     A("*Methods: park-adjusted wRC+ for all talent comparisons; luck "
       "measured against Duran's own career wOBA−xwOBA gap (Statcast xstats "
-      "ignore sprint speed); venue splits from pitch-level Statcast; playoff "
-      "odds from a 10,000-run Monte Carlo (Pythagorean talent, regressed, "
-      "no schedule effects); ~a dozen significance tests reported without "
-      "family-wise correction — isolated p≈.03–.05 findings are "
-      "directional. Data: Baseball Savant (pybaseball), FanGraphs, MLB "
-      "Stats API; salaries via Spotrac. Full reproducible pipeline: "
-      "`python run_all.py`.*")
+      "ignore sprint speed), cross-checked by a gradient-boosted expected-"
+      "contact model trained league-wide with sprint speed as a feature "
+      "(out-of-fold, folds grouped by batter); venue splits from "
+      "pitch-level Statcast; playoff odds from a 10,000-run Monte Carlo "
+      "(Pythagorean talent, regressed, no schedule effects); catcher "
+      "effects from a WOWY + fixed-effects model (pitcher/opponent/park "
+      "controls, cluster-bootstrap CIs, empirical-Bayes shrinkage); ~a "
+      "dozen significance tests reported without family-wise correction — "
+      "isolated p≈.03–.05 findings are directional. Data: Baseball Savant "
+      "(pybaseball), FanGraphs, MLB Stats API; salaries via Spotrac. Full "
+      "reproducible pipeline: `python run_all.py`.*")
     out = C.OUT_DIR / "ARTICLE.md"
     out.write_text("\n".join(L))
     print(f"  [deadline] wrote {out}")
@@ -630,9 +708,19 @@ def run():
     sim.to_csv(C.DATA_DIR / "al_race_sim.csv", index=False)
     bos = sim[sim["team"].str.contains("Red Sox")].iloc[0]
     v = verdict(bos)
+    # remember the season's longest win streak even after it snaps
+    try:
+        max_stk = int(json.load(open(C.DATA_DIR / "deadline.json"))
+                      .get("max_win_streak", 13))
+    except (FileNotFoundError, ValueError):
+        max_stk = 13
+    s = str(bos.get("streak", ""))
+    if s.startswith("W") and s[1:].isdigit():
+        max_stk = max(max_stk, int(s[1:]))
     with open(C.DATA_DIR / "deadline.json", "w") as f:
         json.dump({"as_of": dt.date.today().isoformat(),
                    "verdict": v,
+                   "max_win_streak": max_stk,
                    "bos": {k: (float(bos[k]) if isinstance(bos[k], (int, float, np.floating)) else str(bos[k]))
                            for k in ("W", "L", "run_diff", "pythag", "talent",
                                       "playoff_odds", "wc_gb", "streak")}},

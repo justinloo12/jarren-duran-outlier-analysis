@@ -285,8 +285,8 @@ def memo(rs, cohort, bench):
           f"{_m(SALARY_2026.get(n))}{'*' if n in APPROX_SALARY else ''} |")
     A("\n> **The roster squeeze is the story.** In 2026 Duran is the Red Sox' "
       "**lowest-producing regular outfielder** while carrying its "
-      "**second-highest OF salary** ($7.7M), behind only the Yoshida albatross "
-      "($18.6M). Abreu ($0.8M) and Rafaela ($2.0M) give more production for a "
+      "**second-highest OF salary** ($7.7M), behind only Yoshida's $18.6M. "
+      "Abreu ($0.8M) and Rafaela ($2.0M) give more production for a "
       "fraction of the cost, and Roman Anthony ($130M extension) is the "
       "long-term cornerstone. Boston has cheaper, younger, better-or-equal "
       "outfielders — so Duran is the movable piece, not a building block.\n")
@@ -312,12 +312,13 @@ def memo(rs, cohort, bench):
       "**arbitration-controllable** (not a free agent yet), which is exactly "
       "what makes him tradeable: a contender gets 1–2 years of an above-average "
       "CF/LF at a non-star price.")
-    A("- **Yoshida ($18.6M through 2027)** is the cautionary comp on the same "
-      "roster: a corner bat signed to a big deal that aged badly and is now a "
-      "salary-dump candidate. Duran is *not* in that bucket — his contract is "
-      "short and cheap — but it shows how quickly a Red Sox OF bat can go from "
-      "asset to liability, which argues for selling Duran while he still has "
-      "positive, controllable value rather than holding into decline.\n")
+    A("- **Yoshida ($18.6M through 2027)** is the contract-structure comp "
+      "on the same roster. His 2026 bat has actually been fine — above "
+      "league average, with one of MLB's lowest strikeout rates — but an "
+      "average-plus DH at $18.6M still carries no trade value. The lesson "
+      "is about the deal, not the player: even a productive bat becomes "
+      "immovable at the wrong price, which argues for dealing Duran while "
+      "his contract is still the cheap part of the package.\n")
 
     A("## Bottom line\n")
     A("- **vs. league:** an above-average regular in a normal year (2025), "
@@ -328,9 +329,9 @@ def memo(rs, cohort, bench):
     A("- **vs. the market:** priced like a solid regular ($7.7M), not a star; "
       "value hinges entirely on whether the ~110-wRC+ 2025 hitter or the 2026 "
       "version is real. The peer picture reinforces the memo's call: **trade "
-      "from a position of surplus, value him at the 2025 baseline, and don't "
-      "wait for a Yoshida-style decline to erase the controllable-value "
-      "window.**\n")
+      "from a position of surplus, value him at the 2025 baseline, and "
+      "don't hold controllable value until the market stops paying for "
+      "it.**\n")
 
     A("---\n*Salary figures are 2026 Spotrac cap hits gathered via web search "
       f"on {SALARY_AS_OF}; `*` = approximate (pre-arb minimum). Re-verify "

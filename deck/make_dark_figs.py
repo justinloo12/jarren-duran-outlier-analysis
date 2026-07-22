@@ -52,4 +52,10 @@ from src import battery  # noqa: E402
 battery.fig_battery(json.load(open(C.DATA_DIR / "battery.json")))
 print("  [dark] 14_battery_map")
 
+# 15 adjusted battery + 16 speed model (from their cached JSON results)
+from src import battery_model, xcontact  # noqa: E402
+battery_model.fig_adjusted(json.load(open(C.DATA_DIR / "battery_model.json")))
+xcontact.fig_speed(json.load(open(C.DATA_DIR / "xcontact.json")))
+print("  [dark] 15_battery_adjusted, 16_speed_model")
+
 print(f"dark figures -> {DARK_DIR}")

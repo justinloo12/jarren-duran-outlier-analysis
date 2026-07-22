@@ -188,10 +188,10 @@
     "selling_out": true
   },
   "reweight": {
-    "p_healthy": 0.6583,
-    "p_erosion": 0.4807,
+    "p_healthy": 0.6466,
+    "p_erosion": 0.4764,
     "w_healthy": 0.6,
-    "p_agnostic_5050": 0.5695,
-    "p_reweighted": 0.58726
+    "p_agnostic_5050": 0.5615,
+    "p_reweighted": 0.5785199999999999
   }
 }

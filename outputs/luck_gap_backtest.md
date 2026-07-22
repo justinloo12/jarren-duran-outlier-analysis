@@ -1,6 +1,6 @@
 # Luck-Gap Backtest — Does the X-Stat Win? (2016–2025)
 
-*Generated 2026-07-19 · Savant grouped search, June 30 split, seasons 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025 · methodology in `src/luck_backtest.py`.*
+*Generated 2026-07-21 · Savant grouped search, June 30 split, seasons 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025 · methodology in `src/luck_backtest.py`.*
 
 ## The test
 
@@ -27,7 +27,7 @@ The recovery direction is unambiguous either way: the average unlucky-cohort hit
 
 ## Where Duran sits
 
-Duran's 2026 midseason gap is **-30 points** (wOBA 0.263 vs xwOBA 0.293) — more negative than **88%** of all 1358 qualified first halves since 2016 (roughly the 12th percentile of the gap distribution). Within the unlucky cohort itself he sits at the 51th percentile — a typical member, not an outlier even among the unlucky. Applying the cohort's mean recovery to his line implies a ROS wOBA around **0.282** — well above the .263 he would be sold on today, but short of both Monte Carlo medians (.318 eroded / .336 healthy). That is the right reading: the backtest regresses the luck *around whatever the current process is*, and his 2026 xwOBA is itself depressed and speed-blind. The backtest validates the sim's mechanism and direction; the talent level comes from the priors, not from this cohort.
+Duran's 2026 midseason gap is **-33 points** (wOBA 0.261 vs xwOBA 0.294) — more negative than **90%** of all 1358 qualified first halves since 2016 (roughly the 10th percentile of the gap distribution). Within the unlucky cohort itself he sits at the 41th percentile — a typical member, not an outlier even among the unlucky. Applying the cohort's mean recovery to his line implies a ROS wOBA around **0.281** — well above the .263 he would be sold on today, but short of both Monte Carlo medians (.318 eroded / .336 healthy). That is the right reading: the backtest regresses the luck *around whatever the current process is*, and his 2026 xwOBA is itself depressed and speed-blind. The backtest validates the sim's mechanism and direction; the talent level comes from the priors, not from this cohort.
 
 ![Luck-gap backtest](../figures/11_luck_gap_backtest.png)
 

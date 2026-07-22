@@ -1,54 +1,54 @@
 {
   "frozen": "2026-07-04",
-  "generated": "2026-07-19",
+  "generated": "2026-07-21",
   "player": "Jarren Duran",
   "mlbam": 680776,
   "definition": {
     "graded_quantity": "Duran's rest-of-2026 wRC+ (regular-season games on/after the freeze date), computed as ROS wOBA from pitch-level Statcast (sum woba_value / sum woba_denom) mapped through the frozen conversion below",
     "conversion_wrcplus_eq": "wRC+ = slope * wOBA + intercept + offset",
     "conversion": {
-      "slope": 669.9874397253141,
-      "intercept": -112.4070639113195,
-      "offset": -2.3098770252808123
+      "slope": 670.8654128815034,
+      "intercept": -112.83015520403036,
+      "offset": -2.2371722061746695
     },
-    "n_remaining_pa_at_freeze": 253,
+    "n_remaining_pa_at_freeze": 251,
     "min_ros_pa_to_grade": 100
   },
   "predictions": {
     "scenarios": {
       "healthy": {
         "ros_wrcplus_quantiles": {
-          "q05": 72.71076236755798,
-          "q10": 80.637914983664,
-          "q25": 94.21644578479928,
-          "q50": 108.90680925736893,
-          "q75": 123.63397226339629,
-          "q90": 136.8218162258948,
-          "q95": 144.69019372895795
+          "q05": 72.01522627735518,
+          "q10": 79.9858456465443,
+          "q25": 93.58484525650348,
+          "q50": 108.32999322652924,
+          "q75": 123.1079739316777,
+          "q90": 136.3391814713813,
+          "q95": 144.25020002701274
         },
-        "p_ros_wrcplus_ge_100": 0.6583,
-        "p_ros_wrcplus_ge_110": 0.4812,
-        "median_ros_woba": 0.3337730484703594
+        "p_ros_wrcplus_ge_100": 0.6466,
+        "p_ros_wrcplus_ge_110": 0.4702,
+        "median_ros_woba": 0.33299871531190933
       },
       "erosion": {
         "ros_wrcplus_quantiles": {
-          "q05": 63.00731120188755,
-          "q10": 70.87448563082616,
-          "q25": 84.33262558864753,
-          "q50": 98.89725502986384,
-          "q75": 113.48629445453912,
-          "q90": 126.51697022644828,
-          "q95": 134.33131019153194
+          "q05": 62.594277716520224,
+          "q10": 70.50558973674119,
+          "q25": 84.02010501119335,
+          "q50": 98.6479236250168,
+          "q75": 113.28632557674015,
+          "q90": 126.40621769367698,
+          "q95": 134.2233969417943
         },
-        "p_ros_wrcplus_ge_100": 0.4807,
-        "p_ros_wrcplus_ge_110": 0.3076,
-        "median_ros_woba": 0.31883313522122614
+        "p_ros_wrcplus_ge_100": 0.4764,
+        "p_ros_wrcplus_ge_110": 0.3041,
+        "median_ros_woba": 0.3185665066816775
       }
     },
     "scenario_weighting": {
       "w_healthy": 0.6,
       "rationale": "erosion-decomposition verdict (bat speed intact -> approach) up-weights the healthy prior from an agnostic 50/50",
-      "p_blend_ros_wrcplus_ge_100": 0.58726,
+      "p_blend_ros_wrcplus_ge_100": 0.5785199999999999,
       "binary_call_ros_wrcplus_ge_100": true
     },
     "valuation": {
@@ -68,7 +68,7 @@
     "backtest_context": {
       "cohort_mean_recovery_pts": 19.3,
       "pct_closed_half": 0.5403726708074534,
-      "duran_gap_pctile_all": 0.12002945508100148
+      "duran_gap_pctile_all": 0.0979381443298969
     }
   },
   "grading": {

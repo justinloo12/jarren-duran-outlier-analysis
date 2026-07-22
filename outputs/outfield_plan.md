@@ -15,9 +15,9 @@ Five bats for four spots (three OF + DH): **Roman Anthony, Ceddanne Rafaela, Wil
 | Roman Anthony | LF/CF | 3.8 | 8 | $2.6M | $+27.8M | 140→92 | KEEP — cornerstone |
 | Ceddanne Rafaela | CF/SS | 3.2 | 6 | $2.0M | $+23.6M | 91→107 | KEEP — premium glove |
 | Wilyer Abreu | RF | 2.8 | 4 | $0.8M | $+21.6M | 110→117 | KEEP — cheap surplus |
-| Jarren Duran | LF/CF | 2.6 | 3 | $7.7M | $+13.1M | 111→60 | TRADE — the movable piece |
+| Jarren Duran | LF/CF | 2.6 | 3 | $7.7M | $+13.1M | 111→59 | TRADE — the movable piece |
 | Jahmai Jones | 4th OF | 0.4 | 2 | $0.8M | $+2.5M | n/a→n/a | DEPTH |
-| Masataka Yoshida | DH | 0.3 | 2 | $18.6M | $-16.2M | 88→106 | ABSORB / salary-dump |
+| Masataka Yoshida | DH | 1.0 | 2 | $18.6M | $-10.6M | 88→105 | KEEP / absorb |
 
 *Surplus = proj. true-talent WAR × $8M − 2026 salary (annual; multiply by control years for total). Illustrative, not a precise valuation.*
 
@@ -37,10 +37,10 @@ These three are the 2027 outfield. Everything else flexes around them.
 - **Trade him in the offseason**, once Anthony is healthy (jam returns, depth need gone) and Duran has ideally rebuilt value with a second-half bounce. Sell the 2025 version — cheap, fast, defensively flexible, controllable — and **target young controllable pitching**, the org's real need.
 - *Contingency:* if a contender meets Breslow's (historically high) ask at the deadline, take it — but only at a price reflecting the 2025 player, not the 2026 slump.
 
-### 3. Manage the Yoshida problem separately
+### 3. Handle the Yoshida contract separately
 
-- $18.6M through 2027 for a DH-only, below-average bat is a **sunk cost with negative trade value**. Do **not** attach a prospect or eat Duran's value to move him.
-- Best case: a **partial salary-dump** if a DH-needy team bites. Otherwise **absorb** him as a strong-side platoon DH and let the deal expire after 2027 — which then opens the DH slot cleanly.
+- The bat is not the issue — his 2026 line is above league average with elite contact skills. The issue is that **$18.6M through 2027 for a DH has negative trade value regardless**. Do **not** attach a prospect or eat Duran's value to move the money.
+- Keep him as the strong-side DH (Gonzalez covers tough lefties) and let the deal expire after 2027, which opens the slot cleanly. Move money only if a genuinely neutral swap appears.
 
 ### 4. Resulting 2027 alignment
 
@@ -62,4 +62,4 @@ These three are the 2027 outfield. Everything else flexes around them.
 
 ## Bottom line
 
-Keep the cheap, young, controllable core (Anthony, Rafaela, Abreu); **trade Duran in the offseason from a position of surplus and rebuilt value, for pitching**; and quarantine the Yoshida contract rather than pay to escape it. The jam is a 2027 problem — solve it with a winter trade, not a deadline dump at the bottom of Duran's value.
+Keep the cheap, young, controllable core (Anthony, Rafaela, Abreu); **trade Duran in the offseason from a position of surplus and rebuilt value, for pitching**; and carry the Yoshida contract rather than pay to escape it. The jam is a 2027 problem — solve it with a winter trade, not a deadline dump at the bottom of Duran's value.

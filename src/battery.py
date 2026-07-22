@@ -38,8 +38,10 @@ OUT_EV = {
 
 
 def _fetch() -> pd.DataFrame:
+    import datetime as dt
     from pybaseball import statcast
-    df = statcast(start_dt="2026-03-25", end_dt="2026-07-19", team="BOS",
+    end = min(dt.date.today(), dt.date(2026, 9, 27)).isoformat()
+    df = statcast(start_dt="2026-03-25", end_dt=end, team="BOS",
                   verbose=False)
     PITCH_CSV.parent.mkdir(exist_ok=True)
     df.to_csv(PITCH_CSV, index=False)

@@ -1,6 +1,6 @@
 # Erosion Decomposition — Physical or Approach?
 
-*Generated 2026-07-19 · pitch-level Statcast, regular season only, bat tracking 2024+ · methodology in `src/erosion.py`.*
+*Generated 2026-07-21 · pitch-level Statcast, regular season only, bat tracking 2024+ · methodology in `src/erosion.py`.*
 
 ## The tiebreaker: bat speed is UP
 
@@ -39,7 +39,7 @@ Three honest observations:
 
 **This is an approach problem, not a physical one — and the bat speed is the receipt.** The one direct physical measurement got *better* (+1.0 mph vs 2024–25) while every decision metric got worse (chase +3.6 pts vs 2025, in-zone contact -3.3 pts). Duran at 29 is not losing bat speed; he appears to be pressing — swinging harder, longer and steeper, expanding against velocity and offspeed. Approach problems are fixable (his own 2022→2023 chase overhaul is the in-house proof); bat-death is not. **This re-weights the rebound scenarios toward the healthy prior.**
 
-Quantified: weighting the scenarios 60/40 (vs an agnostic 50/50) puts the blended P(rest-of-season wRC+ ≥ 100) at **59%** (vs 57% agnostic; the pure scenarios are 66% healthy / 48% eroded).
+Quantified: weighting the scenarios 60/40 (vs an agnostic 50/50) puts the blended P(rest-of-season wRC+ ≥ 100) at **58%** (vs 56% agnostic; the pure scenarios are 65% healthy / 48% eroded).
 
 One caveat, stated plainly: 'approach' does not mean 'automatically fixed.' The fix requires him (or the hitting group) to actually dial the intent back, and half a season of habit is real. But the asset a trade partner is pricing — bat speed, foot speed, defense — is intact, which strengthens the case that today's $10M nadir price sells the slump, not the player.
 

@@ -42,11 +42,12 @@ PLAYERS = [
          note="29, controllable through 2028; above-average at true talent "
               "(~2025) but redundant behind the core and the priciest of the "
               "young group. Highest-return asset the Sox can actually move."),
-    dict(name="Masataka Yoshida", pos="DH", proj_war=0.3, control=2,
-         salary=18.6, verdict="ABSORB / salary-dump",
-         note="32, $18.6M through 2027, DH-only, below-average bat. Negative "
-              "trade value; move only in a partial salary-dump, else let it "
-              "expire as a platoon DH."),
+    dict(name="Masataka Yoshida", pos="DH", proj_war=1.0, control=2,
+         salary=18.6, verdict="KEEP / absorb",
+         note="32, $18.6M through 2027, DH-only. The 2026 bat has been "
+              "above average (low-K, .340-class OBP), but a DH at that "
+              "price still has negative trade value. Keep him hitting; "
+              "move money only in a genuinely neutral swap."),
     dict(name="Jahmai Jones", pos="4th OF", proj_war=0.4, control=2,
          salary=0.75, verdict="DEPTH",
          note="RHB platoon partner for Duran in LF; acquired from Detroit "
@@ -59,7 +60,7 @@ VERDICT_COLOR = {
     "KEEP — premium glove": "#2e7d32",
     "KEEP — cheap surplus": "#43a047",
     "TRADE — the movable piece": "#BD3039",
-    "ABSORB / salary-dump": "#616161",
+    "KEEP / absorb": "#616161",
     "DEPTH": "#9e9e9e",
 }
 
@@ -177,13 +178,14 @@ def memo(df):
       "at the deadline, take it — but only at a price reflecting the 2025 "
       "player, not the 2026 slump.\n")
 
-    A("### 3. Manage the Yoshida problem separately\n")
-    A("- $18.6M through 2027 for a DH-only, below-average bat is a **sunk "
-      "cost with negative trade value**. Do **not** attach a prospect or eat "
-      "Duran's value to move him.")
-    A("- Best case: a **partial salary-dump** if a DH-needy team bites. "
-      "Otherwise **absorb** him as a strong-side platoon DH and let the deal "
-      "expire after 2027 — which then opens the DH slot cleanly.\n")
+    A("### 3. Handle the Yoshida contract separately\n")
+    A("- The bat is not the issue — his 2026 line is above league average "
+      "with elite contact skills. The issue is that **$18.6M through 2027 "
+      "for a DH has negative trade value regardless**. Do **not** attach "
+      "a prospect or eat Duran's value to move the money.")
+    A("- Keep him as the strong-side DH (Gonzalez covers tough lefties) "
+      "and let the deal expire after 2027, which opens the slot cleanly. "
+      "Move money only if a genuinely neutral swap appears.\n")
 
     A("### 4. Resulting 2027 alignment\n")
     A("| Spot | 2027 | Notes |")
@@ -212,7 +214,7 @@ def memo(df):
     A("## Bottom line\n")
     A("Keep the cheap, young, controllable core (Anthony, Rafaela, Abreu); "
       "**trade Duran in the offseason from a position of surplus and rebuilt "
-      "value, for pitching**; and quarantine the Yoshida contract rather than "
+      "value, for pitching**; and carry the Yoshida contract rather than "
       "pay to escape it. The jam is a 2027 problem — solve it with a winter "
       "trade, not a deadline dump at the bottom of Duran's value.\n")
 
