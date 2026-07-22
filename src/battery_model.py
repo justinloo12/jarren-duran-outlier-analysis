@@ -168,13 +168,15 @@ def fig_adjusted(res: dict):
     ax.set_xlabel("wOBA-against with Wong minus with Narváez "
                   "(points; negative = better with Wong)")
     ax.set_title("Adjusted battery effects: raw splits (hollow) shrink "
-                 "toward the truth (solid)", loc="left", fontsize=13,
+                 "toward the truth (solid)", loc="left", fontsize=15,
                  fontweight="bold")
-    ax.legend(loc="lower right")
+    leg = ax.legend(loc="lower right")
+    for t in leg.get_texts():
+        t.set_color(S.TEXT)
     ax.text(0, -0.14, "Empirical-Bayes shrinkage by sample size; team "
             "effect from pitcher+opponent+park fixed-effects OLS, "
             "cluster-bootstrap 95% CI.",
-            transform=ax.transAxes, fontsize=8.5, color=S.MUTED)
+            transform=ax.transAxes, fontsize=10, color=S.MUTED)
     fig.tight_layout()
     out = C.FIG_DIR / "15_battery_adjusted.png"
     fig.savefig(out, dpi=200)

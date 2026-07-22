@@ -186,7 +186,7 @@ def fig_positions(aud: pd.DataFrame):
         label = f"{r['gap']:+d}  ({r['top'].split(',')[0]})"
         ax.text(x + (1.2 if x >= 0 else -1.2), y, label,
                 va="center", ha="left" if x >= 0 else "right",
-                fontsize=8.5, color=S.MUTED)
+                fontsize=10, color=S.MUTED)
     S.style(ax, grid_axis="x")
     ax.tick_params(axis="y", labelcolor=S.TEXT)
     ax.set_xlim(-50, 54)
@@ -221,7 +221,7 @@ def fig_race(sim: pd.DataFrame):
         ax.text(r["playoff_odds"] * 100 + 1.2, y,
                 f"{r['playoff_odds']*100:.0f}%   "
                 f"({int(r['W'])}-{int(r['L'])}, RD {int(r['run_diff']):+d})",
-                va="center", fontsize=8.5,
+                va="center", fontsize=10,
                 color=S.RED if "Red Sox" in r["team"] else S.MUTED,
                 weight="bold" if "Red Sox" in r["team"] else "normal")
     S.style(ax, grid_axis="x")

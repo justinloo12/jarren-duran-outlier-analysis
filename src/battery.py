@@ -107,8 +107,11 @@ def fig_battery(res: dict):
             ax.scatter(ra9, y, s=110, color=colors[c], zorder=2)
     handles = [plt.Line2D([], [], marker="o", ls="", color=colors[c],
                           markersize=10) for c in cats]
-    ax.legend(handles, [c.split()[-1] for c in cats], loc="lower right",
-              title="RA9 with")
+    leg = ax.legend(handles, [c.split()[-1] for c in cats],
+                    loc="lower right", title="RA9 with")
+    leg.get_title().set_color(S.MUTED)
+    for t in leg.get_texts():
+        t.set_color(S.TEXT)
     ax.set_yticks(list(ys))
     ax.set_yticklabels([p for p, _ in rows])
     ax.invert_yaxis()
@@ -116,11 +119,11 @@ def fig_battery(res: dict):
     ax.set_xlabel("Runs allowed per 9 innings with each catcher "
                   f"(min {res['min_outs']} outs)")
     ax.set_title("The battery map: most Red Sox arms have a clear "
-                 "preferred catcher", loc="left", fontsize=13,
+                 "preferred catcher", loc="left", fontsize=15,
                  fontweight="bold")
     ax.text(0, -0.14, "Small samples, confounded by usage — evidence of an "
             "assignment system, not a causal measure.",
-            transform=ax.transAxes, fontsize=8.5, color=S.MUTED)
+            transform=ax.transAxes, fontsize=10, color=S.MUTED)
     fig.tight_layout()
     out = C.FIG_DIR / "14_battery_map.png"
     fig.savefig(out, dpi=200)

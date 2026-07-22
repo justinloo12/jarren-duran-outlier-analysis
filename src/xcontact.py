@@ -210,11 +210,13 @@ def fig_speed(res: dict):
     ax.set_xlabel("Sprint-speed decile (league hitters, 2026)")
     ax.set_ylabel("Actual minus expected BABIP (points)")
     ax.set_title("The blind spot, measured: EV/LA models under-predict "
-                 "fast runners", loc="left", fontsize=13, fontweight="bold")
-    ax.legend(loc="upper left")
+                 "fast runners", loc="left", fontsize=15, fontweight="bold")
+    leg = ax.legend(loc="upper left")
+    for t in leg.get_texts():
+        t.set_color(S.TEXT)
     ax.text(0, -0.15, "Out-of-fold residuals, 5-fold CV grouped by batter "
             f"— {res['n_batted_balls']:,} batted balls, 2026 league-wide.",
-            transform=ax.transAxes, fontsize=8.5, color=S.MUTED)
+            transform=ax.transAxes, fontsize=10, color=S.MUTED)
     fig.tight_layout()
     out = C.FIG_DIR / "16_speed_model.png"
     fig.savefig(out, dpi=200)

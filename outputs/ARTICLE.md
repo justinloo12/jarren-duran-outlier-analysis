@@ -8,7 +8,7 @@
 
 The Red Sox are the hottest team in baseball — winners of **14 straight**, the longest run in the majors this season. Three weeks ago they were well under .500 and the easy take wrote itself: sell. Today they are 51-48, and **Boston currently holds the final wild-card spot**.
 
-The streak itself is not the story. Boston has outscored its opponents by **+46** runs this season, the profile of a .553 team, and spent three months wearing a .515 record anyway. This is not a mediocre club that got hot at the right time. It is a good club whose record finally caught up with how it has been playing. In 10,000 simulations of the rest of the season, Boston makes the playoffs **78%** of the time.
+The streak itself is not the story. Boston has outscored its opponents by **+46** runs this season, the profile of a .553 team, and spent three months wearing a .515 record anyway. This is not a mediocre club that got hot at the right time. It is a good club whose record finally caught up with how it has been playing. In 10,000 simulations of the rest of the season, Boston makes the playoffs **77%** of the time.
 
 ![AL playoff race](figures/12_playoff_race.png)
 
@@ -16,7 +16,7 @@ That is a playoff team, and the standings are only starting to reflect it. The d
 
 ## So: buy or sell?
 
-**BUY.** At ~78% odds a marginal win is worth real assets, so the fire-sale case is dead and even the sell-the-vets hedge should wait. But buy carefully, and with one constraint over every deal: **don't disturb the room.** Whatever mix of talent and chemistry produced a 14-game winning streak is worth protecting, so additions should cost prospects rather than big-leaguers and fill empty spots rather than occupied ones. That points to a deliberately **small** deadline. The biggest upgrades available to this roster — Anthony, Mayer, Story, Casas, and Duran's own regression — are internal, and free. By asset:
+**BUY.** At ~77% odds a marginal win is worth real assets, so the fire-sale case is dead and even the sell-the-vets hedge should wait. But buy carefully, and with one constraint over every deal: **don't disturb the room.** Whatever mix of talent and chemistry produced a 14-game winning streak is worth protecting, so additions should cost prospects rather than big-leaguers and fill empty spots rather than occupied ones. That points to a deliberately **small** deadline. The biggest upgrades available to this roster — Anthony, Mayer, Story, Casas, and Duran's own regression — are internal, and free. By asset:
 
 - **Hold Duran through the deadline.** His trade value sits at its nadir while his underlying profile says the market is under-pricing him (the full case is a chapter below). Sophisticated buyers read xstats too — you will not get 2024 prices in August 2026. Revisit in the winter, after the rebound has (or hasn't) shown up on the field.
 - **Keep the young outfield** (Anthony, Rafaela, Abreu) and the rotation — they are the 2027 team.

@@ -6,7 +6,7 @@
 
 - Record **51-48** (.515) but run differential **+46** — a Pythagorean **.553** team underperforming its runs by ~4 wins.
 - Boston currently holds the final wild-card spot in a congested, weak race — riding a W14 streak.
-- Simulated playoff odds: **78%** (10,000 sims; talent = run-diff-based, regressed).
+- Simulated playoff odds: **77%** (10,000 sims; talent = run-diff-based, regressed).
 
 > **The team is its left fielder.** The same results-vs-process gap that defines Duran's 2026 defines the roster: a top-10 rotation and a positive run differential producing a losing record. Process says this team is better than its line. That is precisely the profile you do not fire-sale at the bottom.
 
@@ -63,15 +63,15 @@ Pitching units: rotation ERA ranks **4th** (3.57) and WAR 6th — a real strengt
 |------|-----|---:|------:|-----:|
 | Yankees | 56-44 | +88 | +4.5 | 99% |
 | Rays | 57-42 | +20 | - | 97% |
-| White Sox | 53-46 | +52 | - | 90% |
-| Red Sox | 51-48 | +46 | - | 78% |
-| Mariners | 51-50 | +21 | - | 73% |
-| Guardians | 53-48 | -3 | +1.0 | 63% |
-| Rangers | 50-50 | -38 | 1.5 | 32% |
+| White Sox | 53-46 | +52 | - | 89% |
+| Red Sox | 51-48 | +46 | - | 77% |
+| Mariners | 51-50 | +21 | - | 74% |
+| Guardians | 54-48 | +0 | +1.5 | 69% |
+| Rangers | 50-50 | -38 | 1.5 | 31% |
 | Tigers | 47-53 | +33 | 4.5 | 24% |
 | Orioles | 49-52 | -14 | 3.0 | 18% |
-| Twins | 49-52 | -33 | 3.0 | 14% |
-| Astros | 48-54 | -50 | 4.5 | 9% |
+| Twins | 49-53 | -36 | 3.5 | 10% |
+| Astros | 48-54 | -50 | 4.5 | 8% |
 | Blue Jays | 46-54 | -51 | 5.5 | 2% |
 
 ---

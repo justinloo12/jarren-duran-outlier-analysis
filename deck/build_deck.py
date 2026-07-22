@@ -176,15 +176,14 @@ dot(s, 0.62, 0.62, 0.34, fill=RED)
 txt(s, 1.05, 0.6, 10, 0.4, [[("BOSTON RED SOX  ·  TRADE DEADLINE 2026",
     {"color": "C9D2E3", "bold": True, "size": 13})]], space_after=0)
 txt(s, 0.62, 2.15, 12.1, 2.0, [
-    [(f"They Won {STREAK[1:]} Straight.", {"size": 46, "bold": True,
+    [("Don't Count Out", {"size": 46, "bold": True,
       "font": HEAD, "color": WHITE})],
-    [("Now Comes the Hard Part", {"size": 46, "bold": True, "font": HEAD,
+    [("The Sox.", {"size": 46, "bold": True, "font": HEAD,
       "color": RED})],
 ], space_after=2, line_spacing=1.0)
 txt(s, 0.62, 4.35, 11.6, 1.0, [[(
-    "The hottest team in baseball was supposed to sell. A deadline case "
-    "study: why the run differential saw the streak coming, what Boston "
-    "should buy, and what it should leave alone.",
+    "The hottest team in baseball was supposed to sell. A lookahead to "
+    "trade deadline thoughts.",
     {"size": 17, "color": "D3D9E6"})]], line_spacing=1.12)
 txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
     {"color": "8C97AC", "size": 12, "italic": True})]], space_after=0)
@@ -192,10 +191,10 @@ txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
 # ---------------------------------------------------------------- 2 SITUATION
 s = new()
 eyebrow(s, "The setup")
-title(s, "The hottest team in baseball — and the math saw it coming")
+title(s, "The hottest team in baseball")
 stats = [(STREAK, "winning streak", "longest run in the majors this season"),
          (RUNDIFF, "run differential",
-          f"a Pythagorean {PYTH} team wearing a {PCT} record"),
+          f"outplaying their {PCT} record all season"),
          (ODDS, "playoff odds",
           "10,000 sims of the rest of the season (fig. 12)")]
 cw, gap = 3.83, 0.31
@@ -211,8 +210,7 @@ for i, (big, lab, sub) in enumerate(stats):
 txt(s, 0.62, 4.75, 12.1, 1.4, [
     [("A month ago the easy take was sell. ",
       {"bold": True, "color": INK, "size": 15}),
-     ("But the record was lying; the run differential said so all season, "
-      "and the streak closed the gap. The outfield jam, still ",
+     ("The outfield jam, still ",
       {"color": INK, "size": 15}),
      ("masked by Roman Anthony's injury", {"bold": True, "color": RED, "size": 15}),
      (", is now a buyer's depth chart: the surplus funds the deadline instead "
@@ -223,7 +221,7 @@ footer(s)
 # ------------------------------------------------------------ 2b THE RACE
 s = new()
 eyebrow(s, "The verdict")
-title(s, "BUY — but buy like the math, not like a panic")
+title(s, "Buy, but keep it small")
 image(s, "12", 0.4, 1.7, 8.0, 4.6, "12_playoff_race.png")
 tx = 8.75
 rules = [("Hold Duran", RED,
@@ -251,7 +249,7 @@ footer(s)
 # ---------------------------------------------------------------- 3 KEEP CORE
 s = new()
 eyebrow(s, "Keep")
-title(s, "The young, cheap, controllable core — that's the 2027 outfield")
+title(s, "The young, cheap, controllable core")
 core = [("Roman Anthony", "LF · age 22", "3.8", "$2.6M · 8yr/$130M ext",
          "Franchise bat. Untouchable. On the IL now, back in 2027."),
         ("Ceddanne Rafaela", "CF · age 25", "3.2", "$2.0M · 8yr/$50M",
@@ -286,7 +284,7 @@ eyebrow(s, "Move")
 title(s, "The two hard cases: a redundant bat and an underwater contract")
 cw = 5.86
 data = [(0.62, "Jarren Duran", "LF/CF · 29 · $7.7M", RED,
-         [("Movable piece — later.", "Controllable through 2028; above-average "
+         [("Movable piece.", "Controllable through 2028; above-average "
            "at true talent (~110 wRC+). Redundant behind the core and the "
            "priciest of the young group."),
           ("Hold at the deadline.", "Value at its nadir; xstats say the "
@@ -295,10 +293,10 @@ data = [(0.62, "Jarren Duran", "LF/CF · 29 · $7.7M", RED,
         (0.62 + cw + 0.33, "Masataka Yoshida", "DH · 32 · $18.6M", MUTED,
          [("The contract, not the bat.", "He's hitting: above-average "
            "wRC+, .340-class OBP, one of MLB's lowest strikeout rates. "
-           "$18.6M for a DH is still underwater as an asset."),
+           "$18.6M for a DH with below-average pop is still underwater "
+           "as an asset."),
           ("Keep him in the lineup.", "Gonzalez covers the tougher "
-           "lefties. Absorb the deal, let it expire — move money only "
-           "in a genuinely neutral swap.")])]
+           "lefties. Absorb the deal, let it expire.")])]
 for x, nm, meta, accent, rows in data:
     card(s, x, 1.95, cw, 3.95)
     txt(s, x + 0.32, 2.22, cw - 0.6, 0.5, [[(nm, {"size": 21, "bold": True,
@@ -317,18 +315,18 @@ footer(s)
 # ---------------------------------------------------------------- 5 DURAN LUCK
 s = new()
 eyebrow(s, "Don't sell low")
-title(s, "Duran's 2026 is unlucky — not a true collapse")
+title(s, "Duran's 2026 is unlucky")
 ix, iy, iw, ih = image(s, "01", 0.5, 1.75, 6.9, 4.55,
                        "01_babip_vs_league.png")
 tx = 7.7
-rows = [("2024 was earned, not a fluke", RED,
+rows = [("2024 was more what we should expect", RED,
          "BABIP .344 vs xBABIP .333; xwOBA .340 legit. Credit his speed's "
          "usual edge over xstats and the true luck is only +5 to +14 pts."),
-        ("2026 is the real anomaly — downward", NAVY,
+        ("2026 is the real anomaly", NAVY,
          "wOBA .263 BELOW its .293 xwOBA — 34 to 43 pts under his own "
          "norm; BABIP .238 vs .309 expected. Erosion real, luck worse."),
-        ("It isn't Fenway — and the legs are fine", GOLD,
-         "Career gap +19 home / +19 road: identical — the skill travels. "
+        ("The legs are fine", GOLD,
+         "Career gap +19 home / +19 road: identical, the skill travels. "
          "Speed, baserunning and fielding all still plus. No injury."),
         ("True talent ≈ his 2025 (~110 wRC+)", GREEN,
          "An above-average regular. The 2024 high and 2026 low are tails "
@@ -348,7 +346,7 @@ footer(s)
 # ---------------------------------------------------------------- 5b REBOUND SIM
 s = new()
 eyebrow(s, "The rebound math")
-title(s, "10,000 simulations: the rebound is likely — unless the erosion is real")
+title(s, "10,000 simulations: the rebound is likely")
 image(s, "09", 0.4, 1.7, 8.3, 4.1, "09_rebound_probability.png")
 tx = 9.0
 txt(s, tx, 1.8, 3.7, 0.35, [[("P(REST-OF-SEASON wRC+ ≥ 100)",
@@ -379,12 +377,12 @@ footer(s)
 # ------------------------------------------------------- 5c EROSION VERDICT
 s = new()
 eyebrow(s, "The tiebreaker")
-title(s, "The bat speed says it's the approach — not the body")
+title(s, "Swing Stats")
 image(s, "10", 0.5, 1.7, 12.33, 3.2, "10_erosion_decomposition.png")
 cards = [("74.5 mph", "avg bat speed, 2026 — UP from 72.7 in '24", GREEN,
-          "A declining hitter swings slower. Duran is swinging harder, "
-          "longer and steeper — pressing, not fading."),
-         ("29% whiff vs 95+", "up from 16% in '24 — but not bat-death", RED,
+          "Duran is swinging harder, longer and steeper. That's pressing, "
+          "not fading."),
+         ("29% whiff vs 95+", "up from 16% in '24", RED,
           "Whiffs on a rising bat speed = selling out. The chase leak is "
           "velo/offspeed; breaking-ball chase actually improved."),
          ("60 / 40", "re-weighted scenario odds → 60% rebound", NAVY,
@@ -405,12 +403,12 @@ footer(s)
 # ---------------------------------------------------------------- 6 AGE CURVE
 s = new()
 eyebrow(s, "Context")
-title(s, "Aging doesn't explain the drop — regression and luck do")
+title(s, "Aging doesn't explain the drop")
 image(s, "04", 3.05, 1.65, 7.25, 4.5, "04_age_curve_overlay.png")
 txt(s, 0.62, 6.35, 12.1, 0.7, [[("2024 → 2026 wRC+ fell ~70 points; a normal "
     "age 27→29 curve predicts only ~7. ", {"size": 14, "color": INK}),
     ("The gap is mean-reversion from an inflated peak plus a 2026 bad-luck "
-     "tail — not skill cliff.", {"size": 14, "bold": True, "color": NAVY})]],
+     "tail, not a skill cliff.", {"size": 14, "bold": True, "color": NAVY})]],
     line_spacing=1.1)
 footer(s)
 
@@ -431,7 +429,7 @@ finds = [("LF −31: internal fix", RED,
           "regress without help."),
          ("The Contreras twist", GREEN,
           "The winter's reported sell candidate is now their best hitter. "
-          "Moving him would be surrender priced as prudence.")]
+          "Moving him would be met with outrage.")]
 yy = 1.9
 for head, col, body in finds:
     dot(s, tx, yy + 0.04, 0.16, fill=col)
@@ -444,7 +442,7 @@ footer(s)
 # ---------------------------------------------------------- 6b2 BATTERY MAP
 s = new()
 eyebrow(s, "The chemistry veto")
-title(s, "Two catchers, one assignment system — don't touch it")
+title(s, "Don't Mess Up The Pitching Staff")
 image(s, "14", 0.4, 1.7, 8.0, 4.6, "14_battery_map.png")
 tx = 8.75
 finds = [("The staff works with both", RED,
@@ -473,7 +471,7 @@ footer(s)
 # ------------------------------------------------------ 6b3 UNDER THE HOOD
 s = new()
 eyebrow(s, "Under the hood")
-title(s, "Two custom models behind the calls — built and validated here")
+title(s, "Two custom models behind the calls")
 image(s, "16", 0.4, 1.7, 8.0, 4.6, "16_speed_model.png")
 tx = 8.75
 finds = [("Speed-aware xBABIP / xwOBAcon", RED,
@@ -505,7 +503,7 @@ footer(s)
 # ---------------------------------------------------------- 6c MOCK TRADES
 s = new()
 eyebrow(s, "The menu")
-title(s, "Three trades that fit — and the walk-away. Keep it small")
+title(s, "Three trades that fit, and one walk-away")
 trades = [
     ("1 · The pen fix · do it", "RHP Luke Weaver (NYM)", GREEN,
      "For a 45 FV + 40 FV — prospects only, nobody loses a job or an "
@@ -545,7 +543,7 @@ footer(s)
 # ---------------------------------------------------------------- 7 WHAT TO GET
 s = new()
 eyebrow(s, "The winter plan")
-title(s, "Pitching is the strength — spend the surplus on offense")
+title(s, "Spend the pitching surplus on offense")
 txt(s, 0.62, 1.72, 12.1, 0.7, [[("If winter comes and Duran's rebound has "
     "shown up, this is what a deal should return. With a top-6 rotation "
     "(3.65 ERA) carrying the club, trading bats for arms is backwards — "
