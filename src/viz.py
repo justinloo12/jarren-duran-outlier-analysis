@@ -31,7 +31,7 @@ def fig_babip(tbl, res):
 
     fig, ax = plt.subplots(figsize=(8.6, 5.0))
     colors = [S.RED if s == C.OUTLIER_SEASON else S.NAVY for s in seasons]
-    bars = ax.bar(seasons, babip, color=colors, width=0.62, zorder=3)
+    ax.bar(seasons, babip, color=colors, width=0.62, zorder=3)
     for s, b in zip(seasons, babip):
         ax.text(s, b + 0.006, f"{b:.3f}", ha="center", fontsize=9,
                 color=S.RED if s == C.OUTLIER_SEASON else S.NAVY, weight="bold")

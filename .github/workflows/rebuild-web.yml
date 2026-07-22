@@ -1,13 +1,16 @@
-name: Rebuild web page
+name: Rebuild web pages
 
-# Regenerates outputs/duran_case.html whenever the web build script or its
-# embedded figures change — so text edits made directly on github.com
-# publish to the live GitHub Pages URL automatically.
+# Regenerates the GitHub Pages site (index.html, deadline.html,
+# outputs/duran_case.html) whenever the build scripts, the article, or the
+# embedded figures change — so edits publish to the live URL automatically.
 on:
   push:
     branches: [main]
     paths:
       - "src/web_deck.py"
+      - "src/web_article.py"
+      - "outputs/ARTICLE.md"
+      - "data/deadline.json"
       - "figures/**"
       - "src/config.py"
 
@@ -28,15 +31,16 @@ jobs:
           python-version: "3.11"
       - run: pip install pillow
       - run: python3 -m src.web_deck
-      - name: Commit rebuilt page if changed
+      - run: python3 -m src.web_article
+      - name: Commit rebuilt pages if changed
         run: |
-          if ! git diff --quiet outputs/duran_case.html; then
+          if ! git diff --quiet outputs/duran_case.html index.html deadline.html; then
             git config user.name "web-rebuild-bot"
             git config user.email "actions@github.com"
-            git add outputs/duran_case.html
-            git commit -m "Rebuild duran_case.html from web build script"
+            git add outputs/duran_case.html index.html deadline.html
+            git commit -m "Rebuild site pages from web build scripts"
             git pull --rebase origin main
             git push origin main
           else
-            echo "No changes to the web page."
+            echo "No changes to the web pages."
           fi

@@ -1,5 +1,12 @@
 # The Hottest Team in Baseball Was Supposed to Sell
 
+[![tests](https://github.com/justinloo12/jarren-duran-outlier-analysis/actions/workflows/tests.yml/badge.svg)](https://github.com/justinloo12/jarren-duran-outlier-analysis/actions/workflows/tests.yml)
+
+**Read it live:**
+[project site](https://justinloo12.github.io/jarren-duran-outlier-analysis/) ·
+[the deadline article](https://justinloo12.github.io/jarren-duran-outlier-analysis/deadline.html) ·
+[the Duran long-read](https://justinloo12.github.io/jarren-duran-outlier-analysis/outputs/duran_case.html)
+
 A reproducible baseball-analytics case study of the 2026 Red Sox trade
 deadline — built on live data, custom models, and pre-registered
 predictions that get graded whether they age well or not.

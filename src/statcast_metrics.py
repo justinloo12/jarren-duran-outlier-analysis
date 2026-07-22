@@ -117,6 +117,5 @@ def build(seasons=C.SEASONS, save: bool = True) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    import pandas as pd
     pd.set_option("display.width", 220)
     print(build().to_string())

@@ -66,7 +66,6 @@ def _g(d, k):
 def build(res, age, reb=None, ero=None, bt=None) -> str:
     S = res["seasons"]
     s24 = S.get(str(C.OUTLIER_SEASON), {})
-    s25 = S.get("2025", {})
     s26 = S.get("2026", {})
     rp = res["results_vs_process"]
     b = res["babip"]
@@ -76,7 +75,6 @@ def build(res, age, reb=None, ero=None, bt=None) -> str:
     # --- derived signals (drive the interpretive language) ----------------
     gap24 = rp["woba_minus_xwoba"] or 0.0                 # results over process
     babip_over_xbabip = rp["babip_minus_xbabip"] or 0.0   # 2024 batted-ball luck
-    babip_vs_base_p = _g(b["test_vs_baseline"], "p")
     barrel_sig = (t["barrel"]["p"] is not None and t["barrel"]["p"] < 0.05
                   and (t["barrel"]["diff"] or 0) > 0)
     hardhit_sig = (t["hardhit"]["p"] is not None and t["hardhit"]["p"] < 0.05
@@ -85,7 +83,6 @@ def build(res, age, reb=None, ero=None, bt=None) -> str:
                    and (t["chase"]["diff"] or 0) < 0)  # chased LESS in 2024
     # 2026: are the ugly results below its own contact quality? (unlucky)
     w26, x26 = s26.get("wOBA"), s26.get("xwOBA")
-    y26_unlucky = (w26 is not None and x26 is not None and w26 < x26 - 0.005)
     b26_gap = (s26.get("sc_babip") or 0) - (s26.get("sc_xbabip") or 0)
 
     L = []
@@ -458,14 +455,14 @@ def build(res, age, reb=None, ero=None, bt=None) -> str:
           f"wins.**")
         A(f"- Duran's −{abs(d['gap'])*1000:.0f}-pt gap is more negative "
           f"than {(1-d['pctile_all_h1']):.0%} of all qualified first "
-          f"halves, but *within* the unlucky cohort he is a typical member "
+          "halves, but *within* the unlucky cohort he is a typical member "
           f"({d['pctile_in_cohort']*100:.0f}th percentile), not an outlier.")
-        A(f"\n> **Read:** history sides with the x-stat, which is the §8 "
-          f"model's core mechanism — the 69% healthy-prior scenario gains "
-          f"external validity. The honest limit: the backtest regresses "
-          f"the luck around *whatever the current process is*; it cannot "
-          f"say whether the process itself recovers — that is §9's "
-          f"question, and §9 answers 'approach, so plausibly yes.'\n")
+        A("\n> **Read:** history sides with the x-stat, which is the §8 "
+          "model's core mechanism — the 69% healthy-prior scenario gains "
+          "external validity. The honest limit: the backtest regresses "
+          "the luck around *whatever the current process is*; it cannot "
+          "say whether the process itself recovers — that is §9's "
+          "question, and §9 answers 'approach, so plausibly yes.'\n")
 
     # ---- verdict ---------------------------------------------------------
     A("## Verdict — with explicit confidence\n")

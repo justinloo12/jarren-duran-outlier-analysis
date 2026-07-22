@@ -427,10 +427,8 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
     except FileNotFoundError:
         xc = None
     sa = res.get("speed_adjusted", {})
-    pk = res.get("park_check", {}).get("career", {})
     s26 = res["seasons"]["2026"]
     s24 = res["seasons"]["2024"]
-    s25 = res["seasons"]["2025"]
 
     L = []
     A = L.append

@@ -189,7 +189,7 @@ with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
         z.write(p, f"graphics_and_explanations/{p.name}")
 
 print(f"Wrote {OUT}/ ({len(list(OUT.iterdir()))} files)")
-print(f"  - Duran_report.html  (self-contained: graphics + explanations)")
-print(f"  - EXPLANATIONS.md")
-print(f"  - 8 PNG figures")
+print("  - Duran_report.html  (self-contained: graphics + explanations)")
+print("  - EXPLANATIONS.md")
+print("  - 8 PNG figures")
 print(f"Zipped -> {zip_path}")

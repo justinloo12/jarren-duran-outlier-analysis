@@ -17,7 +17,7 @@ from src import fetch_cohort
 from src import (statcast_metrics, analysis, age_curve, viz, memo, comps,
                  outfield_plan, trade_targets, rebound_sim, erosion,
                  luck_backtest, preregister, web_deck, deadline, mock_trades,
-                 battery, battery_model, xcontact)
+                 battery, battery_model, xcontact, web_article)
 
 
 def fetch():
@@ -79,6 +79,8 @@ def main():
     memo.run()
     print("== Web case page ==")  # editorial long-read, figures embedded
     web_deck.run()
+    print("== Site: landing page + deadline article ==")
+    web_article.run()
 
     print(f"\nDone. Data -> {C.DATA_DIR}\nFigures -> {C.FIG_DIR}\n"
           f"Memo -> {C.OUT_DIR / 'decision_memo.md'}")
