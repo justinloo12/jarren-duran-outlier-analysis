@@ -10,17 +10,17 @@
       "2024": 735.0,
       "2025": 696.0
     },
-    "speed_premium": 0.002606005324481802,
-    "x_2026": 0.2944356035393522,
-    "pa_2026": 395.0,
-    "woba_2026": 0.2613204873455357,
-    "wrcplus_2026": 58.798569886426264,
-    "games_played": 99,
-    "n_remaining_pa": 251,
+    "speed_premium": 0.0019952204226673146,
+    "x_2026": 0.2951856340680803,
+    "pa_2026": 403.0,
+    "woba_2026": 0.2600576128829178,
+    "wrcplus_2026": 58.00109785616541,
+    "games_played": 101,
+    "n_remaining_pa": 243,
     "conv": {
-      "slope": 670.8654128815034,
-      "intercept": -112.83015520403036,
-      "offset": -2.2371722061746695
+      "slope": 671.2893368503779,
+      "intercept": -112.9179185321667,
+      "offset": -2.2506755832911516
     }
   },
   "prior": {
@@ -31,11 +31,11 @@
       2024,
       2025
     ],
-    "speed_premium": 0.002606005324481802,
-    "mu_healthy": 0.3331124282831429,
-    "mu_eroded": 0.31868410051541934,
+    "speed_premium": 0.0019952204226673146,
+    "mu_healthy": 0.3325016433813284,
+    "mu_eroded": 0.3183733278250961,
     "erosion_weight": 0.4,
-    "sigma_talent": 0.015093841306122763,
+    "sigma_talent": 0.01508994788281021,
     "talent_drift_sd": 0.01
   },
   "sim": {
@@ -49,38 +49,38 @@
   "scenarios": {
     "healthy": {
       "name": "healthy",
-      "prior_mu_woba": 0.3331124282831429,
-      "prior_sigma": 0.015093841306122763,
-      "prior_mu_wrcplus": 108.40627932592585,
-      "p_ros_wrcplus_100": 0.6466,
-      "p_ros_wrcplus_110": 0.4702,
-      "p_full_wrcplus_90": 0.0967,
-      "median_ros_woba": 0.33299871531190933,
-      "median_ros_wrcplus": 108.32999322652924,
-      "median_full_woba": 0.28917069666373973,
-      "median_full_wrcplus": 78.92729140034669,
+      "prior_mu_woba": 0.3325016433813284,
+      "prior_sigma": 0.01508994788281021,
+      "prior_mu_wrcplus": 108.03621357165495,
+      "p_ros_wrcplus_100": 0.6388,
+      "p_ros_wrcplus_110": 0.4646,
+      "p_full_wrcplus_90": 0.07,
+      "median_ros_woba": 0.3323593682564682,
+      "median_ros_wrcplus": 107.94070579743726,
+      "median_full_woba": 0.2872547128144546,
+      "median_full_wrcplus": 77.6624315569031,
       "value_timing_musd": {
         "now": 9.620000000000001,
-        "deadline": 15.529924000000001,
-        "offseason": 21.439848
+        "deadline": 15.458632000000001,
+        "offseason": 21.297264000000002
       }
     },
     "erosion": {
       "name": "erosion",
-      "prior_mu_woba": 0.31868410051541934,
-      "prior_sigma": 0.015093841306122763,
-      "prior_mu_wrcplus": 98.7268132608423,
-      "p_ros_wrcplus_100": 0.4764,
-      "p_ros_wrcplus_110": 0.3041,
-      "p_full_wrcplus_90": 0.0399,
-      "median_ros_woba": 0.3185665066816775,
-      "median_ros_wrcplus": 98.6479236250168,
-      "median_full_woba": 0.2835631357253679,
-      "median_full_wrcplus": 75.1653727161677,
+      "prior_mu_woba": 0.3183733278250961,
+      "prior_sigma": 0.01508994788281021,
+      "prior_mu_wrcplus": 98.55202599109889,
+      "p_ros_wrcplus_100": 0.4727,
+      "p_ros_wrcplus_110": 0.3038,
+      "p_full_wrcplus_90": 0.0274,
+      "median_ros_woba": 0.3182383954060118,
+      "median_ros_wrcplus": 98.46144729697217,
+      "median_full_woba": 0.28194295367720856,
+      "median_full_wrcplus": 74.09670428815234,
       "value_timing_musd": {
         "now": 9.620000000000001,
-        "deadline": 13.974296000000002,
-        "offseason": 18.328592
+        "deadline": 13.940478000000002,
+        "offseason": 18.260956
       }
     }
   }

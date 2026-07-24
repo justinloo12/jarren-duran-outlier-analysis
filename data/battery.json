@@ -1,14 +1,14 @@
 {
   "per_catcher": {
     "Carlos Narv\u00e1ez": {
-      "IP": 440.3,
-      "RA9": 4.17,
+      "IP": 448.3,
+      "RA9": 4.2,
       "xwOBA_against": 0.314
     },
     "Connor Wong": {
-      "IP": 326.7,
-      "RA9": 3.44,
-      "xwOBA_against": 0.298
+      "IP": 336.7,
+      "RA9": 3.42,
+      "xwOBA_against": 0.299
     },
     "Mickey Gasper": {
       "IP": 99.3,
@@ -71,8 +71,8 @@
     },
     "Brayan Bello": {
       "Carlos Narv\u00e1ez": {
-        "IP": 22.7,
-        "RA9": 9.93
+        "IP": 28.0,
+        "RA9": 8.04
       },
       "Connor Wong": {
         "IP": 34.7,
@@ -84,6 +84,10 @@
         "IP": 32.0,
         "RA9": 1.12
       },
+      "Connor Wong": {
+        "IP": 11.0,
+        "RA9": 4.91
+      },
       "Mickey Gasper": {
         "IP": 16.3,
         "RA9": 3.31
@@ -91,8 +95,8 @@
     },
     "Ryan Watson": {
       "Carlos Narv\u00e1ez": {
-        "IP": 23.3,
-        "RA9": 3.09
+        "IP": 24.3,
+        "RA9": 2.96
       },
       "Connor Wong": {
         "IP": 20.3,
@@ -101,8 +105,8 @@
     },
     "Jovani Mor\u00e1n": {
       "Carlos Narv\u00e1ez": {
-        "IP": 22.3,
-        "RA9": 2.01
+        "IP": 23.3,
+        "RA9": 2.31
       },
       "Connor Wong": {
         "IP": 17.3,

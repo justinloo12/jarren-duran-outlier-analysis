@@ -15,14 +15,14 @@
 
 | Team | 2026 W-L | Win% | Team OF wRC+ | OF WAR | Fit |
 |------|:--------:|-----:|------------:|-------:|:---:|
-| Phillies | 56-45 | 0.554 | 81 | 0.9 | ★ strong |
-| Rays | 57-42 | 0.576 | 91 | 4.5 | good |
-| Astros | 48-54 | 0.471 | 74 | 1.2 | good |
-| Tigers | 47-53 | 0.470 | 96 | 1.8 | good |
-| Cardinals | 51-48 | 0.515 | 100 | 3.5 | good |
-| White Sox | 53-46 | 0.535 | 101 | 4.3 | good |
-| Marlins | 52-49 | 0.515 | 101 | 3.6 | good |
-| Blue Jays | 46-54 | 0.460 | 93 | 1.8 | marginal |
+| Phillies | 56-47 | 0.544 | 79 | 0.5 | ★ strong |
+| Astros | 50-54 | 0.481 | 74 | 1.1 | good |
+| Rays | 59-43 | 0.578 | 94 | 4.9 | good |
+| Cardinals | 52-50 | 0.510 | 98 | 3.0 | good |
+| Tigers | 49-54 | 0.476 | 95 | 1.8 | good |
+| White Sox | 54-47 | 0.535 | 98 | 4.1 | good |
+| Reds | 47-54 | 0.465 | 91 | 1.8 | marginal |
+| Marlins | 52-51 | 0.505 | 101 | 3.5 | marginal |
 
 *Fit score rewards winning % and penalizes existing OF production; a low team OF wRC+ = more need for a bat like Duran's.*
 
@@ -30,8 +30,8 @@
 
 These are *archetypes* — plug in the buyer's actual prospects from a current top-30 list. **Because Boston's pitching (a top-10 rotation) is a strength, target controllable *bats* and best-available young talent, not arms** — the offense is the soft spot to fix.
 1. **Phillies:** Duran for a controllable, MLB-ready position player (or a 50-FV hitting prospect) at a lineup spot of need. Boston's cleanest fit if the buyer needs an everyday OF now.
-2. **Rays:** Duran for a 45+-FV bat with upside + a 40-FV flier — swaps a redundant OF for offensive help elsewhere in the lineup.
-3. **Astros:** salary-relief variant — Boston eats a little of Duran's arb money to upgrade the prospect tier by one grade.
+2. **Astros:** Duran for a 45+-FV bat with upside + a 40-FV flier — swaps a redundant OF for offensive help elsewhere in the lineup.
+3. **Rays:** salary-relief variant — Boston eats a little of Duran's arb money to upgrade the prospect tier by one grade.
 
 > **Two-birds option:** package Duran *with* a chunk of the Yoshida money to a DH/OF-needy contender, clearing both the jam and part of the albatross in one deal — though that likely lowers the Duran return.
 

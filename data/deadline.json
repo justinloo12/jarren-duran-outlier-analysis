@@ -1,19 +1,19 @@
 {
-  "as_of": "2026-07-21",
+  "as_of": "2026-07-23",
   "verdict": {
     "call": "BUY",
     "label": "clear buyer",
-    "odds": 0.7737
+    "odds": 0.7663
   },
   "max_win_streak": 14,
   "bos": {
-    "W": "51",
-    "L": "48",
-    "run_diff": "46",
-    "pythag": 0.5530039225719428,
-    "talent": 0.5391596144374801,
-    "playoff_odds": 0.7737,
+    "W": "52",
+    "L": "49",
+    "run_diff": "45",
+    "pythag": 0.5508983727412416,
+    "talent": 0.5377995268151868,
+    "playoff_odds": 0.7663,
     "wc_gb": "-",
-    "streak": "W14"
+    "streak": "L1"
   }
 }

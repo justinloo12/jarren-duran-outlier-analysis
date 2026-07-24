@@ -3,17 +3,17 @@
     "pitchers": [
       {
         "pitcher": "Aroldis Chapman",
-        "delta_wong_minus_narvaez": 0.05413533834586465,
+        "delta_wong_minus_narvaez": 0.059484777517564424,
         "pa_narvaez": 77,
-        "pa_wong": 57,
-        "weight": 65.50746268656717
+        "pa_wong": 61,
+        "weight": 68.07246376811594
       },
       {
         "pitcher": "Brayan Bello",
-        "delta_wong_minus_narvaez": -0.13316716517115323,
-        "pa_narvaez": 118,
+        "delta_wong_minus_narvaez": -0.10414021723797434,
+        "pa_narvaez": 139,
         "pa_wong": 153,
-        "weight": 133.239852398524
+        "weight": 145.66438356164383
       },
       {
         "pitcher": "Connelly Early",
@@ -38,10 +38,10 @@
       },
       {
         "pitcher": "Garrett Whitlock",
-        "delta_wong_minus_narvaez": 0.02196691176470586,
+        "delta_wong_minus_narvaez": 0.011465669014084495,
         "pa_narvaez": 64,
-        "pa_wong": 68,
-        "weight": 65.93939393939394
+        "pa_wong": 71,
+        "weight": 67.31851851851852
       },
       {
         "pitcher": "Greg Weissert",
@@ -51,18 +51,25 @@
         "weight": 58.97260273972602
       },
       {
+        "pitcher": "Jake Bennett",
+        "delta_wong_minus_narvaez": 0.14666132478632476,
+        "pa_narvaez": 117,
+        "pa_wong": 48,
+        "weight": 68.07272727272728
+      },
+      {
         "pitcher": "Jovani Mor\u00e1n",
-        "delta_wong_minus_narvaez": 0.05255336617405584,
-        "pa_narvaez": 87,
+        "delta_wong_minus_narvaez": 0.03730769230769235,
+        "pa_narvaez": 91,
         "pa_wong": 70,
-        "weight": 77.57961783439491
+        "weight": 79.13043478260869
       },
       {
         "pitcher": "Justin Slaten",
-        "delta_wong_minus_narvaez": -0.15026315789473674,
+        "delta_wong_minus_narvaez": -0.15779069767441847,
         "pa_narvaez": 50,
-        "pa_wong": 38,
-        "weight": 43.18181818181818
+        "pa_wong": 43,
+        "weight": 46.236559139784944
       },
       {
         "pitcher": "Payton Tolle",
@@ -80,10 +87,10 @@
       },
       {
         "pitcher": "Ryan Watson",
-        "delta_wong_minus_narvaez": 0.029450757575757547,
-        "pa_narvaez": 96,
+        "delta_wong_minus_narvaez": 0.03315909090909086,
+        "pa_narvaez": 100,
         "pa_wong": 88,
-        "weight": 91.82608695652173
+        "weight": 93.61702127659575
       },
       {
         "pitcher": "Sonny Gray",
@@ -100,187 +107,187 @@
         "weight": 35.945205479452056
       }
     ],
-    "pooled_delta": -0.030119329548645553,
-    "n_pitchers": 14
+    "pooled_delta": -0.019566418973282918,
+    "n_pitchers": 15
   },
   "fe": {
-    "catcher_effect_wong_minus_narvaez": -0.034356630476122856,
+    "catcher_effect_wong_minus_narvaez": -0.030653849471319772,
     "ci95": [
-      -0.09049190081103596,
-      0.021523241704711503
+      -0.08385926197296298,
+      0.021238030216897862
     ],
     "n_boot": 2000,
-    "n_pa": 3222,
+    "n_pa": 3300,
     "significant": false
   },
   "shrunk": [
     {
       "pitcher": "Brayan Bello",
-      "raw_delta": -0.13316716517115323,
-      "var": 0.003757814267514768,
-      "n_eff": 133.239852398524,
-      "reliability": 0.2760557023429594,
-      "shrunk_delta": -0.05856627218633874
+      "raw_delta": -0.10414021723797434,
+      "var": 0.0034379962005014787,
+      "n_eff": 145.66438356164383,
+      "reliability": 0.12083585717683089,
+      "shrunk_delta": -0.02978596638129728
     },
     {
       "pitcher": "Garrett Crochet",
       "raw_delta": -0.16819982394366206,
-      "var": 0.007437635725851592,
+      "var": 0.00743916545185942,
       "n_eff": 67.31851851851852,
-      "reliability": 0.1615382061511228,
-      "shrunk_delta": -0.052424604917676684
+      "reliability": 0.05972574556625984,
+      "shrunk_delta": -0.028443659901190643
     },
     {
       "pitcher": "Sonny Gray",
       "raw_delta": -0.07607212475633524,
-      "var": 0.0028095004064735214,
+      "var": 0.0028100782467979472,
       "n_eff": 178.2133995037221,
-      "reliability": 0.3377625627180727,
-      "shrunk_delta": -0.04564046342205359
+      "reliability": 0.14395008571902185,
+      "shrunk_delta": -0.027700420164367127
     },
     {
       "pitcher": "Justin Slaten",
-      "raw_delta": -0.15026315789473674,
-      "var": 0.011594940635351764,
-      "n_eff": 43.18181818181818,
-      "reliability": 0.10999000829110676,
-      "shrunk_delta": -0.04333395022455743
+      "raw_delta": -0.15779069767441847,
+      "var": 0.010831117335511373,
+      "n_eff": 46.236559139784944,
+      "reliability": 0.04180349332629905,
+      "shrunk_delta": -0.02534467668549834
     },
     {
       "pitcher": "Zack Kelly",
       "raw_delta": -0.18434782608695652,
-      "var": 0.017959554788452462,
+      "var": 0.01796324859641262,
       "n_eff": 27.87878787878788,
-      "reliability": 0.07389129561952523,
-      "shrunk_delta": -0.04151547297931281
+      "reliability": 0.025631246129644708,
+      "shrunk_delta": -0.023789971776602675
     },
     {
       "pitcher": "Patrick Sandoval",
       "raw_delta": -0.2176201372997711,
-      "var": 0.02406064756347698,
+      "var": 0.024065596205720255,
       "n_eff": 20.80952380952381,
-      "reliability": 0.05620772266987747,
-      "shrunk_delta": -0.04065832295109883
+      "reliability": 0.019257052791225752,
+      "shrunk_delta": -0.023380349882594655
     },
     {
       "pitcher": "Ranger Suarez",
       "raw_delta": -0.07025470906733772,
-      "var": 0.006223790954792332,
+      "var": 0.0062250710248632195,
       "n_eff": 80.4478527607362,
-      "reliability": 0.18714736011000482,
-      "shrunk_delta": -0.037630559872581945
+      "reliability": 0.07055240911096476,
+      "shrunk_delta": -0.023142599953133936
     },
     {
       "pitcher": "Tyler Samaniego",
       "raw_delta": -0.13269230769230772,
-      "var": 0.019540527525897473,
+      "var": 0.019544546498359266,
       "n_eff": 25.6231884057971,
-      "reliability": 0.06832139429431186,
-      "shrunk_delta": -0.03712725843234053
-    },
-    {
-      "pitcher": "Tommy Kahnle",
-      "raw_delta": -0.17307692307692307,
-      "var": 0.028885997212196268,
-      "n_eff": 17.333333333333332,
-      "reliability": 0.047262094196159725,
-      "shrunk_delta": -0.03687580480003532
+      "reliability": 0.023606443375839083,
+      "shrunk_delta": -0.022236918859670052
     },
     {
       "pitcher": "Danny Coulombe",
       "raw_delta": -0.09251899473991818,
-      "var": 0.012875737701442637,
+      "var": 0.012878385901967356,
       "n_eff": 38.88636363636364,
-      "reliability": 0.10014459005099854,
-      "shrunk_delta": -0.036368318438545114
+      "reliability": 0.03539322413839402,
+      "shrunk_delta": -0.022148445838864612
+    },
+    {
+      "pitcher": "Tommy Kahnle",
+      "raw_delta": -0.17307692307692307,
+      "var": 0.028891938301922396,
+      "n_eff": 17.333333333333332,
+      "reliability": 0.01609196506848369,
+      "shrunk_delta": -0.02203670464296402
     },
     {
       "pitcher": "Tyron Guerrero",
       "raw_delta": -0.07869664634146337,
-      "var": 0.013929274062182041,
+      "var": 0.013932138947420911,
       "n_eff": 35.945205479452056,
-      "reliability": 0.09327670030575129,
-      "shrunk_delta": -0.03465046136878676
+      "reliability": 0.03280408358943501,
+      "shrunk_delta": -0.021506131894531006
+    },
+    {
+      "pitcher": "Eduardo Rivera",
+      "raw_delta": -0.08636363636363636,
+      "var": 0.022763345328787342,
+      "n_eff": 22.0,
+      "reliability": 0.020336311107852927,
+      "shrunk_delta": -0.02092482796727203
     },
     {
       "pitcher": "Connelly Early",
       "raw_delta": -0.029924242424242353,
-      "var": 0.0038502359068587027,
+      "var": 0.0038510277990970554,
       "n_eff": 130.04154302670622,
-      "reliability": 0.27122649753863143,
-      "shrunk_delta": -0.03006641675117879
-    },
-    {
-      "pitcher": "Eduardo Rivera",
-      "raw_delta": 0.112987012987013,
-      "var": 0.02926114003313388,
-      "n_eff": 17.11111111111111,
-      "reliability": 0.04668445715789733,
-      "shrunk_delta": -0.023438487631516222
+      "reliability": 0.10929235385539533,
+      "shrunk_delta": -0.02069844987905689
     },
     {
       "pitcher": "Garrett Whitlock",
-      "raw_delta": 0.02196691176470586,
-      "var": 0.007593194120117768,
-      "n_eff": 65.93939393939394,
-      "reliability": 0.15875421978969131,
-      "shrunk_delta": -0.021850418947166862
+      "raw_delta": 0.011465669014084495,
+      "var": 0.00743916545185942,
+      "n_eff": 67.31851851851852,
+      "reliability": 0.05972574556625984,
+      "shrunk_delta": -0.017713004381759625
     },
     {
       "pitcher": "Alec Gamboa",
-      "raw_delta": 0.22072649572649575,
-      "var": 0.033165404206595715,
-      "n_eff": 15.096774193548386,
-      "reliability": 0.041416330105650406,
-      "shrunk_delta": -0.019730216043425994
-    },
-    {
-      "pitcher": "Ryan Watson",
-      "raw_delta": 0.029450757575757547,
-      "var": 0.005452596695989068,
-      "n_eff": 91.82608695652173,
-      "reliability": 0.20810826029541238,
-      "shrunk_delta": -0.01772230235153988
-    },
-    {
-      "pitcher": "Jake Bennett",
-      "raw_delta": 0.10054390054390061,
-      "var": 0.013519035732307344,
-      "n_eff": 37.03597122302158,
-      "reliability": 0.09583593982877796,
-      "shrunk_delta": -0.01759709609166253
-    },
-    {
-      "pitcher": "Aroldis Chapman",
-      "raw_delta": 0.05413533834586465,
-      "var": 0.007643260749395594,
-      "n_eff": 65.50746268656717,
-      "reliability": 0.15787849082160227,
-      "shrunk_delta": -0.01681732973678498
+      "raw_delta": 0.16556776556776556,
+      "var": 0.031184949278265442,
+      "n_eff": 16.058823529411764,
+      "reliability": 0.01492639374040909,
+      "shrunk_delta": -0.01680303324001367
     },
     {
       "pitcher": "Jovani Mor\u00e1n",
-      "raw_delta": 0.05255336617405584,
-      "var": 0.006453893848942811,
-      "n_eff": 77.57961783439491,
-      "reliability": 0.18168722613616003,
-      "shrunk_delta": -0.015098756785589156
+      "raw_delta": 0.03730769230769235,
+      "var": 0.006328710294706811,
+      "n_eff": 79.13043478260869,
+      "reliability": 0.06947731138381995,
+      "shrunk_delta": -0.015614958634136573
+    },
+    {
+      "pitcher": "Ryan Watson",
+      "raw_delta": 0.03315909090909086,
+      "var": 0.005349386152265025,
+      "n_eff": 93.61702127659575,
+      "reliability": 0.08116432007237576,
+      "shrunk_delta": -0.015286988813210722
+    },
+    {
+      "pitcher": "Aroldis Chapman",
+      "raw_delta": 0.059484777517564424,
+      "var": 0.007356772026633848,
+      "n_eff": 68.07246376811594,
+      "reliability": 0.060354282753629834,
+      "shrunk_delta": -0.014795340708261568
     },
     {
       "pitcher": "Greg Weissert",
       "raw_delta": 0.11889663182346111,
-      "var": 0.008490224190282386,
+      "var": 0.008491970406047033,
       "n_eff": 58.97260273972602,
-      "reliability": 0.14440321647949036,
-      "shrunk_delta": -0.00860094541972986
+      "reliability": 0.05271146214480584,
+      "shrunk_delta": -0.012267829112756017
+    },
+    {
+      "pitcher": "Jake Bennett",
+      "raw_delta": 0.14666132478632476,
+      "var": 0.007356743549100609,
+      "n_eff": 68.07272727272728,
+      "reliability": 0.06035450228110408,
+      "shrunk_delta": -0.00953382623336089
     },
     {
       "pitcher": "Payton Tolle",
       "raw_delta": 0.07906380996739634,
-      "var": 0.0038624538268908605,
+      "var": 0.0038632482320339486,
       "n_eff": 129.6301886792453,
-      "reliability": 0.270600703483113,
-      "shrunk_delta": -0.0005742951871097433
+      "reliability": 0.10898431244189509,
+      "shrunk_delta": -0.008817271286196287
     }
   ],
   "min_pa_wowy": 25,
