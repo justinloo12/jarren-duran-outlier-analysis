@@ -358,13 +358,13 @@ def article_section(res: dict) -> str:
     A = L.append
     A("\n## The quad-A engine, audited\n")
     A("The streak is over, and it is worth being honest about who built "
-      f"it. {res['n']} Red Sox with almost no MLB track record — waiver "
-      "claims, up-and-down arms, career minor-leaguers — hold real "
+      f"it. {res['n']} Red Sox with almost no MLB track record (waiver "
+      "claims, up-and-down arms, career minor leaguers) hold real "
       f"roles, and together they have produced **{res['total_war']:+.1f} "
       f"WAR**. Of the {res['n'] - res['n_rookie']} with prior MLB "
       f"seasons, **{res['n_career_high']} are running the best seasons "
       f"of their careers**, and the other {res['n_rookie']} are rookies "
-      "with no baseline to regress to — which cuts both ways (full "
+      "with no baseline to regress to, which cuts both ways (full "
       "table in the quad-A audit memo). "
       + (f"On the position side that means {names_h}; " if names_h else "")
       + (f"in the pen, {names_a}." if names_a else "") + "\n")
@@ -383,7 +383,7 @@ def article_section(res: dict) -> str:
                 "is mostly earning it (results within "
                 f"{res['cohort_bat_luck']*1000:+.0f}/"
                 f"{res['cohort_arm_luck']*1000:+.0f} points of expected "
-                "for bats/arms). The risk isn't luck — it's track "
+                "for bats/arms). The risk is not luck, it is track "
                 "record. Journeymen do not usually carry career bests "
                 "through August, and the projection systems will bet on "
                 "the career, not the heater")

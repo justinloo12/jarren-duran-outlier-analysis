@@ -265,24 +265,24 @@ def article_section(md: str) -> str:
     """Compact version of the trades for ARTICLE.md."""
     L = []
     A = L.append
-    A("\n## Three trades that fit — and the one to walk away from\n")
+    A("\n## Three trades that fit, and one to skip\n")
     A(f"A team that just won {_streak_n()} straight has a clubhouse that works, so "
       "disruption is priced like a cost here. The right deadline is "
       "small. The menu, ordered from least to most disturbance (full "
       "value math in the mock-trades memo):\n")
-    A("1. **The pen fix (zero disruption — do it):** a 45 FV + 40 FV "
+    A("1. **The pen fix (zero disruption, do it):** a 45 FV + 40 FV "
       "prospect package to the selling Mets for Luke Weaver (elite relief "
       "season, signed through 2027). Nobody in the room loses a job or an "
-      "inning — and it's the highest-probability marginal win available.")
-    A("2. **The stabilizer (moderate — if the price holds):** Brayan "
-      "Bello to the Giants for rental Luis Arraez — zero prospect cost, "
+      "inning, and it is the most reliable marginal win available.")
+    A("2. **The stabilizer (moderate, if the price holds):** Brayan "
+      "Bello to the Giants for rental Luis Arraez. Zero prospect cost, "
       "and Arraez fills a patchwork platoon spot rather than displacing a "
       "hot regular. The first deal that subtracts from the active roster.")
-    A("3. **The big swing (high — probably wait):** Payton Tolle + "
+    A("3. **The big swing (high, probably wait):** Payton Tolle + "
       "Connelly Early + a lottery arm to the Angels for SS Zach Neto "
-      "(controlled through 2029). Franchise-window correct on paper — but "
-      "it pulls two arms out of a winning rotation mid-streak, and the "
-      "same trade will still be there in the winter.")
+      "(controlled through 2029). Right for the franchise window on "
+      "paper, but it pulls two arms out of a winning rotation during a "
+      "race, and the same trade will still be there in the winter.")
     try:
         fe = json.load(open(C.DATA_DIR / "battery_model.json"))["fe"]
         adj = (f"an adjusted model (pitcher, opponent and park controls) "
@@ -296,10 +296,11 @@ def article_section(md: str) -> str:
     A("\nAnd the walk-away: the Langeliers catcher \"upgrade\" the "
       "positional audit seems to demand. The battery data is the veto. "
       "Nearly every Boston arm works with a settled catcher (fig. 14), "
-      f"and {adj} — there is no catcher problem to fix (fig. 15). No "
-      "August bat is worth resetting a working staff.")
-    A("\nAnd the contingency: if the gap hits six games by August 1, the "
-      "sell list is Gray and Chapman — the rentals — and stops there.\n")
+      f"and {adj}. There is no catcher problem to fix (fig. 15), and "
+      "no August bat is worth resetting a working staff.")
+    A("\nAnd the contingency: if the gap hits six games by August 1, "
+      "the sell list is Gray and Chapman, the rentals, and it stops "
+      "there.\n")
     return "\n".join(L)
 
 
