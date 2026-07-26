@@ -402,10 +402,28 @@ def article_section(res: dict) -> str:
                 "record. Journeymen do not usually carry career bests "
                 "through August, and the projection systems will bet on "
                 "the career, not the heater")
+    try:
+        bt = json.load(open(C.DATA_DIR / "aaaa_backtest.json"))
+        h, ar = bt["hitters"], bt["arms"]
+        bt_line = (
+            "That is not a hunch; it has a base rate. Across 2016 to "
+            f"2025 there were {h['n']} hitters and {ar['n']} relievers "
+            "who fit this exact profile (thin track record, age 26 or "
+            "older, a first half at least 40 wOBA points or 0.75 FIP "
+            "runs better than their career). The median case kept only "
+            f"{h['median_retention']*100:.0f}% of the surge in the "
+            f"second half, and {h['back_to_career_pct']}% of the "
+            f"hitters and {ar['back_to_career_pct']}% of the relievers "
+            "fell all the way back to their career level (fig. 20).\n")
+    except FileNotFoundError:
+        bt_line = None
     A("That is not a durable foundation; it is a tailwind. Career-best "
       "seasons from journeymen are exactly the production that fades "
-      f"down the stretch, {proc}. "
-      "This is the strongest argument for buying real reinforcements "
+      f"down the stretch, {proc}.\n")
+    if bt_line:
+        A(bt_line)
+        A("![AAAA backtest](figures/20_aaaa_backtest.png)\n")
+    A("This is the strongest argument for buying real reinforcements "
       "rather than standing pat: Boston does not need to add stars, it "
       "needs to replace borrowed production before it gets returned. A "
       "real reliever instead of a career-year one; a real infield bat "

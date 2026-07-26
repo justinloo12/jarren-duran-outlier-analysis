@@ -24,7 +24,7 @@ DARK_DIR.mkdir(exist_ok=True)
 C.FIG_DIR = DARK_DIR
 from src import viz, deadline, trade_targets, rebound_sim, erosion  # noqa: E402
 from src import battery, battery_model, xcontact, aaaa  # noqa: E402
-from src import acquisition  # noqa: E402
+from src import acquisition, aaaa_backtest  # noqa: E402
 
 S.apply_dark()
 
@@ -66,5 +66,12 @@ print("  [dark] 18_mead_fit, 19_mead_fenway")
 # 17 quad-A audit
 aaaa.fig_aaaa(json.load(open(C.DATA_DIR / "aaaa.json")))
 print("  [dark] 17_aaaa_audit")
+
+# 20 the regression backtest (recompute from cached FG pulls, cheap)
+_h = aaaa_backtest.hitter_cohort()
+_a = aaaa_backtest.arm_cohort()
+aaaa_backtest.fig_backtest(_h, _a,
+                           json.load(open(C.DATA_DIR / "aaaa_backtest.json")))
+print("  [dark] 20_aaaa_backtest")
 
 print(f"dark figures -> {DARK_DIR}")

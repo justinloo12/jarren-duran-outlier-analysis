@@ -1,0 +1,23 @@
+{
+  "hitters": {
+    "n": 100,
+    "median_surge": 0.063,
+    "median_h2_delta": 0.028,
+    "median_retention": 0.39,
+    "kept_half_pct": 46,
+    "back_to_career_pct": 34
+  },
+  "arms": {
+    "n": 198,
+    "median_surge": 1.382,
+    "median_h2_delta": 0.586,
+    "median_retention": 0.37,
+    "kept_half_pct": 45,
+    "back_to_career_pct": 37
+  },
+  "seasons": "2016-2025 (2020 skipped)",
+  "surge_def": {
+    "hitters_woba": 0.04,
+    "arms_fip": 0.75
+  }
+}

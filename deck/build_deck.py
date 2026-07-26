@@ -64,6 +64,7 @@ FE_EST = f"{_BM['catcher_effect_wong_minus_narvaez']*1000:+.0f}"
 FE_CI = (f"[{_BM['ci95'][0]*1000:+.0f}, {_BM['ci95'][1]*1000:+.0f}]")
 _AAAA = json.load(open(ROOT / "data" / "aaaa.json"))
 _ACQ = json.load(open(ROOT / "data" / "acquisition.json"))
+_ABT = json.load(open(ROOT / "data" / "aaaa_backtest.json"))
 _XC = json.load(open(ROOT / "data" / "xcontact.json"))
 NBB = f"{_XC['n_batted_balls']:,}"
 DEC10 = f"{[d for d in _XC['deciles'] if d['decile'] == 10][0]['resid_base']*1000:+.0f}"
@@ -473,6 +474,12 @@ finds = [(f"{_AAAA['n']} AAAA contributors", RED,
           f"{_AAAA['n_rookie']} rookies", GOLD,
           "Most of the vets are beating every season they've ever had; "
           "the rookies have no baseline at all."),
+         ("History backs the fade", NAVY,
+          f"2016-25, {_ABT['hitters']['n']} hitter and "
+          f"{_ABT['arms']['n']} reliever cases like these: the median "
+          "journeyman kept only "
+          f"{_ABT['hitters']['median_retention']*100:.0f}% of a "
+          "career-best first half (fig. 20)."),
          ("Buy Buy Buy", GREEN,
           "Pick up a seasoned reliever and a right-handed hitter.")]
 yy = 1.9

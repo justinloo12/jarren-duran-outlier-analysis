@@ -41,7 +41,13 @@ It is worth being honest about who has produced the first half. 15 Red Sox with 
 
 ![Quad-A audit](figures/17_aaaa_audit.png)
 
-That is not a durable foundation; it is a tailwind. Career-best seasons from journeymen are exactly the production that fades down the stretch, and to be fair, the pitch-level check says the group is mostly earning it (results within +8/+0 points of expected for bats/arms). The risk is not luck, it is track record. Journeymen do not usually carry career bests through August, and the projection systems will bet on the career, not the heater. This is the strongest argument for buying real reinforcements rather than standing pat: Boston does not need to add stars, it needs to replace borrowed production before it gets returned. A real reliever instead of a career-year one; a real infield bat instead of a waiver claim on a heater. The trades below are sized for exactly that.
+That is not a durable foundation; it is a tailwind. Career-best seasons from journeymen are exactly the production that fades down the stretch, and to be fair, the pitch-level check says the group is mostly earning it (results within +8/+0 points of expected for bats/arms). The risk is not luck, it is track record. Journeymen do not usually carry career bests through August, and the projection systems will bet on the career, not the heater.
+
+That is not a hunch; it has a base rate. Across 2016 to 2025 there were 100 hitters and 198 relievers who fit this exact profile (thin track record, age 26 or older, a first half at least 40 wOBA points or 0.75 FIP runs better than their career). The median case kept only 39% of the surge in the second half, and 34% of the hitters and 37% of the relievers fell all the way back to their career level (fig. 20).
+
+![AAAA backtest](figures/20_aaaa_backtest.png)
+
+This is the strongest argument for buying real reinforcements rather than standing pat: Boston does not need to add stars, it needs to replace borrowed production before it gets returned. A real reliever instead of a career-year one; a real infield bat instead of a waiver claim on a heater. The trades below are sized for exactly that.
 
 ## Three trades that fit, and one to skip
 
