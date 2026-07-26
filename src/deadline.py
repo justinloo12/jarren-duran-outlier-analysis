@@ -422,55 +422,29 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
         bmod = json.load(open(C.DATA_DIR / "battery_model.json"))
     except FileNotFoundError:
         bmod = None
-    try:
-        xc = json.load(open(C.DATA_DIR / "xcontact.json"))
-    except FileNotFoundError:
-        xc = None
     sa = res.get("speed_adjusted", {})
     s26 = res["seasons"]["2026"]
-    s24 = res["seasons"]["2024"]
 
     L = []
     A = L.append
-    streak = str(bos.get("streak", ""))
-    n_streak = int(streak[1:]) if streak[1:].isdigit() else 0
-    hot = streak.startswith("W") and n_streak >= 3
-    # the signature streak is a season fact; persisted so the number
-    # survives the run ending (run() tracks the max in deadline.json)
-    try:
-        big = int(json.load(open(C.DATA_DIR / "deadline.json"))
-                  .get("max_win_streak", 13))
-    except (FileNotFoundError, ValueError):
-        big = 13
-    A(f"# The Red Sox Won {big} Straight. Now Comes the Hard Part\n")
+    A("# Red Sox Trade Deadline 2026: What the Numbers Say\n")
     days_left = max(0, (dt.date(2026, 8, 3) - dt.date.today()).days)
-    A(f"### The deadline is August 3, {days_left} days out. The numbers "
-      "say buy, carefully.\n")
+    A(f"### A data-driven buy/sell assessment, {days_left} days from the "
+      "August 3 deadline.\n")
     A(f"*Deadline runway, {dt.date.today().year} · data through "
       f"{dt.date.today().isoformat()} · full methods, code and figures at "
       "the end*\n")
     A("---\n")
-    if hot and n_streak >= 8:
-        A(f"The Red Sox are the hottest team in baseball, winners of "
-          f"**{n_streak} straight**, the longest run in baseball this "
-          "year. A month ago they were well under .500 and the obvious "
-          "move was to sell. Today they are "
-          f"{int(bos['W'])}-{int(bos['L'])}, and **{_wc_phrase(bos)}**. "
-          f"The trade deadline is August 3, {days_left} days away.\n")
-    else:
-        A(f"The Red Sox ripped off a **{big}-game winning streak** around "
-          "the All-Star break, the longest run in baseball this year, and "
-          "turned a sell-the-vets summer into a playoff race. They are "
-          f"{int(bos['W'])}-{int(bos['L'])}"
-          + (f" (winners of {n_streak} straight)" if hot else "")
-          + f", and **{_wc_phrase(bos)}**.\n")
-    A("The streak is not the story. Boston has outscored opponents by "
+    A(f"The Red Sox are {int(bos['W'])}-{int(bos['L'])}, and "
+      f"**{_wc_phrase(bos)}**. The record is the least informative "
+      "number on the page. Boston has outscored opponents by "
       f"**{int(bos['run_diff']):+d}** runs this season, the run profile "
-      f"of a .{bos['pythag']*1000:.0f} team, while the actual record sat "
-      "near .500 for three months. This is not a mediocre club that got "
-      "hot. It is a good club whose record finally caught up. In "
-      f"{N_SIMS:,} simulations of the rest of the season, Boston makes "
-      f"the playoffs **{v['odds']*100:.0f}%** of the time.\n")
+      f"of a .{bos['pythag']*1000:.0f} team, and in {N_SIMS:,} "
+      "simulations of the rest of the season they make the playoffs "
+      f"**{v['odds']*100:.0f}%** of the time. This report works through "
+      "what that means for the deadline: the buy/sell call, a position "
+      "by position audit, who on the roster is outperforming their "
+      "track record, the trades that fit, and the one already made.\n")
     A("![AL playoff race](figures/12_playoff_race.png)\n")
     A(("That is a playoff team, and the standings are only starting to "
        "reflect it. "
@@ -479,18 +453,16 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
        "record. "
        if v["odds"] >= 0.40 else
        "That is not a contender. It is also not a corpse. ")
-      + f"With {days_left} days to the deadline, the question is what "
-      "to buy. The answer runs through Jarren Duran, whose season looks "
-      "a lot like the team's: **the process is better than the "
-      "results.** More on him later. First the money.\n")
+      + f"With {days_left} days to the deadline, the question is not "
+      "whether to sell. It is what to buy, and what to leave alone.\n")
     A("## So: buy or sell?\n")
     if v["odds"] >= 0.40:
         A(f"**{v['call']}.** At ~{v['odds']*100:.0f}% odds a marginal win "
           "is worth real assets, so the fire-sale case is dead and even "
           "the sell-the-vets hedge should wait. But buy carefully, and "
-          "with one constraint over every deal: **don't disturb the "
-          "room.** Whatever mix of talent and chemistry produced a "
-          f"{big}-game winning streak is worth protecting, so additions should cost "
+          "with one constraint over every deal: **don't disturb a "
+          "roster that is working.** A club outrunning its record has "
+          "something the projections miss, so additions should cost "
           "prospects rather than big-leaguers and fill empty spots rather "
           "than occupied ones. That points to a deliberately **small** "
           "deadline. The biggest upgrades available to this roster "
@@ -613,76 +585,41 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
         if bat:
             A("![Battery map](figures/14_battery_map.png)\n")
 
-    A("## The left fielder: the whole season in one player\n")
-    A("The biggest hole on the roster is the Duran slump, which makes "
-      "the biggest deadline call a diagnosis, not a trade. The full "
-      "workup, in four findings:\n")
-    A("**1. His 2024 breakout was real, a peak in every phase.** The "
-      f"All-Star year (wRC+ {s24['wRC+']:.0f}) came with career-best swing "
-      "decisions, career-best baserunning (+8.3 runs) and a defensive spike "
-      "(+7.6). His xwOBA (.340) was legitimate. Results outran contact "
-      "quality by just 17 points of wOBA, and once you credit the points "
-      "his speed adds over Statcast expectations in his other seasons "
-      "(xstats ignore sprint speed), the true luck component lands between "
-      "5 and 14 points. 2024 was his peak, mildly inflated, not a "
-      "mirage.\n")
-    A(f"**2. His 2026 collapse is part erosion, mostly bad luck.** The wRC+ "
-      f"({s26['wRC+']:.0f}) looks like a career ending. But his wOBA "
-      f"(.{s26['wOBA']*1000:.0f}) sits *below* his xwOBA (.{s26['xwOBA']*1000:.0f}). "
-      "For a burner who normally beats his xstats, running negative is a "
+    A("## The left-field question\n")
+    A("One position deserves its own note, because it looks like the "
+      "biggest hole on the roster and is the easiest to misread. Left "
+      f"field sits at {int((aud[aud['pos'] == 'LF'].iloc[0])['gap']) if aud is not None else -30} wRC+ against the league because of "
+      "Jarren Duran's collapse from a 131 wRC+ All-Star season to a "
+      f"{s26['wRC+']:.0f}. The pitch-level data says most of that fall "
+      f"is not skill loss: his .{s26['wOBA']*1000:.0f} wOBA sits below "
+      f"his .{s26['xwOBA']*1000:.0f} xwOBA, a "
       f"{abs(sa.get('gap_2026_deficit',0))*1000:.0f}-to-"
       f"{abs(sa.get('gap_2026_deficit_ex26') or sa.get('gap_2026_deficit',0))*1000:.0f}"
-      "-point anomaly against his own baseline. His BABIP (.244) is 67 points under what his "
-      "contact quality supports. Real erosion exists (chase, whiff and "
-      "hard-hit rate all moved the wrong way), but no injury has been "
-      "reported, and his speed, baserunning and defense remain plus. The "
-      "legs a buyer would pay for are intact.\n")
-    if xc:
-        du = xc["duran"]
-        dec10 = [d for d in xc["deciles"] if d["decile"] == 10][0]
-        full = du.get("speed_premium_full_woba")
-        A("*Testing the speed claim directly:* instead of asserting "
-          "that xstats shortchange fast runners, we trained the "
-          f"corrected model. Gradient boosting on all "
-          f"{xc['n_batted_balls']:,} tracked 2026 batted balls (exit "
-          "velo, launch angle, spray), fit once without and once with "
-          "sprint speed, validated out-of-sample with folds grouped by "
-          "batter. The speed-blind model under-predicts the fastest "
-          f"decile of hitters by {dec10['resid_base']*1000:+.0f} points "
-          "of BABIP (fig. 16). For Duran "
-          f"({du['sprint_speed']:.1f} ft/s, decile {du['decile']}) the "
-          "speed term is worth "
-          f"**{du['speed_premium_wobacon']*1000:+.0f} points of wOBA on "
-          "contact**"
-          + (f", about {full*1000:+.0f} on full wOBA at his contact rate"
-             if full else "")
-          + ", inside the 5-to-14-point band this analysis derived "
-          "independently from his career gaps.\n")
-        A("![Speed model](figures/16_speed_model.png)\n")
-    pkc = res.get("park_check", {}).get("career", {})
-    hg = (pkc.get("home", {}).get("gap") or 0) * 1000
-    rg = (pkc.get("road", {}).get("gap") or 0) * 1000
-    A(f"**3. It isn't Fenway.** His career wOBA−xwOBA gap is {hg:+.0f} "
-      f"points at home and {rg:+.0f} on the road, essentially identical. "
-      "The skill travels. 2024's overperformance was actually "
-      "*road*-concentrated (+50 vs +14), the opposite of a Monster-driven "
-      "fluke.\n")
-    A("**4. His true level is the 2023–25 plateau (~110–120 "
-      "wRC+).** Aging explains ~7 points of the 70-point fall from 2024; "
-      "regression from a lucky peak plus a 2026 bad-luck tail explains the "
-      "rest.\n")
-    A("![BABIP by season](figures/01_babip_vs_league.png)\n")
-    A("His season has the same shape as the team's: results running "
-      "behind process, and a market ready to misprice both. The roster's "
-      "biggest hole is the one no trade can fix, and none needs to.\n")
+      "-point anomaly for a player who normally beats his expected "
+      "stats on speed, with a BABIP roughly 67 points under his "
+      "contact quality. Real erosion exists in the chase and whiff "
+      "numbers, but the bat-tracking data reads it as approach, not "
+      "decline, and his speed and defense remain plus.\n")
+    A("The deadline implication is narrow: hold. His trade value is at "
+      "its low while the underlying profile says the market is "
+      "under-pricing him, and buyers read expected stats too. Nobody "
+      "pays 2024 prices in August 2026, and the position heals "
+      "internally through regression, the Jones platoon, and Anthony's "
+      "return. The full player-level workup (park checks, a rebound "
+      "simulation, bat-tracking erosion analysis, and a trained "
+      "speed-aware contact model) is a separate case study: see the "
+      "Duran long-read and the decision memo in this repository.\n")
 
-    A("## What would change my mind\n")
-    A("- A 2026 second-half BABIP rebound with flat chase/whiff → the luck "
-      "thesis confirmed; extend-or-hold gets stronger.")
-    A("- Chase% and whiff% still elevated through September → the erosion is "
-      "real; sell next winter at whatever the market bears.")
-    A("- The wild-card gap at 6+ by August 1 → flip the expiring vets and "
-      "call it a retool, not a teardown.\n")
+    A("## What would change this assessment\n")
+    A("- The wild-card gap at 6+ by August 1: flip the expiring vets and "
+      "call it a retool, not a teardown.")
+    A("- The overperforming role players keep producing through "
+      "September: the career-year caution in the audit above was too "
+      "conservative, and standing pat would have been fine.")
+    A("- A Duran second-half BABIP rebound with flat chase and whiff "
+      "rates: the luck read is confirmed and holding him was right.")
+    A("- Chase and whiff rates still elevated through September: the "
+      "erosion is real, and the winter decision changes with it.\n")
     A("---\n")
     A("*Methods: park-adjusted wRC+ for all talent comparisons; luck "
       "measured against Duran's own career wOBA−xwOBA gap (Statcast xstats "

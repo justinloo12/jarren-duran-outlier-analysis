@@ -1,4 +1,4 @@
-# The Hottest Team in Baseball Was Supposed to Sell
+# Red Sox Trade Deadline 2026, by the Numbers
 
 [![tests](https://github.com/justinloo12/jarren-duran-outlier-analysis/actions/workflows/tests.yml/badge.svg)](https://github.com/justinloo12/jarren-duran-outlier-analysis/actions/workflows/tests.yml)
 
@@ -45,10 +45,10 @@ python deck/make_dark_figs.py && python deck/build_deck.py   # presentation deck
 ```
 
 Everything regenerates from source on each run — the article's verdict,
-odds, and streak language all branch on the live standings, so the prose
+odds, and race language all branch on the live standings, so the prose
 updates its own argument when the games do. Outputs land in `data/`
-(CSV/JSON/parquet), `figures/` (16 charts + dark deck variants), and
-`outputs/` (the article, six memos, a 17-slide deck, and the frozen
+(CSV/JSON/parquet), `figures/` (18 charts + dark deck variants), and
+`outputs/` (the article, seven memos, a 19-slide deck, and the frozen
 predictions file).
 
 ## Two models built for this project
@@ -108,6 +108,10 @@ justified, which is the point of building the model.
   trade framework** feeding four value-checked mock trades and one
   deliberate walk-away ([`src/deadline.py`](src/deadline.py),
   [`src/mock_trades.py`](src/mock_trades.py)).
+- **An overvalue audit** — the roster's thin-track-record contributors
+  measured against their own careers (career-best flags, results vs
+  contact quality), plus a data check on the real deadline trade
+  ([`src/aaaa.py`](src/aaaa.py), [`src/acquisition.py`](src/acquisition.py)).
 - **Pre-registered, falsifiable predictions** — frozen 2026-07-04 in
   [`outputs/predictions.json`](outputs/predictions.json) with quantile
   bands and probability calls, plus a grader
@@ -118,8 +122,8 @@ justified, which is the point of building the model.
 
 - [`outputs/ARTICLE.md`](outputs/ARTICLE.md) — the post-ready piece; all
   numbers generated live
-- [`outputs/Red_Sox_Outfield_Strategy.pptx`](outputs/Red_Sox_Outfield_Strategy.pptx)
-  — 17-slide deck, dark broadcast theme, stats wired to the data files
+- [`outputs/Red_Sox_Trade_Deadline.pptx`](outputs/Red_Sox_Trade_Deadline.pptx)
+  — 19-slide deck, dark broadcast theme, stats wired to the data files
 - [`outputs/decision_memo.md`](outputs/decision_memo.md),
   [`outputs/mock_trades.md`](outputs/mock_trades.md),
   [`outputs/deadline_decision.md`](outputs/deadline_decision.md) and

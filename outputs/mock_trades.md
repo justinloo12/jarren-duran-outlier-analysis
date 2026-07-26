@@ -12,7 +12,7 @@ Boston's tradeable surplus is **starting pitching**: seven viable starters for f
 
 The needs, per the positional audit: a **shortstop-adjacent infield bat** (the roster's biggest external hole) and **bullpen help** (bottom half of MLB in reliever WAR). Catcher looks like a third need on the audit — the bats are below the position's average — but the battery data takes it off the list: the staff is thriving with the Narváez/Wong tandem, and nearly every arm has a clear preferred battery mate (see the walk-away section below). LF and DH need no outside help either: Duran's regression sits behind a new Jahmai Jones platoon with Anthony's return behind that, and at DH Yoshida has quietly been an above-average hitter, with Gonzalez covering the tougher lefties. Witt Jr. (119 wRC+, 4.7 WAR in 414 PA, age 26) and De La Cruz (128 wRC+, 3.5 WAR in 376 PA, age 24) top the seller SS list but are franchise players — named for completeness, not available.
 
-**The chemistry constraint.** A team that just won 14 straight has a clubhouse that works, and disruption is a cost even though it never shows up in a WAR column. Every deal below is graded on both ledgers, value and disruption, and the menu is **ranked by the second**: prospects out before big-leaguers, open spots before occupied ones, nobody demoted while the team is winning.
+**The disruption constraint.** A team holding a playoff spot in late July has a roster that works, and disruption is a cost even though it never shows up in a WAR column. Every deal below is graded on both ledgers, value and disruption, and the menu is **ranked by the second**: prospects out before big-leaguers, open spots before occupied ones, nobody demoted while the team is winning.
 
 Three live trades and one deliberate pass make the menu — a menu, not a plan. Boston only *needs* the first one. The right deadline here is small.
 
@@ -31,7 +31,7 @@ Three live trades and one deliberate pass make the menu — a menu, not a plan. 
 
 **The math.** Arraez's rest-of-season is worth ~1.2 WAR ≈ $10M against ~$5M of salary — modest surplus, rental price. Bello's 2026 has been poor, but a controllable 27-year-old with mid-rotation history carries $5–10M of option value a retooling San Francisco can afford to wait on. Near-even swap.
 **The fit.** Arraez takes second while the Cheng/Monasterio platoon bridges short until Mayer (10-day IL) returns — turning two patchwork infield spots into one. No prospect cost at all.
-**Clubhouse cost: moderate — the first deal that touches the room.** Bello leaves the active roster mid-streak, but he sits outside the playoff rotation once Crochet and Sandoval are back, and Arraez fills a spot currently held by a patchwork platoon, not a hot regular. An add, not a reshuffle.
+**Clubhouse cost: moderate — the first deal that touches the room.** Bello leaves the active roster midseason, but he sits outside the playoff rotation once Crochet and Sandoval are back, and Arraez fills a spot currently held by a patchwork platoon, not a hot regular. An add, not a reshuffle.
 
 ## Trade 3 — The big swing: a real shortstop, at a real cost
 
@@ -55,7 +55,7 @@ Three live trades and one deliberate pass make the menu — a menu, not a plan. 
 > **Sonny Gray** (2.78 ERA / 3.70 FIP, 1.8 WAR in 106 IP, age 36; expiring) → a pitching-poor contender (the Cubs' staff ranks near the bottom of contending clubs) for a 45+ FV near-MLB bat.
 > **Aroldis Chapman** (1.87 ERA / 2.60 FIP, 1.0 WAR in 33 IP, age 38; expiring) → any contender for a 40+ FV flier.
 
-Selling the rentals is the *only* sell branch; the audit gives no case for moving Contreras, Duran, or any controllable starter at this deadline. The chemistry ledger doubles the point. Trading your best hitter fresh off a 14-game winning streak would tell the clubhouse exactly what the front office thinks of it, and that message has a cost of its own.
+Selling the rentals is the *only* sell branch; the audit gives no case for moving Contreras, Duran, or any controllable starter at this deadline. The chemistry ledger doubles the point. Trading your best hitter out of a playoff race would tell the clubhouse exactly what the front office thinks of it, and that message has a cost of its own.
 
 ---
 *Contracts: Neto $4.15M arb-controlled through 2029 (avoided arbitration Jan 2026); Arraez 1yr/$12M (SF, Feb 2026); Weaver 2yr/$22M through 2027 (NYM); Langeliers $5.25M, controlled through 2028 — all per public reporting as of the generation date. Stats refresh on every pipeline run; verify contracts before publishing. These are analytical hypotheticals, not reported rumors.*

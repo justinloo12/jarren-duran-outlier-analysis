@@ -13,6 +13,7 @@ Standalone: python3 -m src.web_article
 """
 from __future__ import annotations
 
+import datetime as dt
 import html
 import json
 import re
@@ -213,13 +214,13 @@ on GitHub</a></footer>"""
 def build_index() -> str:
     d = json.load(open(C.DATA_DIR / "deadline.json"))
     bos, v = d["bos"], d["verdict"]
-    streak = d.get("max_win_streak", 13)
+    days = max(0, (dt.date(2026, 8, 3) - dt.date.today()).days)
     stats = [
         (f"{int(bos['W'])}&ndash;{int(bos['L'])}", "record"),
-        (f"W{streak}", "signature streak"),
         (f"+{int(bos['run_diff'])}", "run differential"),
         (f"{v['odds']*100:.0f}%", "playoff odds (10k sims)"),
         (v["call"], "verdict"),
+        (f"{days}", "days to the deadline"),
     ]
     stat_html = "\n".join(
         f'<div><div class="num">{n}</div><div class="lab">{l}</div></div>'
@@ -227,18 +228,19 @@ def build_index() -> str:
     body = f"""
 <div class="hero"><div class="hero-inner">
   <div class="kicker">A Reproducible Baseball Analytics Case Study</div>
-  <h1>The Hottest Team in Baseball Was Supposed to Sell</h1>
+  <h1>Red Sox Trade Deadline 2026, by the Numbers</h1>
   <div class="dek">Live data, custom models, and pre-registered
-  predictions on the 2026 Red Sox trade deadline &mdash; what to buy,
-  what to hold, and what the raw numbers get wrong.</div>
+  predictions: the buy/sell call, a positional audit, who is
+  outperforming their track record, and the trades that fit.</div>
   <div class="herostats">{stat_html}</div>
 </div></div>
 <div class="cards">
   <a class="card" href="deadline.html">
     <div class="tag">The deadline case</div>
-    <h3>They kept winning. Now what?</h3>
-    <p>The buy/sell verdict, the positional audit, three trades and a
-    walk-away &mdash; every number generated from live data.</p>
+    <h3>The deadline assessment</h3>
+    <p>The buy/sell verdict, the positional audit, the overvalue
+    check, three trades and a walk-away, and the deal already made.
+    Every number generated from live data.</p>
   </a>
   <a class="card" href="outputs/duran_case.html">
     <div class="tag">The player study</div>

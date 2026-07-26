@@ -32,7 +32,7 @@ MEAD_ID = 678554
 PULL_DEG = 15     # spray angle beyond this = pulled
 AIR_DEG = 10      # launch angle at/above this = air
 MIN_BB = 100      # batted balls to enter the league percentile pool
-MARKER = "## The left fielder: the whole season in one player"
+MARKER = "## The left-field question"
 
 
 def _ord(n) -> str:

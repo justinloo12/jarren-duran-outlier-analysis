@@ -15,7 +15,7 @@ from pptx.enum.shapes import MSO_SHAPE
 
 ROOT = Path(__file__).resolve().parent.parent
 FIG = ROOT / "figures"
-OUT = ROOT / "outputs" / "Red_Sox_Outfield_Strategy.pptx"
+OUT = ROOT / "outputs" / "Red_Sox_Trade_Deadline.pptx"
 
 # palette, dark "night game" broadcast theme
 BG = "0B1220"          # page
@@ -189,14 +189,15 @@ dot(s, 0.62, 0.62, 0.34, fill=RED)
 txt(s, 1.05, 0.6, 10, 0.4, [[("BOSTON RED SOX  ·  TRADE DEADLINE 2026",
     {"color": "C9D2E3", "bold": True, "size": 13})]], space_after=0)
 txt(s, 0.62, 2.15, 12.1, 2.0, [
-    [("Don't Count Out", {"size": 46, "bold": True,
+    [("Red Sox Trade Deadline,", {"size": 46, "bold": True,
       "font": HEAD, "color": WHITE})],
-    [("The Sox.", {"size": 46, "bold": True, "font": HEAD,
+    [("By the Numbers", {"size": 46, "bold": True, "font": HEAD,
       "color": RED})],
 ], space_after=2, line_spacing=1.0)
 txt(s, 0.62, 4.35, 11.6, 1.0, [[(
-    "The hottest team in baseball was supposed to sell. A lookahead to "
-    f"the trade deadline, now {DAYS_LEFT} days away.",
+    "A buy/sell assessment built on live data: playoff odds, a "
+    "positional audit, overvalue checks, and the trades that fit. "
+    f"{DAYS_LEFT} days to August 3.",
     {"size": 17, "color": "D3D9E6"})]], line_spacing=1.12)
 txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
     {"color": "8C97AC", "size": 12, "italic": True})]], space_after=0)
@@ -204,8 +205,8 @@ txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
 # ---------------------------------------------------------------- 2 SITUATION
 s = new()
 eyebrow(s, "The setup")
-title(s, "The hottest team in baseball")
-stats = [(STREAK, "winning streak", "longest run in the majors this season"),
+title(s, "A contender by run differential")
+stats = [(f"{_w}-{_l}", "record", "holding the final wild card"),
          (RUNDIFF, "run differential",
           f"outplaying their {PCT} record all season"),
          (ODDS, "playoff odds",
@@ -494,7 +495,7 @@ image(s, "14", 0.4, 1.7, 8.0, 4.6, "14_battery_map.png")
 tx = 8.75
 finds = [("The staff works with both", RED,
           f"{WONG9} RA9 with Wong, {NARV9} with Narváez, the "
-          "run-prevention core of the streak."),
+          "run-prevention core of the season."),
          ("Every arm has a guy", NAVY,
           "Raw pairings look dramatic (fig. 14), but small samples "
           "shrink hard (fig. 15). What survives: settled, deliberate "
@@ -563,12 +564,12 @@ trades = [
      "hot regular's."),
     ("3 · The big swing · probably wait", "SS Zach Neto (LAA)", RED,
      "For Tolle + Early + a 45 FV: two arms out of a winning rotation "
-     "mid-streak. Franchise-window correct, and still there in the "
-     "winter. Controlled through 2029."),
+     "midseason. Right for the franchise window, and still there in "
+     "the winter. Controlled through 2029."),
     ("✗ · The walk-away", "C Shea Langeliers (ATH)", GOLD,
      "The value math worked; the battery map is the veto. No August bat "
-     "is worth resetting eight pitcher-catcher pairings in the middle of "
-     "a streak built on run prevention.")]
+     "is worth resetting eight pitcher-catcher pairings on a staff "
+     "carrying the season.")]
 cw, ch = 5.86, 2.12
 pos = [(0.62, 1.85), (0.62 + cw + 0.33, 1.85),
        (0.62, 1.85 + ch + 0.28), (0.62 + cw + 0.33, 1.85 + ch + 0.28)]

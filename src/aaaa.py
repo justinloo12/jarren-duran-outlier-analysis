@@ -357,8 +357,8 @@ def article_section(res: dict) -> str:
     L = []
     A = L.append
     A("\n## The quad-A engine, audited\n")
-    A("The streak is over, and it is worth being honest about who built "
-      f"it. {res['n']} Red Sox with almost no MLB track record (waiver "
+    A("It is worth being honest about who has produced the first "
+      f"half. {res['n']} Red Sox with almost no MLB track record (waiver "
       "claims, up-and-down arms, career minor leaguers) hold real "
       f"roles, and together they have produced **{res['total_war']:+.1f} "
       f"WAR**. Of the {res['n'] - res['n_rookie']} with prior MLB "

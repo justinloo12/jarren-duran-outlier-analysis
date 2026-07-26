@@ -102,9 +102,8 @@ def build() -> str:
       f"({_bat_line(bats['Bobby Witt Jr.'])}) and De La Cruz "
       f"({_bat_line(bats['Elly De La Cruz'])}) top the seller SS list but "
       "are franchise players — named for completeness, not available.\n")
-    n_stk = _streak_n()
-    A(f"**The chemistry constraint.** A team that just won {n_stk} straight has "
-      "a clubhouse that works, and disruption is a cost even though it "
+    A("**The disruption constraint.** A team holding a playoff spot "
+      "in late July has a roster that works, and disruption is a cost even though it "
       "never shows up in a WAR column. Every deal below is graded on both "
       "ledgers, value and disruption, and the menu is **ranked by the "
       "second**: prospects out before big-leaguers, open spots before "
@@ -151,7 +150,7 @@ def build() -> str:
       "platoon bridges short until Mayer (10-day IL) returns — turning two "
       "patchwork infield spots into one. No prospect cost at all.")
     A("**Clubhouse cost: moderate — the first deal that touches the "
-      "room.** Bello leaves the active roster mid-streak, but he sits "
+      "room.** Bello leaves the active roster midseason, but he sits "
       "outside the playoff rotation once Crochet and Sandoval are back, "
       "and Arraez fills a spot currently held by a patchwork platoon, not "
       "a hot regular. An add, not a reshuffle.\n")
@@ -235,7 +234,7 @@ def build() -> str:
             pass
     else:
         A("**The battery data is why Boston should pass** — the staff has "
-          "settled pitcher-catcher pairings mid-streak, and a new catcher "
+          "settled pitcher-catcher pairings midseason, and a new catcher "
           "resets all of them in August, in a race, for a bat.\n")
 
     # ---- Sell branch ------------------------------------------------------
@@ -250,7 +249,7 @@ def build() -> str:
     A("Selling the rentals is the *only* sell branch; the audit gives no "
       "case for moving Contreras, Duran, or any controllable starter at "
       "this deadline. The chemistry ledger doubles the point. Trading "
-      f"your best hitter fresh off a {_streak_n()}-game winning streak would tell "
+      "your best hitter out of a playoff race would tell "
       "the clubhouse exactly what the front office thinks of it, and "
       "that message has a cost of its own.\n")
 
@@ -268,7 +267,7 @@ def article_section(md: str) -> str:
     L = []
     A = L.append
     A("\n## Three trades that fit, and one to skip\n")
-    A(f"A team that just won {_streak_n()} straight has a clubhouse that works, so "
+    A("A team holding a playoff spot has a roster that works, so "
       "disruption is priced like a cost here. The right deadline is "
       "small. The menu, ordered from least to most disturbance (full "
       "value math in the mock-trades memo):\n")
@@ -315,9 +314,9 @@ def run():
     art = C.OUT_DIR / "ARTICLE.md"
     if art.exists():
         s = art.read_text()
-        marker = "## The left fielder: the whole season in one player"
+        marker = "## The left-field question"
         section = article_section(s)
-        if "trades that fit" not in s and marker in s:
+        if "## Three trades that fit" not in s and marker in s:
             s = s.replace(marker, section.strip() + "\n\n" + marker)
             art.write_text(s)
             print("  [trades] appended trades section to ARTICLE.md")
