@@ -1,6 +1,6 @@
 # Erosion Decomposition — Physical or Approach?
 
-*Generated 2026-07-23 · pitch-level Statcast, regular season only, bat tracking 2024+ · methodology in `src/erosion.py`.*
+*Generated 2026-07-26 · pitch-level Statcast, regular season only, bat tracking 2024+ · methodology in `src/erosion.py`.*
 
 ## The tiebreaker: bat speed is UP
 

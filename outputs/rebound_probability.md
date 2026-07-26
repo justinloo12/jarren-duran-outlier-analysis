@@ -1,6 +1,6 @@
 # Rebound Probability — Monte Carlo on the Rest of 2026
 
-*Generated 2026-07-23 · 10,000 sims, seed 680776 (deterministic) · remaining PA = 243 (61 Red Sox games left × his 403-PA-in-101-games pace).*
+*Generated 2026-07-26 · 10,000 sims, seed 680776 (deterministic) · remaining PA = 243 (61 Red Sox games left × his 403-PA-in-101-games pace).*
 
 ## The model in one paragraph
 

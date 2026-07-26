@@ -24,6 +24,7 @@ DARK_DIR.mkdir(exist_ok=True)
 C.FIG_DIR = DARK_DIR
 from src import viz, deadline, trade_targets, rebound_sim, erosion  # noqa: E402
 from src import battery, battery_model, xcontact, aaaa  # noqa: E402
+from src import acquisition  # noqa: E402
 
 S.apply_dark()
 
@@ -56,6 +57,10 @@ print("  [dark] 14_battery_map")
 battery_model.fig_adjusted(json.load(open(C.DATA_DIR / "battery_model.json")))
 xcontact.fig_speed(json.load(open(C.DATA_DIR / "xcontact.json")))
 print("  [dark] 15_battery_adjusted, 16_speed_model")
+
+# 18 the Mead acquisition
+acquisition.fig_fit(json.load(open(C.DATA_DIR / "acquisition.json")))
+print("  [dark] 18_mead_fit")
 
 # 17 quad-A audit
 aaaa.fig_aaaa(json.load(open(C.DATA_DIR / "aaaa.json")))

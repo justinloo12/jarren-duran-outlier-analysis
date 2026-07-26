@@ -81,9 +81,11 @@ def build() -> str:
       "45+ FV≈$15M, 45 FV≈$9M, 40 FV≈$4M). Hypotheticals, not reporting.*\n")
 
     A("## The premise\n")
-    A("Boston's tradeable surplus is **starting pitching**: eight viable "
-      "starters for five slots once Crochet and Sandoval are back —")
-    for n in ("Payton Tolle", "Jake Bennett", "Connelly Early",
+    A("Boston's tradeable surplus is **starting pitching**: seven viable "
+      "starters for five slots once Crochet and Sandoval are back "
+      "(Connelly Early was the eighth until the July 23 Mead trade "
+      "cashed him in):")
+    for n in ("Payton Tolle", "Jake Bennett",
               "Brayan Bello", "Sonny Gray"):
         A(f"- **{n}** — {_arm_line(arms[n])}")
     A("\nThe needs, per the positional audit: a **shortstop-adjacent infield "

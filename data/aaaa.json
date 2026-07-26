@@ -3,10 +3,10 @@
     {
       "name": "Anthony Seigler",
       "age": 27,
-      "pa_2026": 106,
-      "wrc_2026": 91,
-      "war_2026": 0.1,
-      "ops_2026": 0.697,
+      "pa_2026": 115,
+      "wrc_2026": 112,
+      "war_2026": 0.5,
+      "ops_2026": 0.775,
       "career_pa": 73,
       "career_ops": 0.502,
       "best_ops": null,
@@ -15,7 +15,7 @@
       "xwoba": 0.324,
       "rookie": true,
       "career_high": false,
-      "vs_career": 0.195
+      "vs_career": 0.273
     },
     {
       "name": "Mickey Gasper",
@@ -37,10 +37,10 @@
     {
       "name": "Andruw Monasterio",
       "age": 29,
-      "pa_2026": 180,
-      "wrc_2026": 100,
-      "war_2026": 0.1,
-      "ops_2026": 0.741,
+      "pa_2026": 187,
+      "wrc_2026": 101,
+      "war_2026": 0.0,
+      "ops_2026": 0.743,
       "career_pa": 592,
       "career_ops": 0.671,
       "best_ops": 0.756,
@@ -49,14 +49,14 @@
       "xwoba": 0.309,
       "rookie": false,
       "career_high": false,
-      "vs_career": 0.07
+      "vs_career": 0.072
     },
     {
       "name": "Nick Sogard",
       "age": 28,
       "pa_2026": 41,
       "wrc_2026": 102,
-      "war_2026": 0.2,
+      "war_2026": 0.3,
       "ops_2026": 0.721,
       "career_pa": 190,
       "career_ops": 0.656,
@@ -88,10 +88,10 @@
     {
       "name": "Caleb Durbin",
       "age": 26,
-      "pa_2026": 346,
-      "wrc_2026": 90,
+      "pa_2026": 353,
+      "wrc_2026": 89,
       "war_2026": 1.5,
-      "ops_2026": 0.698,
+      "ops_2026": 0.691,
       "career_pa": 506,
       "career_ops": 0.721,
       "best_ops": 0.721,
@@ -100,15 +100,15 @@
       "xwoba": 0.284,
       "rookie": false,
       "career_high": false,
-      "vs_career": -0.023
+      "vs_career": -0.03
     },
     {
       "name": "Romy Gonzalez",
       "age": 29,
-      "pa_2026": 59,
-      "wrc_2026": 63,
-      "war_2026": -0.2,
-      "ops_2026": 0.592,
+      "pa_2026": 60,
+      "wrc_2026": 74,
+      "war_2026": -0.1,
+      "ops_2026": 0.635,
       "career_pa": 796,
       "career_ops": 0.73,
       "best_ops": 0.826,
@@ -117,7 +117,7 @@
       "xwoba": 0.303,
       "rookie": false,
       "career_high": false,
-      "vs_career": -0.138
+      "vs_career": -0.095
     },
     {
       "name": "Carlos Narvaez",
@@ -141,10 +141,10 @@
     {
       "name": "Tayron Guerrero",
       "age": 35,
-      "ip_2026": 21.2,
-      "era_2026": 2.49,
-      "fip_2026": 2.37,
-      "war_2026": 0.5,
+      "ip_2026": 23.0,
+      "era_2026": 2.35,
+      "fip_2026": 2.32,
+      "war_2026": 0.6,
       "career_ip": 106.0,
       "career_era": 5.77,
       "best_era": 5.43,
@@ -153,7 +153,7 @@
       "xwoba_against": 0.245,
       "rookie": false,
       "career_best": true,
-      "vs_career": -3.28
+      "vs_career": -3.43
     },
     {
       "name": "Jovani Moran",
@@ -226,10 +226,10 @@
     {
       "name": "Greg Weissert",
       "age": 31,
-      "ip_2026": 39.1,
-      "era_2026": 3.66,
-      "fip_2026": 4.25,
-      "war_2026": 0.1,
+      "ip_2026": 40.1,
+      "era_2026": 4.24,
+      "fip_2026": 4.57,
+      "war_2026": -0.1,
       "career_ip": 161.7,
       "career_era": 3.28,
       "best_era": 2.82,
@@ -238,7 +238,7 @@
       "xwoba_against": 0.286,
       "rookie": false,
       "career_best": false,
-      "vs_career": 0.38
+      "vs_career": 0.96
     },
     {
       "name": "Justin Slaten",
@@ -258,10 +258,10 @@
       "vs_career": 1.68
     }
   ],
-  "total_war": 3.0,
+  "total_war": 3.4,
   "n": 15,
   "n_career_high": 4,
   "n_rookie": 4,
   "cohort_bat_luck": 0.008,
-  "cohort_arm_luck": 0.001
+  "cohort_arm_luck": 0.0
 }

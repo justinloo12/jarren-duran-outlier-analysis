@@ -1,18 +1,18 @@
 # The Red Sox Won 14 Straight. Now Comes the Hard Part
 
-### The deadline is August 3, 11 days out. The numbers say buy, carefully.
+### The deadline is August 3, 8 days out. The numbers say buy, carefully.
 
-*Deadline runway, 2026 · data through 2026-07-23 · full methods, code and figures at the end*
+*Deadline runway, 2026 · data through 2026-07-26 · full methods, code and figures at the end*
 
 ---
 
-The Red Sox ripped off a **14-game winning streak** around the All-Star break, the longest run in baseball this year, and turned a sell-the-vets summer into a playoff race. They are 52-49, and **Boston currently holds the final wild-card spot**.
+The Red Sox ripped off a **14-game winning streak** around the All-Star break, the longest run in baseball this year, and turned a sell-the-vets summer into a playoff race. They are 53-50, and **Boston holds a wild card, 0.5 games clear of the cut line**.
 
-The streak is not the story. Boston has outscored opponents by **+45** runs this season, the run profile of a .551 team, while the actual record sat near .500 for three months. This is not a mediocre club that got hot. It is a good club whose record finally caught up. In 10,000 simulations of the rest of the season, Boston makes the playoffs **77%** of the time.
+The streak is not the story. Boston has outscored opponents by **+41** runs this season, the run profile of a .545 team, while the actual record sat near .500 for three months. This is not a mediocre club that got hot. It is a good club whose record finally caught up. In 10,000 simulations of the rest of the season, Boston makes the playoffs **77%** of the time.
 
 ![AL playoff race](figures/12_playoff_race.png)
 
-That is a playoff team, and the standings are only starting to reflect it. With 11 days to the deadline, the question is what to buy. The answer runs through Jarren Duran, whose season looks a lot like the team's: **the process is better than the results.** More on him later. First the money.
+That is a playoff team, and the standings are only starting to reflect it. With 8 days to the deadline, the question is what to buy. The answer runs through Jarren Duran, whose season looks a lot like the team's: **the process is better than the results.** More on him later. First the money.
 
 ## So: buy or sell?
 
@@ -21,7 +21,7 @@ That is a playoff team, and the standings are only starting to reflect it. With 
 - **Hold Duran through the deadline.** His trade value is at rock bottom while his underlying profile says the market is under-pricing him (the full case is below). Buyers read xstats too; nobody is paying 2024 prices in August 2026. Revisit in the winter, after the rebound has or has not shown up on the field.
 - **Keep the young outfield** (Anthony, Rafaela, Abreu) and the rotation. They are the 2027 team.
 - **Keep the expiring veterans.** Gray, Chapman and Contreras were the winter's reported trade names; right now they are playoff innings, playoff at-bats, and most of the clubhouse's seniority. The sell branch reopens only if the gap blows out before August 1.
-- **Keep Yoshida, and retire the dead-money talk.** He has quietly been a useful hitter this year: 104 wRC+, .342 OBP, a 11% strikeout rate that ranks among the league's lowest, league-average contact quality. The contract ($18.6M through 2027 for a DH) is still underwater as a trade asset, but the bat is doing its job. Absorb the deal and play the hitter.
+- **Keep Yoshida, and retire the dead-money talk.** He has quietly been a useful hitter this year: 102 wRC+, .341 OBP, a 11% strikeout rate that ranks among the league's lowest, league-average contact quality. The contract ($18.6M through 2027 for a DH) is still underwater as a trade asset, but the bat is doing its job. Absorb the deal and play the hitter.
 
 ## If they buy, where?
 
@@ -30,20 +30,20 @@ That is a playoff team, and the standings are only starting to reflect it. With 
 Auditing every position against league average (PA-weighted wRC+) reorders the shopping list:
 
 - **The biggest hole on the roster is left field (-32 wRC+ vs league), and that hole is the Duran slump itself.** The best fixes are internal and close to free: Duran's batted-ball luck evening out, the Jahmai Jones platoon covering him against lefties, and Roman Anthony's return whenever he is cleared to swing. Jones is his own buy-low case, a .426 wOBA against lefties in 2025 that has collapsed to .272 this year with a .327 xwOBA underneath it. Fittingly, Boston picked up another hitter running under his contact quality. A team trading for an outfielder here would be buying what it already owns.
-- **Shortstop (-20) is the one true external target, with an asterisk: half the infield is hurt** (Mayer, Story, Kiner-Falefa; Casas at first). A Cheng/Monasterio platoon is bridging short, and DH has steadied on its own: Yoshida has been above league average and Gonzalez takes the tougher lefties. A cheap, controllable infield stabilizer is still the highest-leverage add; the internal returns are the fallback, not the plan.
-- **Catcher (-15) looks like a hole, and it is the trap.** The Narváez and Wong bats are below the position's league average, but the battery data says leave the tandem alone: the staff runs a 3.42 RA9 with Wong and 4.20 with Narváez, and the club is quietly running an assignment system. Gray is at 1.83 with Wong (4.40 with Narváez), Bennett at 1.12 with Narváez, Bello five runs better with Wong, and the leverage relievers sharper with Narváez (fig. 14). The samples are small and shaped by usage, but that is working pitcher-catcher chemistry, and a mid-race catcher trade would reset every one of those pairings for a bat. A formal check backs this up: a fixed-effects model (pitcher, opponent and park controls, cluster-bootstrapped) puts the overall catcher effect at -31 points of wOBA-against toward Wong with a 95% CI of [-84, +21]. No significant catcher problem exists, and empirical-Bayes shrinkage pulls most single-pairing splits toward noise (fig. 15). There is nothing here a trade would fix.
-- **The bullpen is the quiet weakness.** Its ERA ranks 5th, but its FIP ranks 11th and its WAR 14th. The ERA is flattering it. One reliever is the cheapest marginal win at any deadline.
-- **And the awkward one: the reported sell candidate is their best hitter.** Willson Contreras carries a 146 wRC+ at first base. Moving him while holding a playoff spot would be met with outrage, and the outrage would be right.
+- **Shortstop (-19) is the one true external target, with an asterisk: half the infield is hurt** (Mayer, Story, Kiner-Falefa; Casas at first). A Cheng/Monasterio platoon is bridging short, and DH has steadied on its own: Yoshida has been above league average and Gonzalez takes the tougher lefties. A cheap, controllable infield stabilizer is still the highest-leverage add; the internal returns are the fallback, not the plan.
+- **Catcher (-17) looks like a hole, and it is the trap.** The Narváez and Wong bats are below the position's league average, but the battery data says leave the tandem alone: the staff runs a 3.42 RA9 with Wong and 4.20 with Narváez, and the club is quietly running an assignment system. Gray is at 1.83 with Wong (4.40 with Narváez), Bennett at 1.12 with Narváez, Bello five runs better with Wong, and the leverage relievers sharper with Narváez (fig. 14). The samples are small and shaped by usage, but that is working pitcher-catcher chemistry, and a mid-race catcher trade would reset every one of those pairings for a bat. A formal check backs this up: a fixed-effects model (pitcher, opponent and park controls, cluster-bootstrapped) puts the overall catcher effect at -31 points of wOBA-against toward Wong with a 95% CI of [-84, +21]. No significant catcher problem exists, and empirical-Bayes shrinkage pulls most single-pairing splits toward noise (fig. 15). There is nothing here a trade would fix.
+- **The bullpen is the quiet weakness.** Its ERA ranks 6th, but its FIP ranks 10th and its WAR 13th. The ERA is flattering it. One reliever is the cheapest marginal win at any deadline.
+- **And the awkward one: the reported sell candidate is their best hitter.** Willson Contreras carries a 146 wRC+ at first base. Moving him while +0.5 games out of a playoff spot would be met with outrage, and the outrage would be right.
 
 ![Battery map](figures/14_battery_map.png)
 
 ## The quad-A engine, audited
 
-The streak is over, and it is worth being honest about who built it. 15 Red Sox with almost no MLB track record (waiver claims, up-and-down arms, career minor leaguers) hold real roles, and together they have produced **+3.0 WAR**. Of the 11 with prior MLB seasons, **4 are running the best seasons of their careers**, and the other 4 are rookies with no baseline to regress to, which cuts both ways (full table in the quad-A audit memo). On the position side that means Nick Sogard (102 wRC+ against a .656 career OPS); in the pen, Tayron Guerrero (2.49 ERA vs 5.77 career), Zack Kelly (3.31 ERA vs 4.15 career).
+The streak is over, and it is worth being honest about who built it. 15 Red Sox with almost no MLB track record (waiver claims, up-and-down arms, career minor leaguers) hold real roles, and together they have produced **+3.4 WAR**. Of the 11 with prior MLB seasons, **4 are running the best seasons of their careers**, and the other 4 are rookies with no baseline to regress to, which cuts both ways (full table in the quad-A audit memo). On the position side that means Nick Sogard (102 wRC+ against a .656 career OPS); in the pen, Tayron Guerrero (2.35 ERA vs 5.77 career), Zack Kelly (3.31 ERA vs 4.15 career).
 
 ![Quad-A audit](figures/17_aaaa_audit.png)
 
-That is not a durable foundation; it is a tailwind. Career-best seasons from journeymen are exactly the production that fades down the stretch, and to be fair, the pitch-level check says the group is mostly earning it (results within +8/+1 points of expected for bats/arms). The risk is not luck, it is track record. Journeymen do not usually carry career bests through August, and the projection systems will bet on the career, not the heater. This is the strongest argument for buying real reinforcements rather than standing pat: Boston does not need to add stars, it needs to replace borrowed production before it gets returned. A real reliever instead of a career-year one; a real infield bat instead of a waiver claim on a heater. The trades below are sized for exactly that.
+That is not a durable foundation; it is a tailwind. Career-best seasons from journeymen are exactly the production that fades down the stretch, and to be fair, the pitch-level check says the group is mostly earning it (results within +8/+0 points of expected for bats/arms). The risk is not luck, it is track record. Journeymen do not usually carry career bests through August, and the projection systems will bet on the career, not the heater. This is the strongest argument for buying real reinforcements rather than standing pat: Boston does not need to add stars, it needs to replace borrowed production before it gets returned. A real reliever instead of a career-year one; a real infield bat instead of a waiver claim on a heater. The trades below are sized for exactly that.
 
 ## Three trades that fit, and one to skip
 
@@ -56,6 +56,18 @@ A team that just won 14 straight has a clubhouse that works, so disruption is pr
 And the walk-away: the Langeliers catcher "upgrade" the positional audit seems to demand. The battery data is the veto. Nearly every Boston arm works with a settled catcher (fig. 14), and an adjusted model (pitcher, opponent and park controls) puts the overall catcher effect at -31 points of wOBA-against with a confidence interval that crosses zero. There is no catcher problem to fix (fig. 15), and no August bat is worth resetting a working staff.
 
 And the contingency: if the gap hits six games by August 1, the sell list is Gray and Chapman, the rentals, and it stops there.
+
+## The trade they made
+
+Boston moved first. On July 23 the Red Sox acquired **Curtis Mead** from Washington for Connelly Early: one surplus rotation arm for a 25-year-old infield bat running a **134 wRC+** (.369 wOBA, .246 ISO in 327 PA) with years of club control. Graded against the menu above, this is the big-swing shape at half the price: one arm out instead of two, and it fills the infield hole the audit flagged without touching the bullpen, the catchers, or any lineup regular. Early leaves the active rotation, which is real disruption, but Crochet and Sandoval are due back and the rotation surplus was the one place the roster could afford to pay from.
+
+The park fit is the interesting part. Mead is a right-handed hitter who puts **23.4%** of his batted balls in the air to the pull side, **82nd percentile** among the 323 hitters with 100+ batted balls this season, and he does damage there: a .846 wOBA and 91.8 mph average exit velocity on pulled air balls (fig. 18). At Fenway those balls fly at a 310-foot wall. Medium-depth pulled flies that die in an average left field become wall balls in Boston. This is the specific profile the park rewards most.
+
+![Mead Fenway fit](figures/18_mead_fit.png)
+
+The skeptic checks mostly pass. Statcast has him at a .376 wOBA against a .359 xwOBA, so the season is earned, not batted-ball luck. The honest flag is the career shape: 488 PA of roughly .617 OPS from 2023 to 2025 before this year's breakout, so the same career-year caution from the quad-A section applies. Two things separate him from that bucket: he is 25, not 30, and the contact quality supports the new level. Buying a breakout with process behind it beats renting one.
+
+One item left on the list: the front office bought the bat before the reliever. The pen fix is still the cheapest win on the board, and there are 8 days left to make it.
 
 ## The left fielder: the whole season in one player
 

@@ -18,6 +18,7 @@ from src import (statcast_metrics, analysis, age_curve, viz, memo, comps,
                  outfield_plan, trade_targets, rebound_sim, erosion,
                  luck_backtest, preregister, web_deck, deadline, mock_trades,
                  battery, battery_model, xcontact, web_article,
+                 acquisition,
                  aaaa)
 
 
@@ -70,6 +71,8 @@ def main():
     mock_trades.run()
     print("== Quad-A audit ==")
     aaaa.run()
+    print("== The trade they made (Mead) ==")
+    acquisition.run()
     print("== Rebound-probability simulation ==")
     rebound_sim.run()
     print("== Erosion decomposition (physical vs approach) ==")

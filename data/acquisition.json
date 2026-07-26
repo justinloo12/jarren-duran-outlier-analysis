@@ -1,0 +1,26 @@
+{
+  "as_of": "2026-07-26",
+  "player": "Curtis Mead",
+  "bats": "R",
+  "age": 25,
+  "traded_for": "Connelly Early",
+  "fg": {
+    "PA": 327,
+    "wRC+": 134,
+    "wOBA": 0.369,
+    "ISO": 0.246,
+    "WAR": 1.5
+  },
+  "pull_air_rate": 0.234,
+  "pull_air_pctile": 82,
+  "n_batted_balls": 214,
+  "ev_pull_air": 91.8,
+  "wobacon_pull_air": 0.846,
+  "woba": 0.376,
+  "xwoba": 0.359,
+  "career": {
+    "pa_pre_2026": 488,
+    "ops_pre_2026": 0.617
+  },
+  "pool_n": 323
+}
