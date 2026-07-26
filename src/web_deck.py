@@ -514,8 +514,8 @@ def build_html() -> str:
 unit-tested pipeline (Statcast via pybaseball, FanGraphs API, MLB Stats API;
 seasons 2021&ndash;2026, data through July 3, 2026; salaries via Spotrac).
 Receipts, memos, and code:
-<a href="https://github.com/justinloo12/jarren-duran-outlier-analysis">
-github.com/justinloo12/jarren-duran-outlier-analysis</a> &middot; regenerated
+<a href="https://github.com/justinloo12/red-sox-trade-deadline-thoughts">
+github.com/justinloo12/red-sox-trade-deadline-thoughts</a> &middot; regenerated
 by src/web_deck.py.</footer>
 </body></html>"""
     return html

@@ -1,11 +1,11 @@
-# Red Sox Trade Deadline 2026, by the Numbers
+# Red Sox Trade Deadline Thoughts
 
-[![tests](https://github.com/justinloo12/jarren-duran-outlier-analysis/actions/workflows/tests.yml/badge.svg)](https://github.com/justinloo12/jarren-duran-outlier-analysis/actions/workflows/tests.yml)
+[![tests](https://github.com/justinloo12/red-sox-trade-deadline-thoughts/actions/workflows/tests.yml/badge.svg)](https://github.com/justinloo12/red-sox-trade-deadline-thoughts/actions/workflows/tests.yml)
 
 **Read it live:**
-[project site](https://justinloo12.github.io/jarren-duran-outlier-analysis/) ·
-[the deadline article](https://justinloo12.github.io/jarren-duran-outlier-analysis/deadline.html) ·
-[the Duran long-read](https://justinloo12.github.io/jarren-duran-outlier-analysis/outputs/duran_case.html)
+[project site](https://justinloo12.github.io/red-sox-trade-deadline-thoughts/) ·
+[the deadline article](https://justinloo12.github.io/red-sox-trade-deadline-thoughts/deadline.html) ·
+[the Duran long-read](https://justinloo12.github.io/red-sox-trade-deadline-thoughts/outputs/duran_case.html)
 
 A reproducible baseball-analytics case study of the 2026 Red Sox trade
 deadline — built on live data, custom models, and pre-registered

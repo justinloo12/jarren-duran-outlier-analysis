@@ -427,7 +427,7 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
 
     L = []
     A = L.append
-    A("# Red Sox Trade Deadline 2026: What the Numbers Say\n")
+    A("# Red Sox Trade Deadline Thoughts\n")
     days_left = max(0, (dt.date(2026, 8, 3) - dt.date.today()).days)
     A(f"### A data-driven buy/sell assessment, {days_left} days from the "
       "August 3 deadline.\n")
@@ -539,10 +539,19 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
 
             w9 = bat["per_catcher"]["Connor Wong"]["RA9"]
             n9 = bat["per_catcher"]["Carlos Narváez"]["RA9"]
+            _cw = _player_line("Connor Wong")
+            _cn = _player_line("Carlos Narvaez")
+            _lgc = int((aud[aud["pos"] == "C"].iloc[0])["lg_wrc"])
+            bat_bar = ""
+            if _cw is not None and _cn is not None:
+                bat_bar = (f"Start with the bar: league catchers hit "
+                           f"{_lgc} wRC+, and Wong is above it at "
+                           f"{_cw['wRC+']:.0f}. The whole gap is "
+                           f"Narváez's bat ({_cn['wRC+']:.0f}), and his "
+                           "value was never the bat. ")
             A(f"- **Catcher ({g.get('C', 0):+d}) looks like a hole, and "
-              "it is the trap.** The Narváez and Wong bats are below the "
-              "position's league average, but the battery data says leave "
-              f"the tandem alone: the staff runs a {w9:.2f} RA9 with Wong "
+              f"it is the trap.** {bat_bar}The battery data says leave "
+              f"the tandem alone too: the staff runs a {w9:.2f} RA9 with Wong "
               f"and {n9:.2f} with Narváez, and the club is quietly running "
               "an assignment system. Gray is at "
               f"{_ra9('Sonny Gray', 'Connor Wong')} with Wong "

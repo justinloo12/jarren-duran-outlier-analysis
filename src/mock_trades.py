@@ -296,8 +296,12 @@ def article_section(md: str) -> str:
     A("\nAnd the walk-away: the Langeliers catcher \"upgrade\" the "
       "positional audit seems to demand. The battery data is the veto. "
       "Nearly every Boston arm works with a settled catcher (fig. 14), "
-      f"and {adj}. There is no catcher problem to fix (fig. 15), and "
-      "no August bat is worth resetting a working staff.")
+      f"and {adj}. There is no catcher problem to fix (fig. 15). Wong "
+      "already out-hits the league catcher bar; the gap is all "
+      "Narváez, whose value is the glove. And a genuine power-hitting "
+      "catcher costs a controllable arm plus a prospect, money that "
+      "buys more win in the bullpen. No August bat is worth resetting "
+      "a working staff.")
     A("\nAnd the contingency: if the gap hits six games by August 1, "
       "the sell list is Gray and Chapman, the rentals, and it stops "
       "there.\n")

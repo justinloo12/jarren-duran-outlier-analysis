@@ -543,9 +543,11 @@ finds = [("The staff works with both", RED,
           "Gray / Wong. Bennett / Narvaez. Settled, deliberate "
           "assignments across the rotation."),
          ("So: no catcher trade", GREEN,
-          "The adjusted model (pitcher/opponent/park controls) finds no "
-          f"significant catcher effect: {FE_EST} pts, 95% CI {FE_CI}. "
-          "Nothing here for a trade to fix.")]
+          "League catchers hit ~90 wRC+ and Wong beats that bar; the "
+          "gap is all Narvaez's bat, and his value is the glove. The "
+          f"adjusted model agrees: {FE_EST} pts, CI {FE_CI}, no "
+          "significant catcher effect. A power bat would cost a top "
+          "arm to fix a half-time problem.")]
 yy = 1.9
 for head, col, body in finds:
     dot(s, tx, yy + 0.04, 0.16, fill=col)
