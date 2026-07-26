@@ -60,7 +60,8 @@ print("  [dark] 15_battery_adjusted, 16_speed_model")
 
 # 18 the Mead acquisition
 acquisition.fig_fit(json.load(open(C.DATA_DIR / "acquisition.json")))
-print("  [dark] 18_mead_fit")
+acquisition.fig_fenway(json.load(open(C.DATA_DIR / "acquisition.json")))
+print("  [dark] 18_mead_fit, 19_mead_fenway")
 
 # 17 quad-A audit
 aaaa.fig_aaaa(json.load(open(C.DATA_DIR / "aaaa.json")))

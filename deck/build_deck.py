@@ -137,7 +137,15 @@ def dot(slide, x, y, d, fill=RED, text=None, tcolor="0B1220", size=15):
 
 
 def image(slide, key, x, y, max_w, max_h, name):
-    a = ASPECT[key]
+    src0 = FIG / "dark" / name
+    if not src0.exists():
+        src0 = FIG / name
+    try:
+        from PIL import Image as _Im
+        with _Im.open(src0) as im:
+            a = im.width / im.height   # true aspect, never stretch
+    except Exception:
+        a = ASPECT.get(key, 1.6)
     w = max_w; hh = w / a
     if hh > max_h:
         hh = max_h; w = hh * a
@@ -545,7 +553,7 @@ footer(s)
 s = new()
 eyebrow(s, "The real trade")
 title(s, "They made one: Mead for Early")
-image(s, "18", 0.4, 1.7, 8.0, 4.6, "18_mead_fit.png")
+image(s, "19", 0.4, 1.62, 8.0, 5.0, "19_mead_fenway.png")
 tx = 8.75
 _mf = _ACQ["fg"]
 finds = [("The deal", RED,

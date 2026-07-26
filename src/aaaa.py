@@ -250,35 +250,50 @@ def build() -> dict:
 def fig_aaaa(res: dict):
     h = [x for x in res["hitters"] if x["career_ops"]]
     a = [x for x in res["arms"] if x["career_era"]]
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.4, 5.6))
-    for ax, rows, k26, kc, kb, better_hi in (
-            (ax1, h, "ops_2026", "career_ops", "best_ops", True),
-            (ax2, a, "era_2026", "career_era", "best_era", False)):
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.6, 5.8))
+    for ax, rows, k26, kc, better_hi, unit in (
+            (ax1, h, "ops_2026", "career_ops", True, "OPS"),
+            (ax2, a, "era_2026", "career_era", False, "ERA")):
         ys = np.arange(len(rows))
         for y, r in zip(ys, rows):
-            hot = (r[k26] > r[kc]) if better_hi else (r[k26] < r[kc])
-            ax.plot([r[kc], r[k26]], [y, y], color=S.GREY, lw=2,
-                    alpha=0.6, zorder=1)
-            if r[kb] is not None:
-                ax.scatter(r[kb], y, marker="|", s=210, color=S.AMBER,
-                           lw=2.4, zorder=2)
-            ax.scatter(r[kc], y, s=68, facecolors="none",
-                       edgecolors=S.MUTED, zorder=3)
-            ax.scatter(r[k26], y, s=105,
-                       color=S.GREEN if hot else S.RED, zorder=4)
+            better = ((r[k26] > r[kc]) if better_hi
+                      else (r[k26] < r[kc]))
+            col = S.GREEN if better else S.RED
+            ax.annotate("", xy=(r[k26], y), xytext=(r[kc], y),
+                        arrowprops=dict(arrowstyle="-|>", color=col,
+                                        lw=2.4, mutation_scale=16),
+                        zorder=3)
+            ax.scatter(r[kc], y, s=70, facecolors="none",
+                       edgecolors=S.MUTED, lw=1.6, zorder=2)
+            delta = r[k26] - r[kc]
+            tag = f"{delta:+.2f}"
+            if r.get("career_high") or r.get("career_best"):
+                tag += "  BEST OF CAREER"
+            ax.annotate(tag, (max(r[k26], r[kc]), y),
+                        textcoords="offset points", xytext=(9, -3),
+                        fontsize=9.5, fontweight="bold", color=col)
         ax.set_yticks(ys)
         ax.set_yticklabels([r["name"] for r in rows])
         ax.invert_yaxis()
+        pad = 0.14 if better_hi else 0.9
+        lo = min(min(r[kc], r[k26]) for r in rows)
+        hi = max(max(r[kc], r[k26]) for r in rows)
+        ax.set_xlim(lo - pad * 0.3, hi + pad)
         S.style(ax, grid_axis="x")
-    ax1.set_xlabel("OPS (hollow: career, solid: 2026, tick: best season)")
-    ax2.set_xlabel("ERA (hollow: career, solid: 2026, tick: best season)")
-    ax1.set_title("Hitters", loc="left", fontsize=14, fontweight="bold")
-    ax2.set_title("Pitchers", loc="left", fontsize=14, fontweight="bold")
-    fig.suptitle("The AAAA cohort, 2026 vs their own careers: "
-                 f"{res['n_career_high']} career bests among the "
-                 "returners", x=0.02, y=0.99, ha="left", fontsize=16,
+        ax.set_xlabel(unit + ("" if better_hi else " (lower is better)"))
+    ax1.set_title("Hitters: career average to 2026", loc="left",
+                  fontsize=14, fontweight="bold")
+    ax2.set_title("Pitchers: career average to 2026", loc="left",
+                  fontsize=14, fontweight="bold")
+    fig.suptitle("The AAAA cohort is outrunning its own track record: "
+                 f"{res['n_career_high']} of them at career bests",
+                 x=0.02, y=0.99, ha="left", fontsize=16,
                  fontweight="bold")
-    fig.tight_layout()
+    fig.text(0.02, 0.015, "Open circle: career average entering 2026. "
+             "Arrow tip: 2026 to date. Green: better than career, red: "
+             "worse. Labels show the change.",
+             fontsize=10, color=S.MUTED)
+    fig.tight_layout(rect=(0, 0.05, 1, 0.95))
     out = C.FIG_DIR / "17_aaaa_audit.png"
     fig.savefig(out, dpi=200)
     plt.close(fig)

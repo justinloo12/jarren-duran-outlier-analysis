@@ -22,5 +22,12 @@
     "pa_pre_2026": 488,
     "ops_pre_2026": 0.617
   },
-  "pool_n": 323
+  "pool_n": 323,
+  "fenway": {
+    "lf_air": 37,
+    "wall_zone": 13,
+    "upgrades": 11,
+    "upgrade_outs": 5,
+    "lf_hr": 8
+  }
 }

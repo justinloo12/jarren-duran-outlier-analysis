@@ -74,6 +74,46 @@ def _career(pid: int = MEAD_ID) -> dict:
             "ops_pre_2026": round(ops_wt / pa_pre, 3) if pa_pre else None}
 
 
+FT_PER_UNIT = 2.495           # Savant hc pixel -> feet (standard spraychart)
+# Fenway outfield wall, (bearing from CF in degrees, distance ft);
+# negative bearing = left field. Monster: LF pole to left-center.
+FENWAY_WALL = [(-45, 310), (-33, 312), (-20, 379), (-5, 388), (0, 390),
+               (3, 420), (8, 380), (20, 370), (35, 335), (42, 310),
+               (45, 302)]
+MONSTER_ARC = (-45, -18)      # bearing range covered by the wall
+
+
+def _mead_bip() -> pd.DataFrame:
+    df = pd.read_parquet(C.STATCAST_DIR / "league_pitches_2026.parquet")
+    m = df[(df["batter"] == MEAD_ID) & (df["type"] == "X")
+           & df["hc_x"].notna() & df["hc_y"].notna()].copy()
+    m["x_ft"] = FT_PER_UNIT * (m["hc_x"] - 125.42)
+    m["y_ft"] = FT_PER_UNIT * (198.27 - m["hc_y"])
+    m["dist"] = (m["x_ft"] ** 2 + m["y_ft"] ** 2) ** 0.5
+    m["bearing"] = pd.Series(
+        __import__("numpy").degrees(
+            __import__("numpy").arctan2(m["x_ft"], m["y_ft"])),
+        index=m.index)
+    m["air"] = m["launch_angle"] >= 10
+    return m
+
+
+def fenway_verdict(m: pd.DataFrame) -> dict:
+    """Air balls to the Monster arc that reached wall depth but were
+    not homers where he actually played: Fenway upgrades them."""
+    lf = m[(m["bearing"] >= MONSTER_ARC[0]) & (m["bearing"] <= MONSTER_ARC[1])]
+    lf_air = lf[lf["air"]]
+    wall_zone = lf_air[(lf_air["dist"] >= 300) & (lf_air["dist"] <= 380)]
+    upgrades = wall_zone[wall_zone["events"] != "home_run"]
+    return {"lf_air": int(len(lf_air)),
+            "wall_zone": int(len(wall_zone)),
+            "upgrades": int(len(upgrades)),
+            "upgrade_outs": int((upgrades["events"].isin(
+                {"field_out", "double_play",
+                 "grounded_into_double_play"})).sum()),
+            "lf_hr": int((lf["events"] == "home_run").sum())}
+
+
 def compute() -> dict:
     bats = _fg_pull("all", team=0, stats="bat", typ=8)
     for c in ("PA", "wRC+", "WAR", "OBP", "ISO", "wOBA", "Age"):
@@ -107,6 +147,7 @@ def compute() -> dict:
         "xwoba": round(float(xw.mean()), 3),
         "career": _career(),
         "pool_n": int(len(pool)),
+        "fenway": fenway_verdict(_mead_bip()),
     }
 
 
@@ -163,6 +204,76 @@ def fig_fit(res: dict):
     print(f"  [acquisition] wrote {out}")
 
 
+def fig_fenway(res: dict):
+    import numpy as np
+    m = _mead_bip()
+    fig, ax = plt.subplots(figsize=(9.8, 7.2))
+    # field: foul lines, infield square, Fenway wall
+    for ang in (-45, 45):
+        ax.plot([0, 330 * np.sin(np.radians(ang))],
+                [0, 330 * np.cos(np.radians(ang))],
+                color=S.SPINE, lw=1.2, zorder=1)
+    d = 90 / np.sqrt(2)
+    ax.plot([0, d, 0, -d, 0], [0, d, 2 * d, d, 0],
+            color=S.SPINE, lw=1.2, zorder=1)
+    wx = [dd * np.sin(np.radians(a)) for a, dd in FENWAY_WALL]
+    wy = [dd * np.cos(np.radians(a)) for a, dd in FENWAY_WALL]
+    ax.plot(wx, wy, color=S.TEXT, lw=2.6, zorder=2)
+    mono = [(a, dd) for a, dd in FENWAY_WALL if a <= MONSTER_ARC[1]]
+    ax.plot([dd * np.sin(np.radians(a)) for a, dd in mono],
+            [dd * np.cos(np.radians(a)) for a, dd in mono],
+            color=S.GREEN, lw=6, alpha=0.85, zorder=3,
+            solid_capstyle="round")
+    ax.annotate("Green Monster\n310 ft, 37 ft high",
+                xy=(-252, 150), ha="center", fontsize=11,
+                color=S.GREEN, fontweight="bold")
+    # batted balls: grounders faint, air balls by outcome
+    gb = m[~m["air"]]
+    ax.scatter(gb["x_ft"], gb["y_ft"], s=18, color=S.GREY, alpha=0.3,
+               zorder=4)
+    air = m[m["air"]]
+    hr = air[air["events"] == "home_run"]
+    xbh = air[air["events"].isin({"double", "triple"})]
+    sng = air[air["events"] == "single"]
+    out = air[~air.index.isin(hr.index.union(xbh.index).union(sng.index))]
+    ax.scatter(out["x_ft"], out["y_ft"], s=42, color=S.GREY, alpha=0.75,
+               zorder=5, label="air out")
+    ax.scatter(sng["x_ft"], sng["y_ft"], s=48, color=S.TEAL, zorder=6,
+               label="single")
+    ax.scatter(xbh["x_ft"], xbh["y_ft"], s=58, color=S.NAVY, zorder=7,
+               label="double/triple")
+    ax.scatter(hr["x_ft"], hr["y_ft"], s=120, color=S.AMBER, marker="*",
+               zorder=8, label="home run")
+    # the upgrade zone
+    fw = res["fenway"]
+    lf = m[(m["bearing"] >= MONSTER_ARC[0]) & (m["bearing"] <= MONSTER_ARC[1])
+           & m["air"] & (m["dist"] >= 300) & (m["dist"] <= 380)
+           & (m["events"] != "home_run")]
+    ax.scatter(lf["x_ft"], lf["y_ft"], s=150, facecolors="none",
+               edgecolors=S.RED, lw=2, zorder=9,
+               label=f"wall ball at Fenway ({fw['upgrades']})")
+    leg = ax.legend(loc="upper right", fontsize=10.5)
+    for t in leg.get_texts():
+        t.set_color(S.TEXT)
+    ax.set_xlim(-340, 340)
+    ax.set_ylim(-15, 445)
+    ax.set_aspect("equal", adjustable="box")
+    ax.axis("off")
+    ax.set_title("Mead's 2026 batted balls on Fenway's dimensions",
+                 loc="left", fontsize=15, fontweight="bold")
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.90, bottom=0.13)
+    fig.text(0.03, 0.025, f"{fw['upgrades']} of his air balls to left "
+             "reached wall depth (300-380 ft) without leaving the yard "
+             f"where he played, {fw['upgrade_outs']} of them outs. At "
+             "Fenway those live at the Monster. Landing points from "
+             "Savant hit coordinates; approximate.",
+             fontsize=10, color=S.MUTED, wrap=True)
+    out_p = C.FIG_DIR / "19_mead_fenway.png"
+    fig.savefig(out_p, dpi=200)
+    plt.close(fig)
+    print(f"  [acquisition] wrote {out_p}")
+
+
 def article_section(res: dict) -> str:
     days_left = max(0, (dt.date(2026, 8, 3) - dt.date.today()).days)
     f = res["fg"]
@@ -195,6 +306,18 @@ def article_section(res: dict) -> str:
       "left field become wall balls in Boston. This is the specific "
       "profile the park rewards most.\n")
     A("![Mead Fenway fit](figures/18_mead_fit.png)\n")
+    fw = res.get("fenway", {})
+    if fw:
+        A(f"Overlaying his 2026 batted balls on Fenway's dimensions "
+          "makes the fit concrete: "
+          f"**{fw['upgrades']} of his air balls to left field reached "
+          "wall depth (300 to 380 feet) without leaving the parks he "
+          f"played in, and {fw['upgrade_outs']} of those were caught.** "
+          "At Fenway that contact lives on the Monster: doubles off the "
+          "wall instead of warning-track outs. Landing points are from "
+          "Savant hit coordinates, so treat the count as approximate "
+          "(fig. 19).\n")
+        A("![Mead at Fenway](figures/19_mead_fenway.png)\n")
     A(f"The skeptic checks mostly pass. Statcast has him at a "
       f".{int(res['woba']*1000)} wOBA against a "
       f".{int(res['xwoba']*1000)} xwOBA, so the season is earned, not "
@@ -217,6 +340,7 @@ def run() -> dict:
     (C.DATA_DIR / "acquisition.json").write_text(json.dumps(res, indent=2))
     print(f"  [acquisition] wrote {C.DATA_DIR / 'acquisition.json'}")
     fig_fit(res)
+    fig_fenway(res)
     art = C.OUT_DIR / "ARTICLE.md"
     if art.exists():
         s = art.read_text()
