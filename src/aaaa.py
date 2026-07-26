@@ -158,6 +158,7 @@ def build() -> dict:
     pit = _fg_pull("all", team=3, stats="pit", typ=1)
     for c in ("IP", "ERA", "FIP", "WAR", "Age", "GS"):
         pit[c] = pd.to_numeric(pit[c], errors="coerce")
+    pit_all = pit.copy()   # unfiltered, for the regulars watch
     pit = pit[(pit["IP"] >= MIN_IP) & (pit["Age"] >= MIN_AGE)]
     # young starters with pedigree are prospects graduating, not quad-A
     pit = pit[~((pit["GS"].fillna(0) >= 5) & (pit["Age"] <= 26))]
@@ -274,7 +275,38 @@ def build() -> dict:
                                     and ops26 > car["best_ops"])})
     regulars.sort(key=lambda x: -x["delta"])
 
+    # Pitching side of the watch: established BOS arms beating their
+    # career marks (green only; underperformers are not regression
+    # candidates), plus near-rookies with no real baseline
+    reg_arms = []
+    aaaa_arm_names = {a["name"] for a in arms}
+    sp_pool = pit_all[(pit_all["IP"] >= 40)
+                      & (pit_all["GS"].fillna(0) >= 8)]
+    for _, r in sp_pool.iterrows():
+        if r["Name"] in aaaa_arm_names or r["Name"] == "Connelly Early":
+            continue
+        pid = _mlbam_id(r["Name"])
+        car = _career_pit(pid) if pid else {"ip": 0}
+        entry = {"name": r["Name"], "age": int(r["Age"]),
+                 "ip_2026": round(float(r["IP"])),
+                 "era_2026": round(float(r["ERA"]), 2)}
+        if car.get("ip", 0) < 30:
+            entry.update({"career_era": None, "rookie": True,
+                          "career_best": False})
+            reg_arms.append(entry)
+        elif car.get("era") and float(r["ERA"]) < car["era"]:
+            entry.update({"career_era": round(car["era"], 2),
+                          "rookie": False,
+                          "career_best": bool(
+                              car.get("best_era") is not None
+                              and float(r["ERA"]) < car["best_era"])})
+            reg_arms.append(entry)
+    reg_arms.sort(key=lambda x: (x["rookie"],
+                                 -(x["career_era"] or 9)
+                                 + x["era_2026"]))
+
     return {"hitters": hitters, "arms": arms, "regulars": regulars,
+            "reg_arms": reg_arms,
             "n_regulars": len(regulars),
             "total_war": round(tot_war, 1), "n": len(hitters) + len(arms),
             "n_career_high": int(n_high), "n_rookie": int(n_rookie),
@@ -284,14 +316,26 @@ def build() -> dict:
 
 # ---------------------------------------------------------------- figure
 def fig_aaaa(res: dict):
+    def green_h(x):
+        return x["ops_2026"] > (x["career_ops"] or 0)
+
+    def green_a(x):
+        return x["era_2026"] < (x["career_era"] or 99)
+
     aaaa_h = [dict(x, kind="aaaa") for x in res["hitters"]
-              if x["career_ops"]]
+              if x["career_ops"] and green_h(x)]
     rook_h = [dict(x, kind="rookie") for x in res["hitters"]
               if not x["career_ops"]]
     reg_h = [dict(x, kind="reg") for x in res.get("regulars", [])]
     hit_rows = aaaa_h + rook_h + (["gap"] if reg_h else []) + reg_h
-    arm_rows = [dict(x, kind="aaaa") for x in res["arms"]
-                if x["career_era"]]
+    aaaa_a = [dict(x, kind="aaaa") for x in res["arms"]
+              if x["career_era"] and green_a(x)]
+    reg_a_vet = [dict(x, kind="reg") for x in res.get("reg_arms", [])
+                 if not x.get("rookie")]
+    reg_a_rk = [dict(x, kind="rookie") for x in res.get("reg_arms", [])
+                if x.get("rookie")]
+    arm_rows = (aaaa_a + (["gap"] if (reg_a_vet or reg_a_rk) else [])
+                + reg_a_vet + reg_a_rk)
     n_rows = max(len(hit_rows), len(arm_rows), 1)
     fig_h = min(6.4, 2.3 + 0.95 * n_rows)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.6, fig_h))
@@ -311,7 +355,8 @@ def fig_aaaa(res: dict):
             labels.append(r["name"])
             if r["kind"] == "rookie":
                 ax.scatter(r[k26], y, s=105, color=S.TEAL, zorder=3)
-                ax.annotate(f"{r[k26]:.3f}  ROOKIE, NO BASELINE",
+                fmt = ".3f" if r[k26] < 2 else ".2f"
+                ax.annotate(f"{r[k26]:{fmt}}  ROOKIE, NO BASELINE",
                             (r[k26], y), textcoords="offset points",
                             xytext=(9, -3), fontsize=9.5,
                             fontweight="bold", color=S.TEAL)
@@ -354,9 +399,11 @@ def fig_aaaa(res: dict):
                  x=0.02, y=0.99, ha="left", fontsize=16,
                  fontweight="bold")
     fig.text(0.02, 0.015, "Open circle: career average entering 2026. "
-             "Arrow tip: 2026 to date. Green: better than career, red: "
-             "worse. Regulars screened at 200+ PA, 800+ career PA, and "
-             "40+ OPS points over career, the backtest yardstick.",
+             "Arrow tip: 2026 to date. Only players outperforming their "
+             "careers are shown; underperformers are not regression "
+             "candidates. Hitter regulars screened at 200+ PA, 800+ "
+             "career PA, 40+ OPS points over career; pitchers at 40+ IP "
+             "and 8+ starts.",
              fontsize=10, color=S.MUTED)
     fig.tight_layout(rect=(0, 0.05, 1, 0.95))
     out = C.FIG_DIR / "17_aaaa_audit.png"
@@ -502,6 +549,25 @@ def article_section(res: dict) -> str:
           "the current version for September. For the record, the same "
           "screen clears Abreu, Yoshida and Duran, who are all at or "
           "below their career marks.\n")
+    ras = res.get("reg_arms", [])
+    vets = [a for a in ras if not a.get("rookie")]
+    rooks = [a for a in ras if a.get("rookie")]
+    if vets:
+        vet_txt = "; ".join(
+            f"{a['name']} is {a['career_era'] - a['era_2026']:.2f} runs "
+            f"under his career mark at age {a['age']}"
+            + (", a career best" if a["career_best"] else "")
+            for a in vets)
+        rook_txt = (" " + " and ".join(a["name"] for a in rooks)
+                    + (" are rookies with no baseline, the same "
+                       "cuts-both-ways caveat as Cheng."
+                       if len(rooks) > 1 else
+                       " is a rookie with no baseline.")
+                    if rooks else "")
+        A("The rotation gets the same screen, green arrows only, since "
+          f"underperformers are not regression risks: {vet_txt}.{rook_txt} "
+          "Two starters outrunning their careers at once is one more "
+          "quiet argument for adding innings before August 3.\n")
     big_luck = max(abs(res["cohort_arm_luck"]),
                    abs(res["cohort_bat_luck"])) >= 0.010
     if big_luck:

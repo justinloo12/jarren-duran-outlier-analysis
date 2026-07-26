@@ -480,8 +480,9 @@ finds = [(f"{_AAAA['n']} AAAA contributors on the roster", RED,
           "The vets are beating their own track records; the rookies "
           "have no baseline at all."),
          ("The regulars are hot too", TEAL_D := "5FB6D9",
-          f"Same screen on the everyday lineup: {_reg_txt}. Expect good, "
-          "not scorching, from here."),
+          f"Same screen, lineup and rotation: {_reg_txt}; Gray and "
+          "Suarez are also under their career ERAs. Expect good, not "
+          "scorching, from here."),
          ("History backs the fade", NAVY,
           f"2016-25, {_ABT['hitters']['n']} hitter and "
           f"{_ABT['arms']['n']} reliever cases: the median journeyman "

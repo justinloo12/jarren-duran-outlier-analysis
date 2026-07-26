@@ -112,6 +112,44 @@
       "career_high": true
     }
   ],
+  "reg_arms": [
+    {
+      "name": "Sonny Gray",
+      "age": 36,
+      "ip_2026": 106,
+      "era_2026": 2.78,
+      "career_era": 3.58,
+      "rookie": false,
+      "career_best": false
+    },
+    {
+      "name": "Ranger Suarez",
+      "age": 30,
+      "ip_2026": 91,
+      "era_2026": 3.15,
+      "career_era": 3.38,
+      "rookie": false,
+      "career_best": false
+    },
+    {
+      "name": "Jake Bennett",
+      "age": 25,
+      "ip_2026": 59,
+      "era_2026": 2.58,
+      "career_era": null,
+      "rookie": true,
+      "career_best": false
+    },
+    {
+      "name": "Payton Tolle",
+      "age": 23,
+      "ip_2026": 89,
+      "era_2026": 3.31,
+      "career_era": null,
+      "rookie": true,
+      "career_best": false
+    }
+  ],
   "n_regulars": 2,
   "total_war": 1.3,
   "n": 5,
