@@ -222,6 +222,13 @@ def build() -> dict:
             "vs_career": (round(era26 - car["era"], 2) if car["era"]
                           else None)})
 
+    # Active-roster cut (user-maintained): season-long stats sweep in
+    # players who have since been optioned, DFA'd, or hit the 60-day IL.
+    # Keep only the AAAA contributors currently with the club.
+    KEEP = {"Anthony Seigler", "Andruw Monasterio", "Tsung-Che Cheng",
+            "Tayron Guerrero", "Jovani Moran"}
+    hitters = [h for h in hitters if h["name"] in KEEP]
+    arms = [a for a in arms if a["name"] in KEEP]
     hitters.sort(key=lambda h: -(h["vs_career"] or 0))
     arms.sort(key=lambda a: (a["vs_career"] or 0))
     tot_war = (sum(h["war_2026"] for h in hitters)
@@ -250,7 +257,9 @@ def build() -> dict:
 def fig_aaaa(res: dict):
     h = [x for x in res["hitters"] if x["career_ops"]]
     a = [x for x in res["arms"] if x["career_era"]]
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.6, 5.8))
+    n_rows = max(len(h), len(a), 1)
+    fig_h = min(5.8, 2.3 + 1.05 * n_rows)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.6, fig_h))
     for ax, rows, k26, kc, better_hi, unit in (
             (ax1, h, "ops_2026", "career_ops", True, "OPS"),
             (ax2, a, "era_2026", "career_era", False, "ERA")):
@@ -274,6 +283,7 @@ def fig_aaaa(res: dict):
                         fontsize=9.5, fontweight="bold", color=col)
         ax.set_yticks(ys)
         ax.set_yticklabels([r["name"] for r in rows])
+        ax.set_ylim(-0.55, len(rows) - 0.45)
         ax.invert_yaxis()
         pad = 0.14 if better_hi else 0.9
         lo = min(min(r[kc], r[k26]) for r in rows)
@@ -285,8 +295,10 @@ def fig_aaaa(res: dict):
                   fontsize=14, fontweight="bold")
     ax2.set_title("Pitchers: career average to 2026", loc="left",
                   fontsize=14, fontweight="bold")
+    nh = res["n_career_high"]
     fig.suptitle("The AAAA cohort is outrunning its own track record: "
-                 f"{res['n_career_high']} of them at career bests",
+                 f"{nh} at " + ("a career best" if nh == 1
+                                else "career bests"),
                  x=0.02, y=0.99, ha="left", fontsize=16,
                  fontweight="bold")
     fig.text(0.02, 0.015, "Open circle: career average entering 2026. "
@@ -311,10 +323,14 @@ def memo_md(res: dict) -> str:
       "PA, pitchers < 250 career IP, age 24+). Career baselines from MLB "
       "StatsAPI year-by-year; process checks from pitch-level Statcast.*\n")
     n_vet = res["n"] - res["n_rookie"]
-    A(f"**Headline:** {res['n']} players fit the profile. Together they "
-      f"account for **{res['total_war']:+.1f} WAR** in 2026. Of the "
-      f"{n_vet} with prior MLB seasons, **{res['n_career_high']} are "
-      f"running career bests**, and the other {res['n_rookie']} are "
+    nh = res["n_career_high"]
+    A(f"**Headline:** {res['n']} players currently on the roster fit "
+      f"the profile. Together they account for "
+      f"**{res['total_war']:+.1f} WAR** in 2026. Of the "
+      f"{n_vet} with prior MLB seasons, **{nh} "
+      + ("is running a career best" if nh == 1
+         else "are running career bests")
+      + f"**, and the other {res['n_rookie']} are "
       "rookies with no MLB baseline at all. Depth like this is why the "
       "surge happened; counting on it to repeat is how deadline mistakes "
       "get made.\n")
@@ -384,17 +400,26 @@ def article_section(res: dict) -> str:
     L = []
     A = L.append
     A("\n## The quad-A engine, audited\n")
+    n_vet = res["n"] - res["n_rookie"]
+    nh = res["n_career_high"]
+    high_txt = (f"**{nh} " + ("is" if nh == 1 else "are")
+                + " running the best "
+                + ("season" if nh == 1 else "seasons")
+                + " of " + ("his career" if nh == 1 else "their careers")
+                + "**")
     A("It is worth being honest about who has produced the first "
-      f"half. {res['n']} Red Sox with almost no MLB track record (waiver "
-      "claims, up-and-down arms, career minor leaguers) hold real "
-      f"roles, and together they have produced **{res['total_war']:+.1f} "
-      f"WAR**. Of the {res['n'] - res['n_rookie']} with prior MLB "
-      f"seasons, **{res['n_career_high']} are running the best seasons "
-      f"of their careers**, and the other {res['n_rookie']} are rookies "
-      "with no baseline to regress to, which cuts both ways (full "
-      "table in the quad-A audit memo). "
-      + (f"On the position side that means {names_h}; " if names_h else "")
-      + (f"in the pen, {names_a}." if names_a else "") + "\n")
+      f"half. {res['n']} players currently on the roster fit the AAAA "
+      "profile (waiver claims, up-and-down arms, career minor leaguers "
+      "with almost no MLB track record), and together they have "
+      f"produced **{res['total_war']:+.1f} WAR** in real roles. Of the "
+      f"{n_vet} with prior MLB seasons, {high_txt}, and the "
+      f"{res['n_rookie']} rookies have no baseline to regress to, which "
+      "cuts both ways (full table in the quad-A audit memo). "
+      + (f"On the position side that means {names_h}; in the pen, "
+         f"{names_a}." if names_h and names_a else
+         f"On the position side that means {names_h}." if names_h else
+         f"The standout is in the pen: {names_a}." if names_a else "")
+      + "\n")
     A("![Quad-A audit](figures/17_aaaa_audit.png)\n")
     big_luck = max(abs(res["cohort_arm_luck"]),
                    abs(res["cohort_bat_luck"])) >= 0.010

@@ -467,13 +467,14 @@ eyebrow(s, "The supporting cast")
 title(s, "Career years everywhere. Could mean regression")
 image(s, "17", 0.4, 1.75, 8.0, 4.55, "17_aaaa_audit.png")
 tx = 8.75
-finds = [(f"{_AAAA['n']} AAAA contributors", RED,
+_nh = _AAAA['n_career_high']
+finds = [(f"{_AAAA['n']} AAAA contributors on the roster", RED,
           "Waiver claims, up-down arms and career minor-leaguers holding "
           f"real roles, {_AAAA['total_war']:+.1f} WAR combined."),
-         (f"{_AAAA['n_career_high']} career bests, "
+         (f"{_nh} career best{'' if _nh == 1 else 's'}, "
           f"{_AAAA['n_rookie']} rookies", GOLD,
-          "Most of the vets are beating every season they've ever had; "
-          "the rookies have no baseline at all."),
+          "The vets are beating their own track records; the rookies "
+          "have no baseline at all."),
          ("History backs the fade", NAVY,
           f"2016-25, {_ABT['hitters']['n']} hitter and "
           f"{_ABT['arms']['n']} reliever cases like these: the median "

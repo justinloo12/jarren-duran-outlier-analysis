@@ -37,11 +37,11 @@ Auditing every position against league average (PA-weighted wRC+) reorders the s
 
 ## The quad-A engine, audited
 
-It is worth being honest about who has produced the first half. 15 Red Sox with almost no MLB track record (waiver claims, up-and-down arms, career minor leaguers) hold real roles, and together they have produced **+3.4 WAR**. Of the 11 with prior MLB seasons, **4 are running the best seasons of their careers**, and the other 4 are rookies with no baseline to regress to, which cuts both ways (full table in the quad-A audit memo). On the position side that means Nick Sogard (102 wRC+ against a .656 career OPS); in the pen, Tayron Guerrero (2.35 ERA vs 5.77 career), Zack Kelly (3.31 ERA vs 4.15 career).
+It is worth being honest about who has produced the first half. 5 players currently on the roster fit the AAAA profile (waiver claims, up-and-down arms, career minor leaguers with almost no MLB track record), and together they have produced **+1.3 WAR** in real roles. Of the 3 with prior MLB seasons, **1 is running the best season of his career**, and the 2 rookies have no baseline to regress to, which cuts both ways (full table in the quad-A audit memo). in the pen, Tayron Guerrero (2.35 ERA vs 5.77 career).
 
 ![Quad-A audit](figures/17_aaaa_audit.png)
 
-That is not a durable foundation; it is a tailwind. Career-best seasons from journeymen are exactly the production that fades down the stretch, and to be fair, the pitch-level check says the group is mostly earning it (results within +8/+0 points of expected for bats/arms). The risk is not luck, it is track record. Journeymen do not usually carry career bests through August, and the projection systems will bet on the career, not the heater.
+That is not a durable foundation; it is a tailwind. Career-best seasons from journeymen are exactly the production that fades down the stretch, and to be fair, the pitch-level check says the group is mostly earning it (results within +3/-9 points of expected for bats/arms). The risk is not luck, it is track record. Journeymen do not usually carry career bests through August, and the projection systems will bet on the career, not the heater.
 
 That is not a hunch; it has a base rate. Across 2016 to 2025 there were 100 hitters and 198 relievers who fit this exact profile (thin track record, age 26 or older, a first half at least 40 wOBA points or 0.75 FIP runs better than their career). The median case kept only 39% of the surge in the second half, and 34% of the hitters and 37% of the relievers fell all the way back to their career level (fig. 20).
 
