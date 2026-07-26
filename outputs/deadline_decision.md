@@ -5,8 +5,8 @@
 ## The verdict: **BUY** — clear buyer
 
 - Record **53-50** (.515) but run differential **+41** — a Pythagorean **.545** team underperforming its runs by ~3 wins.
-- Boston holds a wild card, 0.5 games clear of the cut line in a congested, weak race — riding a L1 streak.
-- Simulated playoff odds: **77%** (10,000 sims; talent = run-diff-based, regressed).
+- Boston holds a wild card, 1.0 games clear of the cut line in a congested, weak race — riding a L1 streak.
+- Simulated playoff odds: **78%** (10,000 sims; talent = run-diff-based, regressed).
 
 > **The team is its left fielder.** The same results-vs-process gap that defines Duran's 2026 defines the roster: a top-10 rotation and a positive run differential producing a losing record. Process says this team is better than its line. That is precisely the profile you do not fire-sale at the bottom.
 
@@ -61,18 +61,18 @@ Pitching units: rotation ERA ranks **6th** (3.63) and WAR 7th — a real strengt
 
 | Team | W-L | RD | WC GB | Odds |
 |------|-----|---:|------:|-----:|
-| Yankees | 59-45 | +91 | +6.0 | 100% |
-| Rays | 61-43 | +41 | - | 99% |
-| White Sox | 54-49 | +37 | - | 82% |
-| Red Sox | 53-50 | +41 | +0.5 | 77% |
+| Yankees | 59-45 | +91 | +6.5 | 100% |
+| Rays | 62-43 | +42 | - | 100% |
+| White Sox | 54-49 | +37 | - | 83% |
+| Red Sox | 53-50 | +41 | +1.0 | 78% |
 | Rangers | 53-51 | -23 | - | 55% |
-| Guardians | 54-52 | -17 | - | 45% |
-| Mariners | 51-54 | +10 | 2.5 | 41% |
-| Tigers | 50-55 | +29 | 3.5 | 29% |
-| Astros | 52-54 | -38 | 2.0 | 27% |
-| Orioles | 51-54 | -13 | 2.5 | 22% |
-| Twins | 52-54 | -30 | 2.0 | 21% |
-| Blue Jays | 48-57 | -57 | 5.5 | 2% |
+| Mariners | 51-54 | +10 | 2.0 | 42% |
+| Guardians | 54-53 | -18 | - | 40% |
+| Tigers | 50-55 | +29 | 3.0 | 30% |
+| Astros | 52-54 | -38 | 1.5 | 27% |
+| Orioles | 51-54 | -13 | 2.0 | 23% |
+| Twins | 52-54 | -30 | 1.5 | 21% |
+| Blue Jays | 48-57 | -57 | 5.0 | 2% |
 
 ---
 *Method:* team talent = Pythagorean win% (exponent 1.83) regressed toward .500 with 35 games of shrinkage; 10,000 Monte Carlo seasons; remaining games simulated as independent binomials (no schedule, injuries, or deadline moves — a simplification that slightly compresses odds toward the pack). Reported trade candidates per Boston media (NBC Sports Boston, July 2026). Re-run `python run_all.py` before publishing to refresh.

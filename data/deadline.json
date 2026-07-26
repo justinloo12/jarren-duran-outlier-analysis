@@ -3,7 +3,7 @@
   "verdict": {
     "call": "BUY",
     "label": "clear buyer",
-    "odds": 0.7742
+    "odds": 0.7792
   },
   "max_win_streak": 14,
   "bos": {
@@ -12,8 +12,8 @@
     "run_diff": "41",
     "pythag": 0.5454948182776553,
     "talent": 0.5339562774101341,
-    "playoff_odds": 0.7742,
-    "wc_gb": "+0.5",
+    "playoff_odds": 0.7792,
+    "wc_gb": "+1.0",
     "streak": "L1"
   }
 }

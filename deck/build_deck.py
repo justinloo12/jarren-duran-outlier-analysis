@@ -732,9 +732,9 @@ for num, head, body in lines:
         line_spacing=1.1, space_after=2)
     yy += 0.98
 txt(s, 0.62, 6.85, 12.1, 0.4, [[("Every number on these slides "
-    "regenerates from live data. Predictions frozen July 4, graded in "
-    "October, flattering or not.  ", {"size": 11.5, "italic": True,
-    "color": "9AA6BC"}),
+    "regenerates from live data. Predictions frozen July 4 and July "
+    "26, graded in October, flattering or not.  ", {"size": 11.5,
+    "italic": True, "color": "9AA6BC"}),
     ("justinloo12.github.io/red-sox-trade-deadline-thoughts",
      {"size": 11.5, "bold": True, "font": MONO, "color": "E8615A"})]],
     space_after=0)

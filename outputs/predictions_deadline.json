@@ -1,0 +1,41 @@
+{
+  "frozen": "2026-07-26",
+  "note": "Deadline-edition pre-registration. Companion to predictions.json (frozen 2026-07-04). These calls are made 8 days before the August 3 deadline and are graded after the season by the same rules: the grade is the grade.",
+  "predictions": {
+    "playoffs": {
+      "claim": "Boston makes the 2026 postseason",
+      "p": 0.779,
+      "grading": "Brier score; 0.25 = coin flip"
+    },
+    "mead_bat": {
+      "claim": "Curtis Mead posts a wOBA of .330 or better as a Red Sox (min 100 PA)",
+      "basis": "his .359 xwOBA and the Fenway pull-air fit; below .330 with 100+ PA falsifies the earned-breakout read",
+      "p": 0.6,
+      "grading": "FanGraphs wOBA, BOS only, season end"
+    },
+    "aaaa_fade": {
+      "claim": "The AAAA five (Seigler, Monasterio, Cheng, Guerrero, Moran) collectively underperform their first-half rates in the second half (PA-weighted wOBA for the hitters, ERA for the arms; either suffices)",
+      "basis": "2016-25 base rate: median case kept 39% of the surge",
+      "p": 0.7,
+      "grading": "FanGraphs splits, H1 = through Jun 30"
+    },
+    "contreras_fade": {
+      "claim": "Contreras's second-half OPS finishes at least 40 points below his first-half mark",
+      "basis": "age-34 career best, +130 over career",
+      "p": 0.65,
+      "grading": "FanGraphs H1/H2 splits"
+    },
+    "gray_fade": {
+      "claim": "Gray's second-half ERA exceeds his first-half 2.78",
+      "basis": "0.80 runs under career at 36",
+      "p": 0.65,
+      "grading": "FanGraphs H1/H2 splits"
+    },
+    "duran_rebound": {
+      "claim": "Duran's second-half BABIP exceeds .290 (vs .244 season to date)",
+      "basis": "carried over from the July 4 file; restated for the deadline vintage",
+      "p": 0.65,
+      "grading": "FanGraphs H2 split"
+    }
+  }
+}

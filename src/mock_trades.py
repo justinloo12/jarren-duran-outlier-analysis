@@ -192,8 +192,9 @@ def build() -> str:
       "winter. **Why Boston might do it anyway:** it converts rotation "
       "surplus into the one real external hole, and Neto arrives "
       "controlled through the entire Anthony/Rafaela/Abreu window. "
-      "**Why they might not:** if the org believes Mayer is the "
-      "shortstop, this is paying retail for a redundancy.\n")
+      "**Why they might not:** Neto through 2029 blocks both Mayer and "
+      "Franklin Arias; if the org believes either is the shortstop, "
+      "this is paying retail for a redundancy.\n")
 
     # ---- The walk-away ----------------------------------------------------
     try:
@@ -203,8 +204,10 @@ def build() -> str:
     A("## The walk-away — the catcher \"upgrade\" we're not making\n")
     A("*Update, July 26: the market settled this one. Langeliers went "
       "on the 10-day IL with a torn right meniscus, so the deal below "
-      "is academic. The analysis stands as the reason Boston was right "
-      "not to chase it earlier.*\n")
+      "is academic, and the ripple effect prices out the alternative: "
+      "with the best available catcher bat down, Colorado's Hunter "
+      "Goodman now costs even more. The analysis stands as the reason "
+      "Boston was right not to chase either one.*\n")
     A("> **The deal that was on the menu:** C Shea Langeliers "
       f"({_bat_line(bats['Shea Langeliers'])}; $5.25M, controlled through "
       "2028) from the A's for LHP Jake Bennett "
@@ -302,9 +305,10 @@ def article_section(md: str) -> str:
     A("3. **The shortstop (high, probably wait):** Zach Neto from the "
       "Angels (controlled through 2029) for Tolle + Bennett + a lottery "
       "arm, or the Mayer version (Mayer + Tolle + a 40 FV) since Neto "
-      "would block him anyway. Cheaper lane: Miami's Otto Lopez at a "
-      "fraction of the price. Right for the franchise window on paper, "
-      "but the same trades will still be there in the winter.")
+      "would block both Mayer and Franklin Arias anyway. Cheaper lane: "
+      "Miami's Otto Lopez at a fraction of the price. Right for the "
+      "franchise window on paper, but the same trades will still be "
+      "there in the winter.")
     try:
         fe = json.load(open(C.DATA_DIR / "battery_model.json"))["fe"]
         adj = (f"an adjusted model (pitcher, opponent and park controls) "
@@ -315,10 +319,11 @@ def article_section(md: str) -> str:
     except (FileNotFoundError, KeyError):
         adj = ("an adjusted model with pitcher, opponent and park "
                "controls finds no significant catcher effect")
-    A("\nAnd the walk-away: the Langeliers catcher \"upgrade\" the "
-      "positional audit seems to demand (now academic anyway: he went "
-      "on the IL July 26 with a torn meniscus). The battery data was "
-      "always the veto. "
+    A("\nAnd the walk-away: the catcher \"upgrade\" the positional "
+      "audit seems to demand, whether Langeliers (now academic: he "
+      "went on the IL July 26 with a torn meniscus) or Colorado's "
+      "Hunter Goodman, whose price spikes with Langeliers down. The "
+      "battery data was always the veto. "
       "Nearly every Boston arm works with a settled catcher (fig. 14), "
       f"and {adj}. There is no catcher problem to fix (fig. 15). Wong "
       "already out-hits the league catcher bar; the gap is all "
