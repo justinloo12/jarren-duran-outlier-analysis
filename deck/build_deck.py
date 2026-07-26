@@ -468,6 +468,10 @@ title(s, "Career years everywhere. Could mean regression")
 image(s, "17", 0.4, 1.75, 8.0, 4.55, "17_aaaa_audit.png")
 tx = 8.75
 _nh = _AAAA['n_career_high']
+_regs = _AAAA.get('regulars', [])
+_reg_txt = ", ".join(f"{r['name'].split()[-1]} "
+                     f"{r['delta']*1000:+.0f} OPS pts"
+                     for r in _regs) or "none this year"
 finds = [(f"{_AAAA['n']} AAAA contributors on the roster", RED,
           "Waiver claims, up-down arms and career minor-leaguers holding "
           f"real roles, {_AAAA['total_war']:+.1f} WAR combined."),
@@ -475,21 +479,24 @@ finds = [(f"{_AAAA['n']} AAAA contributors on the roster", RED,
           f"{_AAAA['n_rookie']} rookies", GOLD,
           "The vets are beating their own track records; the rookies "
           "have no baseline at all."),
+         ("The regulars are hot too", TEAL_D := "5FB6D9",
+          f"Same screen on the everyday lineup: {_reg_txt}. Expect good, "
+          "not scorching, from here."),
          ("History backs the fade", NAVY,
           f"2016-25, {_ABT['hitters']['n']} hitter and "
-          f"{_ABT['arms']['n']} reliever cases like these: the median "
-          "journeyman kept only "
+          f"{_ABT['arms']['n']} reliever cases: the median journeyman "
+          "kept only "
           f"{_ABT['hitters']['median_retention']*100:.0f}% of a "
           "career-best first half (fig. 20)."),
          ("Buy Buy Buy", GREEN,
           "Pick up a seasoned reliever and a right-handed hitter.")]
-yy = 1.9
+yy = 1.78
 for head, col, body in finds:
-    dot(s, tx, yy + 0.04, 0.16, fill=col)
-    txt(s, tx + 0.32, yy, 4.1, 1.2, [[(head, {"bold": True, "size": 13.5,
-        "color": NAVY})], [(body, {"size": 11.6, "color": MUTED})]],
-        line_spacing=1.07, space_after=2)
-    yy += 1.22
+    dot(s, tx, yy + 0.04, 0.15, fill=col)
+    txt(s, tx + 0.32, yy, 4.1, 1.1, [[(head, {"bold": True, "size": 12.5,
+        "color": NAVY})], [(body, {"size": 10.8, "color": MUTED})]],
+        line_spacing=1.05, space_after=1)
+    yy += 1.06
 footer(s)
 
 # --------------------------------------------------- 6b1b THE BASE RATE

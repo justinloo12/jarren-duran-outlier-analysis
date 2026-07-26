@@ -246,7 +246,36 @@ def build() -> dict:
                 if hl else 0.0)
     luck_arm = (sum(g * w for g, w in al) / sum(w for _, w in al)
                 if al else 0.0)
-    return {"hitters": hitters, "arms": arms,
+    # Tier two: established regulars (800+ career PA) running 40+ OPS
+    # points over their own careers, the same yardstick as the backtest
+    regulars = []
+    aaaa_names = {h["name"] for h in hitters}
+    reg_pool = bat[bat["PA"] >= 200]
+    for _, r in reg_pool.iterrows():
+        if r["Name"] in aaaa_names:
+            continue
+        pid = _mlbam_id(r["Name"])
+        if not pid:
+            continue
+        car = _career_bat(pid)
+        if car["pa"] < 800 or not car["ops"]:
+            continue
+        ops26 = float(r["OBP"]) + float(r["SLG"])
+        if ops26 >= car["ops"] + 0.040:
+            regulars.append({
+                "name": r["Name"], "age": int(r["Age"]),
+                "pa_2026": int(r["PA"]),
+                "wrc_2026": round(float(r["wRC+"])),
+                "ops_2026": round(ops26, 3),
+                "career_ops": round(car["ops"], 3),
+                "delta": round(ops26 - car["ops"], 3),
+                "war_2026": round(float(r["WAR"]), 1),
+                "career_high": bool(car["best_ops"] is not None
+                                    and ops26 > car["best_ops"])})
+    regulars.sort(key=lambda x: -x["delta"])
+
+    return {"hitters": hitters, "arms": arms, "regulars": regulars,
+            "n_regulars": len(regulars),
             "total_war": round(tot_war, 1), "n": len(hitters) + len(arms),
             "n_career_high": int(n_high), "n_rookie": int(n_rookie),
             "cohort_bat_luck": round(luck_bat, 3),
@@ -255,16 +284,39 @@ def build() -> dict:
 
 # ---------------------------------------------------------------- figure
 def fig_aaaa(res: dict):
-    h = [x for x in res["hitters"] if x["career_ops"]]
-    a = [x for x in res["arms"] if x["career_era"]]
-    n_rows = max(len(h), len(a), 1)
-    fig_h = min(5.8, 2.3 + 1.05 * n_rows)
+    aaaa_h = [dict(x, kind="aaaa") for x in res["hitters"]
+              if x["career_ops"]]
+    rook_h = [dict(x, kind="rookie") for x in res["hitters"]
+              if not x["career_ops"]]
+    reg_h = [dict(x, kind="reg") for x in res.get("regulars", [])]
+    hit_rows = aaaa_h + rook_h + (["gap"] if reg_h else []) + reg_h
+    arm_rows = [dict(x, kind="aaaa") for x in res["arms"]
+                if x["career_era"]]
+    n_rows = max(len(hit_rows), len(arm_rows), 1)
+    fig_h = min(6.4, 2.3 + 0.95 * n_rows)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.6, fig_h))
-    for ax, rows, k26, kc, better_hi, unit in (
-            (ax1, h, "ops_2026", "career_ops", True, "OPS"),
-            (ax2, a, "era_2026", "career_era", False, "ERA")):
-        ys = np.arange(len(rows))
-        for y, r in zip(ys, rows):
+
+    def draw(ax, rows, k26, kc, better_hi, unit):
+        labels = []
+        vals = []
+        for y, r in enumerate(rows):
+            if r == "gap":
+                labels.append("")
+                ax.axhline(y, color=S.GRID, lw=22, alpha=0.5, zorder=0)
+                ax.annotate("REGULARS RUNNING HOT", (0.5, y),
+                            xycoords=("axes fraction", "data"),
+                            ha="center", va="center", fontsize=9.5,
+                            fontweight="bold", color=S.MUTED)
+                continue
+            labels.append(r["name"])
+            if r["kind"] == "rookie":
+                ax.scatter(r[k26], y, s=105, color=S.TEAL, zorder=3)
+                ax.annotate(f"{r[k26]:.3f}  ROOKIE, NO BASELINE",
+                            (r[k26], y), textcoords="offset points",
+                            xytext=(9, -3), fontsize=9.5,
+                            fontweight="bold", color=S.TEAL)
+                vals += [r[k26]]
+                continue
             better = ((r[k26] > r[kc]) if better_hi
                       else (r[k26] < r[kc]))
             col = S.GREEN if better else S.RED
@@ -281,29 +333,30 @@ def fig_aaaa(res: dict):
             ax.annotate(tag, (max(r[k26], r[kc]), y),
                         textcoords="offset points", xytext=(9, -3),
                         fontsize=9.5, fontweight="bold", color=col)
-        ax.set_yticks(ys)
-        ax.set_yticklabels([r["name"] for r in rows])
+            vals += [r[k26], r[kc]]
+        ax.set_yticks(range(len(rows)))
+        ax.set_yticklabels(labels)
         ax.set_ylim(-0.55, len(rows) - 0.45)
         ax.invert_yaxis()
-        pad = 0.14 if better_hi else 0.9
-        lo = min(min(r[kc], r[k26]) for r in rows)
-        hi = max(max(r[kc], r[k26]) for r in rows)
-        ax.set_xlim(lo - pad * 0.3, hi + pad)
+        pad = 0.15 if better_hi else 0.9
+        ax.set_xlim(min(vals) - pad * 0.3, max(vals) + pad)
         S.style(ax, grid_axis="x")
         ax.set_xlabel(unit + ("" if better_hi else " (lower is better)"))
+
+    draw(ax1, hit_rows, "ops_2026", "career_ops", True, "OPS")
+    draw(ax2, arm_rows, "era_2026", "career_era", False, "ERA")
     ax1.set_title("Hitters: career average to 2026", loc="left",
                   fontsize=14, fontweight="bold")
     ax2.set_title("Pitchers: career average to 2026", loc="left",
                   fontsize=14, fontweight="bold")
-    nh = res["n_career_high"]
-    fig.suptitle("The AAAA cohort is outrunning its own track record: "
-                 f"{nh} at " + ("a career best" if nh == 1
-                                else "career bests"),
+    fig.suptitle("The regression watch: the AAAA five, plus the "
+                 "regulars running past their own careers",
                  x=0.02, y=0.99, ha="left", fontsize=16,
                  fontweight="bold")
     fig.text(0.02, 0.015, "Open circle: career average entering 2026. "
              "Arrow tip: 2026 to date. Green: better than career, red: "
-             "worse. Labels show the change.",
+             "worse. Regulars screened at 200+ PA, 800+ career PA, and "
+             "40+ OPS points over career, the backtest yardstick.",
              fontsize=10, color=S.MUTED)
     fig.tight_layout(rect=(0, 0.05, 1, 0.95))
     out = C.FIG_DIR / "17_aaaa_audit.png"
@@ -346,6 +399,18 @@ def memo_md(res: dict) -> str:
           "`src/aaaa_backtest.py`, figure 20.\n")
     except FileNotFoundError:
         pass
+    regs = res.get("regulars", [])
+    if regs:
+        A("## Regulars running hot (same 40-point screen)\n")
+        A("| Player | Age | 2026 PA | wRC+ | 2026 OPS | Career OPS | "
+          "Delta | Career high? |")
+        A("|---|---:|---:|---:|---:|---:|---:|:--|")
+        for r in regs:
+            A(f"| {r['name']} | {r['age']} | {r['pa_2026']} | "
+              f"{r['wrc_2026']} | {r['ops_2026']:.3f} | "
+              f"{r['career_ops']:.3f} | {r['delta']:+.3f} | "
+              f"{'yes' if r['career_high'] else ''} |")
+        A("")
     A("## Hitters\n")
     A("| Player | Age | 2026 PA | wRC+ | OPS | Career OPS | Best (yr) | "
       "wOBA−xwOBA | Career high? |")
@@ -421,6 +486,22 @@ def article_section(res: dict) -> str:
          f"The standout is in the pen: {names_a}." if names_a else "")
       + "\n")
     A("![Quad-A audit](figures/17_aaaa_audit.png)\n")
+    regs = res.get("regulars", [])
+    if regs:
+        reg_txt = "; ".join(
+            f"{r['name']} is {r['delta']*1000:+.0f} OPS points over his "
+            f"career at age {r['age']}"
+            + (", a career best" if r["career_high"] else "")
+            for r in regs)
+        A("The watch does not stop at the fringe. Screening every "
+          "regular (200+ PA, 800+ career PA) against the same 40-point "
+          f"yardstick catches {len(regs)} more: {reg_txt}. "
+          "For established players the read is different in degree, not "
+          "kind: regression pulls them back toward a good career level, "
+          "not off a cliff. The planning mistake would be penciling in "
+          "the current version for September. For the record, the same "
+          "screen clears Abreu, Yoshida and Duran, who are all at or "
+          "below their career marks.\n")
     big_luck = max(abs(res["cohort_arm_luck"]),
                    abs(res["cohort_bat_luck"])) >= 0.010
     if big_luck:

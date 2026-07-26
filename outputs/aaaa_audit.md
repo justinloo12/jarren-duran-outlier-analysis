@@ -6,6 +6,13 @@
 
 **The base rate (2016-2025):** 100 hitters and 198 relievers matched this profile with a career-best first half. The median kept 39% of the surge; 34% of hitters and 37% of relievers fell back to career level in the second half. Full design in `src/aaaa_backtest.py`, figure 20.
 
+## Regulars running hot (same 40-point screen)
+
+| Player | Age | 2026 PA | wRC+ | 2026 OPS | Career OPS | Delta | Career high? |
+|---|---:|---:|---:|---:|---:|---:|:--|
+| Willson Contreras | 34 | 396 | 158 | 0.941 | 0.811 | +0.130 | yes |
+| Ceddanne Rafaela | 25 | 406 | 108 | 0.761 | 0.685 | +0.076 | yes |
+
 ## Hitters
 
 | Player | Age | 2026 PA | wRC+ | OPS | Career OPS | Best (yr) | wOBA−xwOBA | Career high? |

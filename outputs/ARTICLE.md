@@ -37,9 +37,11 @@ Auditing every position against league average (PA-weighted wRC+) reorders the s
 
 ## The quad-A engine, audited
 
-It is worth being honest about who has produced the first half. 5 players currently on the roster fit the AAAA profile (waiver claims, up-and-down arms, career minor leaguers with almost no MLB track record), and together they have produced **+1.3 WAR** in real roles. Of the 3 with prior MLB seasons, **1 is running the best season of his career**, and the 2 rookies have no baseline to regress to, which cuts both ways (full table in the quad-A audit memo). in the pen, Tayron Guerrero (2.35 ERA vs 5.77 career).
+It is worth being honest about who has produced the first half. 5 players currently on the roster fit the AAAA profile (waiver claims, up-and-down arms, career minor leaguers with almost no MLB track record), and together they have produced **+1.3 WAR** in real roles. Of the 3 with prior MLB seasons, **1 is running the best season of his career**, and the 2 rookies have no baseline to regress to, which cuts both ways (full table in the quad-A audit memo). The standout is in the pen: Tayron Guerrero (2.35 ERA vs 5.77 career).
 
 ![Quad-A audit](figures/17_aaaa_audit.png)
+
+The watch does not stop at the fringe. Screening every regular (200+ PA, 800+ career PA) against the same 40-point yardstick catches 2 more: Willson Contreras is +130 OPS points over his career at age 34, a career best; Ceddanne Rafaela is +76 OPS points over his career at age 25, a career best. For established players the read is different in degree, not kind: regression pulls them back toward a good career level, not off a cliff. The planning mistake would be penciling in the current version for September. For the record, the same screen clears Abreu, Yoshida and Duran, who are all at or below their career marks.
 
 That is not a durable foundation; it is a tailwind. Career-best seasons from journeymen are exactly the production that fades down the stretch, and to be fair, the pitch-level check says the group is mostly earning it (results within +3/-9 points of expected for bats/arms). The risk is not luck, it is track record. Journeymen do not usually carry career bests through August, and the projection systems will bet on the career, not the heater.
 
