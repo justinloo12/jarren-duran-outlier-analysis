@@ -65,6 +65,19 @@ def load() -> pd.DataFrame:
     return df
 
 
+def starters(df: pd.DataFrame) -> set:
+    """True starters: took the first fielding pitch in 2+ games AND
+    average 3+ innings per appearance (drops relievers used as
+    openers, who face an inning or two and hand it off)."""
+    first = (df.sort_values(["game_pk", "at_bat_number", "pitch_number"])
+             if "at_bat_number" in df.columns else df)
+    gs = first.groupby("game_pk")["pitcher_name"].first().value_counts()
+    per_app = (df.groupby("pitcher_name")
+               .agg(outs=("outs_rec", "sum"), games=("game_pk", "nunique")))
+    bulk = per_app[per_app["outs"] / per_app["games"] >= 9].index
+    return set(gs[gs >= 2].index) & set(bulk)
+
+
 def compute(df: pd.DataFrame) -> dict:
     per_c = {}
     for c, d in df.groupby("catcher"):
@@ -76,8 +89,10 @@ def compute(df: pd.DataFrame) -> dict:
                     "RA9": round(d["runs"].sum() / ip * 9, 2),
                     "xwOBA_against": round(float(xw), 3)}
 
-    top = (df.groupby("pitcher_name")["outs_rec"].sum()
-             .sort_values(ascending=False).head(8))
+    sp = starters(df)
+    top = (df[df["pitcher_name"].isin(sp)]
+           .groupby("pitcher_name")["outs_rec"].sum()
+           .sort_values(ascending=False).head(8))
     batteries = {}
     for p in top.index:
         sub = df[df["pitcher_name"] == p]
@@ -88,14 +103,17 @@ def compute(df: pd.DataFrame) -> dict:
                             "RA9": round(r["runs"] / (r["outs"] / 3) * 9, 2)}
                         for c, r in bat.iterrows()}
     return {"per_catcher": per_c, "batteries": batteries,
-            "min_outs": MIN_OUTS}
+            "min_outs": MIN_OUTS,
+            "league_ra9": round(float(df["runs"].sum()
+                                      / (df["outs_rec"].sum() / 3) * 9), 2)}
 
 
 def fig_battery(res: dict):
     cats = ["Carlos Narváez", "Connor Wong"]
     colors = {"Carlos Narváez": S.RED, "Connor Wong": S.NAVY}
     rows = [(p, b) for p, b in res["batteries"].items()
-            if any(c in b for c in cats)]
+            if any(c in b for c in cats) and p != "Connelly Early"]
+    lg_ra9 = res.get("league_ra9")
     fig, ax = plt.subplots(figsize=(9, 5.4))
     ys = range(len(rows))
     for y, (p, b) in zip(ys, rows):
@@ -103,12 +121,22 @@ def fig_battery(res: dict):
         if len(pts) == 2:
             ax.plot([pts[0][1], pts[1][1]], [y, y], color=S.GREY,
                     lw=2, zorder=1, alpha=0.6)
-        for c, ra9 in pts:
-            ax.scatter(ra9, y, s=110, color=colors[c], zorder=2)
+        close = len(pts) == 2 and abs(pts[0][1] - pts[1][1]) < 0.9
+        for k, (c, ra9) in enumerate(pts):
+            ax.scatter(ra9, y, s=110, color=colors[c], zorder=3)
+            dy = 11 if (not close or k == 0) else -19
+            ax.annotate(f"{b[c]['IP']:.0f} IP", (ra9, y),
+                        textcoords="offset points", xytext=(0, dy),
+                        ha="center", fontsize=8.5, color=S.MUTED)
+    if lg_ra9:
+        ax.axvline(lg_ra9, color=S.SPINE, lw=1.4, ls=":", zorder=1)
+        ax.annotate(f"staff avg {lg_ra9:.2f}", (lg_ra9, len(rows) - 0.4),
+                    textcoords="offset points", xytext=(6, 0),
+                    fontsize=9, color=S.MUTED)
     handles = [plt.Line2D([], [], marker="o", ls="", color=colors[c],
                           markersize=10) for c in cats]
     leg = ax.legend(handles, [c.split()[-1] for c in cats],
-                    loc="lower right", title="RA9 with")
+                    loc="upper right", title="RA9 with")
     leg.get_title().set_color(S.MUTED)
     for t in leg.get_texts():
         t.set_color(S.TEXT)
@@ -118,11 +146,12 @@ def fig_battery(res: dict):
     S.style(ax, grid_axis="x")
     ax.set_xlabel("Runs allowed per 9 innings with each catcher "
                   f"(min {res['min_outs']} outs)")
-    ax.set_title("The battery map: most Red Sox arms have a clear "
+    ax.set_title("The battery map: each Red Sox starter has a clear "
                  "preferred catcher", loc="left", fontsize=15,
                  fontweight="bold")
-    ax.text(0, -0.14, "Small samples, confounded by usage — evidence of an "
-            "assignment system, not a causal measure.",
+    ax.text(0, -0.14, "Starters only; innings caught labeled per pairing. "
+            "Small, usage-shaped samples: evidence of an assignment "
+            "system, not a causal measure.",
             transform=ax.transAxes, fontsize=10, color=S.MUTED)
     fig.tight_layout()
     out = C.FIG_DIR / "14_battery_map.png"

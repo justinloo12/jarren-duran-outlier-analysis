@@ -227,8 +227,8 @@ def fig_race(sim: pd.DataFrame):
     S.style(ax, grid_axis="x")
     ax.tick_params(axis="y", labelcolor=S.TEXT)
     ax.set_xlim(0, 108)
-    ax.set_xlabel("Simulated playoff odds (%) — 10,000 season simulations")
-    S.titled(ax, "Boston is alive — barely, but genuinely",
+    ax.set_xlabel("Simulated playoff odds (%), 10,000 season simulations")
+    S.titled(ax, "Boston is a live playoff team",
              "AL playoff odds: talent = regressed run differential · navy = "
              "currently holding a playoff spot")
     fig.tight_layout()
@@ -548,8 +548,8 @@ def article(sim: pd.DataFrame, v: dict, aud: pd.DataFrame = None,
               f"{_ra9('Sonny Gray', 'Connor Wong')} with Wong "
               f"({_ra9('Sonny Gray', 'Carlos Narváez')} with Narváez), "
               f"Bennett at {_ra9('Jake Bennett', 'Carlos Narváez')} with "
-              "Narváez, Bello five runs better with Wong, and the leverage "
-              "relievers sharper with Narváez (fig. 14). The samples are "
+              "Narváez, and Bello five runs better with Wong "
+              "(fig. 14). The samples are "
               "small and shaped by usage, but that is working "
               "pitcher-catcher chemistry, and a mid-race catcher trade "
               "would reset every one of those pairings for a bat."

@@ -49,8 +49,11 @@ def _league_pull_air() -> tuple[pd.DataFrame, pd.DataFrame]:
     bb["spray"] = spray_angle(bb["hc_x"], bb["hc_y"], bb["stand"])
     bb["pull_air"] = ((bb["spray"] > PULL_DEG)
                       & (bb["launch_angle"] >= AIR_DEG))
+    pa_dmg = (bb[bb["pull_air"]].groupby("batter")["woba_value"].mean()
+              .rename("pull_air_woba"))
     pool = bb.groupby("batter").agg(n=("pull_air", "size"),
                                     rate=("pull_air", "mean"))
+    pool = pool.join(pa_dmg)
     return bb, pool[pool["n"] >= MIN_BB]
 
 
@@ -109,28 +112,51 @@ def compute() -> dict:
 
 def fig_fit(res: dict):
     _, pool = _league_pull_air()
-    fig, ax = plt.subplots(figsize=(9, 5.2))
+    fig, (ax, ax2) = plt.subplots(1, 2, figsize=(12.6, 5.2))
     ax.hist(pool["rate"] * 100, bins=32, color=S.GREY, alpha=0.55,
             edgecolor="none", zorder=2)
     ax.axvline(res["pull_air_rate"] * 100, color=S.RED, lw=2.5, zorder=3)
     ax.annotate(f"Mead {res['pull_air_rate']*100:.1f}%\n"
-                f"({res['pull_air_pctile']:.0f}th pctile)",
+                f"({_ord(res['pull_air_pctile'])} pctile)",
                 xy=(res["pull_air_rate"] * 100, ax.get_ylim()[1] * 0.82),
                 xytext=(res["pull_air_rate"] * 100 + 2,
                         ax.get_ylim()[1] * 0.82),
                 color=S.RED, fontsize=12, fontweight="bold")
     S.style(ax)
-    ax.set_xlabel(f"Pull-air rate, share of batted balls (hitters with "
-                  f"{MIN_BB}+ batted balls, 2026)")
+    ax.set_xlabel(f"Pull-air rate, % of batted balls ({MIN_BB}+ BB)")
     ax.set_ylabel("Hitters")
-    ax.set_title("Mead's pull-air rate sits in the top fifth of MLB, "
-                 "the profile Fenway pays", loc="left", fontsize=15,
+    ax.set_title("Rate: top fifth of MLB", loc="left", fontsize=14,
                  fontweight="bold")
-    ax.text(0, -0.15, "Pulled = spray angle beyond 15 degrees to the pull "
-            "side; air = launch angle 10 degrees or higher. RHB pull-air "
-            "plays to the Monster.",
-            transform=ax.transAxes, fontsize=10, color=S.MUTED)
-    fig.tight_layout()
+
+    sc = pool.dropna(subset=["pull_air_woba"])
+    ax2.scatter(sc["rate"] * 100, sc["pull_air_woba"], s=26, color=S.GREY,
+                alpha=0.45, edgecolors="none", zorder=2)
+    ax2.scatter(res["pull_air_rate"] * 100, res["wobacon_pull_air"],
+                s=180, color=S.RED, zorder=3, edgecolors="white",
+                linewidths=1.2)
+    ax2.annotate("Mead", (res["pull_air_rate"] * 100,
+                          res["wobacon_pull_air"]),
+                 textcoords="offset points", xytext=(10, 6),
+                 color=S.RED, fontsize=12, fontweight="bold")
+    lg_w = float(sc["pull_air_woba"].median())
+    ax2.axhline(lg_w, color=S.SPINE, lw=1.2, ls=":", zorder=1)
+    ax2.annotate(f"league median .{lg_w*1000:.0f}",
+                 (ax2.get_xlim()[1] * 0.98, lg_w),
+                 ha="right", va="bottom", fontsize=9, color=S.MUTED)
+    S.style(ax2)
+    ax2.set_xlabel("Pull-air rate, % of batted balls")
+    ax2.set_ylabel("wOBA on pulled air balls")
+    ax2.set_title("Damage: elite when he lifts to the pull side",
+                  loc="left", fontsize=14, fontweight="bold")
+
+    fig.suptitle("Mead's pull-air profile is the one Fenway pays",
+                 x=0.02, y=0.99, ha="left", fontsize=16,
+                 fontweight="bold")
+    fig.text(0.02, 0.015, "Pulled: spray angle beyond 15 degrees to the "
+             "pull side. Air: launch angle 10 degrees or higher. RHB "
+             "pull-air plays to the Monster. 2026 league-wide, "
+             f"{MIN_BB}+ batted balls.", fontsize=10, color=S.MUTED)
+    fig.tight_layout(rect=(0, 0.06, 1, 0.94))
     out = C.FIG_DIR / "18_mead_fit.png"
     fig.savefig(out, dpi=200)
     plt.close(fig)

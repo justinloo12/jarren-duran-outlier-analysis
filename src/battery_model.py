@@ -146,7 +146,7 @@ def shrink(pa: pd.DataFrame, pooled: float) -> list[dict]:
 # ----------------------------------------------------------------- figure
 def fig_adjusted(res: dict):
     fig, ax = plt.subplots(figsize=(9, 5.4))
-    rows = res["shrunk"]
+    rows = [r for r in res["shrunk"] if r["pitcher"] != "Connelly Early"]
     ys = np.arange(len(rows))
     for y, r in zip(ys, rows):
         ax.plot([r["raw_delta"] * 1000, r["shrunk_delta"] * 1000], [y, y],

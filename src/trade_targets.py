@@ -165,7 +165,7 @@ def fig_fits(df):
             color=S.AMBER, va="bottom")
     S.style(ax, grid_axis="both")
     ax.grid(color=S.GRID, linewidth=1.0)
-    ax.set_xlabel("Team outfield production — 2026 wRC+   (left = more need)")
+    ax.set_xlabel("Team outfield production, 2026 wRC+ (left = more need)")
     ax.set_ylabel("Team winning %  (2026)")
     S.titled(ax, "Who should call Boston about Duran?",
              "Best fits are winning teams with a weak outfield (upper-left)")

@@ -93,26 +93,18 @@
         "RA9": 3.31
       }
     },
-    "Ryan Watson": {
+    "Garrett Crochet": {
       "Carlos Narv\u00e1ez": {
-        "IP": 24.3,
-        "RA9": 2.96
-      },
-      "Connor Wong": {
-        "IP": 20.3,
-        "RA9": 6.64
-      }
-    },
-    "Jovani Mor\u00e1n": {
-      "Carlos Narv\u00e1ez": {
-        "IP": 23.3,
-        "RA9": 2.31
+        "IP": 12.7,
+        "RA9": 11.37
       },
       "Connor Wong": {
         "IP": 17.3,
-        "RA9": 3.63
+        "RA9": 3.12
       }
-    }
+    },
+    "Patrick Sandoval": {}
   },
-  "min_outs": 30
+  "min_outs": 30,
+  "league_ra9": 3.88
 }

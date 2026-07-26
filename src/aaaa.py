@@ -270,11 +270,11 @@ def fig_aaaa(res: dict):
         ax.set_yticklabels([r["name"] for r in rows])
         ax.invert_yaxis()
         S.style(ax, grid_axis="x")
-    ax1.set_xlabel("OPS — hollow: career, solid: 2026, tick: best season")
-    ax2.set_xlabel("ERA — hollow: career, solid: 2026, tick: best season")
+    ax1.set_xlabel("OPS (hollow: career, solid: 2026, tick: best season)")
+    ax2.set_xlabel("ERA (hollow: career, solid: 2026, tick: best season)")
     ax1.set_title("Hitters", loc="left", fontsize=14, fontweight="bold")
     ax2.set_title("Pitchers", loc="left", fontsize=14, fontweight="bold")
-    fig.suptitle("The quad-A cohort, 2026 vs their own careers — "
+    fig.suptitle("The AAAA cohort, 2026 vs their own careers: "
                  f"{res['n_career_high']} career bests among the "
                  "returners", x=0.02, y=0.99, ha="left", fontsize=16,
                  fontweight="bold")

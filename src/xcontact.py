@@ -198,10 +198,14 @@ def fig_speed(res: dict):
     du = res["duran"]
     fig, ax = plt.subplots(figsize=(9, 5.2))
     ax.axhline(0, color=S.SPINE, lw=1)
-    ax.plot(dec["decile"], dec["resid_base"] * 1000, "-o", color=S.RED,
-            lw=2.2, ms=7, label="EV + LA + spray only (xstats' world)")
-    ax.plot(dec["decile"], dec["resid_speed"] * 1000, "-o", color=S.NAVY,
-            lw=2.2, ms=7, label="+ sprint speed")
+    se = (1000 * (dec["resid_base"].abs() * 0 + 1)
+          * (0.25 / dec["n"]) ** 0.5)  # binomial upper-bound SE, points
+    ax.errorbar(dec["decile"], dec["resid_base"] * 1000, yerr=se,
+                fmt="-o", color=S.RED, lw=2.2, ms=7, capsize=3,
+                label="EV + LA + spray only (xstats' view)")
+    ax.errorbar(dec["decile"], dec["resid_speed"] * 1000, yerr=se,
+                fmt="-o", color=S.NAVY, lw=2.2, ms=7, capsize=3,
+                label="+ sprint speed")
     if du.get("decile"):
         ax.axvline(du["decile"], color=S.AMBER, lw=2, ls=":",
                    label=f"Duran ({du['sprint_speed']:.1f} ft/s)")
@@ -214,8 +218,9 @@ def fig_speed(res: dict):
     leg = ax.legend(loc="upper left")
     for t in leg.get_texts():
         t.set_color(S.TEXT)
-    ax.text(0, -0.15, "Out-of-fold residuals, 5-fold CV grouped by batter "
-            f"— {res['n_batted_balls']:,} batted balls, 2026 league-wide.",
+    ax.text(0, -0.15, "Out-of-fold residuals with binomial standard "
+            "errors, 5-fold CV grouped by batter; "
+            f"{res['n_batted_balls']:,} batted balls, 2026 league-wide.",
             transform=ax.transAxes, fontsize=10, color=S.MUTED)
     fig.tight_layout()
     out = C.FIG_DIR / "16_speed_model.png"
