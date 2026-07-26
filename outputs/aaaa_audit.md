@@ -4,6 +4,8 @@
 
 **Headline:** 15 players fit the profile. Together they account for **+3.4 WAR** in 2026. Of the 11 with prior MLB seasons, **4 are running career bests**, and the other 4 are rookies with no MLB baseline at all. Depth like this is why the surge happened; counting on it to repeat is how deadline mistakes get made.
 
+**The base rate (2016-2025):** 100 hitters and 198 relievers matched this profile with a career-best first half. The median kept 39% of the surge; 34% of hitters and 37% of relievers fell back to career level in the second half. Full design in `src/aaaa_backtest.py`, figure 20.
+
 ## Hitters
 
 | Player | Age | 2026 PA | wRC+ | OPS | Career OPS | Best (yr) | wOBA−xwOBA | Career high? |

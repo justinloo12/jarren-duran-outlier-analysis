@@ -318,6 +318,18 @@ def memo_md(res: dict) -> str:
       "rookies with no MLB baseline at all. Depth like this is why the "
       "surge happened; counting on it to repeat is how deadline mistakes "
       "get made.\n")
+    try:
+        bt = json.load(open(C.DATA_DIR / "aaaa_backtest.json"))
+        A(f"**The base rate (2016-2025):** {bt['hitters']['n']} hitters "
+          f"and {bt['arms']['n']} relievers matched this profile with a "
+          "career-best first half. The median kept "
+          f"{bt['hitters']['median_retention']*100:.0f}% of the surge; "
+          f"{bt['hitters']['back_to_career_pct']}% of hitters and "
+          f"{bt['arms']['back_to_career_pct']}% of relievers fell back "
+          "to career level in the second half. Full design in "
+          "`src/aaaa_backtest.py`, figure 20.\n")
+    except FileNotFoundError:
+        pass
     A("## Hitters\n")
     A("| Player | Age | 2026 PA | wRC+ | OPS | Career OPS | Best (yr) | "
       "wOBA−xwOBA | Career high? |")

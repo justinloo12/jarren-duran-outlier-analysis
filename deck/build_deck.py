@@ -491,6 +491,37 @@ for head, col, body in finds:
     yy += 1.22
 footer(s)
 
+# --------------------------------------------------- 6b1b THE BASE RATE
+s = new()
+eyebrow(s, "The base rate")
+title(s, "Career-year first halves usually give it back")
+image(s, "20", 0.4, 1.7, 8.0, 4.6, "20_aaaa_backtest.png")
+tx = 8.75
+_bh, _ba = _ABT["hitters"], _ABT["arms"]
+finds = [(f"{_bh['n'] + _ba['n']} historical cases", RED,
+          f"2016-2025: {_bh['n']} hitters and {_ba['n']} relievers with "
+          "the same profile as Boston's AAAA group: thin track record, "
+          "age 26+, career-best first half."),
+         (f"Median kept {_bh['median_retention']*100:.0f}%", NAVY,
+          "The typical hitter held only "
+          f"{_bh['median_retention']*100:.0f}% of his surge after July; "
+          f"relievers {_ba['median_retention']*100:.0f}%."),
+         ("A third fell all the way back", GOLD,
+          f"{_bh['back_to_career_pct']}% of hitters and "
+          f"{_ba['back_to_career_pct']}% of relievers finished the "
+          "second half at or below their career level."),
+         ("So the surge is rented", GREEN,
+          "Plan for the median, not the heater: replace borrowed "
+          "production before August returns it.")]
+yy = 1.9
+for head, col, body in finds:
+    dot(s, tx, yy + 0.04, 0.16, fill=col)
+    txt(s, tx + 0.32, yy, 4.1, 1.2, [[(head, {"bold": True, "size": 13.5,
+        "color": NAVY})], [(body, {"size": 11.6, "color": MUTED})]],
+        line_spacing=1.07, space_after=2)
+    yy += 1.22
+footer(s)
+
 # ---------------------------------------------------------- 6b2 BATTERY MAP
 s = new()
 eyebrow(s, "The chemistry veto")
