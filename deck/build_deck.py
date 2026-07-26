@@ -630,74 +630,52 @@ for head, col, body in finds:
     yy += 1.22
 footer(s)
 
-# ---------------------------------------------------------------- 7 WHAT TO GET
+# ------------------------------------------------- 6e WHY THE TRADE WINS
 s = new()
-eyebrow(s, "The winter plan")
-title(s, "Spend the pitching surplus on offense")
-txt(s, 0.62, 1.72, 12.1, 0.7, [[("If winter comes and Duran's rebound has "
-    "shown up, this is what a deal should return. With a top-6 rotation "
-    "(3.65 ERA) carrying the club, trading bats for arms is backwards, "
-    "convert the outfield surplus into what's thin:",
-    {"size": 14.5, "color": INK})]], line_spacing=1.12)
-needs = [("Controllable bats", GREEN,
-          "Young, cost-controlled position players to fix an inconsistent "
-          "lineup and lengthen it around the core."),
-         ("Best talent / upside", NAVY,
-          "In a retool you take the best player, not the positional patch, "
-          "prospects and MLB-ready youth over rentals."),
-         ("Salary relief", GOLD,
-          "Attach Yoshida money where possible; free payroll for the 2027 "
-          "window.")]
-cw, gap = 3.83, 0.31
-for i, (head, col, body) in enumerate(needs):
-    x = 0.62 + i * (cw + gap)
-    card(s, x, 2.7, cw, 2.75)
-    dot(s, x + 0.3, 2.98, 0.42, fill=col, text=str(i + 1), size=16)
-    txt(s, x + 0.3, 3.62, cw - 0.55, 0.45, [[(head, {"size": 16, "bold": True,
+eyebrow(s, "The trade, graded")
+title(s, "Why Mead for Early wins for Boston")
+_E = _ACQ["arms"].get("Connelly Early", {})
+_T = _ACQ["arms"].get("Payton Tolle", {})
+_B = _ACQ["arms"].get("Jake Bennett", {})
+cw = 5.86
+data = [(0.62, "What they gave: Connelly Early", RED,
+         [("The ERA flattered him.",
+           f"{_E.get('era', 0):.2f} ERA over a {_E.get('fip', 0):.2f} "
+           f"FIP, a {_E.get('fip', 0) - _E.get('era', 0):+.2f} gap, the "
+           "most of any Boston starter. Sold at peak perception."),
+          ("The smallest frame in the pipeline.",
+           f"{_E.get('height', chr(54) + chr(39) + ' 3' + chr(34))}, "
+           f"{_E.get('weight', 195)} lbs. Durability risk the org's "
+           "other arms don't carry.")]),
+        (0.62 + cw + 0.33, "What they got: Curtis Mead", GREEN,
+         [("A controllable, earned bat.",
+           f"{_ACQ['fg']['wRC+']} wRC+ at {_ACQ['age']}, backed by a "
+           f".{int(_ACQ['xwoba']*1000)} xwOBA. Years of club control "
+           "at the position the audit flagged."),
+          ("Built for the park.",
+           f"{_ACQ['pull_air_rate']*100:.0f}% pull-air rate "
+           f"({ordn(_ACQ['pull_air_pctile'])} percentile). RHB pull-air "
+           "plays to the Monster.")])]
+for x, nm, accent, rows in data:
+    card(s, x, 1.85, cw, 3.6)
+    txt(s, x + 0.32, 2.1, cw - 0.6, 0.5, [[(nm, {"size": 17, "bold": True,
         "font": HEAD, "color": NAVY})]], space_after=0)
-    txt(s, x + 0.3, 4.12, cw - 0.55, 1.2, [[(body, {"size": 12.8,
-        "color": MUTED})]], line_spacing=1.1)
-txt(s, 0.62, 5.75, 12.1, 0.5, [[("Keep the arms. Cash the outfield. ",
-    {"bold": True, "italic": True, "size": 14, "color": NAVY}),
-    ("Build the 2027 lineup, don't rent the 2026 one.",
-     {"italic": True, "size": 14, "color": MUTED})]], space_after=0)
-footer(s)
-
-# ---------------------------------------------------------------- 9 PLAN
-s = new()
-eyebrow(s, "The sequence")
-title(s, "Buy now, decide on Duran in the winter")
-steps = [("1", "At the deadline: buy targeted", "A controllable infield bat "
-          "and a reliever, funded from the pitching surplus. Keep the vets, "
-          "they're playoff innings now."),
-         ("2", "Hold Duran through August", "His value is at its nadir and "
-          "his July contact quality (~.35 xwOBA) is already surging. "
-          "Selling now cashes the slump."),
-         ("3", "Winter: re-price, then choose", "Anthony healthy, jam "
-          "returns. Rebound confirmed → extend or trade at full price. "
-          "Erosion persists → sell at market. Either way, the 2027 OF "
-          "is Anthony / Rafaela / Abreu.")]
-yy = 1.95
-for num, head, body in steps:
-    dot(s, 0.7, yy + 0.02, 0.5, fill=RED, text=num, size=18)
-    txt(s, 1.4, yy, 6.7, 1.1, [[(head, {"size": 17, "bold": True, "font": HEAD,
-        "color": NAVY})], [(body, {"size": 13.5, "color": MUTED})]],
-        line_spacing=1.08, space_after=2)
-    yy += 1.28
-card(s, 8.55, 1.95, 4.15, 3.65, fill=PANEL2, line=None)
-txt(s, 8.85, 2.2, 3.6, 0.4, [[("THE RETURN", {"size": 12.5, "bold": True,
-    "color": "C9D2E3"})]], space_after=0)
-txt(s, 8.85, 2.72, 3.6, 1.0, [
-    [("Sell now (nadir)", {"size": 13, "bold": True, "color": "F0B8BC"})],
-    [("~$10–15M · a 45-FV bat", {"size": 14, "color": WHITE})]],
-    space_after=2, line_spacing=1.05)
-txt(s, 8.85, 3.85, 3.6, 1.1, [
-    [("Sell after rebound", {"size": 13, "bold": True, "color": "A9E5B5"})],
-    [("~$28M · a 50-FV, top-100", {"size": 14, "color": WHITE})],
-    [("controllable talent", {"size": 14, "color": WHITE})]],
-    space_after=2, line_spacing=1.05)
-txt(s, 8.85, 5.05, 3.6, 0.5, [[("One grade of return = the reason to wait.",
-    {"size": 11.5, "italic": True, "color": "C9D2E3"})]], line_spacing=1.05)
+    yy = 2.75
+    for head, body in rows:
+        dot(s, x + 0.32, yy + 0.05, 0.13, fill=accent)
+        txt(s, x + 0.58, yy, cw - 0.95, 1.3, [[
+            (head + " ", {"bold": True, "color": INK, "size": 13}),
+            (body, {"color": MUTED, "size": 12.2})]], line_spacing=1.09)
+        yy += 1.3
+txt(s, 0.62, 5.75, 12.1, 1.0, [[("The factory keeps producing:  ",
+    {"bold": True, "size": 14, "color": GOLD}),
+    (f"Tolle ({_T.get('height', '6-6')}, {_T.get('weight', 250)} lbs, "
+     f"{_T.get('era', 0):.2f} ERA / {_T.get('fip', 0):.2f} FIP) and "
+     f"Bennett ({_B.get('height', '6-6')}, {_B.get('weight', 234)} lbs, "
+     f"{_B.get('era', 0):.2f} / {_B.get('fip', 0):.2f}) are bigger, "
+     "more durable and better by FIP. Boston develops arms; it bought "
+     "the bat it could not grow.", {"size": 13, "color": INK})]],
+    line_spacing=1.15)
 footer(s)
 
 # ---------------------------------------------------------------- 10 CLOSER

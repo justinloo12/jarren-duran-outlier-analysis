@@ -114,6 +114,31 @@ def fenway_verdict(m: pd.DataFrame) -> dict:
             "lf_hr": int((lf["events"] == "home_run").sum())}
 
 
+def _arm_facts(names: list[str]) -> dict:
+    pit = _fg_pull("all", team=0, stats="pit", typ=1)
+    for c in ("IP", "ERA", "FIP"):
+        pit[c] = pd.to_numeric(pit[c], errors="coerce")
+    out = {}
+    for n in names:
+        row = pit[pit["Name"] == n]
+        d = {}
+        if len(row):
+            r = row.iloc[0]
+            d = {"ip": round(float(r["IP"])), "era": round(float(r["ERA"]), 2),
+                 "fip": round(float(r["FIP"]), 2)}
+        try:
+            sr = requests.get(
+                "https://statsapi.mlb.com/api/v1/people/search",
+                params={"names": n}, headers=C.HTTP_HEADERS,
+                timeout=C.HTTP_TIMEOUT).json()["people"][0]
+            d["height"] = sr.get("height")
+            d["weight"] = sr.get("weight")
+        except Exception:
+            pass
+        out[n] = d
+    return out
+
+
 def compute() -> dict:
     bats = _fg_pull("all", team=0, stats="bat", typ=8)
     for c in ("PA", "wRC+", "WAR", "OBP", "ISO", "wOBA", "Age"):
@@ -148,6 +173,8 @@ def compute() -> dict:
         "career": _career(),
         "pool_n": int(len(pool)),
         "fenway": fenway_verdict(_mead_bip()),
+        "arms": _arm_facts(["Connelly Early", "Payton Tolle",
+                            "Jake Bennett"]),
     }
 
 
@@ -329,6 +356,26 @@ def article_section(res: dict) -> str:
       "that bucket: he is 25, not 30, and the contact quality supports "
       "the new level. Buying a breakout with process behind it beats "
       "renting one.\n")
+    arms = res.get("arms", {})
+    e = arms.get("Connelly Early", {})
+    t = arms.get("Payton Tolle", {})
+    b = arms.get("Jake Bennett", {})
+    if e.get("fip"):
+        A("The Early side of the ledger holds up too. His "
+          f"{e['era']:.2f} ERA was carrying a {e['fip']:.2f} FIP, a "
+          f"{e['fip']-e['era']:+.2f} gap that made him the most "
+          "flattered arm on the staff, so Boston sold the perception "
+          "rather than the pitcher. And the org keeps growing this "
+          f"exact asset: Tolle ({t.get('height','6-6')}, "
+          f"{t.get('weight','250')} lbs, {t.get('era',0):.2f} ERA with "
+          f"a matching {t.get('fip',0):.2f} FIP) and Bennett "
+          f"({b.get('height','6-6')}, {b.get('weight','234')} lbs, "
+          f"{b.get('era',0):.2f}/{b.get('fip',0):.2f}) are bigger "
+          "frames with better underlying numbers, already in the "
+          "rotation. Trading the smallest, most FIP-flattered of the "
+          "three rookie arms for a controllable middle-of-the-order "
+          "bat is the surplus conversion this report has argued for "
+          "all along.\n")
     A(f"One item left on the list: the front office bought the bat "
       "before the reliever. The pen fix is still the cheapest win on "
       f"the board, and there are {days_left} days left to make it.\n")

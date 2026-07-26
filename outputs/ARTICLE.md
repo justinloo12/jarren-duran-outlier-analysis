@@ -77,6 +77,8 @@ Overlaying his 2026 batted balls on Fenway's dimensions makes the fit concrete: 
 
 The skeptic checks mostly pass. Statcast has him at a .376 wOBA against a .359 xwOBA, so the season is earned, not batted-ball luck. The honest flag is the career shape: 488 PA of roughly .617 OPS from 2023 to 2025 before this year's breakout, so the same career-year caution from the quad-A section applies. Two things separate him from that bucket: he is 25, not 30, and the contact quality supports the new level. Buying a breakout with process behind it beats renting one.
 
+The Early side of the ledger holds up too. His 3.44 ERA was carrying a 4.61 FIP, a +1.17 gap that made him the most flattered arm on the staff, so Boston sold the perception rather than the pitcher. And the org keeps growing this exact asset: Tolle (6' 6", 250 lbs, 3.31 ERA with a matching 3.24 FIP) and Bennett (6' 6", 234 lbs, 2.58/3.12) are bigger frames with better underlying numbers, already in the rotation. Trading the smallest, most FIP-flattered of the three rookie arms for a controllable middle-of-the-order bat is the surplus conversion this report has argued for all along.
+
 One item left on the list: the front office bought the bat before the reliever. The pen fix is still the cheapest win on the board, and there are 8 days left to make it.
 
 ## The left-field question

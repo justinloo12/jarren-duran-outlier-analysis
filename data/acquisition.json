@@ -29,5 +29,28 @@
     "upgrades": 11,
     "upgrade_outs": 5,
     "lf_hr": 8
+  },
+  "arms": {
+    "Connelly Early": {
+      "ip": 91,
+      "era": 3.44,
+      "fip": 4.61,
+      "height": "6' 3\"",
+      "weight": 195
+    },
+    "Payton Tolle": {
+      "ip": 89,
+      "era": 3.31,
+      "fip": 3.24,
+      "height": "6' 6\"",
+      "weight": 250
+    },
+    "Jake Bennett": {
+      "ip": 59,
+      "era": 2.58,
+      "fip": 3.12,
+      "height": "6' 6\"",
+      "weight": 234
+    }
   }
 }
