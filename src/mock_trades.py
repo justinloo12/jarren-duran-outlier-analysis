@@ -66,11 +66,12 @@ def _arm_line(r):
 
 
 def build() -> str:
-    bats = _bats(["Zach Neto", "Luis Arraez", "Shea Langeliers",
+    bats = _bats(["Zach Neto", "Shea Langeliers",
                   "Bobby Witt Jr.", "Elly De La Cruz"])
-    arms = _arms(["Payton Tolle", "Connelly Early", "Jake Bennett",
+    arms = _arms(["Payton Tolle", "Jake Bennett",
                   "Brayan Bello", "Sonny Gray", "Luke Weaver",
-                  "Daniel Lynch IV", "Aroldis Chapman"])
+                  "Daniel Lynch IV", "Aroldis Chapman",
+                  "Michael Wacha", "Kevin Gausman"])
 
     L = []
     A = L.append
@@ -88,17 +89,16 @@ def build() -> str:
     for n in ("Payton Tolle", "Jake Bennett",
               "Brayan Bello", "Sonny Gray"):
         A(f"- **{n}** — {_arm_line(arms[n])}")
-    A("\nThe needs, per the positional audit: a **shortstop-adjacent infield "
-      "bat** (the roster's biggest external hole) and **bullpen help** "
-      "(bottom half of MLB in reliever WAR). Catcher looks like a third "
-      "need on the audit — the bats are below the position's average — but "
-      "the battery data takes it off the list: the staff is thriving with "
-      "the Narváez/Wong tandem, and nearly every arm has a clear preferred "
-      "battery mate (see the walk-away section below). LF and DH need no "
-      "outside help either: Duran's regression sits behind a new Jahmai "
-      "Jones platoon with Anthony's return behind that, and at DH "
-      "Yoshida has quietly been an above-average hitter, with Gonzalez "
-      "covering the tougher lefties. Witt Jr. "
+    A("\nThe needs, post-Mead: **bullpen help** (bottom half of MLB in "
+      "reliever WAR, and Kelly is on the 60-day IL) and **rotation "
+      "innings** (Early traded, Crochet building back from rehab, "
+      "Sandoval still ramping). The infield bat is filled: Mead takes "
+      "that lane. Catcher looks like a need on the audit but the "
+      "battery data takes it off the list (see the walk-away below). "
+      "LF and DH need no outside help: Duran's regression sits behind "
+      "the Jahmai Jones platoon with Anthony's return behind that, and "
+      "Yoshida has quietly been above average with Gonzalez covering "
+      "the tougher lefties. Witt Jr. "
       f"({_bat_line(bats['Bobby Witt Jr.'])}) and De La Cruz "
       f"({_bat_line(bats['Elly De La Cruz'])}) top the seller SS list but "
       "are franchise players — named for completeness, not available.\n")
@@ -134,26 +134,23 @@ def build() -> str:
       "cheapest for the roster.\n")
 
     # ---- Trade 2 ----------------------------------------------------------
-    A("## Trade 2 — The stabilizer: rental bat for a buy-low arm\n")
-    A("> **Red Sox get:** 2B Luis Arraez "
-      f"({_bat_line(bats['Luis Arraez'])}; 1yr/$12M, free agent after "
-      "2026 — a pure rental)")
-    A("> **Giants get:** RHP Brayan Bello "
-      f"({_arm_line(arms['Brayan Bello'])}; controllable, change-of-scenery "
-      "candidate), Boston covers Arraez's remaining ~$5M\n")
-    A("**The math.** Arraez's rest-of-season is worth ~1.2 WAR ≈ $10M "
-      "against ~$5M of salary — modest surplus, rental price. Bello's 2026 "
-      "has been poor, but a controllable 27-year-old with mid-rotation "
-      "history carries $5–10M of option value a retooling San Francisco "
-      "can afford to wait on. Near-even swap.")
-    A("**The fit.** Arraez takes second while the Cheng/Monasterio "
-      "platoon bridges short until Mayer (10-day IL) returns — turning two "
-      "patchwork infield spots into one. No prospect cost at all.")
-    A("**Clubhouse cost: moderate — the first deal that touches the "
-      "room.** Bello leaves the active roster midseason, but he sits "
-      "outside the playoff rotation once Crochet and Sandoval are back, "
-      "and Arraez fills a spot currently held by a patchwork platoon, not "
-      "a hot regular. An add, not a reshuffle.\n")
+    A("## Trade 2 — The innings: a back-end starter\n")
+    A("> **Red Sox get:** RHP Michael Wacha "
+      f"({_arm_line(arms['Michael Wacha'])}; veteran innings, expiring "
+      "money per reporting, verify before publishing)")
+    A("> **Royals get:** a 40 FV prospect, Boston covers the remaining "
+      "salary\n")
+    A("**The math.** With Early traded, Crochet building back from "
+      "rehab and Sandoval still ramping, the rotation needs innings "
+      "more than upside. Wacha is the classic rental: a vet who takes "
+      "the ball every fifth day at roughly league average, priced at a "
+      "40 FV flier from a selling club. Buy-low alternative with more "
+      "upside: Toronto's Kevin Gausman "
+      f"({_arm_line(arms['Kevin Gausman'])}), whose FIP says he is "
+      "better than his surface line, the mirror image of the Early "
+      "sale.")
+    A("**Clubhouse cost: none.** A prospect out, an open rotation slot "
+      "filled. Nobody loses a job.\n")
 
     # ---- Trade 3 ----------------------------------------------------------
     A("## Trade 3 — The big swing: a real shortstop, at a real cost\n")
@@ -161,17 +158,17 @@ def build() -> str:
       f"({_bat_line(bats['Zach Neto'])}; $4.15M, arbitration-controlled "
       "through 2029)")
     A("> **Angels get:** LHP Payton Tolle "
-      f"({_arm_line(arms['Payton Tolle'])}), RHP Connelly Early "
-      f"({_arm_line(arms['Connelly Early'])}), plus a 45 FV lottery arm\n")
+      f"({_arm_line(arms['Payton Tolle'])}), LHP Jake Bennett "
+      f"({_arm_line(arms['Jake Bennett'])}), plus a 45 FV lottery arm\n")
     A("**The math.** Neto projects as a ~3.5-WAR shortstop with 3.5 cheap "
       "years of control after 2026 — roughly **$75–90M of surplus value**. "
       "Tolle is a breakout 23-year-old lefty (top-100 type, ~$45–55M), "
-      "Early a controllable mid-rotation arm (~$20M), plus ~$9M in FV: the "
+      "Bennett a controllable mid-rotation arm (~$25M), plus ~$9M in FV: the "
       "package lands in the same band. LA declined to extend Neto and is "
       "10.5 out — this is exactly when a rebuilding club cashes a "
       "26-and-under core piece for three arms.")
     A("**Clubhouse cost: high — the only deal on the menu that truly "
-      "disturbs a winning roster.** Tolle and Early are two arms out of "
+      "disturbs a winning roster.** Tolle and Bennett are two arms out of "
       "the active rotation in the middle of a race. The surplus-value "
       "math says yes; the disruption is the argument for waiting until "
       "winter. **Why Boston might do it anyway:** it converts two of "
@@ -187,6 +184,10 @@ def build() -> str:
     except FileNotFoundError:
         batt = None
     A("## The walk-away — the catcher \"upgrade\" we're not making\n")
+    A("*Update, July 26: the market settled this one. Langeliers went "
+      "on the 10-day IL with a torn right meniscus, so the deal below "
+      "is academic. The analysis stands as the reason Boston was right "
+      "not to chase it earlier.*\n")
     A("> **The deal that was on the menu:** C Shea Langeliers "
       f"({_bat_line(bats['Shea Langeliers'])}; $5.25M, controlled through "
       "2028) from the A's for LHP Jake Bennett "
@@ -253,8 +254,8 @@ def build() -> str:
       "that message has a cost of its own.\n")
 
     A("---\n*Contracts: Neto $4.15M arb-controlled through 2029 (avoided "
-      "arbitration Jan 2026); Arraez 1yr/$12M (SF, Feb 2026); Weaver "
-      "2yr/$22M through 2027 (NYM); Langeliers $5.25M, controlled through "
+      "arbitration Jan 2026); Weaver 2yr/$22M through 2027 (NYM); Wacha "
+      "expiring money (KC, verify); Langeliers $5.25M through "
       "2028 — all per public reporting as of the generation date. Stats "
       "refresh on every pipeline run; verify contracts before publishing. "
       "These are analytical hypotheticals, not reported rumors.*")
@@ -268,18 +269,19 @@ def article_section(md: str) -> str:
     A("\n## Three trades that fit, and one to skip\n")
     A("A team holding a playoff spot has a roster that works, so "
       "disruption is priced like a cost here. The right deadline is "
-      "small. The menu, ordered from least to most disturbance (full "
-      "value math in the mock-trades memo):\n")
+      "small. The first two below are the needs; the third is the "
+      "luxury (full value math in the mock-trades memo):\n")
     A("1. **The pen fix (zero disruption, do it):** a 45 FV + 40 FV "
       "prospect package to the selling Mets for Luke Weaver (elite relief "
       "season, signed through 2027). Nobody in the room loses a job or an "
       "inning, and it is the most reliable marginal win available.")
-    A("2. **The stabilizer (moderate, if the price holds):** Brayan "
-      "Bello to the Giants for rental Luis Arraez. Zero prospect cost, "
-      "and Arraez fills a patchwork platoon spot rather than displacing a "
-      "hot regular. The first deal that subtracts from the active roster.")
-    A("3. **The big swing (high, probably wait):** Payton Tolle + "
-      "Connelly Early + a lottery arm to the Angels for SS Zach Neto "
+    A("2. **The innings (zero disruption):** a 40 FV flier to Kansas "
+      "City for Michael Wacha, a veteran back-end starter to cover the "
+      "slot Early left while Crochet and Sandoval build back. Buy-low "
+      "alternative: Gausman, whose FIP runs ahead of his ERA, the "
+      "mirror image of the Early sale.")
+    A("3. **The shortstop (high, probably wait):** Payton Tolle + "
+      "Jake Bennett + a lottery arm to the Angels for SS Zach Neto "
       "(controlled through 2029). Right for the franchise window on "
       "paper, but it pulls two arms out of a winning rotation during a "
       "race, and the same trade will still be there in the winter.")
@@ -294,7 +296,9 @@ def article_section(md: str) -> str:
         adj = ("an adjusted model with pitcher, opponent and park "
                "controls finds no significant catcher effect")
     A("\nAnd the walk-away: the Langeliers catcher \"upgrade\" the "
-      "positional audit seems to demand. The battery data is the veto. "
+      "positional audit seems to demand (now academic anyway: he went "
+      "on the IL July 26 with a torn meniscus). The battery data was "
+      "always the veto. "
       "Nearly every Boston arm works with a settled catcher (fig. 14), "
       f"and {adj}. There is no catcher problem to fix (fig. 15). Wong "
       "already out-hits the league catcher bar; the gap is all "

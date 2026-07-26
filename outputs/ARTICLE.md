@@ -53,13 +53,13 @@ This is the strongest argument for buying real reinforcements rather than standi
 
 ## Three trades that fit, and one to skip
 
-A team holding a playoff spot has a roster that works, so disruption is priced like a cost here. The right deadline is small. The menu, ordered from least to most disturbance (full value math in the mock-trades memo):
+A team holding a playoff spot has a roster that works, so disruption is priced like a cost here. The right deadline is small. The first two below are the needs; the third is the luxury (full value math in the mock-trades memo):
 
 1. **The pen fix (zero disruption, do it):** a 45 FV + 40 FV prospect package to the selling Mets for Luke Weaver (elite relief season, signed through 2027). Nobody in the room loses a job or an inning, and it is the most reliable marginal win available.
-2. **The stabilizer (moderate, if the price holds):** Brayan Bello to the Giants for rental Luis Arraez. Zero prospect cost, and Arraez fills a patchwork platoon spot rather than displacing a hot regular. The first deal that subtracts from the active roster.
-3. **The big swing (high, probably wait):** Payton Tolle + Connelly Early + a lottery arm to the Angels for SS Zach Neto (controlled through 2029). Right for the franchise window on paper, but it pulls two arms out of a winning rotation during a race, and the same trade will still be there in the winter.
+2. **The innings (zero disruption):** a 40 FV flier to Kansas City for Michael Wacha, a veteran back-end starter to cover the slot Early left while Crochet and Sandoval build back. Buy-low alternative: Gausman, whose FIP runs ahead of his ERA, the mirror image of the Early sale.
+3. **The shortstop (high, probably wait):** Payton Tolle + Jake Bennett + a lottery arm to the Angels for SS Zach Neto (controlled through 2029). Right for the franchise window on paper, but it pulls two arms out of a winning rotation during a race, and the same trade will still be there in the winter.
 
-And the walk-away: the Langeliers catcher "upgrade" the positional audit seems to demand. The battery data is the veto. Nearly every Boston arm works with a settled catcher (fig. 14), and an adjusted model (pitcher, opponent and park controls) puts the overall catcher effect at -31 points of wOBA-against with a confidence interval that crosses zero. There is no catcher problem to fix (fig. 15). Wong already out-hits the league catcher bar; the gap is all Narváez, whose value is the glove. And a genuine power-hitting catcher costs a controllable arm plus a prospect, money that buys more win in the bullpen. No August bat is worth resetting a working staff.
+And the walk-away: the Langeliers catcher "upgrade" the positional audit seems to demand (now academic anyway: he went on the IL July 26 with a torn meniscus). The battery data was always the veto. Nearly every Boston arm works with a settled catcher (fig. 14), and an adjusted model (pitcher, opponent and park controls) puts the overall catcher effect at -31 points of wOBA-against with a confidence interval that crosses zero. There is no catcher problem to fix (fig. 15). Wong already out-hits the league catcher bar; the gap is all Narváez, whose value is the glove. And a genuine power-hitting catcher costs a controllable arm plus a prospect, money that buys more win in the bullpen. No August bat is worth resetting a working staff.
 
 And the contingency: if the gap hits six games by August 1, the sell list is Gray and Chapman, the rentals, and it stops there.
 

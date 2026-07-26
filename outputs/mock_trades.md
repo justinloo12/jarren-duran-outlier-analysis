@@ -10,7 +10,7 @@ Boston's tradeable surplus is **starting pitching**: seven viable starters for f
 - **Brayan Bello** — 5.60 ERA / 4.79 FIP, 0.1 WAR in 70 IP, age 27
 - **Sonny Gray** — 2.78 ERA / 3.70 FIP, 1.8 WAR in 106 IP, age 36
 
-The needs, per the positional audit: a **shortstop-adjacent infield bat** (the roster's biggest external hole) and **bullpen help** (bottom half of MLB in reliever WAR). Catcher looks like a third need on the audit — the bats are below the position's average — but the battery data takes it off the list: the staff is thriving with the Narváez/Wong tandem, and nearly every arm has a clear preferred battery mate (see the walk-away section below). LF and DH need no outside help either: Duran's regression sits behind a new Jahmai Jones platoon with Anthony's return behind that, and at DH Yoshida has quietly been an above-average hitter, with Gonzalez covering the tougher lefties. Witt Jr. (119 wRC+, 4.7 WAR in 414 PA, age 26) and De La Cruz (128 wRC+, 3.5 WAR in 376 PA, age 24) top the seller SS list but are franchise players — named for completeness, not available.
+The needs, post-Mead: **bullpen help** (bottom half of MLB in reliever WAR, and Kelly is on the 60-day IL) and **rotation innings** (Early traded, Crochet building back from rehab, Sandoval still ramping). The infield bat is filled: Mead takes that lane. Catcher looks like a need on the audit but the battery data takes it off the list (see the walk-away below). LF and DH need no outside help: Duran's regression sits behind the Jahmai Jones platoon with Anthony's return behind that, and Yoshida has quietly been above average with Gonzalez covering the tougher lefties. Witt Jr. (119 wRC+, 4.7 WAR in 414 PA, age 26) and De La Cruz (128 wRC+, 3.5 WAR in 376 PA, age 24) top the seller SS list but are franchise players — named for completeness, not available.
 
 **The disruption constraint.** A team holding a playoff spot in late July has a roster that works, and disruption is a cost even though it never shows up in a WAR column. Every deal below is graded on both ledgers, value and disruption, and the menu is **ranked by the second**: prospects out before big-leaguers, open spots before occupied ones, nobody demoted while the team is winning.
 
@@ -24,24 +24,25 @@ Three live trades and one deliberate pass make the menu — a menu, not a plan. 
 **The math.** Weaver is having an elite relief season on a selling Mets club that reporting already lists as motivated to move him. A year-and-a-half of a 2.5-FIP reliever is worth ~$15–18M against ~$18M of salary — the prospect price is real but mid-tier, not painful. Cheaper alternative from the same pool: KC's Daniel Lynch IV (2.08 ERA / 3.11 FIP, 0.8 WAR in 43 IP, age 29) for a 40 FV flier.
 **Clubhouse cost: none.** The package is entirely minor-leaguers. Nobody in the major-league room loses a job, a role, or an inning; the bullpen simply gets deeper for the stretch run. It also lands at the roster's quiet weakness — the pen's ERA is masking a worse FIP and bottom-half reliever WAR. In a race decided by two or three wins, this is the surest marginal win on the board and the cheapest for the roster.
 
-## Trade 2 — The stabilizer: rental bat for a buy-low arm
+## Trade 2 — The innings: a back-end starter
 
-> **Red Sox get:** 2B Luis Arraez (122 wRC+, 3.7 WAR in 433 PA, age 29; 1yr/$12M, free agent after 2026 — a pure rental)
-> **Giants get:** RHP Brayan Bello (5.60 ERA / 4.79 FIP, 0.1 WAR in 70 IP, age 27; controllable, change-of-scenery candidate), Boston covers Arraez's remaining ~$5M
+> **Red Sox get:** RHP Michael Wacha (3.60 ERA / 4.08 FIP, 1.9 WAR in 132 IP, age 34; veteran innings, expiring money per reporting, verify before publishing)
+> **Royals get:** a 40 FV prospect, Boston covers the remaining salary
 
-**The math.** Arraez's rest-of-season is worth ~1.2 WAR ≈ $10M against ~$5M of salary — modest surplus, rental price. Bello's 2026 has been poor, but a controllable 27-year-old with mid-rotation history carries $5–10M of option value a retooling San Francisco can afford to wait on. Near-even swap.
-**The fit.** Arraez takes second while the Cheng/Monasterio platoon bridges short until Mayer (10-day IL) returns — turning two patchwork infield spots into one. No prospect cost at all.
-**Clubhouse cost: moderate — the first deal that touches the room.** Bello leaves the active roster midseason, but he sits outside the playoff rotation once Crochet and Sandoval are back, and Arraez fills a spot currently held by a patchwork platoon, not a hot regular. An add, not a reshuffle.
+**The math.** With Early traded, Crochet building back from rehab and Sandoval still ramping, the rotation needs innings more than upside. Wacha is the classic rental: a vet who takes the ball every fifth day at roughly league average, priced at a 40 FV flier from a selling club. Buy-low alternative with more upside: Toronto's Kevin Gausman (4.51 ERA / 3.68 FIP, 2.2 WAR in 115 IP, age 35), whose FIP says he is better than his surface line, the mirror image of the Early sale.
+**Clubhouse cost: none.** A prospect out, an open rotation slot filled. Nobody loses a job.
 
 ## Trade 3 — The big swing: a real shortstop, at a real cost
 
 > **Red Sox get:** SS Zach Neto (115 wRC+, 2.0 WAR in 457 PA, age 25; $4.15M, arbitration-controlled through 2029)
-> **Angels get:** LHP Payton Tolle (3.31 ERA / 3.24 FIP, 2.3 WAR in 89 IP, age 23), RHP Connelly Early (3.44 ERA / 4.61 FIP, 0.7 WAR in 91 IP, age 24), plus a 45 FV lottery arm
+> **Angels get:** LHP Payton Tolle (3.31 ERA / 3.24 FIP, 2.3 WAR in 89 IP, age 23), LHP Jake Bennett (2.58 ERA / 3.12 FIP, 1.6 WAR in 59 IP, age 25), plus a 45 FV lottery arm
 
-**The math.** Neto projects as a ~3.5-WAR shortstop with 3.5 cheap years of control after 2026 — roughly **$75–90M of surplus value**. Tolle is a breakout 23-year-old lefty (top-100 type, ~$45–55M), Early a controllable mid-rotation arm (~$20M), plus ~$9M in FV: the package lands in the same band. LA declined to extend Neto and is 10.5 out — this is exactly when a rebuilding club cashes a 26-and-under core piece for three arms.
-**Clubhouse cost: high — the only deal on the menu that truly disturbs a winning roster.** Tolle and Early are two arms out of the active rotation in the middle of a race. The surplus-value math says yes; the disruption is the argument for waiting until winter. **Why Boston might do it anyway:** it converts two of eight starters into the roster's only real external hole, and Neto arrives controlled through the entire Anthony/Rafaela/Abreu window. **Why they might not:** if the org believes Mayer is the shortstop, this is paying retail for a redundancy and paying part of the bill in disruption.
+**The math.** Neto projects as a ~3.5-WAR shortstop with 3.5 cheap years of control after 2026 — roughly **$75–90M of surplus value**. Tolle is a breakout 23-year-old lefty (top-100 type, ~$45–55M), Bennett a controllable mid-rotation arm (~$25M), plus ~$9M in FV: the package lands in the same band. LA declined to extend Neto and is 10.5 out — this is exactly when a rebuilding club cashes a 26-and-under core piece for three arms.
+**Clubhouse cost: high — the only deal on the menu that truly disturbs a winning roster.** Tolle and Bennett are two arms out of the active rotation in the middle of a race. The surplus-value math says yes; the disruption is the argument for waiting until winter. **Why Boston might do it anyway:** it converts two of eight starters into the roster's only real external hole, and Neto arrives controlled through the entire Anthony/Rafaela/Abreu window. **Why they might not:** if the org believes Mayer is the shortstop, this is paying retail for a redundancy and paying part of the bill in disruption.
 
 ## The walk-away — the catcher "upgrade" we're not making
+
+*Update, July 26: the market settled this one. Langeliers went on the 10-day IL with a torn right meniscus, so the deal below is academic. The analysis stands as the reason Boston was right not to chase it earlier.*
 
 > **The deal that was on the menu:** C Shea Langeliers (127 wRC+, 2.8 WAR in 416 PA, age 28; $5.25M, controlled through 2028) from the A's for LHP Jake Bennett (2.58 ERA / 3.12 FIP, 1.6 WAR in 59 IP, age 25) plus a 45 FV prospect
 
@@ -58,4 +59,4 @@ Three live trades and one deliberate pass make the menu — a menu, not a plan. 
 Selling the rentals is the *only* sell branch; the audit gives no case for moving Contreras, Duran, or any controllable starter at this deadline. The chemistry ledger doubles the point. Trading your best hitter out of a playoff race would tell the clubhouse exactly what the front office thinks of it, and that message has a cost of its own.
 
 ---
-*Contracts: Neto $4.15M arb-controlled through 2029 (avoided arbitration Jan 2026); Arraez 1yr/$12M (SF, Feb 2026); Weaver 2yr/$22M through 2027 (NYM); Langeliers $5.25M, controlled through 2028 — all per public reporting as of the generation date. Stats refresh on every pipeline run; verify contracts before publishing. These are analytical hypotheticals, not reported rumors.*
+*Contracts: Neto $4.15M arb-controlled through 2029 (avoided arbitration Jan 2026); Weaver 2yr/$22M through 2027 (NYM); Wacha expiring money (KC, verify); Langeliers $5.25M through 2028 — all per public reporting as of the generation date. Stats refresh on every pipeline run; verify contracts before publishing. These are analytical hypotheticals, not reported rumors.*

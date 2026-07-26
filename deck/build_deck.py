@@ -566,19 +566,19 @@ trades = [
      "For a 45 FV + 40 FV, prospects only, nobody loses a job or an "
      "inning. Elite relief year, signed through '27. The highest-"
      "probability marginal win on the board."),
-    ("2 · The stabilizer · if the price holds", "2B Luis Arraez (SFG)",
+    ("2 · The innings · fills Early's slot", "RHP Michael Wacha (KCR)",
      NAVY,
-     "For Brayan Bello, the first deal that touches the active roster. "
-     "Zero prospect cost; Arraez fills a patchwork platoon spot, not a "
-     "hot regular's."),
-    ("3 · The big swing · probably wait", "SS Zach Neto (LAA)", RED,
+     "A 40 FV flier for a veteran back-end starter while Crochet and "
+     "Sandoval build back. Buy-low alt: Gausman, whose FIP beats his "
+     "ERA, the mirror of the Early sale."),
+    ("3 · The shortstop · probably wait", "SS Zach Neto (LAA)", RED,
      "For Tolle + Bennett + a 45 FV: two arms out of a winning "
      "rotation midseason. Right for the franchise window, and still "
      "there in the winter. Controlled through 2029."),
     ("✗ · The walk-away", "C Shea Langeliers (ATH)", GOLD,
-     "The value math worked; the battery map is the veto. No August bat "
-     "is worth resetting eight pitcher-catcher pairings on a staff "
-     "carrying the season.")]
+     "The battery map was the veto, and the market agreed: torn "
+     "meniscus, 10-day IL on July 26. Boston was right not to pay for "
+     "a catcher bat it never needed.")]
 cw, ch = 5.86, 2.12
 pos = [(0.62, 1.85), (0.62 + cw + 0.33, 1.85),
        (0.62, 1.85 + ch + 0.28), (0.62 + cw + 0.33, 1.85 + ch + 0.28)]
