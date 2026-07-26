@@ -606,8 +606,8 @@ tx = 8.75
 _mf = _ACQ["fg"]
 finds = [("The deal", RED,
           f"Curtis Mead ({_ACQ['age']}) from Washington for Connelly "
-          f"Early: one surplus arm for a {_mf['wRC+']} wRC+ infield bat "
-          "with years of club control."),
+          f"Early: one surplus arm for a former top-100 prospect at a "
+          f"{_mf['wRC+']} wRC+ with years of club control."),
          ("The Fenway fit", NAVY,
           f"{_ACQ['pull_air_rate']*100:.0f}% pull-air rate "
           f"({ordn(_ACQ['pull_air_pctile'])} pctile). Replaying his "
@@ -653,7 +653,8 @@ data = [(0.62, "What they gave: Connelly Early", RED,
            "other arms don't carry.")]),
         (0.62 + cw + 0.33, "What they got: Curtis Mead", GREEN,
          [("A controllable, earned bat.",
-           f"{_ACQ['fg']['wRC+']} wRC+ at {_ACQ['age']}, backed by a "
+           f"Former top-100 prospect, {_ACQ['fg']['wRC+']} wRC+ at "
+           f"{_ACQ['age']}, backed by a "
            f".{int(_ACQ['xwoba']*1000)} xwOBA. Years of club control "
            "at the position the audit flagged."),
           ("Built for the park.",

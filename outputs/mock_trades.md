@@ -22,7 +22,9 @@ Three live trades and one deliberate pass make the menu — a menu, not a plan. 
 > **Mets get:** a 45 FV bat plus a 40 FV arm (~$13M of prospect value)
 
 **The math.** Weaver is having an elite relief season on a selling Mets club that reporting already lists as motivated to move him. A year-and-a-half of a 2.5-FIP reliever is worth ~$15–18M against ~$18M of salary — the prospect price is real but mid-tier, not painful. Cheaper alternative from the same pool: KC's Daniel Lynch IV (2.08 ERA / 3.11 FIP, 0.8 WAR in 43 IP, age 29) for a 40 FV flier.
-**Clubhouse cost: none.** The package is entirely minor-leaguers. Nobody in the major-league room loses a job, a role, or an inning; the bullpen simply gets deeper for the stretch run. It also lands at the roster's quiet weakness — the pen's ERA is masking a worse FIP and bottom-half reliever WAR. In a race decided by two or three wins, this is the surest marginal win on the board and the cheapest for the roster.
+**Package options.** (A) The clean one: a 45 FV bat plus a 40 FV arm, all minor-leaguers, roughly $13M of prospect value for $15-18M of reliever. (B) The roster version: Brayan Bello plus a 40 FV, spending the surplus arm instead of the farm; near-even on value but it touches the active roster.
+**Elsewhere in the lane.** Premium and controllable: Toronto's Louie Varland (1.04 ERA / 1.41 FIP, 2.3 WAR in 52 IP, age 28), a bigger prospect price for multiple years of a dominant arm. Cheap rental: Tyler Rogers (1.54 ERA / 2.83 FIP, 1.0 WAR in 46 IP, age 35) for a single 40 FV flier.
+**Clubhouse cost: none** on option A. The bullpen simply gets deeper at its quiet weakness: the pen's ERA is masking a worse FIP and bottom-half reliever WAR. In a race decided by two or three wins, this is the surest marginal win on the board.
 
 ## Trade 2 — The innings: a back-end starter
 
@@ -38,7 +40,9 @@ Three live trades and one deliberate pass make the menu — a menu, not a plan. 
 > **Angels get:** LHP Payton Tolle (3.31 ERA / 3.24 FIP, 2.3 WAR in 89 IP, age 23), LHP Jake Bennett (2.58 ERA / 3.12 FIP, 1.6 WAR in 59 IP, age 25), plus a 45 FV lottery arm
 
 **The math.** Neto projects as a ~3.5-WAR shortstop with 3.5 cheap years of control after 2026 — roughly **$75–90M of surplus value**. Tolle is a breakout 23-year-old lefty (top-100 type, ~$45–55M), Bennett a controllable mid-rotation arm (~$25M), plus ~$9M in FV: the package lands in the same band. LA declined to extend Neto and is 10.5 out — this is exactly when a rebuilding club cashes a 26-and-under core piece for three arms.
-**Clubhouse cost: high — the only deal on the menu that truly disturbs a winning roster.** Tolle and Bennett are two arms out of the active rotation in the middle of a race. The surplus-value math says yes; the disruption is the argument for waiting until winter. **Why Boston might do it anyway:** it converts two of eight starters into the roster's only real external hole, and Neto arrives controlled through the entire Anthony/Rafaela/Abreu window. **Why they might not:** if the org believes Mayer is the shortstop, this is paying retail for a redundancy and paying part of the bill in disruption.
+**Package options.** (A) Arms-only: Tolle + Bennett + a 45 FV lottery arm, roughly the $75-90M band. (B) The Mayer version: Marcelo Mayer + Tolle + a 40 FV; Neto's arrival makes Mayer redundant at short anyway, so this spends the blocked prospect and keeps Bennett in the rotation. Similar value, less 2026 disruption, more long-term risk if Mayer hits.
+**Elsewhere in the lane.** Miami's Otto Lopez (133 wRC+, 4.4 WAR in 437 PA, age 27) is the realistic controllable alternative at a materially lower price; Texas's Ezequiel Duran (113 wRC+, 2.8 WAR in 357 PA, age 27) is the budget utility version.
+**Clubhouse cost: high on either package.** The surplus-value math says yes; the disruption is the argument for waiting until winter. **Why Boston might do it anyway:** it converts rotation surplus into the one real external hole, and Neto arrives controlled through the entire Anthony/Rafaela/Abreu window. **Why they might not:** if the org believes Mayer is the shortstop, this is paying retail for a redundancy.
 
 ## The walk-away — the catcher "upgrade" we're not making
 

@@ -66,12 +66,14 @@ def _arm_line(r):
 
 
 def build() -> str:
-    bats = _bats(["Zach Neto", "Shea Langeliers",
+    bats = _bats(["Zach Neto", "Shea Langeliers", "Otto Lopez",
+                  "Ezequiel Duran",
                   "Bobby Witt Jr.", "Elly De La Cruz"])
     arms = _arms(["Payton Tolle", "Jake Bennett",
                   "Brayan Bello", "Sonny Gray", "Luke Weaver",
                   "Daniel Lynch IV", "Aroldis Chapman",
-                  "Michael Wacha", "Kevin Gausman"])
+                  "Michael Wacha", "Kevin Gausman",
+                  "Louie Varland", "Tyler Rogers"])
 
     L = []
     A = L.append
@@ -125,13 +127,20 @@ def build() -> str:
       "~$18M of salary — the prospect price is real but mid-tier, not "
       "painful. Cheaper alternative from the same pool: KC's Daniel Lynch "
       f"IV ({_arm_line(arms['Daniel Lynch IV'])}) for a 40 FV flier.")
-    A("**Clubhouse cost: none.** The package is entirely minor-leaguers. "
-      "Nobody in the major-league room loses a job, a role, or an inning; "
-      "the bullpen simply gets deeper for the stretch run. It also lands "
-      "at the roster's quiet weakness — the pen's ERA is masking a worse "
+    A("**Package options.** (A) The clean one: a 45 FV bat plus a 40 FV "
+      "arm, all minor-leaguers, roughly $13M of prospect value for "
+      "$15-18M of reliever. (B) The roster version: Brayan Bello plus a "
+      "40 FV, spending the surplus arm instead of the farm; near-even "
+      "on value but it touches the active roster.")
+    A("**Elsewhere in the lane.** Premium and controllable: Toronto's "
+      f"Louie Varland ({_arm_line(arms['Louie Varland'])}), a bigger "
+      "prospect price for multiple years of a dominant arm. Cheap "
+      f"rental: Tyler Rogers ({_arm_line(arms['Tyler Rogers'])}) for a "
+      "single 40 FV flier.")
+    A("**Clubhouse cost: none** on option A. The bullpen simply gets "
+      "deeper at its quiet weakness: the pen's ERA is masking a worse "
       "FIP and bottom-half reliever WAR. In a race decided by two or "
-      "three wins, this is the surest marginal win on the board and the "
-      "cheapest for the roster.\n")
+      "three wins, this is the surest marginal win on the board.\n")
 
     # ---- Trade 2 ----------------------------------------------------------
     A("## Trade 2 — The innings: a back-end starter\n")
@@ -167,16 +176,24 @@ def build() -> str:
       "package lands in the same band. LA declined to extend Neto and is "
       "10.5 out — this is exactly when a rebuilding club cashes a "
       "26-and-under core piece for three arms.")
-    A("**Clubhouse cost: high — the only deal on the menu that truly "
-      "disturbs a winning roster.** Tolle and Bennett are two arms out of "
-      "the active rotation in the middle of a race. The surplus-value "
+    A("**Package options.** (A) Arms-only: Tolle + Bennett + a 45 FV "
+      "lottery arm, roughly the $75-90M band. (B) The Mayer version: "
+      "Marcelo Mayer + Tolle + a 40 FV; Neto's arrival makes Mayer "
+      "redundant at short anyway, so this spends the blocked prospect "
+      "and keeps Bennett in the rotation. Similar value, less 2026 "
+      "disruption, more long-term risk if Mayer hits.")
+    A("**Elsewhere in the lane.** Miami's Otto Lopez "
+      f"({_bat_line(bats['Otto Lopez'])}) is the realistic controllable "
+      "alternative at a materially lower price; Texas's Ezequiel Duran "
+      f"({_bat_line(bats['Ezequiel Duran'])}) is the budget utility "
+      "version.")
+    A("**Clubhouse cost: high on either package.** The surplus-value "
       "math says yes; the disruption is the argument for waiting until "
-      "winter. **Why Boston might do it anyway:** it converts two of "
-      "eight starters into the roster's only real external hole, and Neto "
-      "arrives controlled through the entire Anthony/Rafaela/Abreu "
-      "window. **Why they might not:** if the org believes Mayer is the "
-      "shortstop, this is paying retail for a redundancy and paying part "
-      "of the bill in disruption.\n")
+      "winter. **Why Boston might do it anyway:** it converts rotation "
+      "surplus into the one real external hole, and Neto arrives "
+      "controlled through the entire Anthony/Rafaela/Abreu window. "
+      "**Why they might not:** if the org believes Mayer is the "
+      "shortstop, this is paying retail for a redundancy.\n")
 
     # ---- The walk-away ----------------------------------------------------
     try:
@@ -273,18 +290,21 @@ def article_section(md: str) -> str:
       "luxury (full value math in the mock-trades memo):\n")
     A("1. **The pen fix (zero disruption, do it):** a 45 FV + 40 FV "
       "prospect package to the selling Mets for Luke Weaver (elite relief "
-      "season, signed through 2027). Nobody in the room loses a job or an "
-      "inning, and it is the most reliable marginal win available.")
+      "season, signed through 2027), or Bello plus a 40 FV if the farm "
+      "stays closed. Bigger swing: Toronto's Louie Varland, controllable "
+      "and dominant, at a steeper prospect price. Cheap version: rental "
+      "Tyler Rogers for one 40 FV.")
     A("2. **The innings (zero disruption):** a 40 FV flier to Kansas "
       "City for Michael Wacha, a veteran back-end starter to cover the "
       "slot Early left while Crochet and Sandoval build back. Buy-low "
       "alternative: Gausman, whose FIP runs ahead of his ERA, the "
       "mirror image of the Early sale.")
-    A("3. **The shortstop (high, probably wait):** Payton Tolle + "
-      "Jake Bennett + a lottery arm to the Angels for SS Zach Neto "
-      "(controlled through 2029). Right for the franchise window on "
-      "paper, but it pulls two arms out of a winning rotation during a "
-      "race, and the same trade will still be there in the winter.")
+    A("3. **The shortstop (high, probably wait):** Zach Neto from the "
+      "Angels (controlled through 2029) for Tolle + Bennett + a lottery "
+      "arm, or the Mayer version (Mayer + Tolle + a 40 FV) since Neto "
+      "would block him anyway. Cheaper lane: Miami's Otto Lopez at a "
+      "fraction of the price. Right for the franchise window on paper, "
+      "but the same trades will still be there in the winter.")
     try:
         fe = json.load(open(C.DATA_DIR / "battery_model.json"))["fe"]
         adj = (f"an adjusted model (pitcher, opponent and park controls) "
