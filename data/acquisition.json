@@ -28,6 +28,7 @@
     "wall_zone": 13,
     "upgrades": 11,
     "upgrade_outs": 5,
+    "upgrade_singles": 0,
     "lf_hr": 8
   },
   "arms": {
@@ -52,5 +53,12 @@
       "height": "6' 6\"",
       "weight": 234
     }
+  },
+  "fenway_proj": {
+    "woba_now": 0.376,
+    "woba_all_fenway": 0.395,
+    "woba_half_home": 0.386,
+    "delta_full_pts": 19,
+    "n_pa": 327
   }
 }

@@ -73,6 +73,8 @@ The park fit is the interesting part. Mead is a right-handed hitter who puts **2
 
 Overlaying his 2026 batted balls on Fenway's dimensions makes the fit concrete: **11 of his air balls to left field reached wall depth (300 to 380 feet) without leaving the parks he played in, and 5 of those were caught.** At Fenway that contact lives on the Monster: doubles off the wall instead of warning-track outs. Landing points are from Savant hit coordinates, so treat the count as approximate (fig. 19).
 
+Put a number on the park factor: replay just those Monster-zone balls as wall doubles and his season line moves from a .376 wOBA to .395 if every one played at Fenway, or about .386 over a realistic half-home schedule. Call it roughly 9-19 points of wOBA from the park before any change in approach, using linear weights on the reclassified outcomes.
+
 ![Mead at Fenway](figures/19_mead_fenway.png)
 
 The skeptic checks mostly pass. Statcast has him at a .376 wOBA against a .359 xwOBA, so the season is earned, not batted-ball luck. The honest flag is the career shape: 488 PA of roughly .617 OPS from 2023 to 2025 before this year's breakout, so the same career-year caution from the quad-A section applies. Two things separate him from that bucket: he is 25, not 30, and the contact quality supports the new level. Buying a breakout with process behind it beats renting one.

@@ -607,10 +607,12 @@ finds = [("The deal", RED,
           f"Early: one surplus arm for a {_mf['wRC+']} wRC+ infield bat "
           "with years of club control."),
          ("The Fenway fit", NAVY,
-          f"{_ACQ['pull_air_rate']*100:.0f}% pull-air rate, "
-          f"{ordn(_ACQ['pull_air_pctile'])} percentile, with a "
-          f".{int(_ACQ['wobacon_pull_air']*1000)} wOBA on pulled air "
-          "balls. RHB pull-air plays to the Monster."),
+          f"{_ACQ['pull_air_rate']*100:.0f}% pull-air rate "
+          f"({ordn(_ACQ['pull_air_pctile'])} pctile). Replaying his "
+          "Monster-zone contact as wall doubles takes him from a "
+          f".{int(_ACQ['fenway_proj']['woba_now']*1000)} wOBA to about "
+          f".{int(_ACQ['fenway_proj']['woba_half_home']*1000)} on a "
+          "half-home schedule."),
          ("Earned, mostly", GOLD,
           f".{int(_ACQ['woba']*1000)} wOBA against a "
           f".{int(_ACQ['xwoba']*1000)} xwOBA, so the breakout has "

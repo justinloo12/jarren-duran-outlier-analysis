@@ -124,48 +124,54 @@ def compute(df: pd.DataFrame) -> dict:
 def fig_battery(res: dict):
     cats = ["Carlos Narváez", "Connor Wong"]
     colors = {"Carlos Narváez": S.RED, "Connor Wong": S.NAVY}
+    skip = {"Connelly Early", "Garrett Crochet", "Garrett Crochet (2025)"}
     rows = [(p, b) for p, b in res["batteries"].items()
-            if any(c in b for c in cats) and p != "Connelly Early"]
+            if any(c in b for c in cats) and p not in skip]
     lg_ra9 = res.get("league_ra9")
-    headroom = 0.9  # keep the top row's IP labels clear of the title
-    fig, ax = plt.subplots(figsize=(9, 5.4))
-    ys = range(len(rows))
-    for y, (p, b) in zip(ys, rows):
+    n = len(rows)
+    fig, ax = plt.subplots(figsize=(10.2, 1.35 + 0.82 * n))
+    for y in range(n):
+        if y % 2 == 0:
+            ax.axhspan(y - 0.5, y + 0.5, color=S.FAINT, zorder=0)
+    for y, (p, b) in zip(range(n), rows):
         pts = [(c, b[c]["RA9"]) for c in cats if c in b]
         if len(pts) == 2:
             ax.plot([pts[0][1], pts[1][1]], [y, y], color=S.GREY,
-                    lw=2, zorder=1, alpha=0.6)
-        close = len(pts) == 2 and abs(pts[0][1] - pts[1][1]) < 0.9
+                    lw=2.4, zorder=2, alpha=0.7)
+        close = len(pts) == 2 and abs(pts[0][1] - pts[1][1]) < 1.1
         for k, (c, ra9) in enumerate(pts):
-            ax.scatter(ra9, y, s=110, color=colors[c], zorder=3)
-            dy = 11 if (not close or k == 0) else -19
-            ax.annotate(f"{b[c]['IP']:.0f} IP", (ra9, y),
+            ax.scatter(ra9, y, s=150, color=colors[c], zorder=4,
+                       edgecolors="white", linewidths=1.2)
+            dy = 14 if (not close or k == 0) else -22
+            ax.annotate(f"{ra9:.2f}  ({b[c]['IP']:.0f} IP)", (ra9, y),
                         textcoords="offset points", xytext=(0, dy),
-                        ha="center", fontsize=8.5, color=S.MUTED)
+                        ha="center", fontsize=9.5, color=S.MUTED)
     if lg_ra9:
         ax.axvline(lg_ra9, color=S.SPINE, lw=1.4, ls=":", zorder=1)
-        ax.annotate(f"staff avg {lg_ra9:.2f}", (lg_ra9, len(rows) - 0.4),
-                    textcoords="offset points", xytext=(6, 0),
-                    fontsize=9, color=S.MUTED)
+        ax.annotate(f"staff avg {lg_ra9:.2f}", (lg_ra9, n - 0.52),
+                    textcoords="offset points", xytext=(7, 2),
+                    fontsize=9.5, color=S.MUTED)
     handles = [plt.Line2D([], [], marker="o", ls="", color=colors[c],
-                          markersize=10) for c in cats]
+                          markersize=11, markeredgecolor="white")
+               for c in cats]
     leg = ax.legend(handles, [c.split()[-1] for c in cats],
-                    loc="upper right", title="RA9 with")
+                    loc="lower right", title="RA9 with", ncol=1,
+                    borderaxespad=0.6)
     leg.get_title().set_color(S.MUTED)
     for t in leg.get_texts():
         t.set_color(S.TEXT)
-    ax.set_yticks(list(ys))
-    ax.set_yticklabels([p for p, _ in rows])
-    ax.set_ylim(len(rows) - 0.5, -headroom)
+    ax.set_yticks(range(n))
+    ax.set_yticklabels([p for p, _ in rows], fontsize=12.5)
+    ax.set_ylim(n - 0.5, -0.75)
     S.style(ax, grid_axis="x")
     ax.set_xlabel("Runs allowed per 9 innings with each catcher "
                   f"(min {res['min_outs']} outs)")
     ax.set_title("The battery map: each Red Sox starter has a clear "
                  "preferred catcher", loc="left", fontsize=15,
-                 fontweight="bold")
-    ax.text(0, -0.14, "Starters only; innings caught labeled per pairing. "
-            "Small, usage-shaped samples: evidence of an assignment "
-            "system, not a causal measure.",
+                 fontweight="bold", pad=14)
+    ax.text(0, -0.16, "Starters with 30+ outs caught by both catchers, "
+            "2026. Small, usage-shaped samples: evidence of an "
+            "assignment system, not a causal measure.",
             transform=ax.transAxes, fontsize=10, color=S.MUTED)
     fig.tight_layout()
     out = C.FIG_DIR / "14_battery_map.png"
@@ -187,13 +193,8 @@ def _battery_for(df: pd.DataFrame, pitcher: str) -> dict:
 def run() -> dict:
     df = load()
     res = compute(df)
-    # Crochet is back from rehab on 13-17 IP samples in 2026; his 2025
-    # season is the meaningful battery record, so use it (labeled).
-    if "Garrett Crochet" in res["batteries"]:
-        b25 = _battery_for(load(PITCH_CSV_2025), "Garrett Crochet")
-        del res["batteries"]["Garrett Crochet"]
-        if b25:
-            res["batteries"]["Garrett Crochet (2025)"] = b25
+    # Crochet's 2026 is a 13-17 IP rehab sample: not chartable
+    res["batteries"].pop("Garrett Crochet", None)
     (C.DATA_DIR / "battery.json").write_text(json.dumps(res, indent=2))
     print(f"  [battery] wrote {C.DATA_DIR / 'battery.json'}")
     fig_battery(res)

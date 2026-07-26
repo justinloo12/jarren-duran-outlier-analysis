@@ -111,7 +111,26 @@ def fenway_verdict(m: pd.DataFrame) -> dict:
             "upgrade_outs": int((upgrades["events"].isin(
                 {"field_out", "double_play",
                  "grounded_into_double_play"})).sum()),
+            "upgrade_singles": int((upgrades["events"] == "single").sum()),
             "lf_hr": int((lf["events"] == "home_run").sum())}
+
+
+# linear-weight values (FanGraphs-scale, approximate)
+W1B, W2B = 0.882, 1.254
+
+
+def fenway_projection(fw: dict, woba: float, n_pa: int) -> dict:
+    """Replay the Monster-zone contact as wall doubles: outs become
+    doubles, singles become doubles. Full = every such ball at Fenway;
+    half = the realistic season share of home games."""
+    gain = (fw["upgrade_outs"] * W2B
+            + fw["upgrade_singles"] * (W2B - W1B))
+    delta_full = gain / n_pa if n_pa else 0.0
+    return {"woba_now": round(woba, 3),
+            "woba_all_fenway": round(woba + delta_full, 3),
+            "woba_half_home": round(woba + delta_full / 2, 3),
+            "delta_full_pts": round(delta_full * 1000),
+            "n_pa": int(n_pa)}
 
 
 def _arm_facts(names: list[str]) -> dict:
@@ -175,7 +194,7 @@ def compute() -> dict:
         "fenway": fenway_verdict(_mead_bip()),
         "arms": _arm_facts(["Connelly Early", "Payton Tolle",
                             "Jake Bennett"]),
-    }
+    } | {"fenway_proj": None}
 
 
 def fig_fit(res: dict):
@@ -344,6 +363,17 @@ def article_section(res: dict) -> str:
           "wall instead of warning-track outs. Landing points are from "
           "Savant hit coordinates, so treat the count as approximate "
           "(fig. 19).\n")
+        fp = res.get("fenway_proj")
+        if fp:
+            A("Put a number on the park factor: replay just those "
+              "Monster-zone balls as wall doubles and his season line "
+              f"moves from a .{int(fp['woba_now']*1000)} wOBA to "
+              f".{int(fp['woba_all_fenway']*1000)} if every one played "
+              f"at Fenway, or about .{int(fp['woba_half_home']*1000)} "
+              "over a realistic half-home schedule. Call it roughly "
+              f"{fp['delta_full_pts']//2}-{fp['delta_full_pts']} points "
+              "of wOBA from the park before any change in approach, "
+              "using linear weights on the reclassified outcomes.\n")
         A("![Mead at Fenway](figures/19_mead_fenway.png)\n")
     A(f"The skeptic checks mostly pass. Statcast has him at a "
       f".{int(res['woba']*1000)} wOBA against a "
@@ -384,6 +414,9 @@ def article_section(res: dict) -> str:
 
 def run() -> dict:
     res = compute()
+    res["fenway_proj"] = fenway_projection(
+        res["fenway"], res["woba"],
+        res["fg"]["PA"])
     (C.DATA_DIR / "acquisition.json").write_text(json.dumps(res, indent=2))
     print(f"  [acquisition] wrote {C.DATA_DIR / 'acquisition.json'}")
     fig_fit(res)
