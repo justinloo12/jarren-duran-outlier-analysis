@@ -215,7 +215,7 @@ txt(s, 0.62, 6.6, 12, 0.4, [[("A data-driven roster case study · July 2026",
 # ---------------------------------------------------------------- 2 SITUATION
 s = new()
 eyebrow(s, "The setup")
-title(s, "A contender by run differential")
+title(s, "Red Sox Are Back From The Dead")
 stats = [(f"{_w}-{_l}", "record", "holding the final wild card"),
          (RUNDIFF, "run differential",
           f"outplaying their {PCT} record all season"),
@@ -245,7 +245,7 @@ footer(s)
 # ------------------------------------------------------------ 2b THE RACE
 s = new()
 eyebrow(s, "The verdict")
-title(s, "Buy, but keep it small")
+title(s, "Buy, Nibble At The Edges")
 image(s, "12", 0.4, 1.7, 8.0, 4.6, "12_playoff_race.png")
 tx = 8.75
 rules = [("Hold Duran", RED,
@@ -269,7 +269,7 @@ footer(s)
 # ---------------------------------------------------------------- 3 KEEP CORE
 s = new()
 eyebrow(s, "Keep")
-title(s, "The young, cheap, controllable outfield core")
+title(s, "Young, Controllable Outfield Core")
 core = [("Roman Anthony", "LF · age 22", "3.8", "$2.6M · 8yr/$130M ext",
          "Franchise bat. Untouchable. On the IL now, back in 2027."),
         ("Ceddanne Rafaela", "CF · age 25", "3.2", "$2.0M · 8yr/$50M",
@@ -339,7 +339,7 @@ footer(s)
 # ---------------------------------------------------------------- 5 DURAN LUCK
 s = new()
 eyebrow(s, "Don't sell low")
-title(s, "Duran's 2026 is unlucky")
+title(s, "Duran's 2026 Is Unlucky")
 ix, iy, iw, ih = image(s, "01", 0.5, 1.75, 6.9, 4.55,
                        "01_babip_vs_league.png")
 tx = 7.7
@@ -369,7 +369,7 @@ footer(s)
 # ---------------------------------------------------------------- 5b REBOUND SIM
 s = new()
 eyebrow(s, "The rebound math")
-title(s, "The rebound is likely for Duran")
+title(s, "Duran Will Be Back")
 image(s, "09", 0.4, 1.7, 8.3, 4.1, "09_rebound_probability.png")
 tx = 9.0
 txt(s, tx, 1.8, 3.7, 0.35, [[("P(REST-OF-SEASON wRC+ ≥ 100)",
@@ -400,7 +400,7 @@ footer(s)
 # ------------------------------------------------------- 5c EROSION VERDICT
 s = new()
 eyebrow(s, "The tiebreaker")
-title(s, "Swing Stats")
+title(s, "Duran Swing Stats")
 image(s, "10", 0.5, 1.7, 12.33, 3.2, "10_erosion_decomposition.png")
 cards = [("74.5 mph", "avg bat speed 2026, up from 72.7 in '24", GREEN,
           "Duran is swinging harder, longer and steeper than ever."),
@@ -425,7 +425,7 @@ footer(s)
 # ---------------------------------------------------------------- 6 AGE CURVE
 s = new()
 eyebrow(s, "Context")
-title(s, "Aging doesn't explain the drop")
+title(s, "Aging Not A Factor For Jarren")
 image(s, "04", 3.05, 1.65, 7.25, 4.5, "04_age_curve_overlay.png")
 txt(s, 0.62, 6.35, 12.1, 0.7, [[("2024 → 2026 wRC+ fell ~70 points; a normal "
     "age 27→29 curve predicts only ~7. ", {"size": 14, "color": INK}),
@@ -437,7 +437,7 @@ footer(s)
 # ------------------------------------------------------- 6b POSITIONAL AUDIT
 s = new()
 eyebrow(s, "If they buy, where?")
-title(s, "The roster's biggest hole is the Duran slump itself")
+title(s, "Left Field Is A Black Hole In 2026")
 image(s, "13", 0.4, 1.7, 8.0, 4.6, "13_positional_audit.png")
 tx = 8.75
 finds = [("LF −31: internal fix", RED,
@@ -464,7 +464,7 @@ footer(s)
 # ------------------------------------------------------ 6b1 QUAD-A AUDIT
 s = new()
 eyebrow(s, "The supporting cast")
-title(s, "Career years everywhere. Could mean regression")
+title(s, "Regression Candidates")
 image(s, "17", 0.4, 1.75, 8.0, 4.55, "17_aaaa_audit.png")
 tx = 8.75
 _nh = _AAAA['n_career_high']
@@ -503,7 +503,7 @@ footer(s)
 # --------------------------------------------------- 6b1b THE BASE RATE
 s = new()
 eyebrow(s, "The base rate")
-title(s, "Career-year first halves usually give it back")
+title(s, "Career-year First Halves Usually Give Back")
 image(s, "20", 0.4, 1.7, 8.0, 4.6, "20_aaaa_backtest.png")
 tx = 8.75
 _bh, _ba = _ABT["hitters"], _ABT["arms"]
@@ -561,25 +561,28 @@ footer(s)
 # ---------------------------------------------------------- 6c MOCK TRADES
 s = new()
 eyebrow(s, "The menu")
-title(s, "Three trades that fit, and one walk-away")
+title(s, "Possible Trades")
 trades = [
     ("1 · The pen fix · do it", "RHP Luke Weaver (NYM)", GREEN,
      "For a 45 FV + 40 FV, prospects only, nobody loses a job or an "
      "inning. Elite relief year, signed through '27. The highest-"
      "probability marginal win on the board."),
-    ("2 · The innings · fills Early's slot", "RHP Michael Wacha (KCR)",
+    ("2 · Mid level starter", "RHP Michael Wacha (KCR)",
      NAVY,
      "A 40 FV flier for a veteran back-end starter while Crochet and "
      "Sandoval build back. Buy-low alt: Gausman, whose FIP beats his "
      "ERA, the mirror of the Early sale."),
     ("3 · The shortstop · probably wait", "SS Zach Neto (LAA)", RED,
-     "For Tolle + Bennett + a 45 FV: two arms out of a winning "
+     "For Tolle / Bennett + a 45 FV: two arms out of a winning "
      "rotation midseason. Right for the franchise window, and still "
-     "there in the winter. Controlled through 2029."),
-    ("✗ · The walk-away", "C Shea Langeliers (ATH)", GOLD,
-     "The battery map was the veto, and the market agreed: torn "
-     "meniscus, 10-day IL on July 26. Boston was right not to pay for "
-     "a catcher bat it never needed.")]
+     "there in the winter. Blocks Mayer or Arias as well. Controlled "
+     "through 2029."),
+    ("✗ · The walk-away", "C Shea Langeliers (ATH) / Hunter Goodman "
+     "(COL)", GOLD,
+     "Not worth overpaying for either. Langeliers just hit the 10-day "
+     "IL with a torn meniscus, so Goodman's price shoots through the "
+     "roof. Boston was right not to pay for a catcher bat it never "
+     "needed.")]
 cw, ch = 5.86, 2.12
 pos = [(0.62, 1.85), (0.62 + cw + 0.33, 1.85),
        (0.62, 1.85 + ch + 0.28), (0.62 + cw + 0.33, 1.85 + ch + 0.28)]
@@ -601,7 +604,7 @@ footer(s)
 # ------------------------------------------------------- 6d THE REAL TRADE
 s = new()
 eyebrow(s, "The real trade")
-title(s, "They made one: Mead for Early")
+title(s, "New Acquisition: Mead Breakdown")
 image(s, "19", 0.4, 1.62, 8.0, 5.0, "19_mead_fenway.png")
 tx = 8.75
 _mf = _ACQ["fg"]
@@ -686,31 +689,55 @@ footer(s)
 
 # ---------------------------------------------------------------- 10 CLOSER
 s = new("0E1830")
-dot(s, 0.62, 0.7, 0.34, fill=RED)
-txt(s, 1.05, 0.68, 10, 0.4, [[("BOTTOM LINE", {"color": "C9D2E3",
+dot(s, 0.62, 0.62, 0.34, fill=RED)
+txt(s, 1.05, 0.6, 10, 0.4, [[("BOTTOM LINE", {"color": "C9D2E3",
     "bold": True, "size": 13})]], space_after=0)
-lines = [("Play the hand.", f"{ODDS} playoff odds, {RUNDIFF} run "
-          "differential, a wild card in hand, buy small (a reliever "
-          "first), keep the vets, and let the record keep catching up "
-          "to the process."),
-         ("Cash the surplus, not the slump.", "Hold Duran through the "
-          "deadline; re-price him in winter, extend or trade the 2025 "
-          "player, never the unlucky 2026 one."),
-         ("Stop fighting the Yoshida deal.", "The bat is back to "
-          "average or better; absorb the contract and let it expire.")]
-yy = 1.95
-for head, body in lines:
-    dot(s, 0.7, yy + 0.06, 0.18, fill=RED)
-    txt(s, 1.05, yy, 11.4, 1.0, [[(head + "  ", {"bold": True, "size": 21,
-        "font": HEAD, "color": WHITE}), (body, {"size": 15, "color": "CDD4E2"})]],
+txt(s, 0.62, 1.05, 12.1, 0.9, [[("What I'd Do Before August 3",
+    {"size": 40, "bold": True, "font": HEAD, "color": WHITE})]],
+    space_after=0)
+
+# scoreboard band
+_stats = [(ODDS, "PLAYOFF ODDS"), (RUNDIFF, "RUN DIFF"),
+          (f"{DAYS_LEFT}", "DAYS LEFT"),
+          (f"{_ABT['hitters']['median_retention']*100:.0f}%",
+           "OF A CAREER-BEST HALF SURVIVES, HISTORICALLY")]
+bx, bw = 0.62, 2.85
+card(s, bx, 2.05, 12.1, 1.5, fill="121E33", line="26334E")
+for i, (num, lab) in enumerate(_stats):
+    x = 0.95 + i * (bw + 0.22)
+    txt(s, x, 2.25, bw, 0.7, [[(num, {"size": 34, "bold": True,
+        "font": MONO, "color": "E8615A" if i == 0 else WHITE})]],
+        space_after=0)
+    txt(s, x, 3.02, bw, 0.4, [[(lab, {"size": 9.5, "bold": True,
+        "font": MONO, "color": "8C97AC"})]], space_after=0)
+
+lines = [("1", "Finish the shopping: a reliever and innings.",
+          "A Weaver-class arm for prospects and a Wacha-class starter "
+          "for a flier. Nobody in the room loses a job; two quiet "
+          "wins get covered."),
+         ("2", "Trust the diagnosis, not the heater.",
+          "The regression watch says plan for the fade. Mead, the "
+          "returning injured bats, and Duran's own regression are the "
+          "real September lineup."),
+         ("3", "Hold Duran. Decide in the winter.",
+          "His value is at rock bottom while the underlying numbers "
+          "say rebound. Buyers read xstats too; nobody pays 2024 "
+          "prices in August 2026.")]
+yy = 3.95
+for num, head, body in lines:
+    dot(s, 0.7, yy + 0.02, 0.42, fill=RED, text=num, size=16)
+    txt(s, 1.35, yy - 0.02, 11.2, 1.0, [[(head + "  ",
+        {"bold": True, "size": 18.5, "font": HEAD, "color": WHITE}),
+        (body, {"size": 13.5, "color": "CDD4E2"})]],
         line_spacing=1.1, space_after=2)
-    yy += 1.35
-txt(s, 1.05, 6.15, 11.4, 0.8, [[("Confidence: ", {"bold": True, "size": 12.5,
-    "color": "9AA6BC"}), ("high that 2024 shouldn't be the anchor and pitching "
-    "is a strength; the open question is how much of 2026's skill dip (chase, "
-    "whiff, hard-hit are all worse) persists, the one thing to watch before "
-    "selling.", {"size": 12.5, "color": "9AA6BC", "italic": True})]],
-    line_spacing=1.12)
+    yy += 0.98
+txt(s, 0.62, 6.85, 12.1, 0.4, [[("Every number on these slides "
+    "regenerates from live data. Predictions frozen July 4, graded in "
+    "October, flattering or not.  ", {"size": 11.5, "italic": True,
+    "color": "9AA6BC"}),
+    ("justinloo12.github.io/red-sox-trade-deadline-thoughts",
+     {"size": 11.5, "bold": True, "font": MONO, "color": "E8615A"})]],
+    space_after=0)
 
 prs.save(str(OUT))
 print(f"wrote {OUT}  ({len(prs.slides.__iter__.__self__._sldIdLst)} slides)")
