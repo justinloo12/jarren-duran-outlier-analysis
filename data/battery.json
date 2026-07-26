@@ -93,17 +93,17 @@
         "RA9": 3.31
       }
     },
-    "Garrett Crochet": {
+    "Patrick Sandoval": {},
+    "Garrett Crochet (2025)": {
       "Carlos Narv\u00e1ez": {
-        "IP": 12.7,
-        "RA9": 11.37
+        "IP": 171.0,
+        "RA9": 2.79
       },
       "Connor Wong": {
-        "IP": 17.3,
-        "RA9": 3.12
+        "IP": 31.0,
+        "RA9": 1.74
       }
-    },
-    "Patrick Sandoval": {}
+    }
   },
   "min_outs": 30,
   "league_ra9": 3.88

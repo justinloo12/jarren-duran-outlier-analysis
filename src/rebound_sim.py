@@ -239,10 +239,9 @@ def fig(resu: dict):
             alpha=0.55, label=f"Erosion scenario (2026 process at "
             f"{int(EROSION_WEIGHT*100)}%)", zorder=3)
     ax.axvline(100, color=S.AMBER, lw=1.4, ls="--", zorder=4)
-    ax.text(101.5, ax.get_ylim()[1] * 0.965, "league avg (100)", fontsize=8.5,
-            color=S.AMBER, ha="left", va="top", zorder=5,
-            bbox=dict(facecolor="white", alpha=0.75, edgecolor="none",
-                      pad=1.5))
+    ax.text(101.5, ax.get_ylim()[1] * 0.42, "league avg (100)",
+            fontsize=10, color=S.AMBER, ha="left", va="top", zorder=5,
+            fontweight="bold")
     ax.legend(loc="upper left", bbox_to_anchor=(0.0, 0.98))
     ax.annotate(f"P(wRC+ ≥ 100) = {h['p_ros_wrcplus_100']:.0%}",
                 xy=(0.985, 0.86), xycoords="axes fraction", ha="right",
@@ -257,7 +256,7 @@ def fig(resu: dict):
                   f"({resu['inputs']['n_remaining_pa']} PA, "
                   f"{resu['sim']['n_sims']:,} runs)")
     S.titled(ax, "Will Duran rebound? 10,000 simulated rest-of-seasons",
-             "Monte Carlo over remaining PA — healthy 2023–25 prior vs. a "
+             "Monte Carlo over remaining PA: healthy 2023-25 prior vs. a "
              "2026-erosion-blended prior")
     fig_.tight_layout()
     fig_.savefig(C.FIG_DIR / "09_rebound_probability.png")

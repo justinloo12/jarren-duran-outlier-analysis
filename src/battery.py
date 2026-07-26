@@ -23,6 +23,7 @@ from . import style as S
 S.apply()
 
 PITCH_CSV = C.DATA_DIR / "statcast" / "bos_team_pitches_2026.csv"
+PITCH_CSV_2025 = C.DATA_DIR / "statcast" / "bos_team_pitches_2025.csv"
 MIN_OUTS = 30  # ~10 innings before a battery split is shown
 
 # outs credited per event (post_outs_when_up not present in this feed)
@@ -48,9 +49,21 @@ def _fetch() -> pd.DataFrame:
     return df
 
 
-def load() -> pd.DataFrame:
-    if PITCH_CSV.exists():
-        df = pd.read_csv(PITCH_CSV, low_memory=False)
+def _fetch_2025() -> pd.DataFrame:
+    from pybaseball import statcast
+    df = statcast(start_dt="2025-03-25", end_dt="2025-09-28", team="BOS",
+                  verbose=False)
+    PITCH_CSV_2025.parent.mkdir(exist_ok=True)
+    df.to_csv(PITCH_CSV_2025, index=False)
+    return df
+
+
+def load(csv=None) -> pd.DataFrame:
+    csv = csv or PITCH_CSV
+    if csv.exists():
+        df = pd.read_csv(csv, low_memory=False)
+    elif csv is PITCH_CSV_2025:
+        df = _fetch_2025()
     else:
         df = _fetch()
     from pybaseball import playerid_reverse_lookup
@@ -114,6 +127,7 @@ def fig_battery(res: dict):
     rows = [(p, b) for p, b in res["batteries"].items()
             if any(c in b for c in cats) and p != "Connelly Early"]
     lg_ra9 = res.get("league_ra9")
+    headroom = 0.9  # keep the top row's IP labels clear of the title
     fig, ax = plt.subplots(figsize=(9, 5.4))
     ys = range(len(rows))
     for y, (p, b) in zip(ys, rows):
@@ -142,7 +156,7 @@ def fig_battery(res: dict):
         t.set_color(S.TEXT)
     ax.set_yticks(list(ys))
     ax.set_yticklabels([p for p, _ in rows])
-    ax.invert_yaxis()
+    ax.set_ylim(len(rows) - 0.5, -headroom)
     S.style(ax, grid_axis="x")
     ax.set_xlabel("Runs allowed per 9 innings with each catcher "
                   f"(min {res['min_outs']} outs)")
@@ -160,9 +174,26 @@ def fig_battery(res: dict):
     print(f"  [battery] wrote {out}")
 
 
+def _battery_for(df: pd.DataFrame, pitcher: str) -> dict:
+    sub_df = df[df["pitcher_name"] == pitcher]
+    bat = sub_df.groupby("catcher").agg(outs=("outs_rec", "sum"),
+                                        runs=("runs", "sum"))
+    bat = bat[bat["outs"] >= MIN_OUTS]
+    return {c: {"IP": round(r["outs"] / 3, 1),
+                "RA9": round(r["runs"] / (r["outs"] / 3) * 9, 2)}
+            for c, r in bat.iterrows()}
+
+
 def run() -> dict:
     df = load()
     res = compute(df)
+    # Crochet is back from rehab on 13-17 IP samples in 2026; his 2025
+    # season is the meaningful battery record, so use it (labeled).
+    if "Garrett Crochet" in res["batteries"]:
+        b25 = _battery_for(load(PITCH_CSV_2025), "Garrett Crochet")
+        del res["batteries"]["Garrett Crochet"]
+        if b25:
+            res["batteries"]["Garrett Crochet (2025)"] = b25
     (C.DATA_DIR / "battery.json").write_text(json.dumps(res, indent=2))
     print(f"  [battery] wrote {C.DATA_DIR / 'battery.json'}")
     fig_battery(res)
